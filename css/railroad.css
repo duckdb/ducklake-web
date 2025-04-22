@@ -1,0 +1,84 @@
+#rrdiagram1 + p,
+#rrdiagram2 + p,
+#rrdiagram3 + p,
+#rrdiagram4 + p{
+	margin-top: 0;
+}
+.railroad-diagram svg {
+	background-color: hsla(0, 0%, 100%, 1);
+}
+svg.railroad-diagram{
+	margin-top: -10px;
+}
+.limit-width svg {
+	max-width:100%;
+}
+.railroad-diagram path {
+	stroke-width: 1.5px;
+	stroke: black;
+	fill: rgba(0,0,0,0);
+}
+text {
+	font-family: "JetBrainsMono-Regular", "Lucida Console", monospace;
+	font-size: 14px;
+	text-anchor: middle;
+	white-space: pre;
+}
+text.diagram-text {
+	font-size: 12px;
+}
+text.diagram-arrow {
+	font-size: 16px;
+}
+text.label {
+	text-anchor: start;
+}
+text.comment {
+	font-family: "JetBrainsMono-Italic", "Lucida Console", monospace;
+	font-size: 12px;
+	font-style: normal;
+}
+g.non-terminal text {
+	/*font-style: italic;*/
+}
+.railroad-diagram rect {
+	stroke-width: 1;
+	stroke: #E6E6E6;
+	fill: #F2F2F2;
+}
+.expandable, .expanded {
+	cursor:pointer;
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+.railroad-diagram rect.expandable, rect.expanded, rect.expression {
+	fill: rgb(245, 245, 245);
+}
+text.expandable, text.expanded, text.expression {
+	font-family: "JetBrainsMono-Regular", "Lucida Console", monospace;
+	font-size: 14px;
+}
+text.expandable {
+	text-decoration: underline;
+}
+.non-terminal:hover rect.expandable, .non-terminal:hover rect.expanded {
+	fill: #fef361;
+}
+.railroad-diagram path.diagram-text {
+	stroke-width: 3;
+	stroke: black;
+	fill: white;
+	cursor: help;
+}
+g.diagram-text:hover path.diagram-text {
+	fill: #eee;
+}
+g.terminal text{
+	font-family: "JetBrainsMono-Bold", "Lucida Console", monospace;
+}
+
+.railroad-diagram{
+	margin-left: -17px;
+}

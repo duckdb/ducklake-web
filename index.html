@@ -1,0 +1,141 @@
+---
+layout: default
+title: DuckLake is an integrated data lake and catalog format.
+subtitle: An integrated data lake and catalog format
+description: DuckLake delivers advanced data lake features without traditional lakehouse complexity by using Parquet files and your SQL database. It's an open, standalone format from the DuckDB team.
+body_class: landing nowrap
+---
+
+<section class="welcome">
+	<div class="wrap">
+		<div class="ducklake">
+			<h1>DuckLake is an integrated data lake and catalog format.</h1>
+			<p>DuckLake delivers advanced data lake features without traditional lakehouse complexity by using Parquet files and your SQL database. It's an open, standalone format from the DuckDB team.</p>
+			<a class="button blue" href="#quickinstall">Get started</a>
+			<a class="button transparent" href="/docs/">Documentation</a>
+		</div>
+	</div>
+</section>
+
+<section class="manifesto">
+	<div class="wrap">
+		<h2>The DuckLake manifesto</h2>
+		<div class="cards horizontal icons">
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Multiplayer SQL Clients</h3>
+					<p>DuckLake unlocks concurrency for multiple SQL clients, including DuckDB.</p>
+					<a href="#" class="arrow-right">Read more</a>
+				</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Data lakes need a database system</h3>
+					<p>Your data lake formats need a catalog, which is a database system! Why not use it to store more metadata?</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Your data lake should be readable with SQL</h3>
+					<p>To ensure portability and the longevity of the data, your data lake should be readable with a SQL engine and a Parquet reader.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="wrap">
+		<h2>Use cases</h2>
+		<div class="cards vertical images">
+			<div class="card">
+				<div class="image"></div>
+				<div class="content">
+					<h3>Multiplayer DuckDB</h3>
+					<p>DuckLake unlocks concurrency for multiple DuckDB clients.</p>
+					<a href="#" class="textbutton arrow-right">Read more</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="image"></div>
+				<div class="content">
+					<h3>Self-hosted data warehouse</h3>
+					<p>DuckLake allows you to host your own local data warehouse.</p>
+					<a href="#" class="textbutton arrow-right">Read more</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="image"></div>
+				<div class="content">
+					<h3>⟨ your use case ⟩</h3>
+					<p>Creative ways!</p>
+					<a href="#" class="textbutton arrow-right">Read more</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="wrap">
+		<h2>Simple architecture</h2>
+		<p>DuckLake uses a single database system to manage all metadata for its lakehouse setup. All you need to run own data warehouse is a SQL-compliant database system and an object store to store Parquet files. Everything is fully open and controlled by the user.</p>
+		<div class="illustration">
+			
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="wrap">
+		<h2>A bird’s-eye view of DuckLake</h2>
+		<div class="cards vertical icons">
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Everything you would expect from a data lake</h3>
+					<p>DuckLake supports snapshots, time travel queries, schema evolution and partitioning.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Lightweight snapshots</h3>
+					<p>DuckLake employs lightweight snapshots. You can have as many snapshots as you want without frequent compacting steps!</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>ACID transactions</h3>
+					<p>DuckLake allows concurrent access with ACID transactional guarantees over multi-table operations.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Performance-oriented</h3>
+					<p>DuckLake uses statistics for filter pushdown, enabling fast queries even on large datasets.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>Pluggable catalog</h3>
+					<p>You can use DuckDB, SQLite, PostgreSQL or MotherDuck to store your catalog.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="icon"></div>
+				<div class="content">
+					<h3>DuckDB integration </h3>
+					<p>You can attach to a DuckLake from DuckDB with a single command and use it like any DuckDB database.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include quick_installation.html %}

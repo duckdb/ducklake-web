@@ -1,0 +1,64 @@
+{
+  "docsmenu": [
+    {
+      "page": "Documentation",
+      "open": true,
+      "slug": "",
+      "mainfolderitems": [
+        {
+          "page": "Example",
+          "open": true,
+          "slug": "example",
+            "subfolderitems": [
+            {
+              "page": "Introduction",
+              "url": "https://ducklake.dev"
+            },
+            {
+              "page": "Statements",
+              "slug": "statements",
+              "subsubfolderitems": [
+                {
+                  "page": "Overview",
+                  "url": "https://ducklake.dev"
+                },
+                {
+                  "page": "Alter Table",
+                  "url": "https://ducklake.dev"
+                }
+              ]
+            },
+            {
+              "page": "Query Syntax",
+              "slug": "query_syntax",
+              "subsubfolderitems": [
+                {
+                  "page": "SELECT",
+                  "url": "https://ducklake.dev"
+                },
+                {
+                  "page": "FROM & JOIN",
+                  "url": "https://ducklake.dev"
+                }
+              ]
+            },
+            {
+              "page": "Data Types",
+              "slug": "data_types",
+              "subsubfolderitems": [
+                {
+                  "page": "Overview",
+                  "url": "https://ducklake.dev"
+                },
+                {
+                  "page": "Numeric",
+                  "url": "https://ducklake.dev"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

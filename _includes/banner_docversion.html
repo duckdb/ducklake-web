@@ -1,0 +1,42 @@
+{% if version_viewed == "stable" %}
+	<!-- this is the default and recommended version - do not show any extra warning -->
+{% elsif version_viewed == "preview" %}
+	<!-- show nightly banner -->
+	<div class="banner nightly">
+		<div class="content">
+			<span class="icon_nightly"></span>
+			<span title="The page is for the preview version of DuckDB, available in the nightly builds. The features shown in the documentation may not yet be available in the stable version.">Preview version</span>
+		</div>
+	</div>
+{% else %}
+	<!-- show 'outdated' banner -->
+	{% assign url_parts = page.url | split: '/' %}
+	{% assign new_url = '' %}
+	{% assign skip_next = false %}
+	{% for part in url_parts %}
+		{% if part == 'archive' %}
+			{% assign skip_next = true %}
+			{% continue %}
+		{% elsif skip_next %}
+			{% assign skip_next = false %}
+			{% continue %}
+		{% else %}
+			{% assign new_url = new_url | append: part %}
+			{% unless forloop.last %}
+				{% assign new_url = new_url | append: '/' %}
+			{% endunless %}
+		{% endif %}
+	{% endfor %}
+	<div class="banner outdated">
+		<div class="content">
+			<span class="icon_outdated"></span>
+			{% assign new_filename = new_url | replace: ".html", ".md" %}
+			{% capture url_exists %}{% file_exists {{ new_filename }} %}{% endcapture %}
+			{% if url_exists == "true" %}
+				<span title="Outdated documentation. Please select the stable version.">Outdated documentation</span>
+			{% else %}
+				<span title="This page is not available in the stable version of the documentation.">Outdated documentation</span>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

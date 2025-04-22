@@ -1,0 +1,31 @@
+{
+  "toc2": [
+    {
+      "title": "Main",
+      "mainfolderitems": [
+        {
+          "page": "Documentation",
+          "url": "/docs/",
+          "subfolderitems": [
+            {
+              "page": "Getting Started",
+              "url": "/docs"
+            },
+            {
+              "page": "Installation",
+              "url": "/docs/installation/"
+            },
+            {
+              "page": "FAQ",
+              "url": "/faq"
+            }
+          ]
+        },
+        {
+          "page": "GitHub",
+          "url": "https://github.com/duckdb/ducklake"
+        }
+      ]
+    }
+  ]
+}

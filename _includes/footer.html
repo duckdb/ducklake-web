@@ -1,0 +1,24 @@
+<footer>
+	<div class="sitefooter">
+		<div class="footercontent">
+			<div class="footernavigation">
+				<div>
+					<h6>Documentation</h6>
+					<a href="{% link docs/stable/index.md %}">Getting Started</a><br/>
+				</div>
+				<div>
+					<h6>Internals</h6>
+					<a href="{% link feed.xml %}">RSS Feed</a><br/>
+				</div>
+				<div>
+					<h6>Community</h6>
+					<a href="https://stackoverflow.com/questions/tagged/ducklake" target="_blank">Stack Overflow</a>
+				</div>
+			</div>
+			<div class="footerlogo ducklake_logo"></div>
+			<div class="bottomline">
+				<div>© {{ "now" | date: "%Y" }} DuckLake Foundation</div>
+			</div>
+		</div>
+	</div>
+</footer>

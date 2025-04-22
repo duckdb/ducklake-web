@@ -1,0 +1,44 @@
+{%- assign menudocfile = "menu_docs_" | append: version_viewed | replace: ".", "" -%}
+
+{% assign menudocfile = site.data[menudocfile].docsmenu %}
+
+<div id="breadcrumbs">
+  {% assign crumbs = page.url | remove: '/index.html' | split: '/' %}
+  {% assign offset = 3 %}
+
+  <span>Documentation</span>
+
+  {% for doc_entry in menudocfile %}
+    {% assign crumb = crumbs[offset] %}
+    {% if doc_entry.mainfolderitems %}
+      {% for main_entry in doc_entry.mainfolderitems %}
+        {% assign main_entry_slug_trimmed = main_entry.slug | replace: '/', '' %}
+        {% if main_entry_slug_trimmed == crumb %}
+          <span class="slash">/</span> <span>{{ main_entry.page }}</span>
+          {% assign offset = offset | plus:1 %}
+          {% assign crumb = crumbs[offset] %}
+          {% if main_entry.subfolderitems %}
+            {% for sub_entry in main_entry.subfolderitems %}
+              {% assign sub_entry_slug_trimmed = sub_entry.slug | replace: '/', '' %}
+              {% if sub_entry_slug_trimmed == crumb %}
+                <span class="slash">/</span> <span>{{ sub_entry.page }}</span>
+                {% assign offset = offset | plus:1 %}
+                {% assign crumb = crumbs[offset] %}
+                {% if sub_entry.subsubfolderitems %}
+                  {% for subsub_entry in sub_entry.subsubfolderitems %}
+                    {% assign subsub_entry_slug_trimmed = subsub_entry.slug | replace: '/', '' %}
+                    {% if subsub_entry_slug_trimmed == crumb %}
+                      <span class="slash">/</span> <span>{{ subsub_entry.page }}</span>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+  <br/>
+</div>

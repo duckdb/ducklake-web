@@ -1,0 +1,65 @@
+<section id="quickinstall">
+	<div class="flexwrap wrap">
+		<div class="intro">
+			<h1>Create your first DuckLake</h1>
+			<p>DuckDB provides first-class support for DuckLake through its highly portable extension, running wherever DuckDB does.</p>
+			<a href="/docs/installation/" class="button transparent">More installation options</a>
+		</div>
+		<div class="install">
+			<div class="window">
+				<div class="topbar environment">
+					<ul>
+						<div class="select-highlight"></div>
+						<li data-client="duckdb" class="active">DuckDB</li>
+						<li data-client="postgresql">PostgreSQL</li>
+						<li data-client="sqlite">SQLite</li>
+					</ul>
+				</div>
+				
+				<div class="result content">
+{% highlight bash %}
+INSTALL ducklake;
+ATTACH 'ducklake:mylake.ducklake' AS my_lake; 
+
+ATTACH ducklake:postgres:dbname=... DATA_PATH ... METADATA_SCHEMA ...
+FROM my_lake.XX;
+{% endhighlight %}
+				</div>
+				
+				<div class="bottombar">
+					<p class="system">
+						<span>Latest release: DuckLake {{ site.currentducklakeversion }} | </span>
+						<span class="systemdetected">System detected: </span>
+					</p>
+				</div>	
+	</div>
+</section>
+
+<section class="hidden">
+	
+<div id="quick-installation">
+
+<div data-install="duckdb">
+{% highlight bash %}
+INSTALL ducklake;
+ATTACH 'ducklake:mylake.ducklake' AS my_lake; 
+ATTACH ducklake:postgres:dbname=... DATA_PATH ... METADATA_SCHEMA ...
+FROM my_lake.XX;
+{% endhighlight %}
+</div>
+
+<div data-install="postgresql">
+{% highlight bash %}
+INSTALL ducklake;
+{% endhighlight %}
+</div>
+
+<div data-install="sqlite">
+{% highlight bash %}
+INSTALL ducklake;
+{% endhighlight %}
+</div>
+
+</div>
+
+</section>
