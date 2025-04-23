@@ -1,0 +1,141 @@
+---
+---
+
+@use "sass:color";
+@use 'variables' as *;
+
+/** DUCKLAKE STYLES **/
+
+
+/** General DuckLake Styles **/
+
+::-moz-selection {
+  background: #B2E2FF80;
+}
+::selection {
+  background: #B2E2FF80;
+}
+
+.textbutton:hover{
+	color: var(--blue-70, #2eafff);
+}
+
+.cards{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+	&.vertical.images{
+		.card{
+			position: relative;
+			width: calc(50% - 10px);
+			backdrop-filter: blur(7px);
+			border-radius: 10px;
+			border: 1px solid var(--lake-infobox-border-color, rgba(204, 235, 255, 0.60));
+			background: var(--lake-infobox-background-color, rgba(229, 245, 255, 0.60));
+			.image{
+				width: 100%;
+				aspect-ratio: 26/10;
+				background: #ffffff66;
+			}
+			.content{
+				padding: 30px 20px;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: column;
+				gap: 20px;
+				p{
+					margin: 0;
+				}
+			}
+		}
+	}
+	&.vertical.icons{
+		justify-content: flex-start;
+		.card{
+			position: relative;
+			width: calc( (100% - 60px) / 4);
+			padding: 30px 20px;
+			border-radius: 15px;
+			border: 1px solid var(--lake-infobox-border-color, rgba(204, 235, 255, 0.60));
+			background: var(--lake-infobox-background-color, rgba(229, 245, 255, 0.60));
+			backdrop-filter: blur(7px);
+			.icon{
+				width: 50px;
+				height: 50px;
+				margin-bottom: 20px;
+				position: relative;
+				overflow: hidden;
+				img{
+					object-fit: contain;
+					object-position: center center;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.content{
+				h3{
+					font-size: 22px;
+					font-style: normal;
+					font-weight: 500;
+					margin-bottom: 15px;
+				}
+				p{
+					font-size: 16px;
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+
+/** Landing page styles **/
+body.landing{
+	font-size: 17px;
+	section.welcome{
+		background: linear-gradient(180deg, var(--lake-background-gradient-start, #F5FBFF) 0%, var(--lake-background-gradient-end, #E5F5FF) 100%);
+		.ducklake{
+			margin: 0 auto;
+			max-width: 850px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			row-gap: 25px;
+			p{
+				margin: 0;
+			}
+		}
+		
+	}
+	section.architecture{
+		
+	}
+	section{
+		.section-text{
+			max-width: 640px;
+			text-align: center;
+			margin: 0 auto;
+		}
+	}
+	h1{
+		font-size: 55px;
+		font-weight: 600;
+		letter-spacing: -1.1px;
+	}
+	h2{
+		font-size: 55px;
+		font-weight: 600;
+		text-align: center;
+		letter-spacing: -1.1px;
+	}
+	h3{
+		font-size: 28px;
+		font-weight: 600;
+		letter-spacing: -0.56px;
+	}
+	
+	h2 + div{
+		margin-top: 50px;
+	}
+}
