@@ -19,6 +19,11 @@ title: Frequently Asked Questions
 
 DuckLake provides a lightweight one-stop solution for if you need a data lake and catalog.
 
+If you only use DuckDB for both your as DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
+you can run [time travel queries](TODO),
+exploit [partitioning](TODO),
+and can store your data in multiple files instead of using a single huge database file.
+
 </div>
 
 </div>
