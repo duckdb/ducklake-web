@@ -19,41 +19,118 @@ body_class: landing nowrap
 	</div>
 </section>
 
-<section class="manifesto">
+<section class="architecture">
 	<div class="wrap">
-		<h2>The DuckLake manifesto</h2>
-		<div class="cards horizontal icons">
-			<div class="card">
-				<div class="icon">
-					<img src="{{ site.baseurl }}/images/icons/waves.svg" alt="wave icon">
+		<div class="section-text">
+			<h2>Deployment scenarios</h2>
+			<p>DuckLake uses a database system to manage your metadata for the catalog.  All you need to run your own data warehouse is a database system and storage for Parquet files.</p>
+		</div>
+		<div class="illustration">
+				<div class="window architecture-tabs">
+					<div class="topbar">
+						<ul>
+							<div class="select-highlight"></div>
+							<li data-tab="arch-tab1" data-iconclass="duckdb" data-multi="false" class="active">DuckDB</li>
+							<li data-tab="arch-tab2" data-iconclass="postgre" data-multi="true">PostgreSQL</li>
+							<li data-tab="arch-tab3" data-iconclass="sqlite" data-multi="true">SQLite</li>
+							<li data-tab="arch-tab4" data-iconclass="mysql" data-multi="true">MySQL</li>
+						</ul>
+					</div>
+					
+				
+					<div class="diagram">
+						<div class="client">
+							<h4>Client</h4>
+							
+							<div class="browser">
+								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
+								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" class="multi">
+								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" class="multi">
+								<div class="broser-content">
+									<div class="icons">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb">
+										<!--
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-postgre.svg" class="postgre">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-sqlite.svg" class="sqlite">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-mysql.svg" class="mysql">
+										-->
+										<div class="sub">DuckDB</div>
+									</div>
+									<div class="ducklake">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb.svg" class="ducklake">
+										<div class="sub">DuckLake</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="hover-content">
+								<div class="mysql postgre sqlite">
+									<h4>Clients</h4>
+									<p>Users can run multiple DuckLake clients and connect in parallel to PostgreSQL / MySQL / SQLite.</p>
+								</div>
+								<div class="duckdb">
+									<h4>Client</h4>
+									<p>Different hover info for DuckDB.</p>
+								</div>
+							</div>
+							
+						</div>
+						<div class="database-storage">
+							<div class="database">
+								<h4>Catalog database</h4>
+								
+								<div class="catalog">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/database.svg" alt="Database Icon">
+									<div class="icons">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-postgre.svg" class="postgre">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-sqlite.svg" class="sqlite">
+										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-mysql.svg" class="mysql">
+										<div class="sub">DuckDB</div>
+									</div>
+								</div>
+								
+								<div class="hover-content">
+									<div class="mysql postgre duckdb sqlite">
+										<h4>Catalog database</h4>
+										<p>DuckLake can harness any PostgreSQL-compatible database including AWS Aurora.</p>
+									</div>
+								</div>
+								
+								<div class="connector">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z"/></svg>
+								</div>
+							</div>
+							<div class="storage">
+								<h4>Storage</h4>
+								
+								<div class="folder">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/parquet_folder.svg" alt="Parquet Folder">
+									<div class="sub">Parquet</div>
+								</div>
+								
+								<div class="hover-content">
+									<div class="mysql postgre sqlite duckdb">
+										<h4>Storage</h4>
+										<p>DuckLake can store your data on any object storage such as AWS S3.</p>
+									</div>
+								</div>
+								
+								<div class="connector">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z"/></svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
 				</div>
-				<div class="content">
-					<h3>Simplicity and efficiency</h3>
-					<p>Data lakes are important building blocks in modern architectures. They must be easy to use and performance-oriented by design.</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="icon">
-					<img src="{{ site.baseurl }}/images/icons/waves.svg" alt="wave icon">
-				</div>
-				<div class="content">
-					<h3>Using a database system for metadata</h3>
-					<p>Data lakes require a catalog. Why not leverage a robust database system for this, capable of handling richer metadata too?</p>
-				</div>
-			</div>
-			<div class="card">
-				<div class="icon">
-					<img src="{{ site.baseurl }}/images/icons/waves.svg" alt="wave icon">
-				</div>
-				<div class="content">
-					<h3>SQL and Parquet readability</h3>
-					<p>To ensure portability and the longevity of the data, your data lake should be accessible via standard SQL queries and Parquet tools.</p>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
 
+
+<!--
 <section>
 	<div class="wrap">
 		<h2>Use cases</h2>
@@ -77,21 +154,7 @@ body_class: landing nowrap
 		</div>
 	</div>
 </section>
-
-<section class="architecture">
-	<div class="wrap">
-		<div class="section-text">
-			<h2>Simple architecture</h2>
-			<p>DuckLake uses a database system to manage your metadata for the catalog.  All you need to run your own data warehouse is a database system and storage for Parquet files.</p>
-		</div>
-		<div class="illustration">
-			
-		</div>
-	</div>
-</section>
-
-
-{% include quick_installation.html %}
+-->
 
 
 <section class="features">
@@ -137,3 +200,5 @@ body_class: landing nowrap
 		</div>
 	</div>
 </section>
+
+{% include quick_installation.html %}

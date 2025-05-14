@@ -586,36 +586,75 @@ $(document).ready(function(){
 		}
 	}
 	
-	// EXAMPLE SELECTION HOME PAGE
-	if ($(".demo.window .topbar").length) {
-		const $langTopbar = $(".demo.window .topbar");
-		const $langItems = $langTopbar.find("> ul.lang > li");
-		const $activeLangItem = $langItems.filter(".active");
+	// DEPLOYMENT DIAGRAM
+	const $architectureIllustration = $(".architecture .illustration");
+	if ($architectureIllustration.length) {
+		const $diagramTopbar = $architectureIllustration.find(".architecture-tabs .topbar");
+		const $diagramItems = $diagramTopbar.find("> ul > li");
+		const $activeDiagramItem = $diagramItems.filter(".active");
+
+		const $catalogIconsContainer = $architectureIllustration.find('.catalog .icons');
+		const $catalogSubText = $catalogIconsContainer.find('.sub');
+		const $multiImages = $architectureIllustration.find('.browser > img.multi');
+		const $clientHeading = $architectureIllustration.find('.diagram .client h4');
+		const $hoverContentPanels = $architectureIllustration.find('.diagram .hover-content');
+		
+		let previousDataMulti = $activeDiagramItem.data('multi');
+		
+		function updateDiagramView($item) {
+			updateHighlight($diagramTopbar, $item);
+
+			const iconClassToShow = $item.data('iconclass');
+			const tabText = $item.text();
+			const currentDataMulti = $item.data('multi');
+
+			$catalogIconsContainer.find('img').removeClass('active-icon');
+			if (iconClassToShow) {
+				$catalogIconsContainer.find('img.' + iconClassToShow).addClass('active-icon');
+			}
+			$catalogSubText.text(tabText);
+
+			$clientHeading.text(currentDataMulti === true ? 'Clients' : 'Client');
+
+			if (currentDataMulti === true) {
+				$multiImages.addClass('visible');
+				if (previousDataMulti !== true) {
+					$multiImages.removeClass('animate-to-pos-1 animate-to-pos-2');
+					$multiImages.eq(0).addClass('animate-to-pos-1');
+					$multiImages.eq(1).addClass('animate-to-pos-2');
+				}
+			} else {
+				if (previousDataMulti === true) {
+					$multiImages.removeClass('animate-to-pos-1 animate-to-pos-2');
+					setTimeout(function() {
+						$multiImages.removeClass('visible');
+					}, 500);
+				} else {
+					$multiImages.removeClass('visible animate-to-pos-1 animate-to-pos-2');
+				}
+			}
+			previousDataMulti = currentDataMulti;
+
+			$hoverContentPanels.each(function() {
+				const $currentPanel = $(this);
+				$currentPanel.children('div').removeClass('active-item');
+				$currentPanel.children('div.' + iconClassToShow).addClass('active-item');
+			});
+		}
+		
+		updateDiagramView($activeDiagramItem);
 	
-		updateHighlight($langTopbar, $activeLangItem);
-	
-		$langItems.click(function () {
-			$langItems.removeClass("active");
-			$(this).addClass("active");
-	
-			updateHighlight($langTopbar, $(this));
-	
-			const languageChange = $(this).attr("data-language");
-			const dropdown = $(".dropdown.hero-demo")
-				.find(`div[data-language='${languageChange}']`)
-				.html();
-	
-			$(".demo.window .bottombar #example-select").empty().html(dropdown);
-	
-			$(".select-styled, .select-options").remove();
-			generateSelectBoxes();
-			updateExample();
+		$diagramItems.click(function () {
+			const $this = $(this);
+			$diagramItems.removeClass("active");
+			$this.addClass("active");
+			updateDiagramView($this);
 		});
 	}
 	
 	// QUICK INSTALLATION ON LANDING/HOME PAGE
-	if ($(".install .environment").length) {
-		const $envTopbar = $(".install .environment");
+	if ($("#quickinstall .install .environment").length) {
+		const $envTopbar = $("#quickinstall .install .environment");
 		const $envItems = $envTopbar.find("> ul > li");
 		const $activeEnvItem = $envItems.filter(".active");
 		
@@ -630,7 +669,7 @@ $(document).ready(function(){
 					`#quick-installation div[data-install='${activeClient}']`
 				).html();
 			}
-			$(".result").html(installation);
+			$("#quickinstall .result").html(installation);
 		}
 		
 		updateInstallation($activeEnvItem);

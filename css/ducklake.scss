@@ -35,7 +35,7 @@
 			background: var(--lake-infobox-background-color, rgba(229, 245, 255, 0.60));
 			.image{
 				width: 100%;
-				aspect-ratio: 26/10;
+				aspect-ratio: 16/9;
 				background: #ffffff66;
 			}
 			.content{
@@ -177,6 +177,239 @@ body.landing{
 	
 	h2 + div{
 		margin-top: 50px;
+	}
+}
+
+
+section.architecture{
+	.illustration{
+		width: calc(100% - 450px);
+		margin: 0 auto;
+		margin-top: 50px;
+	}
+	.diagram{
+		display: flex;
+		padding: 20px;
+		gap: 15px;
+		.client,
+		.database,
+		.storage{
+			border-radius: 15px;
+			border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+			background: var(--doc-codebox-background-color, #F2F2F2);
+			padding: 15px;
+			position: relative;
+			h4{
+				font-size: 17px;
+				font-weight: 500;
+			}
+		}
+		div.client:hover, div.database:hover, div.storage:hover{
+			border-color: var(--lake-infobox-border-color, rgba(204, 235, 255, 0.60));
+			.hover-content{
+				visibility: visible;
+				opacity: 1;
+			}
+
+		} 
+		.client{
+			width: 60%;
+		}
+		.hover-content{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+			border-radius: 15px;
+			background: var(--lake-architecture-background-hover, #E5F5FF);
+			padding: 15px;
+			visibility: hidden;
+			opacity: 0;
+			transition: all .3s;
+			cursor: default;
+
+			> div {
+				display: none; 
+
+				&.active-item { 
+					display: block;
+				}
+			}
+
+			h4{
+				color: var(--blue-40, #357197);
+			}
+			p{
+				font-size: 14px;
+				color: var(--main-text-secondary-color, #666);
+			}
+		}
+		.connector{
+			position: absolute;
+			top: calc(50% - 5px);
+			height: 10px;
+			width: 55px;
+			left: calc(-28px - 8px);
+			svg{
+				width: 100%;
+				height: auto;
+			}
+		}
+		.sub{
+			color: var(--main-text-secondary-color, #666);
+			font-size: 14px;
+		}
+		.client{
+			.browser{
+				width: 285px;
+				position: relative;
+				margin: 0 auto;
+				top: 50%;
+				transform: translateY(-50%);
+				>img{
+					width: 285px;
+					height: auto;
+					z-index: 50;
+					position: relative;
+				}
+				>img.multi{
+					position: absolute;
+					left: 0;
+					top: 0;
+					opacity: 0; 
+					visibility: hidden;
+					transform: translate(0px, 0px); 
+					transition: transform 0.5s ease-out, opacity 0.3s ease-in-out;
+
+					&.visible { 
+						opacity: 1;
+						visibility: visible;
+					}
+
+					&:nth-child(2){ 
+						z-index: 10;
+						&.animate-to-pos-1 { 
+							transform: translate(10px, 10px);
+						}
+					}
+					&:nth-child(3){ 
+						z-index: 5;
+						&.animate-to-pos-2 { 
+							transform: translate(20px, 20px);
+						}
+					}
+				}
+				.broser-content{
+					position: absolute;
+					justify-content: center;
+					align-items: center;
+					top: 60px;
+					width: 100%;
+					display: flex;
+					gap: 12px;
+					z-index: 60;
+				}
+				.ducklake{
+					position: relative; 
+					display: flex; 
+					flex-direction: column;
+					height: 70px; 
+					width: 70px;
+					img{
+						height: 70px;
+						position: absolute;
+					}
+					.sub{
+						margin-top: 80px;
+						text-align: center;
+					}
+				}
+				.icons{
+					display: flex; 
+					flex-direction: column;
+					align-items: center;
+					position: relative; 
+					height: 70px;
+					width: 70px;
+					img{
+						height: 70px;
+						width: auto;
+						position: absolute; 
+						/*
+						opacity: 0;
+						visibility: hidden;
+						*/
+						transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+						&.active-icon{
+							opacity: 1;
+							visibility: visible;
+						}
+					}
+					.sub{
+						margin-top: 80px;
+						text-align: center;
+					}
+				}
+			}
+		}
+		.storage{
+			.folder{
+				height: 140px;
+				padding: 30px;
+				text-align: center;
+				img{
+					width: 90px;
+				}
+			}
+		}
+		.database{
+			.catalog{
+				height: 140px;
+				padding: 30px;
+				text-align: center;
+				>img {
+					width: 65px;
+				}
+				.icons{
+					position: absolute;
+					top: 100px;
+					right: 15%; 
+					width: 100px;
+					height: 50px; 
+					position: absolute; 
+					img{
+						width: 50px; 
+						height: 50px; 
+						position: absolute;
+						left: 50%; 
+						top: 0; 
+						transform: translateX(-50%); 
+						opacity: 0;
+						visibility: hidden;
+						transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+						&.active-icon{
+							opacity: 1;
+							visibility: visible;
+						}
+					}
+					.sub{
+						position: absolute;
+						width: 100%; 
+						top: 55px;
+						left: 0px;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+	.database-storage{
+		width: calc(40% - 15px);
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
 	}
 }
 

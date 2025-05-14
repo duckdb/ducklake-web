@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 284.4 206.4">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+
+      .st1 {
+        fill: none;
+        stroke: #e6e6e6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st2 {
+        fill: #e6e6e6;
+        fill-opacity: .6;
+      }
+
+      .st3 {
+        clip-path: url(#clippath);
+      }
+
+      .st4 {
+        fill: #b2b2b2;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" x=".7" y=".6" width="283" height="205" rx="11.5" ry="11.5"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect class="st0" x=".7" y=".6" width="283" height="205" rx="11.5" ry="11.5"/>
+    <g class="st3">
+      <g>
+        <path class="st2" d="M.7.6h283v17H.7V.6Z"/>
+        <path class="st4" d="M12.3,13.3c2.2,0,4-1.9,4-4.2s-1.8-4.2-4-4.2-4,1.9-4,4.2,1.8,4.2,4,4.2ZM24,13.3c2.3,0,4.2-1.9,4.2-4.2s-1.9-4.2-4.2-4.2-4.2,1.9-4.2,4.2,1.9,4.2,4.2,4.2ZM35.7,13.3c2.2,0,4-1.9,4-4.2s-1.8-4.2-4-4.2-4,1.9-4,4.2,1.8,4.2,4,4.2Z"/>
+      </g>
+    </g>
+  </g>
+  <path class="st1" d="M.7,12.1C.7,5.7,5.9.6,12.2.6h260c6.4,0,11.5,5.2,11.5,11.5v182c0,6.4-5.2,11.5-11.5,11.5H12.2c-6.4,0-11.5-5.2-11.5-11.5V12.1h0Z"/>
+  <path class="st1" d="M.7,12.1C.7,5.7,5.9.6,12.2.6h260c6.4,0,11.5,5.2,11.5,11.5v182c0,6.4-5.2,11.5-11.5,11.5H12.2c-6.4,0-11.5-5.2-11.5-11.5V12.1h0Z"/>
+</svg>
