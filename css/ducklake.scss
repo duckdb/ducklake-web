@@ -270,10 +270,12 @@ section.architecture{
 		}
 		.connector{
 			position: absolute;
-			top: calc(50% - 5px);
+			//top: calc(50% - 5px);
+			bottom: 30px;
 			height: 10px;
 			width: 55px;
 			left: calc(-28px - 8px);
+			z-index: 101;
 			svg{
 				width: 100%;
 				height: auto;
