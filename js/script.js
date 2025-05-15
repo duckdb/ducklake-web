@@ -616,23 +616,13 @@ $(document).ready(function(){
 
 			$clientHeading.text(currentDataMulti === true ? 'Clients' : 'Client');
 
+			const $browserWrap = $architectureIllustration.find('.client .browser-wrap');
 			if (currentDataMulti === true) {
-				$multiImages.addClass('visible');
-				if (previousDataMulti !== true) {
-					$multiImages.removeClass('animate-to-pos-1 animate-to-pos-2');
-					$multiImages.eq(0).addClass('animate-to-pos-1');
-					$multiImages.eq(1).addClass('animate-to-pos-2');
-				}
+				$browserWrap.addClass('contains-multi');
 			} else {
-				if (previousDataMulti === true) {
-					$multiImages.removeClass('animate-to-pos-1 animate-to-pos-2');
-					setTimeout(function() {
-						$multiImages.removeClass('visible');
-					}, 500);
-				} else {
-					$multiImages.removeClass('visible animate-to-pos-1 animate-to-pos-2');
-				}
+				$browserWrap.removeClass('contains-multi');
 			}
+
 			previousDataMulti = currentDataMulti;
 
 			$hoverContentPanels.each(function() {

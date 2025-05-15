@@ -37,10 +37,10 @@ body_class: landing nowrap
 					<div class="topbar">
 						<ul>
 							<div class="select-highlight"></div>
-							<li data-tab="arch-tab1" data-iconclass="duckdb" data-multi="false" class="active">DuckDB</li>
-							<li data-tab="arch-tab2" data-iconclass="postgre" data-multi="true">PostgreSQL</li>
+							<li data-tab="arch-tab2" data-iconclass="postgre" data-multi="true"  class="active">PostgreSQL</li>
 							<li data-tab="arch-tab3" data-iconclass="sqlite" data-multi="true">SQLite</li>
 							<li data-tab="arch-tab4" data-iconclass="mysql" data-multi="true">MySQL</li>
+							<li data-tab="arch-tab1" data-iconclass="duckdb" data-multi="false">DuckDB</li>
 						</ul>
 					</div>
 					
@@ -49,23 +49,57 @@ body_class: landing nowrap
 						<div class="client">
 							<h4>Client</h4>
 							
-							<div class="browser">
-								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
-								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" class="multi">
-								<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" class="multi">
-								<div class="broser-content">
-									<div class="icons">
-										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb">
-										<!--
-										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-postgre.svg" class="postgre">
-										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-sqlite.svg" class="sqlite">
-										<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-mysql.svg" class="mysql">
-										-->
-										<div class="sub">DuckDB</div>
+							<div class="browser-wrap contains-multi">
+								<div class="browser">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
+									<div class="broser-content">
+										<div class="icons">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb_icon">
+											<div class="sub">DuckDB</div>
+										</div>
+										<div class="ducklake">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb_alt.svg" class="ducklake_icon">
+											<div class="sub">DuckLake</div>
+										</div>
 									</div>
-									<div class="ducklake">
-										<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb.svg" class="ducklake">
-										<div class="sub">DuckLake</div>
+								</div>
+								<div class="browser multi">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
+									<div class="broser-content">
+										<div class="icons">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb_icon">
+											<div class="sub">DuckDB</div>
+										</div>
+										<div class="ducklake">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb_alt.svg" class="ducklake_icon">
+											<div class="sub">DuckLake</div>
+										</div>
+									</div>
+								</div>
+								<div class="browser multi">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
+									<div class="broser-content">
+										<div class="icons">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb_icon">
+											<div class="sub">DuckDB</div>
+										</div>
+										<div class="ducklake">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb_alt.svg" class="ducklake_icon">
+											<div class="sub">DuckLake</div>
+										</div>
+									</div>
+								</div>
+								<div class="browser multi">
+									<img src="{{ site.baseurl }}/images/deployment_diagram/window.svg" alt="Database Icon">
+									<div class="broser-content">
+										<div class="icons">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/cat_icon-duckdb.svg" class="duckdb_icon">
+											<div class="sub">DuckDB</div>
+										</div>
+										<div class="ducklake">
+											<img src="{{ site.baseurl }}/images/deployment_diagram/ducklake_comb_alt.svg" class="ducklake_icon">
+											<div class="sub">DuckLake</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -105,7 +139,9 @@ body_class: landing nowrap
 								</div>
 								
 								<div class="connector">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 9" fill="none">
+									  <path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z" />
+									</svg>
 								</div>
 							</div>
 							<div class="storage">
@@ -124,7 +160,9 @@ body_class: landing nowrap
 								</div>
 								
 								<div class="connector">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 9" fill="none">
+									  <path fill="#1A1A1A" d="M50 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8ZM4 .5a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm46 4v.75H4v-1.5h46v.75Z" />
+									</svg>
 								</div>
 							</div>
 						</div>
