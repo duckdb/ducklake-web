@@ -16,6 +16,12 @@
   background: #B2E2FF80;
 }
 
+h4{
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: -.02em;
+}
+
 .textbutton:hover{
 	color: var(--blue-70, #2eafff);
 }
@@ -443,6 +449,17 @@ section.architecture{
 		display: flex;
 		flex-direction: column;
 		gap: 15px;
+	}
+}
+
+
+body.manifesto{
+	p{
+		font-size: 18px;
+		line-height: 1.4;
+	}
+	p + h4{
+		margin-top: 2em;
 	}
 }
 
