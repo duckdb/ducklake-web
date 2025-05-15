@@ -29,6 +29,11 @@
 	}
 }
 
+header .headerline .headercontent .landingmenu nav .hasSub:hover a,
+header .headerline .headercontent .landingmenu nav a:hover{
+	color: var(--blue-70, #2eafff);
+}
+
 .cards{
 	display: flex;
 	flex-wrap: wrap;
@@ -133,6 +138,7 @@ body.landing{
 	font-size: 17px;
 	section.welcome{
 		background: linear-gradient(180deg, var(--lake-background-gradient-start, #F5FBFF) 0%, var(--lake-background-gradient-end, #E5F5FF) 100%);
+		padding-bottom: 130px;
 		.ducklake{
 			margin: 0 auto;
 			max-width: 850px;
@@ -145,6 +151,9 @@ body.landing{
 			}
 		}
 		
+	}
+	section.architecture{
+		padding-top: 80px;
 	}
 	.wave{
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 364.8 28.6'%3E%3Cpath d='M364.8 0h-.1c-45.5 0-68.3 4.2-91.1 8.3-22.8 4.2-45.5 8.3-91 8.3s-68.3-4.2-91.1-8.3C68.7 4.2 45.9 0 .4 0H0v28.6h364.8V0Z' style='fill:%23fbfbfb'/%3E%3C/svg%3E");
