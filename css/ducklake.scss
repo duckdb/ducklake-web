@@ -20,6 +20,15 @@
 	color: var(--blue-70, #2eafff);
 }
 
+.banner{
+	background: var(--lake-ribbon-background-color, #99D8FF);
+	color: black;
+	z-index: 800;
+	.close{
+		filter: invert(1);
+	}
+}
+
 .cards{
 	display: flex;
 	flex-wrap: wrap;
@@ -429,4 +438,8 @@ section.architecture{
 /* Footer **/
 footer .sitefooter .footercontent > div a:hover{
 	color: var(--blue-70, #2eafff);
+}
+footer .sitefooter .footercontent .footerlogo{
+	width: 211px;
+	height: 63px;
 }
