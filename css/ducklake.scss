@@ -52,7 +52,8 @@ header .headerline .headercontent .landingmenu nav a:hover{
 			backdrop-filter: blur(7px);
 			border-radius: 10px;
 			border: 1px solid var(--lake-infobox-border-color, rgba(204, 235, 255, 0.60));
-			background: var(--lake-infobox-background-color, rgba(229, 245, 255, 0.60));
+			background: var(--lake-infobox-primary-background-color, rgba(229, 245, 255, 0.60));
+			color: var(--main-text-primary-color, #0D0D0D);
 			.image{
 				width: 100%;
 				aspect-ratio: 16/9;
@@ -458,7 +459,7 @@ section.architecture {
 					transform: translateX(-30%);
 					opacity: 0;
 					visibility: hidden;
-					transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+					transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.4s ease-in-out;
 
 					&.active-icon {
 						opacity: 1;
