@@ -137,7 +137,7 @@
 		pointer-events: none;
 		transform: translateY(10px);
 		transition: all 0.2s;
-	
+		pointer-events: none;
 		&.slidein {
 			pointer-events: all;
 			opacity: 1;
@@ -161,7 +161,7 @@
 		transform: translateY(0);
 	}
 	header .headerline .headercontent .landingmenu nav .hasSub {
-		pointer-events: all;
+		pointer-events: none;
 		> div,
 		> div > a{
 			pointer-events: none;
@@ -193,6 +193,9 @@
 				}
 			}
 		}
+	}
+	header .headerline .headercontent .landingmenu nav.slidein .hasSub {
+		pointer-events: all;
 	}
 	body.landing header .headerline .headercontent .landingmenu nav .search_icon{
 		display: none;

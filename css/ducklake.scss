@@ -35,6 +35,13 @@ h4{
 	.close{
 		filter: invert(1);
 	}
+	a{
+		text-decoration: none;
+	}
+	a:hover{
+		text-decoration: underline;
+		text-underline-offset: 6px;
+	}
 }
 
 header .headerline .headercontent .landingmenu nav .hasSub:hover a,
@@ -507,4 +514,145 @@ footer .sitefooter .footercontent > div a:hover{
 footer .sitefooter .footercontent .footerlogo{
 	width: 211px;
 	height: 63px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+	section.architecture .illustration{
+		width: 700px;
+	}
+
+}
+
+@media only screen and (max-width: 940px) {
+	.cards.horizontal.icons .card, .cards.vertical.icons .card{
+		width: calc((100% - 60px) / 2);
+	}
+	body.landing h1{
+		max-width: unset;
+	}
+}
+
+@media only screen and (max-width: 730px) {
+	
+	section.architecture .illustration{
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 690px) {
+	body.landing .welcome h1,
+	body.landing h2{
+		font-size: 34px;
+	}
+	.cards.horizontal.icons .card, .cards.vertical.icons .card{
+		width: 100%;
+	}
+	section.architecture .diagram{
+		flex-wrap: wrap;
+	}
+	section.architecture .diagram .client .browser-wrap:not(.contains-multi) .browser{
+		width: 50%;
+		min-width: 180px;
+	}
+	section.architecture .diagram .client .browser .ducklake, section.architecture .diagram .client .browser .icons{
+		width: 50px;
+		height: 50px;
+	}
+	section.architecture .diagram .client .browser .ducklake .sub, section.architecture .diagram .client .browser .icons .sub{
+		margin-top: 55px;
+	}
+	section.architecture .diagram .client .browser .broser-content{
+		gap: 20px;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser .broser-content{
+		gap: 10px;
+	}
+	section.architecture .diagram .client{
+		width: 100%;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser.multi:nth-child(2){
+		display: none;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser.multi:nth-child(3){
+		display: none;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser .ducklake, section.architecture .diagram .client .browser-wrap.contains-multi .browser .icons{
+		width: 45px;
+		height: 45px;
+	}
+	section.architecture .diagram .database .catalog .icons img{
+		width: 45px;
+		height: 45px;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser .ducklake .sub, section.architecture .diagram .client .browser-wrap.contains-multi .browser .icons .sub{
+		margin-top: 48px;
+	}
+	section.architecture .diagram .client{
+		height: 320px;
+	}
+	section.architecture .diagram .client .browser-wrap:not(.contains-multi) .browser{
+		left: 48%;
+		transform: translateX(-50%);
+	}
+	section.architecture .diagram .client .browser-wrap{
+		margin-top: 6%;
+		display: block;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi{
+		display: grid;
+	}
+	section.architecture .diagram .client .browser-wrap.contains-multi .browser .broser-content{
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	section.architecture .diagram .client, section.architecture .diagram .database, section.architecture .diagram .storage{
+		padding: 10px;
+	}
+	section.architecture .diagram{
+		padding: 10px;
+	}
+	section.architecture .diagram .client .browser .broser-content{
+		top: 48%;
+		transform: translateY(-50%);
+	}
+	section.architecture .database-storage{
+		width: 100%;
+		flex-direction: row;
+	}
+	section.architecture .diagram .database, 
+	section.architecture .diagram .storage{
+		width: calc(50% - 7px);
+		height: 185px;
+	}
+	section.architecture .diagram .connector{
+		bottom: unset;
+		top: -15px;
+		left: unset;
+		right: -10px;
+		transform: rotate(90deg);
+	}
+	section.architecture .diagram .database .catalog .icons{
+		right: 5%;
+	}
+	section.architecture .diagram .database .catalog .icons .sub{
+		top: 50px;
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	section.architecture .diagram .client{
+		height: unset;
+		aspect-ratio: 16/10;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	section.architecture .diagram .database .catalog > img{
+		width: 60px;
+	}
+	section.architecture .diagram .storage .folder img{
+		width: 80px;
+	}
 }
