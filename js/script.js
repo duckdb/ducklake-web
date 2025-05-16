@@ -812,7 +812,7 @@ $(document).ready(function(){
 			$('main').removeAttr('class');
 		} 
 	});
-	// setWithExpiry('homeBanner', '', -1); // deletes content
+	//setWithExpiry('homeBanner', '', -1); // deletes content
 	
 	
 	/** ADD WORD-BOXES TO CODE TABLES */

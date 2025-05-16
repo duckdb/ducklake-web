@@ -30,7 +30,7 @@ h4{
 
 .banner{
 	background: var(--lake-ribbon-background-color, #99D8FF);
-	color: black;
+	color: var(--main-text-primary-color, #F2F2F2);
 	z-index: 800;
 	.close{
 		filter: invert(1);

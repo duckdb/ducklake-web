@@ -31,9 +31,9 @@
 		}
 	}
 	&.black{
-		background: black;
+		background: var(--main-text-primary-color, #F2F2F2);
 		border: 1px solid black;
-		color: #fff;
+		color: var(--main-body-background-color, #0D0D0D);
 		&:hover{
 	
 		}
