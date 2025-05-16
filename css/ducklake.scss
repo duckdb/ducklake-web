@@ -300,6 +300,7 @@ section.architecture {
 				}
 
 				&.contains-multi {
+					padding-right: 15px;
 					.browser {
 						width: calc(100% - 2px);
 						left: 0;
