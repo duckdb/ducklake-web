@@ -18,6 +18,13 @@
   background: #B2E2FF80;
 }
 
+main h1,
+h1{
+	font-size: 50px;
+	font-weight: 600;
+	letter-spacing: -1.1px;
+}
+
 h4{
 	font-size: 20px;
 	font-weight: 700;
@@ -106,7 +113,7 @@ header .headerline .headercontent .landingmenu nav a:hover{
 			}
 			.content{
 				h3{
-					font-size: 22px;
+					font-size: 18px;
 					font-style: normal;
 					font-weight: 500;
 					margin-bottom: 15px;
@@ -151,13 +158,13 @@ header .headerline .headercontent .landingmenu nav a:hover{
 
 /** Landing page styles **/
 body.landing{
-	font-size: 17px;
+	font-size: 16px;
 	section.welcome{
 		background: linear-gradient(180deg, var(--lake-background-gradient-start, #F5FBFF) 0%, var(--lake-background-gradient-end, #E5F5FF) 100%);
 		padding-bottom: 130px;
 		.ducklake{
 			margin: 0 auto;
-			max-width: 850px;
+			max-width: 715px;
 			text-align: center;
 			display: flex;
 			flex-direction: column;
@@ -192,6 +199,7 @@ body.landing{
 			.install{
 				margin: 0 auto;
 				margin-top: 50px;
+				width: 750px;
 			}
 		}
 		&:after{
@@ -207,12 +215,12 @@ body.landing{
 		}
 	}
 	h1{
-		font-size: 55px;
+		font-size: 50px;
 		font-weight: 600;
 		letter-spacing: -1.1px;
 	}
 	h2{
-		font-size: 55px;
+		font-size: 50px;
 		font-weight: 600;
 		text-align: center;
 		letter-spacing: -1.1px;
@@ -226,32 +234,22 @@ body.landing{
 	h2 + div{
 		margin-top: 50px;
 	}
-	section.faq{
+	.faq{
 		.frequentlyaskedquestions{
-			max-width: 750px;
-			margin: 0 auto;
-			.qa-wrap{
-				h3{
-					font-weight: 600;
-					font-size: 18px;
-					a{
-						color: var(--main-text-primary-color, #0D0D0D);
-					}
-				}
-				.answer{
-					p:last-of-type{
-						margin-bottom: 0;
-					}
-				}
-			}
-			
+			margin-top: 50px;
+		}
+		.cta{
+			margin-top: 50px;
+			text-align: center;
 		}
 	}
+	
 }
 
 section.architecture {
 	.illustration {
-		width: calc(100% - 450px);
+		//width: calc(100% - 450px);
+		width: 750px;
 		margin: 50px auto 0;
 	}
 
@@ -307,7 +305,7 @@ section.architecture {
 						left: 0;
 
 						.broser-content {
-							top: 35px;
+							top: 40px;
 						}
 
 						.ducklake,
@@ -338,7 +336,7 @@ section.architecture {
 
 			.browser {
 				position: relative;
-				left: 35px;
+				left: 50px;
 				transition: all 0.4s;
 
 				>img {

@@ -892,6 +892,7 @@ body.installation .environment.select label.onlymobile{
 
 
 /** FAQ **/
+body.faq,
 .frequentlyaskedquestions,
 body.documentation main .wrap.frequentlyaskedquestions{
 	h2{
@@ -956,6 +957,44 @@ body.documentation main .wrap.frequentlyaskedquestions{
 	}
 	.headlinebar{
 		margin-bottom: 40px;
+	}
+}
+
+body.faq,
+section.faq{
+	.frequentlyaskedquestions{
+		max-width: 750px;
+		margin: 0 auto;
+	}
+	.qa-wrap{
+		h3{
+			font-weight: 600;
+			font-size: 18px;
+			a{
+				color: var(--main-text-primary-color, #0D0D0D);
+			}
+		}
+		.answer{
+			p:last-of-type{
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+body.faq{
+	h2{
+		font-size: 28px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		margin-top: 40px;
+		line-height: 1;
+	}
+	h2:first-of-type{
+		margin-top: 0;
+	}
+	h2 a{
+		color: var(--main-text-primary-color, #0D0D0D);
 	}
 }
 
