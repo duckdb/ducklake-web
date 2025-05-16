@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 285 207">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #333;
+      }
+
+      .st0, .st1 {
+        fill-opacity: .6;
+      }
+
+      .st2 {
+        fill: gray;
+      }
+
+      .st1 {
+        fill: #0d0d0d;
+      }
+
+      .st3 {
+        fill: none;
+        stroke: #333;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <path class="st1" d="M1,12.5C1,6.2,6.2,1,12.5,1h260c6.4,0,11.5,5.2,11.5,11.5v182c0,6.4-5.2,11.5-11.5,11.5H12.5c-6.4,0-11.5-5.2-11.5-11.5V12.5Z"/>
+  <path class="st3" d="M1,12.5C1,6.2,6.2,1,12.5,1h260c6.4,0,11.5,5.2,11.5,11.5v182c0,6.4-5.2,11.5-11.5,11.5H12.5c-6.4,0-11.5-5.2-11.5-11.5V12.5Z"/>
+  <path class="st0" d="M12.9,1h259.6c6.4,0,11.5,5.2,11.5,11.5v5.5H1v-5.1C1,6.3,6.3,1,12.9,1Z"/>
+  <path class="st2" d="M12.6,13.7c2.2,0,4-1.9,4-4.2s-1.8-4.2-4-4.2-4,1.9-4,4.2,1.8,4.2,4,4.2ZM24.3,13.7c2.3,0,4.2-1.9,4.2-4.2s-1.9-4.2-4.2-4.2-4.2,1.9-4.2,4.2,1.9,4.2,4.2,4.2ZM36,13.7c2.2,0,4-1.9,4-4.2s-1.8-4.2-4-4.2-4,1.9-4,4.2,1.8,4.2,4,4.2Z"/>
+</svg>

@@ -67,6 +67,17 @@ $docuh5: 18px;
   --blue-90: #ccebff;
   --blue-95: #e5f5ff;
   --blue-98: #f5fbff;
+  --blue-transparent-10: #0d263599;
+  --blue-transparent-15: #102e4199;
+  --blue-transparent-20: #153a5199;
+  --blue-transparent-30: #20577999;
+  --blue-transparent-40: #2b74a199;
+  --blue-transparent-5: #091a2599;
+  --blue-transparent-80: #99d8ff99;
+  --blue-transparent-85: #b2e2ff99;
+  --blue-transparent-90: #ccebff99;
+  --blue-transparent-95: #e5f5ff99;
+  --blue-transparent-98: #f5fbff99;
   --grey-02: #050505;
   --grey-05: #0d0d0d;
   --grey-10: #1a1a1a;
@@ -399,3 +410,5 @@ html.darkmode {
   --social-thumbnail-symbol-image: var(--grey-05);
   --social-thumbnail-text-color: var(--grey-95);
 }
+
+

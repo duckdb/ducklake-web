@@ -2,7 +2,9 @@
 ---
 
 @use "sass:color";
-@use 'variables' as *;
+@import '../_sass/variables';
+
+
 
 /** DUCKLAKE STYLES **/
 
