@@ -200,7 +200,8 @@ body.landing{
 	}
 	section{
 		.section-text{
-			max-width: 640px;
+			//max-width: 640px;
+			max-width: 700px;
 			text-align: center;
 			margin: 0 auto;
 		}
@@ -224,6 +225,27 @@ body.landing{
 	
 	h2 + div{
 		margin-top: 50px;
+	}
+	section.faq{
+		.frequentlyaskedquestions{
+			max-width: 750px;
+			margin: 0 auto;
+			.qa-wrap{
+				h3{
+					font-weight: 600;
+					font-size: 18px;
+					a{
+						color: var(--main-text-primary-color, #0D0D0D);
+					}
+				}
+				.answer{
+					p:last-of-type{
+						margin-bottom: 0;
+					}
+				}
+			}
+			
+		}
 	}
 }
 
@@ -540,119 +562,153 @@ footer .sitefooter .footercontent .footerlogo{
 		width: 100%;
 	}
 }
-
 @media only screen and (max-width: 690px) {
-	body.landing .welcome h1,
-	body.landing h2{
-		font-size: 34px;
+	body.landing {
+
+		.welcome h1,
+		h2 {
+			font-size: 34px;
+		}
 	}
-	.cards.horizontal.icons .card, .cards.vertical.icons .card{
+
+	.cards.horizontal.icons .card,
+	.cards.vertical.icons .card {
 		width: 100%;
 	}
-	section.architecture .diagram{
-		flex-wrap: wrap;
-	}
-	section.architecture .diagram .client .browser-wrap:not(.contains-multi) .browser{
-		width: 50%;
-		min-width: 180px;
-	}
-	section.architecture .diagram .client .browser .ducklake, section.architecture .diagram .client .browser .icons{
-		width: 50px;
-		height: 50px;
-	}
-	section.architecture .diagram .client .browser .ducklake .sub, section.architecture .diagram .client .browser .icons .sub{
-		margin-top: 55px;
-	}
-	section.architecture .diagram .client .browser .broser-content{
-		gap: 20px;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser .broser-content{
-		gap: 10px;
-	}
-	section.architecture .diagram .client{
-		width: 100%;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser.multi:nth-child(2){
-		display: none;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser.multi:nth-child(3){
-		display: none;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser .ducklake, section.architecture .diagram .client .browser-wrap.contains-multi .browser .icons{
-		width: 45px;
-		height: 45px;
-	}
-	section.architecture .diagram .database .catalog .icons img{
-		width: 45px;
-		height: 45px;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser .ducklake .sub, section.architecture .diagram .client .browser-wrap.contains-multi .browser .icons .sub{
-		margin-top: 48px;
-	}
-	section.architecture .diagram .client{
-		height: 320px;
-	}
-	section.architecture .diagram .client .browser-wrap:not(.contains-multi) .browser{
-		left: 48%;
-		transform: translateX(-50%);
-	}
-	section.architecture .diagram .client .browser-wrap{
-		margin-top: 6%;
-		display: block;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi{
-		display: grid;
-	}
-	section.architecture .diagram .client .browser-wrap.contains-multi .browser .broser-content{
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	section.architecture .diagram .client, section.architecture .diagram .database, section.architecture .diagram .storage{
-		padding: 10px;
-	}
-	section.architecture .diagram{
-		padding: 10px;
-	}
-	section.architecture .diagram .client .browser .broser-content{
-		top: 48%;
-		transform: translateY(-50%);
-	}
-	section.architecture .database-storage{
-		width: 100%;
-		flex-direction: row;
-	}
-	section.architecture .diagram .database, 
-	section.architecture .diagram .storage{
-		width: calc(50% - 7px);
-		height: 185px;
-	}
-	section.architecture .diagram .connector{
-		bottom: unset;
-		top: -15px;
-		left: unset;
-		right: -10px;
-		transform: rotate(90deg);
-	}
-	section.architecture .diagram .database .catalog .icons{
-		right: 5%;
-	}
-	section.architecture .diagram .database .catalog .icons .sub{
-		top: 50px;
+
+	section.architecture {
+		.diagram {
+			flex-wrap: wrap;
+			padding: 10px;
+
+			.client,
+			.database,
+			.storage {
+				padding: 10px;
+			}
+
+			.client {
+				width: 100%;
+				height: 320px;
+
+				.browser-wrap {
+					margin-top: 6%;
+					display: block;
+
+					&.contains-multi {
+						display: grid;
+
+						.browser {
+
+							&.multi:nth-child(2),
+							&.multi:nth-child(3) {
+								display: none;
+							}
+
+							.broser-content {
+								top: 50%;
+								transform: translateY(-50%);
+								gap: 10px;
+							}
+
+							.ducklake,
+							.icons {
+								width: 45px;
+								height: 45px;
+
+								.sub {
+									margin-top: 48px;
+								}
+							}
+						}
+					}
+
+					&:not(.contains-multi) {
+						.browser {
+							width: 50%;
+							min-width: 180px;
+							left: 48%;
+							transform: translateX(-50%);
+						}
+					}
+				}
+
+				.browser {
+
+					.ducklake,
+					.icons {
+						width: 50px;
+						height: 50px;
+
+						.sub {
+							margin-top: 55px;
+						}
+					}
+
+					.broser-content {
+						top: 48%;
+						transform: translateY(-50%);
+						gap: 20px;
+					}
+				}
+			}
+
+			.database-storage {
+				width: 100%;
+				flex-direction: row;
+			}
+
+			.database,
+			.storage {
+				width: calc(50% - 7px);
+				height: 185px;
+			}
+
+			.database {
+				.catalog {
+					.icons {
+						right: 5%;
+
+						img {
+							width: 45px;
+							height: 45px;
+						}
+
+						.sub {
+							top: 50px;
+						}
+					}
+				}
+			}
+
+			.connector {
+				bottom: unset;
+				top: -15px;
+				left: unset;
+				right: -10px;
+				transform: rotate(90deg);
+			}
+		}
 	}
 }
 
 @media only screen and (max-width: 590px) {
-	section.architecture .diagram .client{
+	section.architecture .diagram .client {
 		height: unset;
-		aspect-ratio: 16/10;
+		aspect-ratio: 16 / 10;
 	}
 }
 
 @media only screen and (max-width: 550px) {
-	section.architecture .diagram .database .catalog > img{
-		width: 60px;
-	}
-	section.architecture .diagram .storage .folder img{
-		width: 80px;
+	section.architecture {
+		.diagram {
+			.database .catalog>img {
+				width: 60px;
+			}
+
+			.storage .folder img {
+				width: 80px;
+			}
+		}
 	}
 }
