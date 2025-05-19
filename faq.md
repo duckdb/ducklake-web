@@ -12,9 +12,10 @@ body_class: faq
   <h1>Frequently Asked Questions</h1>
 </div>
 
-
-
 ## Overview
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -35,6 +36,9 @@ and can store your data in multiple files instead of using a single huge databas
 
 </div>
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -44,6 +48,23 @@ and can store your data in multiple files instead of using a single huge databas
 <div class="answer" markdown="1">
 
 No, it's a data lakehouse format, so it competes against Delta with Unity Catalog, Iceberg with Lakekeeper or Polaris, etc.
+
+</div>
+
+</div>
+
+<!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
+
+<div class="qa-wrap" markdown="1">
+
+### What is DuckLake?
+
+<div class="answer" markdown="1">
+
+DuckLake can refer to three things:
+(1) the DuckLake data lakehouse format,
+(2) the `ducklake` DuckDB extension,
+(3) a DuckLake, a dataset stored in the DuckLake lakehouse format.
 
 </div>
 
