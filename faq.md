@@ -43,11 +43,11 @@ and can store your data in multiple files instead of using a single huge databas
 
 <div class="qa-wrap" markdown="1">
 
-### Is DuckLake a direct competitor to the Delta Lake storage framework or the Iceberg open table format?
+### Is DuckLake an open table format?
 
 <div class="answer" markdown="1">
 
-No, it's a data lakehouse format, so it competes against Delta with Unity Catalog, Iceberg with Lakekeeper or Polaris, etc.
+No, it's a data lakehouse format, so it similar to Delta with Unity Catalog, Iceberg with Lakekeeper or Polaris, etc.
 
 </div>
 
@@ -119,11 +119,31 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 <div class="qa-wrap" markdown="1">
 
+### Is DuckLake production ready?
+
+<div class="answer" markdown="1">
+
+While we tested DuckLake extensively, it is not yet production-ready.
+We expect DuckLake to mature over the course of 2025.
+
+</div>
+
+</div>
+
+
+
+
+<!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
+
+<div class="qa-wrap" markdown="1">
+
 ### Does DuckLake solve the “small files problem”?
 
 <div class="answer" markdown="1">
 
-DuckLake mitigates this problem but does not yet fully solve it. It's on the roadmap.
+The “small files problem” is a well-known problem in data lake formats.
+It implies that data is stored in the form of many files with each file only containins a small amount of data.
+DuckLake mitigates this problem by storing the metadata in a database system and making compaction simple but does not yet fully solve it. It's on the roadmap.
 
 </div>
 
@@ -193,7 +213,8 @@ This is currently not supported. You can export DuckLake into a DuckDB database.
 
 <div class="answer" markdown="1">
 
-No. The data files must be stored in Parquet.
+DuckDB files as stored are not supported at the moment.
+The data files must be stored in Parquet.
 
 </div>
 
