@@ -53,6 +53,9 @@ No, it's a data lakehouse format, so it competes against Delta with Unity Catalo
 
 </div>
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -72,6 +75,9 @@ DuckLake can refer to three things:
 
 ## Architecture
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -85,6 +91,9 @@ The DuckLake needs a storage layer (both object storage and block-based storage
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -103,6 +112,9 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 ## DuckLake in Operation
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -116,6 +128,9 @@ DuckLake mitigates this problem but does not yet fully solve it. It's on the roa
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -133,6 +148,9 @@ TODO
 
 ## Features
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -146,6 +164,9 @@ No. Similarly to other data lakehouse technologies, DuckLake does not support co
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -161,6 +182,9 @@ This is currently not supported. You can export DuckLake into a DuckDB database.
 
 </div>
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -174,6 +198,9 @@ No. The data files must be stored in Parquet.
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -191,6 +218,9 @@ No. The only limitation is the catalog database's performance but even with a re
 
 ## Development
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -204,6 +234,9 @@ TODO
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
@@ -219,6 +252,9 @@ TODO
 
 </div>
 
+
+
+
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
 <div class="qa-wrap" markdown="1">
@@ -232,6 +268,9 @@ DuckLake is released under the MIT license.
 </div>
 
 </div>
+
+
+
 
 <!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
 
