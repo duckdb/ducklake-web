@@ -31,6 +31,11 @@ h4{
 	letter-spacing: -.02em;
 }
 
+svg *[stroke],
+svg path{
+	transition: all .3s;
+}
+
 .textbutton:hover{
 	color: var(--blue-70, #2eafff);
 }
@@ -47,7 +52,7 @@ h4{
 	}
 	a:hover{
 		text-decoration: underline;
-		text-underline-offset: 6px;
+		text-underline-offset: 2px;
 	}
 }
 
@@ -568,13 +573,30 @@ footer .sitefooter .footercontent .footerlogo{
 		h2 {
 			font-size: 34px;
 		}
+		
+		.wave{
+			height: 15px;
+			transform: translateY(-15px);
+		}
+		section.architecture{
+			padding-top: 50px;
+		}
+		section.welcome{
+			padding-bottom: 100px;
+		}
 	}
 
 	.cards.horizontal.icons .card,
 	.cards.vertical.icons .card {
 		width: 100%;
 	}
-
+	
+	body.landing section#quickinstall .wrap .install{
+		width: 100%;
+	}
+	
+	
+	
 	section.architecture {
 		.diagram {
 			flex-wrap: wrap;

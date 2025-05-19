@@ -1,0 +1,4 @@
+<span class="{{ include.class | default: 'icon' }}">
+  {% assign icon_path = 'icons/' | append: include.name | append: '.svg' %}
+  {% include {{ icon_path }} %}
+</span>
