@@ -65,13 +65,18 @@ No, it's a data lakehouse format, so it similar to Delta with Unity Catalog, Ice
 <div class="answer" markdown="1">
 
 DuckLake can refer to three things:
-(1) the DuckLake data lakehouse format,
-(2) the `ducklake` DuckDB extension,
-(3) a DuckLake, a dataset stored in the DuckLake lakehouse format.
+
+1. the _specification_ of the DuckLake lakehouse format,
+2. the `ducklake` _DuckDB extension_, which implements the specification,
+3. a DuckLake, a _dataset_ stored using the DuckLake lakehouse format.
 
 </div>
 
 </div>
+
+
+
+
 
 ## Architecture
 
@@ -110,6 +115,10 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 </div>
 
+
+
+
+
 ## DuckLake in Operation
 
 
@@ -119,12 +128,30 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 <div class="qa-wrap" markdown="1">
 
-### Is DuckLake production ready?
+### Is DuckLake production-ready?
 
 <div class="answer" markdown="1">
 
-While we tested DuckLake extensively, it is not yet production-ready.
+While we tested DuckLake extensively, it is not yet production-ready as shown by its version number {{ page.currentshortducklakeversion }}.
 We expect DuckLake to mature over the course of 2025.
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
+
+<div class="qa-wrap" markdown="1">
+
+### How is authentication implemented in DuckLake?
+
+<div class="answer" markdown="1">
+
+TODO
 
 </div>
 
@@ -165,6 +192,10 @@ TODO
 </div>
 
 </div>
+
+
+
+
 
 ## Features
 
@@ -236,6 +267,10 @@ No. The only limitation is the catalog database's performance but even with a re
 </div>
 
 </div>
+
+
+
+
 
 ## Development
 
