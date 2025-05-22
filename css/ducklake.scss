@@ -257,7 +257,20 @@ section.architecture {
 		width: 750px;
 		margin: 50px auto 0;
 	}
-
+	.topbar{
+		.hoverlabel{
+			color: var(--main-text-tertiary-color, #B2B2B2);
+			position: absolute;
+			left: 385px;
+			top: 33px;
+			pointer-events: none;
+			opacity: 0;
+			transition: opacity .3s;
+		}
+		ul:hover + .hoverlabel{
+			opacity: 1;
+		}
+	}
 	.diagram {
 		display: flex;
 		padding: 20px;
@@ -537,10 +550,6 @@ body.manifesto{
 footer .sitefooter .footercontent > div a:hover{
 	color: var(--blue-70, #2eafff);
 }
-footer .sitefooter .footercontent .footerlogo{
-	width: 211px;
-	height: 63px;
-}
 
 
 @media only screen and (max-width: 1200px) {
@@ -595,9 +604,15 @@ footer .sitefooter .footercontent .footerlogo{
 		width: 100%;
 	}
 	
-	
-	
 	section.architecture {
+		.topbar{ 
+			.hoverlabel{
+				display: none;
+			}
+			ul{
+				margin-left: 15px;
+			}
+		}
 		.diagram {
 			flex-wrap: wrap;
 			padding: 10px;
