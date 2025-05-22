@@ -482,19 +482,21 @@ section.architecture {
 			text-align: center;
 
 			img {
-				width: 90px;
+				width: 75px;
 			}
 		}
 
 		.database .catalog {
 			>img {
 				width: 65px;
+				transform: translateX(-10px);
 			}
 
 			.icons {
 				position: absolute;
 				top: 100px;
-				right: 15%;
+				right: calc(50% - 20px);
+				transform: translate(50%);
 				width: 100px;
 				height: 50px;
 
@@ -615,7 +617,7 @@ footer .sitefooter .footercontent > div a:hover{
 		}
 		.diagram {
 			flex-wrap: wrap;
-			padding: 10px;
+			padding: 15px;
 
 			.client,
 			.database,
@@ -703,7 +705,7 @@ footer .sitefooter .footercontent > div a:hover{
 			.database {
 				.catalog {
 					.icons {
-						right: 5%;
+				
 
 						img {
 							width: 45px;
@@ -743,7 +745,7 @@ footer .sitefooter .footercontent > div a:hover{
 			}
 
 			.storage .folder img {
-				width: 80px;
+				width: 75px;
 			}
 		}
 	}
