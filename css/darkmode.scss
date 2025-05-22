@@ -203,8 +203,8 @@ html.darkmode {
 			.database .catalog .icons img.mysql{
 				content: url('/images/deployment_diagram/dark/cat_icon-mysql.svg');
 			}
-			.database .catalog>img{
-				filter: invert(1);
+			.database .catalog > img{
+				content: url('/images/deployment_diagram/dark/database.svg');
 			}
 		}
 	}
