@@ -550,12 +550,16 @@ body.manifesto{
 		margin-top: 2em;
 	}
 	#main_content_wrap{
-		padding: 0px;
 		img{
 			width: 100%;
 			height: auto;
 		}
+		@media only screen and (max-width: 750px) {
+			padding: 15px;	
+		}
 	}
+	
+
 }
 
 /* Footer **/

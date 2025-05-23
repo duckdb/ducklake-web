@@ -708,13 +708,13 @@ body.blog header .headerline .headercontent .landingmenu nav .search_icon{
 
 .hamburger{
 	padding: 3px;
-	margin-top: 2px;
+	margin-top: 0px;
 	display: none;
 	background: var(--menu-topmenu-background-color, rgba(250, 250, 250, 0.60));
 	border: 1px solid var(--menu-dropdown-border-color, #E6E6E6);
 	border-radius: 100px;
-	width: 41px;
-	height: 41px;
+	width: 40px;
+	height: 40px;
 	-webkit-box-align: center;
 		-ms-flex-align: center;
 			align-items: center; 
