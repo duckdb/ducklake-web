@@ -184,6 +184,34 @@ strong{
 	font-weight: normal;
 }
 
+// Page width classes 
+.w-small {
+	.wrap {
+		max-width: 750px;
+		margin: 0 auto;
+	}
+}
+
+.w-medium {
+	.wrap {
+		max-width: 950px;
+		margin: 0 auto;
+	}
+}
+
+.w-large {
+	.wrap {
+		max-width: 1150px;
+		margin: 0 auto;
+	}
+}
+
+.w-full {
+	.wrap {
+		max-width: 100%;
+	}
+}
+
 /** External Links in Fließtext **/
 #main_content_wrap a.externallink,
 .singleentry .content a.externallink{
@@ -360,16 +388,20 @@ header .headerline{
 		.landingmenu{
 			font-size: 16px;
 			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
 			nav{
 				display: -webkit-box;
 				display: -ms-flexbox;
 				display: flex;
+				align-items: center;
+				justify-content: center;
 				height: 100%;
-				-webkit-box-align: center;
-					-ms-flex-align: center;
-						align-items: center;
+				gap: 35px;
+				z-index: 20;
 				> div{
-					margin-left: 35px;
 					position: relative;
 				}
 				a{
@@ -506,6 +538,7 @@ header .headerline{
 			display: -ms-flexbox;
 			display: flex;
 			gap: 15px;
+			z-index: 25;
 			button.mode{
 				border-radius: 10px;
 				border: 1px solid var(--menu-dropdown-border-color, #333);
@@ -831,36 +864,46 @@ footer{
 
 
 h1{
-	font-size: 29px;
+	font-size: 32px;
 	line-height: 1.0;
 	font-weight: normal;
 	margin-bottom: 50px;
 }
 h2{
-	font-size: 26px;
+	font-size: 28px;
 	line-height: 1.0;
 	font-weight: normal;
 	margin-bottom: 30px;
 }
 h3{
 	font-weight: normal;
-	font-size: 21px;
+	font-size: 24px;
 	line-height: 1.1;
 }
 h4{
 	font-weight: normal;
-	font-size: 19px;
+	font-size: 22px;
 	line-height: 1.0;
 }
 h5{
 	font-weight: normal;
 	line-height: 1.0;
-	font-size: 18px;
+	font-size: 16px;
 }
 h6{
 	font-weight: normal;
 	line-height: 1.0;
 	font-size: 14px;
+}
+
+main .wrap{
+	h2{
+		font-weight: 600;
+	}
+	* + h2{
+		margin-top: 2em;
+		margin-bottom: .5em;
+	}
 }
 
 body.landing label.onlymobile,

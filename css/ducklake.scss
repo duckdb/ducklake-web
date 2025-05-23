@@ -539,12 +539,22 @@ section.architecture {
 
 
 body.manifesto{
+	.pagetitle{
+		padding-bottom: 10px;
+	}
 	p{
 		font-size: 18px;
-		line-height: 1.4;
+		line-height: 1.6;
 	}
 	p + h4{
 		margin-top: 2em;
+	}
+	#main_content_wrap{
+		padding: 0px;
+		img{
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 

@@ -63,7 +63,7 @@
 	</header>
 	
 	{% assign file_extension = page.path | split: "." | last %}
-	<main class="f-{{file_extension}}">
+	<main class="f-{{file_extension}}{% if page.max_page_width %} w-{{page.max_page_width}}{% endif %}">
 		
 		{% include searchoverlay.html %}
 
