@@ -13,16 +13,15 @@
 						<li data-client="duckdb" class="active">DuckDB</li>
 						<li data-client="postgresql">PostgreSQL</li>
 						<li data-client="sqlite">SQLite</li>
+						<li data-client="sqlite">MySQL</li>
 					</ul>
 				</div>
 				
 				<div class="result content">
 {% highlight sql %}
 INSTALL ducklake;
-ATTACH 'ducklake:mylake.ducklake' AS my_lake; 
-
-ATTACH ducklake:postgres:dbname=... DATA_PATH ... METADATA_SCHEMA ...
-FROM my_lake.XX;
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake
+	(DATA_PATH 'data_files');
 {% endhighlight %}
 				</div>
 				
@@ -34,22 +33,27 @@ FROM my_lake.XX;
 <div id="quick-installation">
 
 <div data-install="duckdb">
-{% highlight bash %}
+{% highlight sql %}
 INSTALL ducklake;
-ATTACH 'ducklake:mylake.ducklake' AS my_lake; 
-ATTACH ducklake:postgres:dbname=... DATA_PATH ... METADATA_SCHEMA ...
-FROM my_lake.XX;
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake
+	(DATA_PATH 'data_files');
 {% endhighlight %}
 </div>
 
 <div data-install="postgresql">
-{% highlight bash %}
+{% highlight sql %}
 INSTALL ducklake;
 {% endhighlight %}
 </div>
 
 <div data-install="sqlite">
-{% highlight bash %}
+{% highlight sql %}
+INSTALL ducklake;
+{% endhighlight %}
+</div>
+
+<div data-install="mysql">
+{% highlight sql %}
 INSTALL ducklake;
 {% endhighlight %}
 </div>
