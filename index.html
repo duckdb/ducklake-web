@@ -263,21 +263,37 @@ body_class: landing nowrap
 				Why should I use DuckLake?
 			</h3>
 			<div class="answer">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>DuckLake provides a lightweight one-stop solution for if you need a data lake and catalog.
+
+				<p>You can use DuckLake for a “multiplayer DuckDB” setup with multiple DuckDB instance reading and writing the same dataset –
+				a concurrency model <a href="https://duckdb.org/docs/stable/connect/concurrency">not supported by vanilla DuckDB</a>.</p>
+
+				<p>If you only use DuckDB for both your DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
+				you can run time travel queries,
+				exploit data partitioning,
+				and can store your data in multiple files instead of using a single (potentially very large) database file.</p>
 			</div>
 		</div>
+
 		<div class="qa-wrap">
 			<h3>
-				Why should I use DuckLake?
+				What is “DuckLake”?
 			</h3>
 			<div class="answer">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				First of all, a pun with a DuckDB-originated technology for data lakes and lakehouses.
+				More seriously, the term “DuckLake” can refer to three things:
+
+				<ol>
+					<li>the <i>specification</i> of the DuckLake lakehouse format,</li>
+					<li>the <a href="https://duckdb.org/docs/stable/core_extensions/ducklake"><code>ducklake</code> <i>DuckDB extension</i></a>, which supports reading/writing datasets in the DuckLake specification,</li>
+					<li>a DuckLake, a <i>dataset</i> stored using the DuckLake lakehouse format.</li>
+				</ol>
 			</div>
 		</div>
 	</div>
 	
 	<div class="cta">
-		<a class="button black" href="faq">More FAQs</a>
+		<a class="button black" href="/faq">More FAQs</a>
 	</div>
 	
 </section>

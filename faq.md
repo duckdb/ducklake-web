@@ -27,10 +27,13 @@ body_class: faq
 
 DuckLake provides a lightweight one-stop solution for if you need a data lake and catalog.
 
-If you only use DuckDB for both your as DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
+You can use DuckLake for a “multiplayer DuckDB” setup with multiple DuckDB instance reading and writing the same dataset –
+a concurrency model [not supported by vanilla DuckDB](https://duckdb.org/docs/stable/connect/concurrency).
+
+If you only use DuckDB for both your DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
 you can run [time travel queries](TODO),
-exploit [partitioning](TODO),
-and can store your data in multiple files instead of using a single huge database file.
+exploit [data partitioning](TODO),
+and can store your data in multiple files instead of using a single (potentially very large) database file.
 
 </div>
 
@@ -47,7 +50,8 @@ and can store your data in multiple files instead of using a single huge databas
 
 <div class="answer" markdown="1">
 
-No, it's a data lakehouse format, so it similar to Delta with Unity Catalog, Iceberg with Lakekeeper or Polaris, etc.
+DuckLake _includes_ an _open table format_ but it's also a _data lakehouse_ format, meaning that it also contains a catalog to encode the schema of the data stored.
+When comparing to other technologies, DuckLake is similar to Delta Lake with Unity Catalog and Iceberg with Lakekeeper or Polaris.
 
 </div>
 
@@ -60,14 +64,15 @@ No, it's a data lakehouse format, so it similar to Delta with Unity Catalog, Ice
 
 <div class="qa-wrap" markdown="1">
 
-### What is DuckLake?
+### What is “DuckLake”?
 
 <div class="answer" markdown="1">
 
-DuckLake can refer to three things:
+First of all, a pun with a DuckDB-originated technology for data lakes and lakehouses.
+More seriously, the term “DuckLake” can refer to three things:
 
 1. the _specification_ of the DuckLake lakehouse format,
-2. the `ducklake` _DuckDB extension_, which implements the specification,
+2. the [`ducklake` _DuckDB extension_](https://duckdb.org/docs/stable/core_extensions/ducklake), which supports reading/writing datasets in the DuckLake specification,
 3. a DuckLake, a _dataset_ stored using the DuckLake lakehouse format.
 
 </div>
@@ -91,7 +96,7 @@ DuckLake can refer to three things:
 
 <div class="answer" markdown="1">
 
-The DuckLake needs a storage layer (both object storage and block-based storage works) and a catalog database (any SQL-compatible database works).
+The DuckLake needs a storage layer (both blob storage and block-based storage works) and a catalog database (any SQL-compatible database works).
 
 </div>
 
@@ -108,7 +113,7 @@ The DuckLake needs a storage layer (both object storage and block-based storage
 
 <div class="answer" markdown="1">
 
-DuckLake can store the _data files_ on AWS S3?
+DuckLake can store the _data files_ (Parquet files) on the AWS S3 blob storage or compatible solutions such as Azure Blob Storage, Google Cloud Storage or Cloudflare R2.
 You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 </div>
@@ -132,7 +137,7 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 <div class="answer" markdown="1">
 
-While we tested DuckLake extensively, it is not yet production-ready as shown by its version number {{ page.currentshortducklakeversion }}.
+While we tested DuckLake extensively, it is not yet production-ready as demonstrated by its version number {{ page.currentshortducklakeversion }}.
 We expect DuckLake to mature over the course of 2025.
 
 </div>
@@ -164,13 +169,14 @@ TODO
 
 <div class="qa-wrap" markdown="1">
 
-### Does DuckLake solve the “small files problem”?
+### How does DuckLake deal with the “small files problem”?
 
 <div class="answer" markdown="1">
 
-The “small files problem” is a well-known problem in data lake formats.
-It implies that data is stored in the form of many files with each file only containins a small amount of data.
-DuckLake mitigates this problem by storing the metadata in a database system and making compaction simple but does not yet fully solve it. It's on the roadmap.
+The “small files problem” is a well-known problem in data lake formats and occurs e.g. when data is inserted in small batches, yielding many small files with each storing only a small amount of data.
+DuckLake significantly mitigates this problem by storing the metadata in a database system (catalog database) and making the compaction step simple.
+DuckLake also harnesses the catalog database to stage data before serializing it into Parquet files.
+Further improvements are on the roadmap.
 
 </div>
 
@@ -179,19 +185,6 @@ DuckLake mitigates this problem by storing the metadata in a database system and
 
 
 
-<!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
-
-<div class="qa-wrap" markdown="1">
-
-### What is the largest file and table size?
-
-<div class="answer" markdown="1">
-
-TODO
-
-</div>
-
-</div>
 
 
 
@@ -227,7 +220,8 @@ No. Similarly to other data lakehouse technologies, DuckLake does not support co
 
 <div class="answer" markdown="1">
 
-This is currently not supported. You can export DuckLake into a DuckDB database.
+This is currently not supported.
+You can export DuckLake into a DuckDB database and export it into e.g. vanilla Parquet files.
 
 </div>
 
@@ -244,8 +238,8 @@ This is currently not supported. You can export DuckLake into a DuckDB database.
 
 <div class="answer" markdown="1">
 
-DuckDB files as stored are not supported at the moment.
-The data files must be stored in Parquet.
+The data files of DuckLake must be stored in Parquet.
+DuckDB files as storage are not supported at the moment.
 
 </div>
 
@@ -258,11 +252,11 @@ The data files must be stored in Parquet.
 
 <div class="qa-wrap" markdown="1">
 
-### Are there any practical limits to the number of snapshots?
+### Are there any practical limits to the size of data and the number of snapshots?
 
 <div class="answer" markdown="1">
 
-No. The only limitation is the catalog database's performance but even with a relatively slow catalog database, you can have millions of snapshots.
+No. The only limitation is the catalog database's performance but even with a relatively slow catalog database, you can have terabytes of data and millions of snapshots.
 
 </div>
 
@@ -285,7 +279,7 @@ No. The only limitation is the catalog database's performance but even with a re
 
 <div class="answer" markdown="1">
 
-TODO
+DuckLake is tested using a subset of [DuckDB's extensive test suite](https://duckdb.org/why_duckdb#thoroughly-tested).
 
 </div>
 
@@ -302,7 +296,8 @@ TODO
 
 <div class="answer" markdown="1">
 
-TODO
+If encounter any problem using DuckLake, please submit an issue in the [DuckLake issue tracker](https://github.com/duckdb/ducklake/issues).
+If you have any suggestions or feature requests, please open a ticket in [DuckLake's discussion forum](https://github.com/duckdb/ducklake/discussions).
 
 </div>
 
@@ -319,25 +314,12 @@ TODO
 
 <div class="answer" markdown="1">
 
-DuckLake is released under the MIT license.
+The DuckLake specification and the DuckLake DuckDB extension are released under the MIT license.
 
 </div>
 
 </div>
 
 
-
-
-<!-- ----- ----- ----- ----- ----- ----- Q&A entry ----- ----- ----- ----- ----- ----- -->
-
-<div class="qa-wrap" markdown="1">
-
-### QQQ
-
-<div class="answer" markdown="1">
-
-AAA
-
-</div>
 
 </div>
