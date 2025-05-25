@@ -6,53 +6,63 @@
       "slug": "",
       "mainfolderitems": [
         {
-          "page": "Example",
+          "page": "User Guide",
           "open": true,
-          "slug": "example",
-            "subfolderitems": [
+          "slug": "user_guide",
+          "subfolderitems": [
             {
               "page": "Introduction",
-              "url": "https://ducklake.dev"
+              "url": "introduction"
             },
             {
-              "page": "Statements",
-              "slug": "statements",
+              "page": "Getting Started",
+              "slug": "getting_started",
               "subsubfolderitems": [
                 {
-                  "page": "Overview",
-                  "url": "https://ducklake.dev"
+                  "page": "Choosing a Catalog Database",
+                  "url": "choosing_a_catalog_database"
                 },
                 {
-                  "page": "Alter Table",
-                  "url": "https://ducklake.dev"
+                  "page": "Lightweight Snapshots",
+                  "url": "lightweight_snapshots"
+                },
+                {
+                  "page": "Schema Evolution",
+                  "url": "schema_evolution"
+                },
+                {
+                  "page": "Time travel",
+                  "url": "time_travel"
                 }
               ]
             },
             {
-              "page": "Query Syntax",
-              "slug": "query_syntax",
+              "page": "Advanced Features",
+              "slug": "advanced_features",
               "subsubfolderitems": [
                 {
-                  "page": "SELECT",
-                  "url": "https://ducklake.dev"
+                  "page": "Compaction",
+                  "url": "compaction"
                 },
                 {
-                  "page": "FROM & JOIN",
-                  "url": "https://ducklake.dev"
-                }
-              ]
-            },
-            {
-              "page": "Data Types",
-              "slug": "data_types",
-              "subsubfolderitems": [
-                {
-                  "page": "Overview",
-                  "url": "https://ducklake.dev"
+                  "page": "Conflict Resolution",
+                  "url": "conflict_resolution"
                 },
                 {
-                  "page": "Numeric",
-                  "url": "https://ducklake.dev"
+                  "page": "Data Change Feed",
+                  "url": "data_change_feed"
+                },
+                {
+                  "page": "Data Inlining",
+                  "url": "data_inlining"
+                },
+                {
+                  "page": "Encryption",
+                  "url": "encryption"
+                },
+                {
+                  "page": "Transactions",
+                  "url": "transactions"
                 }
               ]
             }
