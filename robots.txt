@@ -1,6 +1,6 @@
 ---
 ---
-Sitemap: https://ducklake.dev/sitemap.xml
+Sitemap: https://ducklake.select/sitemap.xml
 
 User-agent: *
 {% for version in site.data.versions -%}

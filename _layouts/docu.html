@@ -32,14 +32,6 @@
 	<script src="{{ site.baseurl }}/js/determine_color_scheme.js?{{ site.data['hash'] }}"></script>
 </head>
 
-{% capture issue_title %}Issue found on page '{{ page.title }}'{% endcapture %}
-{% capture issue_body %}
-> Please describe the problem you encountered in the DuckLake documentation and include the "Page URL" link shown below.
-> Note: only create an issue if you wish to report a problem with the DuckLake documentation. For questions about DuckLake or the use of certain DuckLake features, use [GitHub Discussions](https://github.com/duckdb/ducklake/discussions/), [Stack Overflow](https://stackoverflow.com/questions/tagged/ducklake), or [Discord](https://discord.ducklake.dev/).
-
-Page URL: <https://ducklake.dev{{ page.url }}>
-{% endcapture %}
-
 {% comment %} By default, we assume that the users is interested in the stable version. {% endcomment %}
 {% assign version_viewed = "stable" %}
 
@@ -87,9 +79,9 @@ Page URL: <https://ducklake.dev{{ page.url }}>
 					<div class="versionselect">
 						<div class="version">
 							{% if version_viewed == "preview" %}
-								{% assign version_viewed_pretty = site.previewshortduckdbversion %}
+								{% assign version_viewed_pretty = site.preview_short_duckdb_version %}
 							{% elsif version_viewed == "stable" %}
-								{% assign version_viewed_pretty = site.currentshortducklakeversion | append: " (stable)" %}
+								{% assign version_viewed_pretty = site.current_ducklake_version | append: " (stable)" %}
 							{% else %}
 								{% assign version_viewed_pretty = version_viewed %}
 							{% endif %}
@@ -107,9 +99,9 @@ Page URL: <https://ducklake.dev{{ page.url }}>
 										{% capture other_version_of_page_exists %}{% file_exists {{ filename }} %}{% endcapture %}
 										{% if other_version_of_page_exists == "true" %}
 											{% if item.version == "preview" %}
-												{% assign item_text = site.previewshortduckdbversion %}
+												{% assign item_text = site.preview_short_duckdb_version %}
 											{% elsif item.version == "stable" %}
-												{% assign item_text = site.currentshortducklakeversion %}
+												{% assign item_text = site.current_ducklake_version %}
 											{% else %}
 												{% assign item_text = item.version %}
 											{% endif %}

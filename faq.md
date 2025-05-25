@@ -137,7 +137,7 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 <div class="answer" markdown="1">
 
-While we tested DuckLake extensively, it is not yet production-ready as demonstrated by its version number {{ page.currentshortducklakeversion }}.
+While we tested DuckLake extensively, it is not yet production-ready as demonstrated by its version number {{ page.current_ducklake_version }}.
 We expect DuckLake to mature over the course of 2025.
 
 </div>

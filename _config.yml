@@ -10,17 +10,14 @@
 
 # Site settings
 title: DuckLake
-email: quack@ducklake.dev
+email: quack@duckdb.org
 description: >-
   DuckLake leverages DuckDB and your favorite SQL database (SQLite, Postgres, MySQL) to provide ACID transactions, schema evolution, and time travel for your Parquet data lake, without the complexity of traditional Lakehouse catalogs.
 baseurl: ""
-url: "https://ducklake.dev"
+url: "https://ducklake.select"
 
 # DuckLake Versioning
-currentshortducklakeversion: "0.1"
-currentducklakeversion: "0.1.0"
-currentducklakehash: "7c039464e4"
-currentjavaversion: 1.2.2.0
+current_ducklake_version: "0.1.0"
 
 livereload: true
 highlighter: rouge
@@ -56,7 +53,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /images/sharingducklake.jpg
+      image: /images/sharingducklake.png
       toc: true
 
 repository: "duckdb/ducklake-web"
