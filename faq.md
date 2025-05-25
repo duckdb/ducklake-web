@@ -320,6 +320,3 @@ The DuckLake specification and the DuckLake DuckDB extension are released under 
 
 </div>
 
-
-
-</div>

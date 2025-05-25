@@ -12,10 +12,6 @@
               "url": "/docs"
             },
             {
-              "page": "Installation",
-              "url": "/docs/installation/"
-            },
-            {
               "page": "FAQ",
               "url": "/faq"
             }
