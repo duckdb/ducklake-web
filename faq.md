@@ -279,7 +279,8 @@ No. The only limitation is the catalog database's performance but even with a re
 
 <div class="answer" markdown="1">
 
-DuckLake is tested using a subset of [DuckDB's extensive test suite](https://duckdb.org/why_duckdb#thoroughly-tested).
+DuckLake receives extensive testing, including the running the applicable subset of [DuckDB's thorough test suite](https://duckdb.org/why_duckdb#thoroughly-tested).
+That said, if encounter any problems using DuckLake, please submit an issue in the [DuckLake issue tracker](https://github.com/duckdb/ducklake/issues).
 
 </div>
 
@@ -296,8 +297,9 @@ DuckLake is tested using a subset of [DuckDB's extensive test suite](https://duc
 
 <div class="answer" markdown="1">
 
-If encounter any problem using DuckLake, please submit an issue in the [DuckLake issue tracker](https://github.com/duckdb/ducklake/issues).
+If encounter any problems using DuckLake, please submit an issue in the [DuckLake issue tracker](https://github.com/duckdb/ducklake/issues).
 If you have any suggestions or feature requests, please open a ticket in [DuckLake's discussion forum](https://github.com/duckdb/ducklake/discussions).
+You are also welcome to implement support in other systems for DuckLake following the specification.
 
 </div>
 
