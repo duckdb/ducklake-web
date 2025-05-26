@@ -49,7 +49,14 @@ em.caption{
 	display: inline-block;
 	width: 100%;
 	margin-bottom: 1.5em;
-	color: var(--main-text-secondary-color, #666);
+	color: var(--main-text-tertiary-color);
+}
+
+img.darkmode-img{
+	display: none;
+}
+img.lightmode-img{
+	display: inline;
 }
 
 svg *[stroke],
