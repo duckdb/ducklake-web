@@ -580,9 +580,6 @@ html.darkmode body.documentation #ducklake_logo{
 
 body.faq,
 body.manifesto{
-	.pagetitle{
-		padding-bottom: 10px;
-	}
 	ul{
 		padding: 0;
 		margin: 0;
@@ -622,6 +619,12 @@ body.manifesto{
 		code, pre{
 			font-size: 14px;
 		}
+	}
+}
+
+body.manifesto{
+	.pagetitle{
+		padding-bottom: 10px;
 	}
 }
 
