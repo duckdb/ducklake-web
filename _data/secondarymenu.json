@@ -16,6 +16,10 @@
               "url": "/docs/stable/specification/introduction"
             },
             {
+              "page": "Manifesto",
+              "url": "/manifesto"
+            },
+            {
               "page": "FAQ",
               "url": "/faq"
             }
