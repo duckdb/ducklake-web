@@ -31,6 +31,26 @@ h4{
 	letter-spacing: -.02em;
 }
 
+h1, h2, h3, h4, h5, h6{
+	a{
+		color: inherit;
+	}
+}
+
+strong, b{
+	font-weight: 600;
+}
+
+em.caption{
+	font-style: normal;
+	text-align: center;
+	font-size: 14px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 1.5em;
+	margin-top: 0.5em;
+}
+
 svg *[stroke],
 svg path{
 	transition: all .3s;
