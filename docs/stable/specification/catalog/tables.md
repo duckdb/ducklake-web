@@ -3,11 +3,15 @@ layout: docu
 title: Tables
 ---
 
-## DuckLake Tables
+## DuckLake Schema
 
 DuckLake uses 19 tables to store metadata and stage data fragments for data inlining.
 
-> In the DuckDB implementation, DuckLake stores its catalog tables in the `__ducklake_metadata_⟨ducklake_name⟩`{:.language-sql .highlight} catalog.
+![DuckLake schema](/images/manifesto/ducklake-schema.svg)
+
+> In DuckDB, the `ducklake` extension stores the catalog tables for a DuckLake named `my_ducklake` in the `__ducklake_metadata_⟨my_ducklake⟩`{:.language-sql .highlight} catalog.
+
+## DuckLake Tables
 
 ### `ducklake_column`
 
@@ -221,4 +225,3 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 | `dialect`        | `VARCHAR`   |             |
 | `sql`            | `VARCHAR`   |             |
 | `column_aliases` | `VARCHAR`   |             |
-
