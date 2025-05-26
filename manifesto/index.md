@@ -65,8 +65,8 @@ To resolve the fundamental problems of the existing Lakehouse architecture, we h
 
 The basic design of DuckLake is to *move all metadata structures into a SQL database*, both for catalog and table data. The format is defined as a set of relational tables and pure-SQL transactions on them that describe data operations like schema creation, modification, and addition, deletion and updating of data. The DuckLake format can manage an *arbitrary number* of tables with cross-table transactions. It also supports “advanced” database concepts like views, nested types, transactional schema changes etc.; see below for a list. One major advantage of this design is by leveraging referential consistency (the “C” in ACID), the schema makes sure there are e.g. no duplicate snapshot ids. 
 
-![DuckLake schema]({{ site.baseurl }}/images/manifesto/ducklake-schema.png){: .lightmode-img }
-![DuckLake schema]({{ site.baseurl }}/images/dark/manifesto/ducklake-schema.png){: .darkmode-img }
+![DuckLake schema]({{ site.baseurl }}/images/manifesto/ducklake-schema-1.png){: .lightmode-img }
+![DuckLake schema]({{ site.baseurl }}/images/manifesto/dark/ducklake-schema-1.png){: .darkmode-img }
 *DuckLake schema*{: .caption }
 
 Which exact SQL database to use is up to the user, the only requirements are that the system supports ACID operations and primary keys along with standard SQL support. The DuckLake-internal table schema is intentionally kept simple in order to maximize compatibility with different SQL databases. Here is the core schema:
