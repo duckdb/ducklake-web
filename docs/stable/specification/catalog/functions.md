@@ -10,7 +10,7 @@ To invoke these functions use the `CALL` statement or place them in a `FROM` cla
 
 ### `ducklake_snapshots`
 
-Returns the snapshots stored in a DuckLake `catalog`.
+Returns the snapshots stored in the DuckLake catalog `catalog`.
 
 | Parameter name | Parameter type | Named parameter | Description |
 | -------------- | -------------- | --------------- | ----------- |
@@ -27,7 +27,7 @@ The information is encoded into a table with the following schema:
 
 ### `ducklake_table_info`
 
-The `ducklake_table_info` function returns information on the tables stored in a DuckLake `catalog`.
+The `ducklake_table_info` function returns information on the tables stored in the DuckLake catalog `catalog`.
 
 | Parameter name | Parameter type | Named parameter | Description |
 | -------------- | -------------- | --------------- | ----------- |
