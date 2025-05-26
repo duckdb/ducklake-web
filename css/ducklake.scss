@@ -47,7 +47,7 @@ em.caption{
 	display: inline-block;
 	width: 100%;
 	margin-bottom: 1.5em;
-	margin-top: 0.5em;
+	color: var(--main-text-secondary-color, #666);
 }
 
 svg *[stroke],
@@ -789,6 +789,90 @@ footer .sitefooter .footercontent > div a:hover{
 		}
 	}
 }
+
+
+
+
+// General Code-Highlight Styles (Todo: Remove from docu.scss 767 to 816)
+.highlight {
+	border-radius: 10px;
+}
+
+.highlighter-rouge + .highlighter-rouge{
+	margin-top: 1em;
+}
+
+code.highlighter-rouge,
+code.language-plaintext {
+	border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+	background: var(--doc-codebox-background-color, #F2F2F2);
+	font-family: $fontMonoMedium;
+	border-radius: 3px;
+	padding: 0 2px;
+	margin: 0;
+
+	em {
+		font-family: $fontMonoItalicMedium;
+	}
+}
+
+pre code {
+	display: block;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+pre.highlight {
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+
+	white-space: pre;
+	overflow-x: auto;
+	padding: 15px;
+	margin: 0;
+
+	&::-webkit-scrollbar {
+		height: 5px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--doc-scrollbar-bg, #E6E6E6);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--doc-scrollbar-slider, #CCC);
+	}
+}
+
+div.highlight {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+	background: var(--doc-codebox-background-color, #F2F2F2);
+	border: 1px solid var(--doc-codebox-border-color, #D9D9D9);
+
+	transition: border-color 0.3s;
+	-webkit-transition: border-color 0.3s;
+	-o-transition: border-color 0.3s;
+}
+
+.language-text div.highlight {
+	border: none;
+}
+
+.language-console div.highlight {
+	border: 1px solid var(--doc-warning-border-color, rgba(255, 204, 204, 0.60));
+}
+
+.language-console pre {
+	background: var(--doc-warning-background-color, rgba(255, 229, 229, 0.60));
+}
+
+
+
+
 
 /** Icon System **/
 .icon {
