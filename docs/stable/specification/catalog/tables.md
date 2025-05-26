@@ -15,15 +15,15 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_column`
 
-| Column Name       | Column Type | Description |
+| Column name       | Column type | Description |
 | ----------------- | ----------- | ----------- |
 | `column_id`       | `BIGINT`    |             |
 | `begin_snapshot`  | `BIGINT`    |             |
 | `end_snapshot`    | `BIGINT`    |             |
 | `table_id`        | `BIGINT`    |             |
 | `column_order`    | `BIGINT`    |             |
-| `Column Name`     | `VARCHAR`   |             |
-| `Column Type`     | `VARCHAR`   |             |
+| `column_name`     | `VARCHAR`   |             |
+| `column_type`     | `VARCHAR`   |             |
 | `initial_default` | `VARCHAR`   |             |
 | `default_value`   | `VARCHAR`   |             |
 | `nulls_allowed`   | `BOOLEAN`   |             |
@@ -31,7 +31,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_column_tag`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `table_id`       | `BIGINT`    |             |
 | `column_id`      | `BIGINT`    |             |
@@ -42,7 +42,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_data_file`
 
-| Column Name         | Column Type | Description |
+| Column name         | Column type | Description |
 | ------------------- | ----------- | ----------- |
 | `data_file_id`      | `BIGINT`    |             |
 | `table_id`          | `BIGINT`    |             |
@@ -62,7 +62,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_delete_file`
 
-| Column Name        | Column Type | Description |
+| Column name        | Column type | Description |
 | ------------------ | ----------- | ----------- |
 | `delete_file_id`   | `BIGINT`    |             |
 | `table_id`         | `BIGINT`    |             |
@@ -79,7 +79,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_file_column_statistics`
 
-| Column Name         | Column Type | Description |
+| Column name         | Column type | Description |
 | ------------------- | ----------- | ----------- |
 | `data_file_id`      | `BIGINT`    |             |
 | `table_id`          | `BIGINT`    |             |
@@ -94,7 +94,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_file_partition_value`
 
-| Column Name           | Column Type | Description |
+| Column name           | Column type | Description |
 | --------------------- | ----------- | ----------- |
 | `data_file_id`        | `BIGINT`    |             |
 | `table_id`            | `BIGINT`    |             |
@@ -103,7 +103,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_files_scheduled_for_deletion`
 
-| Column Name        | Column Type                | Description |
+| Column name        | Column type                | Description |
 | ------------------ | -------------------------- | ----------- |
 | `data_file_id`     | `BIGINT`                   |             |
 | `path`             | `VARCHAR`                  |             |
@@ -112,7 +112,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_inlined_data_tables`
 
-| Column Name       | Column Type | Description |
+| Column name       | Column type | Description |
 | ----------------- | ----------- | ----------- |
 | `table_id`        | `BIGINT`    |             |
 | `table_name`      | `VARCHAR`   |             |
@@ -120,14 +120,14 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_metadata`
 
-| Column Name | Column Type | Description |
+| Column name | Column type | Description |
 | ----------- | ----------- | ----------- |
 | `key`       | `VARCHAR`   |             |
 | `value`     | `VARCHAR`   |             |
 
 ### `ducklake_partition_column`
 
-| Column Name           | Column Type | Description |
+| Column name           | Column type | Description |
 | --------------------- | ----------- | ----------- |
 | `partition_id`        | `BIGINT`    |             |
 | `table_id`            | `BIGINT`    |             |
@@ -137,7 +137,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_partition_info`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `partition_id`   | `BIGINT`    |             |
 | `table_id`       | `BIGINT`    |             |
@@ -146,7 +146,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_schema`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `schema_id`      | `BIGINT`    |             |
 | `schema_uuid`    | `UUID`      |             |
@@ -156,7 +156,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_snapshot`
 
-| Column Name       | Column Type                | Description |
+| Column name       | Column type                | Description |
 | ----------------- | -------------------------- | ----------- |
 | `snapshot_id`     | `BIGINT`                   |             |
 | `snapshot_time`   | `TIMESTAMP WITH TIME ZONE` |             |
@@ -166,14 +166,14 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_snapshot_changes`
 
-| Column Name    | Column Type | Description |
+| Column name    | Column type | Description |
 | -------------- | ----------- | ----------- |
 | `snapshot_id`  | `BIGINT`    |             |
 | `changes_made` | `VARCHAR`   |             |
 
 ### `ducklake_table`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `table_id`       | `BIGINT`    |             |
 | `table_uuid`     | `UUID`      |             |
@@ -184,7 +184,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_table_column_stats`
 
-| Column Name     | Column Type | Description |
+| Column name     | Column type | Description |
 | --------------- | ----------- | ----------- |
 | `table_id`      | `BIGINT`    |             |
 | `column_id`     | `BIGINT`    |             |
@@ -195,7 +195,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_table_stats`
 
-| Column Name       | Column Type | Description |
+| Column name       | Column type | Description |
 | ----------------- | ----------- | ----------- |
 | `table_id`        | `BIGINT`    |             |
 | `record_count`    | `BIGINT`    |             |
@@ -204,7 +204,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_tag`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `object_id`      | `BIGINT`    |             |
 | `begin_snapshot` | `BIGINT`    |             |
@@ -214,7 +214,7 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_view`
 
-| Column Name      | Column Type | Description |
+| Column name      | Column type | Description |
 | ---------------- | ----------- | ----------- |
 | `view_id`        | `BIGINT`    |             |
 | `view_uuid`      | `UUID`      |             |

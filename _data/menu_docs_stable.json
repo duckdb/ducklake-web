@@ -84,10 +84,6 @@
                 {
                   "page": "Tables",
                   "url": "tables"
-                },
-                {
-                  "page": "Functions",
-                  "url": "functions"
                 }
               ]
             }
