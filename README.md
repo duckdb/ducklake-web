@@ -1,2 +1,8 @@
 # ducklake-web
-Top secret website of the top secret DuckLake project
+
+Install:
+
+```bash
+ruby-install ruby 3.4.1
+chruby ruby-3.4.1
+```
