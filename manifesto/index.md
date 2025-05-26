@@ -16,11 +16,14 @@ DuckLake simplifies lakehouses by using a standard SQL database for all metadata
 
 ## Background
 
-Innovative data systems like BigQuery and Snowflake have shown that *disconnecting storage and compute* is a great idea in a time where storage is a virtualized commodity. That way, both storage and compute can scale independently and we don't have to buy expensive database machines just to store tables we will never read.
+Innovative data systems like BigQuery and Snowflake have shown that *disconnecting storage and compute* is a great idea in a time where storage is a virtualized commodity. That way, both storage and compute can scale independently and we don't have to buy expensive database machines just to store tables we will never read. 
 
 At the same time, market forces have pushed people to insist that data systems *use open formats* like Parquet to avoid the all-too-common hostage taking of data by a single vendor. In this new world, lots of data systems happily frolic around a pristine “data lake” built on Parquet and S3 and all was well. Who needs those old school databases anyway!
 
-But quickly it emerged that – shockingly – people would like to *make changes* to their dataset. Simple appends worked pretty well by just dropping more files into a folder, but anything beyond that required complex and error prone custom scripts without any notion of correctness or – Codd beware – transactional guarantees.
+But quickly it emerged that – shockingly – people would like to *make changes* to their dataset. Simple appends worked pretty well by just dropping more files into a folder, but anything beyond that required complex and error-prone custom scripts without any notion of correctness or – Codd beware – transactional guarantees. 
+
+![An actual lakehouse]({{ site.baseurl }}/images/manifesto/lakehouse.jpg)  
+*An actual lakehouse. Maybe more like a cabin on a lake.*{: .caption }
 
 ## Iceberg and Delta
 
@@ -29,7 +32,7 @@ To address the basic task of changing data in the lake, various new open standar
 ![Iceberg table architecture]({{ site.baseurl }}/images/manifesto/iceberg-table-architecture.svg)  
 *Iceberg table architecture*{: .caption }
 
-But both formats hit a snag in the road: finding the latest version of a table is tricky in blob stores with their mercurial consistency guarantees. It’s tricky to atomically (the “A” in ACID) swap a pointer to make sure everyone sees the latest version. Iceberg and Delta Lake also only really know about a single table, but people – again, shockingly – wanted to manage multiple tables.
+But both formats hit a snag in the road: finding the latest version of a table is tricky in blob stores with their mercurial consistency guarantees. It’s tricky to atomically (the ‘A’ in ACID) swap a pointer to make sure everyone sees the latest version. Iceberg and Delta Lake also only really know about a single table, but people – again, shockingly – wanted to manage multiple tables. 
 
 ## Catalogs
 
@@ -46,7 +49,7 @@ But as pointed out above, the Iceberg and Delta Lake designs *already* had to co
 
 ## DuckLake
 
-Here at [DuckDB](http://duckdb.org), we actually like databases. They are amazing tools to safely and efficiently manage fairly large datasets. Once a database has entered the Lakehouse stack anyway, it makes an insane amount of sense to also use it for managing the rest of the table metadata! We can still take advantage of the “endless” capacity and “infinite” scalability of blob stores for storing the actual table data in open formats like Parquet, but we can much more efficiently and effectively manage the metadata needed to support changes in a database! Coincidentally, this is also what Google BigQuery (with Spanner) and Snowflake (with FoundationDB) have chosen, just without the open formats at the bottom.
+Here at [DuckDB](http://duckdb.org), we actually like databases. They are amazing tools to safely and efficiently manage fairly large datasets. Once a database has entered the Lakehouse stack anyway, it makes an insane amount of sense to also use it for managing the rest of the table metadata! We can still take advantage of the “endless” capacity and “infinite” scalability of blob stores for storing the actual table data in open formats like Parquet, but we can much more efficiently and effectively manage the metadata needed to support changes in a database! Coincidentally, this is also what Google BigQuery (with Spanner) and Snowflake (with FoundationDB) have chosen, just without the open formats at the bottom. 
 
 ![DuckLake's architecture]({{ site.baseurl }}/images/manifesto/ducklake-architecture.svg)  
 *DuckLake's architecture: Just a database and some Parquet files*{: .caption }
@@ -56,7 +59,107 @@ To resolve the fundamental problems of the existing Lakehouse architecture, we h
 - Storing *data* files in open formats on blob storage is a great idea for scalability and to prevent lock-in.
 - Managing metadata is a complex and interconnected data management task best left to a database management system.
 
-The basic design of DuckLake is to *move all metadata structures into a SQL database*, both for catalog and table data. The format is defined as a set of relational tables and pure-SQL transactions on them that describe data operations like schema creation, modification, and addition, deletion and updating of data. The DuckLake format can manage an *arbitrary number* of tables with cross-table transactions. It also supports “advanced” database concepts like views, nested types, transactional schema changes, etc., see below for a list. One major advantage of this design is by leveraging referential consistency (the “C” in ACID), the schema makes sure there are e.g. no duplicate snapshot ids.
+The basic design of DuckLake is to *move all metadata structures into a SQL database*, both for catalog and table data. The format is defined as a set of relational tables and pure-SQL transactions on them that describe data operations like schema creation, modification, and addition, deletion and updating of data. The DuckLake format can manage an *arbitrary number* of tables with cross-table transactions. It also supports “advanced” database concepts like views, nested types, transactional schema changes etc.; see below for a list. One major advantage of this design is by leveraging referential consistency (the “C” in ACID), the schema makes sure there are e.g. no duplicate snapshot ids. 
 
 ![DuckLake schema]({{ site.baseurl }}/images/manifesto/ducklake-schema.svg)  
 *DuckLake schema*{: .caption }
+
+Which exact SQL database to use is up to the user, the only requirements are that the system supports ACID operations and primary keys along with standard SQL support. The DuckLake-internal table schema is intentionally kept simple in order to maximize compatibility with different SQL databases. Here is the core schema:
+
+For example, here is the sequence of queries that occur in DuckLake when running the following query on a new, empty table:
+
+```sql
+INSERT INTO demo VALUES (42), (43);
+```
+
+```sql
+BEGIN TRANSACTION;
+  -- some metadata reads skipped here
+  INSERT INTO ducklake_data_file VALUES (0, 1, 2, NULL, NULL, 'data_files/ducklake-8196...13a.parquet', 'parquet', 2, 279, 164, 0, NULL, NULL);
+  INSERT INTO ducklake_table_stats VALUES (1, 2, 2, 279);
+  INSERT INTO ducklake_table_column_stats VALUES (1, 1, false, NULL, '42', '43');
+  INSERT INTO ducklake_file_column_statistics VALUES (0, 1, 1, NULL, 2, 0, 56, '42', '43', NULL)
+  INSERT INTO ducklake_snapshot VALUES (2, NOW(), 1, 2, 1);
+  INSERT INTO ducklake_snapshot_changes VALUES (2, 'inserted_into_table:1');
+COMMIT;
+```
+
+We see a single coherent SQL transaction that 
+
+- Inserts the **new Parquet** file path
+- updates the global **table** statistics (now has more rows), 
+- Updates the global **column** statistics (now has a different minimum and maximum value) 
+- Updates the **file** column statistics (also record min/max among other things)
+- Creates a new schema **snapshot** (#2)
+- Logs the **changes** that happened in the snapshot
+
+Note that the actual write to Parquet is not part of this sequence, it happens beforehand. But no matter how many values are added, this sequence has the same (low) cost.
+
+Let's discuss the three principles of DuckLake: **Simplicity, Scalability** and **Speed**:
+
+## Simplicity
+DuckLake follows the DuckDB design principles of keeping things *simple and incremental*. In order to run DuckLake on a laptop, it is enough to just install DuckDB with the `ducklake` extension (see below). This is great for testing purposes, development and prototyping. In this case, the catalog store is just a local DuckDB file. 
+
+The next step is making use of *external storage systems*. DuckLake data files are immutable, it never requires modifying files in place or re-using file names. This allows use with almost any storage system. DuckLake supports integration with any storage system like local disk, local NAS, S3, Azure Blob Store, GCS, etc. The storage prefix for data files (e.g., `s3://mybucket/mylake/`) is specified when the metadata tables are created.
+
+Finally, the SQL database that hosts the *metadata server* can be any halfway competent SQL database that supports ACID and primary key constraints. Most organizations will already have a lot of experience operating a system like that. This greatly simplifies deployment as no additional software stack is needed beyond the SQL database. Also, SQL databases have been heavily commoditized in recent years, there are innumerable hosted PostgreSQL services or even hosted DuckDB that can be used as the Metadata store! Again, the lock-in here is very limited because transitioning does not require any table data movement, and the schema is simple and standardized.
+
+There are no Avro or JSON files. There is no additional catalog server or additional API to integrate with. **It’s all just SQL.** We all know SQL. 
+
+## Scalability
+
+DuckLake actually increases separation of concerns within a data architecture into *three parts*: Storage, compute and metadata management. Storage remains on purpose-built file storage (e.g., blob storage), DuckLake can scale infinitely in storage. 
+
+An arbitrary number of compute nodes are querying and updating the metadata server and then independently reading and writing from storage. DuckLake can scale infinitely regarding compute. 
+
+Finally, the catalog database needs to be able to run *only* the metadata transactions requested by the compute nodes. Their volume is several orders of magnitude smaller than the actual data changes. But DuckLake is not bound to a single catalog database. making it possible to migrate e.g. from Postgres to something else as demand grows. In the end, DuckLake uses simple tables and basic, portable SQL. But don’t worry, a Postgres-backed DuckLake will already be able to scale to hundreds of terabytes and thousands of compute nodes. 
+
+Again, this is the exact design used by BigQuery and Snowflake that successfully manage immense datasets already. And hey, nothing keeps you from using Spanner as the DuckLake metadata server if required.
+
+## Speed
+
+Just like DuckDB itself, DuckLake is very much about speed. One of the biggest pain points of Iceberg and Delta Lake is the involved sequence of file IO that is required to run the smallest query. Following the catalog and file metadata path requires many separate sequential HTTP requests. As a result, there is a lower bound to how fast reads or transactions can run. There is a lot of time spent in the critical path of transaction commits, leading to frequent conflicts and expensive conflict resolution. While caching can be used to alleviate some of these problems, this adds additional complexity and is only effective for “hot” data.
+
+The unified metadata within a SQL database also allows for low-latency query planning. In order to read from a DuckLake table, a single query is sent to the metadata server, which performs the schema-based, partition-based and statistics-based pruning to essentially retrieve a list of files to be read from blob storage. There are no multiple round trips to storage to retrieve and reconstruct metadata state. There is also less that can go wrong, no S3 throttling, no failing requests, no retries, no not-yet consistent views on storage that lead to files being invisible, etc. 
+
+DuckLake is also able to improve the two biggest performance problems of data lakes: small changes and many concurrent changes.
+
+For small changes, DuckLake will *dramatically reduce the number of small files* written to storage. There is no new snapshot file with a tiny change compared to the previous one, there is no new manifest file or manifest list. DuckLake even optionally allows *transparent inlining* of small changes to tables into actual tables directly in the metadata store! Turns out, a database system can be used to manage data, too. This allows for sub-millisecond writes and for improved overall query performance by reducing the number of files that have to be read. By writing many fewer files, DuckLake also greatly simplifies cleanup and compaction operations. 
+
+In DuckLake, table changes consist of two steps: staging the data files (if any) to storage, and then running a single SQL transaction in the metadata server. This greatly reduces the time spent in the critical path of transaction commits, there is only a single transaction to run. SQL databases are pretty good at de-conflicting transactions. This means that the compute nodes spend a much smaller amount of time in the critical path where conflicts can occur. This allows for much faster conflict resolution and for many more concurrent transactions. Essentially, DuckLake supports as many table changes as the metadata server can commit. Even the venerable Postgres can run thousands of transactions *per second*. One could run a thousand compute nodes running appends to a table at a one-second interval and it would work fine. 
+
+In addition, DuckLake snapshots are just a few rows added to the metadata store, allowing for many snapshots to exist at the same time. There is no need to proactively prune snapshots. Snapshots can also refer to *parts of a Parquet file*, allowing many more snapshots to exist than there are files on disk. Combined, this allows DuckLake to manage *millions of snapshots*! 
+
+## Features
+
+DuckLake has all of your favorite LakeHouse features:
+
+- **Arbitrary SQL**: DuckLake supports all the same vastness of SQL features that e.g. DuckDB supports.
+- **Data Changes**: DuckLake supports efficient appends, updates and deletes to data.
+- **Multi-Schema, Multi-Table**: DuckLake can manage an arbitrary number of schemas that each contain an arbitrary number of tables in the same metadata table structure.
+- **Multi-Table Transactions**: DuckLake supports fully ACID-compliant transactions over all of the managed schemas, tables and their content.
+- **Complex Types**: DuckLake supports all your favorite complex types like lists, arbitrarily nested.
+- **Full Schema Evolution**: Table schemas can be changed arbitrarily, e.g., columns can be added, removed, or have their data types changed.
+- **Schema-Level Time Travel and Rollback**: DuckLake supports full snapshot isolation and time travel, allowing to query tables as of a specific point in time.
+- **Incremental Scans**: DuckLake supports retrieval of only the changes that occurred between specified snapshots.
+- **SQL Views**: DuckLake supports the definition of lazily evaluated SQL-level views.
+- **Hidden Partitioning and Pruning**: DuckLake is aware of data partitioning and table- and file-level statistics, allowing for early pruning of scans for maximum efficiency.
+- **Transactional DDL**: Schema and table and view creation, evolution and removal are fully transactional.
+- **Data Compaction Avoidance**: DuckLake requires far fewer compaction operations than comparable formats. DuckLake supports efficient compaction of snapshots. 
+- **Inlining**: When making small changes to the data, DuckLake can optionally use the metadata catalog to store those small changes directly to avoid writing many small files.
+- **Encryption**: DuckLake can optionally encrypt all data files written to data store, allowing for *zero-trust data hosting*. Keys are managed by the metadata server.
+- **Compatibility**: The data and (positional) deletion files that DuckLake writes to storage are fully compatible with Apache Iceberg allowing for metadata-only migrations.
+
+
+
+**Planned Future Work**
+
+Iceberg / Data Lake metadata import and export
+Import from Hive-Partitioned directories
+JSON shredding
+ODBC metadata connector
+Rollback to previous snapshot
+
+
+Press inquiries
+Gabor (gabor@duckdblabs.com)
