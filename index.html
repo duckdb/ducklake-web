@@ -30,7 +30,7 @@ body_class: landing nowrap
 	<div class="wrap">
 		<div class="section-text">
 			<h2>Deployment scenarios</h2>
-			<p>DuckLake uses a database system to manage your metadata for the catalog.  All you need to run your own data warehouse is a database system and storage for Parquet files.</p>
+			<p>DuckLake uses a database system to manage your metadata for the catalog. All you need to run your own data warehouse is a database system and storage for Parquet files.</p>
 		</div>
 		<div class="illustration">
 				<div class="window architecture-tabs">
@@ -108,11 +108,11 @@ body_class: landing nowrap
 							<div class="hover-content">
 								<div class="mysql postgre sqlite">
 									<h4>Clients</h4>
-									<p>Users can run multiple DuckLake clients and connect in parallel to PostgreSQL / MySQL / SQLite.</p>
+									<p>Users can run multiple DuckLake clients and connect concurrently to PostgreSQL, MySQL or SQLite.</p>
 								</div>
 								<div class="duckdb">
 									<h4>Client</h4>
-									<p>Different hover info for DuckDB.</p>
+									<p>DuckDB also works with DuckLake as the catalog database. In this case, you are limited to a single client.</p>
 								</div>
 							</div>
 							
@@ -135,7 +135,7 @@ body_class: landing nowrap
 								<div class="hover-content">
 									<div class="mysql postgre duckdb sqlite">
 										<h4>Catalog database</h4>
-										<p>DuckLake can harness any PostgreSQL-compatible database including AWS Aurora.</p>
+										<p>DuckLake can use any SQL system as its catalog database, provided that it supports ACID transactions and primary key constraints.</p>
 									</div>
 								</div>
 								
