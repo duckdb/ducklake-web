@@ -11,17 +11,17 @@
 					<ul>
 						<div class="select-highlight"></div>
 						<li data-client="duckdb" class="active">DuckDB</li>
-						<li data-client="postgresql">PostgreSQL</li>
 						<li data-client="sqlite">SQLite</li>
-						<li data-client="sqlite">MySQL</li>
+						<li data-client="postgresql">PostgreSQL</li>
+						<li data-client="mysql">MySQL</li>
 					</ul>
 				</div>
 				
 				<div class="result content">
 {% highlight sql %}
 INSTALL ducklake;
-ATTACH 'ducklake:metadata.ducklake' AS my_ducklake
-	(DATA_PATH 'data_files');
+
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
 USE my_ducklake;
 {% endhighlight %}
 				</div>
@@ -36,8 +36,8 @@ USE my_ducklake;
 <div data-install="duckdb">
 {% highlight sql %}
 INSTALL ducklake;
-ATTACH 'ducklake:metadata.ducklake' AS my_ducklake
-	(DATA_PATH 'data_files');
+
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
 USE my_ducklake;
 {% endhighlight %}
 </div>
@@ -45,18 +45,32 @@ USE my_ducklake;
 <div data-install="postgresql">
 {% highlight sql %}
 INSTALL ducklake;
+INSTALL postgres_scanner;
+
+-- Make sure that the database `ducklake_catalog` exists in PostgreSQL.
+ATTACH 'postgres:dbname=ducklake_catalog' AS my_ducklake;
+USE my_ducklake;
 {% endhighlight %}
 </div>
 
 <div data-install="sqlite">
 {% highlight sql %}
 INSTALL ducklake;
+INSTALL sqlite_scanner;
+
+ATTACH 'sqlite:metadata.sqlite' AS my_ducklake (DATA_PATH 'data_files');
+USE my_ducklake;
 {% endhighlight %}
 </div>
 
 <div data-install="mysql">
 {% highlight sql %}
 INSTALL ducklake;
+INSTALL mysql_scanner;
+
+-- Make sure that the database `ducklake_catalog` exists in MySQL
+ATTACH 'mysql:db=ducklake_catalog' AS my_ducklake;
+USE my_ducklake;
 {% endhighlight %}
 </div>
 
