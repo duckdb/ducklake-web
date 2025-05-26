@@ -9,16 +9,13 @@ The choice depends on several factors, including whether you need to use multipl
 On the technical side, consider the following:
 
 * If you would like to perform **local data warehousing with a single client**, use [DuckDB](#duckdb) as the catalog database.
-* If you would like to perform **local data warehousing using multiple clients**, use [SQLite](#sqlite) as the catalog database.
-  While SQLite doesn't allow concurrent reads and writes, its default mode is to `ATTACH` and `DETACH` for every query, together with providing a “retry time-out” for queries when a write-lock is encountered. This allows a reasonable amount of multi-processing support (effectively hiding the single-writer model).
-* If you would like to operate a **multi-user lakehouse**, choose a database system that allows concurrent access by clients, such as [MySQL](#mysql) or [PostgreSQL](#postgresql).
-
-DuckDB uses standard interfaces to connect to databases.
+* If you would like to perform **local data warehousing using multiple local clients**, use [SQLite](#sqlite) as the catalog database.
+* If you would like to operate a **multi-user lakehouse** with potentially remote clients, choose a transactional client-server database system as the catalog database: [MySQL](#mysql) or [PostgreSQL](#postgresql).
 
 ## DuckDB
 
-DuckDB can, of course, natively connect to DuckDB databases.
-So, to get started, you only need to install the `ducklake` extension and attach to your DuckLake:
+DuckDB can, of course, natively connect to DuckDB database files.
+So, to get started, you only need to install the [`ducklake` extension](https://duckdb.org/docs/stable/core_extensions/ducklake) and attach to your DuckLake:
 
 ```sql
 INSTALL ducklake;
@@ -26,6 +23,8 @@ INSTALL ducklake;
 ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
 USE my_ducklake;
 ```
+
+Note that if you are using DuckDB as your catalog database, you're limited to a single client.
 
 ## SQLite
 
@@ -39,6 +38,9 @@ INSTALL sqlite;
 ATTACH 'sqlite:metadata.sqlite' AS my_ducklake (DATA_PATH 'data_files');
 USE my_ducklake;
 ```
+
+While SQLite doesn't allow concurrent reads and writes, its default mode is to `ATTACH` and `DETACH` for every query, together with providing a “retry time-out” for queries when a write-lock is encountered.
+This allows a reasonable amount of multi-processing support (effectively hiding the single-writer model).
 
 ## MySQL
 
