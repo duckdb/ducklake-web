@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/docu.css?{{ site.data['hash'] }}">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/mobilestyles.css?{{ site.data['hash'] }}">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/darkmode.css?{{ site.data['hash'] }}">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/ducklake.css?{{ site.data['hash'] }}">
 	{% if page.railroad and page.railroad != "" and page.railroad != nil %}
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/railroad.css?{{ site.data['hash'] }}">
 	{% endif %}
@@ -116,7 +117,10 @@
 
 					{% endunless %}
 					{% endif %}
-					<button class="mode" data-mode="dark"></button>
+					<button class="mode" data-mode="dark">
+						{% include icon.html name="sun" class="icon icon-sun" size="24" %}
+						{% include icon.html name="moon" class="icon icon-moon" size="24" %}
+					</button>
 				</div>
 			</div>
 		</div>
