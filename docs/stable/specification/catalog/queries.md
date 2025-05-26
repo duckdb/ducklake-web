@@ -152,6 +152,7 @@ TODO: link to table schema of ducklake_file_column_statistics
 
 ### Snapshot Creation
 Any changes to data stored in DuckLake require the creation of a new snapshot. We need to 
+
 - create a new snapshot in `ducklake_snapshot` and
 - log the changes a snapshot made in `ducklake_snapshot_changes`
 
@@ -172,8 +173,8 @@ VALUES (
 	{CHANGES});
 ```
 
-where (again)
-- `SNAPSHOT_ID` is the new snapshot id. This should be `MAX(snapshot_id)+1`. 
+where
+- `SNAPSHOT_ID` is the new snapshot identifier. This should be `MAX(snapshot_id)+1`. 
 - `SCHEMA_VERSION` is the schema version for the new snapshot. If any schema changes are made, this needs to be incremented. Otherwise the previous snapshot's `schema_version` can be re-used. 
 - `NEXT_CATALOG_ID` gives the next unused identifier for tables, schemas, or views. This only has to be incremented if new catalog entries are created.
 - `NEXT_FILE_ID` is the same but for data or delete files. 
@@ -183,8 +184,81 @@ TODO: link to table schema of ducklake_snapshot_changes for possible values of `
 
 
 ### CREATE SCHEMA
+A schema is a collection of tables. In order to create a new schema, we can just insert into the `ducklake_schema` table:
+
+```SQL
+INSERT INTO ducklake_schema 
+	(schema_id, schema_uuid, begin_snapshot, end_snapshot, schema_name)
+VALUES (
+	{SCHEMA_ID}, 
+	UUID(), 
+	{SNAPSHOT_ID}, 
+	NULL, 
+	{SCHEMA_NAME});
+```
+
+where
+- `SCHEMA_ID` is the new schema identifier. This should be created by incrementing `next_catalog_id` from the previous snapshot. 
+- `SNAPSHOT_ID` is the snapshot identifier of the new snapshot as described above.
+- `SCHEMA_NAME` is just the name of the new schema.
+
+TODO: link to table schema of ducklake_schema
 
 ### CREATE TABLE
+Creating a table in a schema is very similar to creating a schema. We insert into the `ducklake_table` table:
+
+```SQL
+INSERT INTO ducklake_table 
+	(table_id, table_uuid, begin_snapshot, end_snapshot, schema_id, table_name)
+VALUES (
+	{TABLE_ID}, 
+	UUID(), 
+	{SNAPSHOT_ID}, 
+	NULL, 
+	{SCHEMA_ID},
+	{TABLE_NAME});
+```
+
+where
+- `TABLE_ID` is the new table identifier. This should be created by further incrementing `next_catalog_id` from the previous snapshot. 
+- `SNAPSHOT_ID` is the snapshot identifier of the new snapshot as described above.
+- `SCHEMA_ID` is a `BIGINT` referring to the `schema_id` column in the `ducklake_schema` table.
+- `TABLE_NAME` is just the name of the new table.
+
+TODO: link to table schema of ducklake_table
+
+
+A table needs some columns, we can add columns to the new table by inserting into the `ducklake_columns` table. For each column to be added, we run the following query:
+
+```SQL
+INSERT INTO ducklake_column 
+(column_id, begin_snapshot, end_snapshot, table_id, column_order, column_name, column_type, nulls_allowed)
+VALUES (
+	{COLUMN_ID}, 
+	{SNAPSHOT_ID}, 
+	NULL, 
+	{TABLE_ID},
+	{COLUMN_ORDER},
+	{COLUMN_NAME},
+	{COLUMN_TYPE},
+	{NULLS_ALLOWED})
+```
+
+where
+- `COLUMN_ID` is the new column identifier. This ID must be unique within the table over its entire life time. 
+- `SNAPSHOT_ID` is the snapshot identifier of the new snapshot as described above.
+- `TABLE_ID` is a `BIGINT` referring to the `table_id` column in the `ducklake_table` table.
+- `COLUMN_ORDER` is a number that defines where the column is placed in an ordered list of columns.
+- `COLUMN_NAME` is just the name of the column.
+- `COLUMN_TYPE` is the data type of the column. See the types list for details.
+- `NULLS_ALLOWED` is a boolean that defines if `NULL` values can be stored in the column. Typically set to `true`.
+
+
+TODO: link to table schema of ducklake_column
+TODO: link to data types
+
+> We skipped some complexity in this example around default values and nested types and just left those fields as `NULL`. See the table schema definition for additional details.
+
 
 ### INSERT
 
