@@ -6,9 +6,9 @@
       "slug": "",
       "mainfolderitems": [
         {
-          "page": "User Guide",
+          "page": "DuckDB",
           "open": true,
-          "slug": "user_guide",
+          "slug": "duckdb",
           "subfolderitems": [
             {
               "page": "Introduction",
