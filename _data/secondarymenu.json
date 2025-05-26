@@ -8,7 +8,7 @@
           "url": "/docs/",
           "subfolderitems": [
             {
-              "page": "DuckDB extension",
+              "page": "The DuckLake DuckDB Extension",
               "url": "/docs/stable/duckdb/introduction"
             },
             {
