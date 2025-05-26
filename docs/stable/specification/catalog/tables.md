@@ -5,7 +5,7 @@ title: Tables
 
 ## DuckLake Schema
 
-DuckLake uses 19 tables to store metadata and stage data fragments for data inlining.
+DuckLake uses 19 tables to store metadata and to stage data fragments for data inlining.
 
 ![DuckLake schema](/images/manifesto/ducklake-schema-1.png)
 
@@ -120,19 +120,19 @@ DuckLake uses 19 tables to store metadata and stage data fragments for data inli
 
 ### `ducklake_metadata`
 
+The `ducklake_metadata` table contains key/value pairs with information about the specific setup of the DuckLake catalog.
+
 | Column name | Column type | Description |
 | ----------- | ----------- | ----------- |
 | `key`       | `VARCHAR`   |             |
 | `value`     | `VARCHAR`   |             |
 
+Currently, the following keys are specified:
 
-The `ducklake_metadata` table contains key/value pairs with information about the specific setup of the DuckLake catalog. Currently, the following keys are specified:
-- `version`: The DuckLake schema version, currently `0.1`.
-- `created_by`: A string that identifies which program wrote the schema, e.g. `DuckDB v1.3.0`
-- `data_path`: The data path prefix for reading and writing data files. E.g., `s3://mybucket/myprefix/`. This always ends in a `/`.
-- `encryption`: a boolean (`true` or `false`) that speficies whether data files are encrypted or not.
-
-
+* `version`: The DuckLake schema version, currently `0.1`.
+* `created_by`: A string that identifies which program wrote the schema, e.g., `DuckDB v1.3.0`
+* `data_path`: The data path prefix for reading and writing data files, e.g., `s3://mybucket/myprefix/`. This always ends in a `/`.
+* `encryption`: A boolean (`true` or `false`) that speficies whether data files are encrypted or not.
 
 ### `ducklake_partition_column`
 
