@@ -4,7 +4,9 @@ title: Queries
 ---
 
 ## Reading Data
-DuckLake specifies tables and update transactions to modify them. DuckLake is not a black box, all metadata is stored as SQL tables under the user's control. Of course, they can be queried in whichever way is best for a client, below we describe a small working example to retrieve table data.
+DuckLake specifies tables and update transactions to modify them. DuckLake is not a black box, all metadata is stored as SQL tables under the user's control. Of course, they can be queried in whichever way is best for a client, below we describe a small working example to retrieve table data. 
+
+> The information below is to provide transparency to users and to aid developers making their own implementation of DuckLake. The `ducklake` DuckDB extension is able to execute those operations in the background.
 
 
 ### Get Current Snapshot
@@ -26,7 +28,7 @@ SELECT schema_id, schema_name
 FROM ducklake_schema
 WHERE 
   {SNAPSHOT_ID} >= begin_snapshot AND 
-  ({SNAPSHOT_ID} < end_snapshot OR end_snapshot IS NULL)
+  ({SNAPSHOT_ID} < end_snapshot OR end_snapshot IS NULL);
 ```
 
 where
@@ -45,7 +47,7 @@ We can list the tables available in a schema for a specific snapshot like so:
  WHERE 
    schema_id = {SCHEMA_ID} AND
    {SNAPSHOT_ID} >= begin_snapshot AND 
-   ({SNAPSHOT_ID} < end_snapshot OR end_snapshot IS NULL)
+   ({SNAPSHOT_ID} < end_snapshot OR end_snapshot IS NULL);
 ```
 
 where
@@ -68,7 +70,7 @@ For each given table, we can list the available top-level columns like so:
    parent_column IS NULL AND
    {SNAPSHOT_ID} >= begin_snapshot AND 
    ({SNAPSHOT_ID} < end_snapshot OR end_snapshot IS NULL)
- ORDER BY column_order
+ ORDER BY column_order;
 ```
 
 where
@@ -102,7 +104,7 @@ WHERE
 	data.table_id = {TABLE_ID} AND 
 	{SNAPSHOT_ID} >= data.begin_snapshot AND 
 	({SNAPSHOT_ID} < data.end_snapshot OR data.end_snapshot IS NULL)
-ORDER BY file_order
+ORDER BY file_order;
 ```	
 
 where (again)
@@ -132,7 +134,7 @@ WHERE
 	table_id  = {TABLE_ID} AND
 	column_id = {COLUMN_ID} AND 
     ({SCALAR} >= min_value OR min_value IS NULL) AND
-	({SCALAR} <= max_value OR max_value IS NULL)
+	({SCALAR} <= max_value OR max_value IS NULL);
 ```	
 
 where (again)
@@ -183,7 +185,7 @@ where
 TODO: link to table schema of ducklake_snapshot_changes for possible values of `CHANGES`.
 
 
-### CREATE SCHEMA
+### `CREATE SCHEMA`
 A schema is a collection of tables. In order to create a new schema, we can just insert into the `ducklake_schema` table:
 
 ```SQL
@@ -204,7 +206,7 @@ where
 
 TODO: link to table schema of ducklake_schema
 
-### CREATE TABLE
+### `CREATE TABLE`
 Creating a table in a schema is very similar to creating a schema. We insert into the `ducklake_table` table:
 
 ```SQL
@@ -232,7 +234,7 @@ A table needs some columns, we can add columns to the new table by inserting int
 
 ```SQL
 INSERT INTO ducklake_column 
-(column_id, begin_snapshot, end_snapshot, table_id, column_order, column_name, column_type, nulls_allowed)
+	(column_id, begin_snapshot, end_snapshot, table_id, column_order, column_name, column_type, nulls_allowed)
 VALUES (
 	{COLUMN_ID}, 
 	{SNAPSHOT_ID}, 
@@ -241,11 +243,11 @@ VALUES (
 	{COLUMN_ORDER},
 	{COLUMN_NAME},
 	{COLUMN_TYPE},
-	{NULLS_ALLOWED})
+	{NULLS_ALLOWED});
 ```
 
 where
-- `COLUMN_ID` is the new column identifier. This ID must be unique within the table over its entire life time. 
+- `COLUMN_ID` is the new column identifier. This ID must be unique *within the table* over its entire life time. 
 - `SNAPSHOT_ID` is the snapshot identifier of the new snapshot as described above.
 - `TABLE_ID` is a `BIGINT` referring to the `table_id` column in the `ducklake_table` table.
 - `COLUMN_ORDER` is a number that defines where the column is placed in an ordered list of columns.
@@ -259,10 +261,98 @@ TODO: link to data types
 
 > We skipped some complexity in this example around default values and nested types and just left those fields as `NULL`. See the table schema definition for additional details.
 
+### `INSERT`
 
-### INSERT
+Inserting data into a DuckLake table consists of two main steps: First, we need to write a Parquet file containing the actual row data to storage, and second, we need to register that file in the metadata tables and update global statistics. Let's assume the file has already been written. 
 
-### DELETE
 
-### DROP TABLE
-just set end snapshot
+```SQL
+INSERT INTO ducklake_data_file 
+	(data_file_id, table_id, begin_snapshot, end_snapshot, path, path_is_relative, file_format, record_count, file_size_bytes, footer_size, row_id_start)
+VALUES (
+	{DATA_FILE_ID}, 
+	{TABLE_ID}, 
+	{SNAPSHOT_ID}, 
+	NULL,
+	{PATH},
+	true,
+	'parquet',
+	{RECORD_COUNT},
+	{FILE_SIZE_BYTES},
+	{FOOTER_SIZE},
+	{ROW_ID_START});
+
+```
+
+where
+- `DATA_FILE_ID` is the new data file identifier. This ID must be unique *within the table* over its entire life time. 
+- `TABLE_ID` is a `BIGINT` referring to the `table_id` column in the `ducklake_table` table.
+- `SNAPSHOT_ID` is the snapshot identifier of the new snapshot as described above.
+- `PATH` is the file name relative to the DuckLake data path from the top-level metadata.
+- `RECORD_COUNT` is the number of rows in the file.
+- `FILE_SIZE_BYTES` is the file size.
+- `FOOTER_SIZE` is the position of the Parquet footer. This helps with efficiently reading the file.
+- `ROW_ID_START` is the first logical row ID from the file. This number can be read from the `ducklake_table_stats` table , column `next_row_id`.
+
+
+> We have omitted some complexity around relative paths, encrypted files, partitioning and partial files in this example. Refer to the data file table documentation for details.
+
+TODO: link to table schema of ducklake_data_file
+
+TODO: link to schema evolution
+
+We will also have to update some statistics in the `ducklake_table_stats` and `ducklake_table_column_stats` tables.
+
+
+
+```SQL
+
+UPDATE ducklake_table_stats SET 
+	record_count = record_count + {RECORD_COUNT}, 
+	next_row_id = next_row_id   + {RECORD_COUNT}, 
+	file_size_bytes = file_size_bytes + {FILE_SIZE_BYTES} 
+WHERE table_id={TABLE_ID};
+
+UPDATE ducklake_table_column_stats SET
+	contains_null = contains_null OR {NULL_COUNT} > 0,
+	contains_nan  = contains_nan OR {NAN_COUNT} > 0,
+	min_value = MIN(min_value, {MIN_VALUE}),
+	max_value = MAX(max_value, {MAX_VALUE}) 
+WHERE 
+	table_id  = {TABLE_ID} AND
+	column_id = {COLUMN_ID};
+
+INSERT INTO ducklake_file_column_statistics 
+	(data_file_id, table_id, column_id, value_count, null_count, nan_count, min_value, max_value, contains_nan)
+VALUES (
+	{DATA_FILE_ID},
+	{TABLE_ID},
+	{COLUMN_ID},
+	{RECORD_COUNT},
+	{NULL_COUNT},
+	{NAN_COUNT},
+	{MIN_VALUE},
+	{MAX_VALUE},
+	{NAN_COUNT} > 0;
+)
+```
+
+where
+- `TABLE_ID` is a `BIGINT` referring to the `table_id` column in the `ducklake_table` table.
+- `COLUMN_ID` is a `BIGINT` referring to the `column_id` column in the `ducklakecolumn` table.
+- `DATA_FILE_ID` is a `BIGINT` referring to the `data_file_id` column in the `ducklake_data_file` table.
+- `RECORD_COUNT` is the number of values (including `NULL` and `NaN`s in the file column.
+- `NULL_COUNT` is the number of `NULL` values in the file column.
+- `NAN_COUNT` is the number of `NaN` values in the file column (floating-point only).
+- `MIN_VALUE` is the *minimum* value in the file column as a string.
+- `MAX_VALUE` is the *maximum* value in the file column as a string.
+- `FILE_SIZE_BYTES` is the size of the new Parquet file.
+
+
+
+> This example assumes there are already rows in the table. If there are none, we need to use `INSERT` instead here.
+ We also skipped the `column_size_bytes` column here, it can safely be set to `NULL`.
+
+
+TODO: link to table schema of ducklake_table_stats, ducklake_table_column_stats and ducklake_file_column_statistics
+
