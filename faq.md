@@ -68,7 +68,7 @@ When comparing to other technologies, DuckLake is similar to Delta Lake with Uni
 
 <div class="answer" markdown="1">
 
-First of all, a pun with a DuckDB-originated technology for data lakes and lakehouses.
+First of all, a catchy name for a DuckDB-originated technology for data lakes and lakehouses.
 More seriously, the term “DuckLake” can refer to three things:
 
 1. the _specification_ of the DuckLake lakehouse format,
