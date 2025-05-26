@@ -154,11 +154,11 @@ DuckLake has all of your favorite LakeHouse features:
 
 **Planned Future Work**
 
-Iceberg / Data Lake metadata import and export
-Import from Hive-Partitioned directories
-JSON shredding
-ODBC metadata connector
-Rollback to previous snapshot
+- Iceberg / Data Lake metadata import and export
+- Import from Hive-Partitioned directories
+- JSON shredding
+- ODBC metadata connector
+- Rollback to previous snapshot
 
 
 Press inquiries
