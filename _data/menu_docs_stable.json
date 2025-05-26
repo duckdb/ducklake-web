@@ -84,6 +84,14 @@
                 {
                   "page": "Tables",
                   "url": "tables"
+                },
+                {
+                  "page": "Queries",
+                  "url": "queries"
+                },
+                {
+                  "page": "Types",
+                  "url": "types"
                 }
               ]
             }
