@@ -173,9 +173,10 @@ TODO
 
 <div class="answer" markdown="1">
 
-The “small files problem” is a well-known problem in data lake formats and occurs e.g. when data is inserted in small batches, yielding many small files with each storing only a small amount of data.
+The “small files problem” is a well-known problem in data lake formats and occurs e.g. when data is inserted in small batches,
+yielding many small files with each storing only a small amount of data.
 DuckLake significantly mitigates this problem by storing the metadata in a database system (catalog database) and making the compaction step simple.
-DuckLake also harnesses the catalog database to stage data before serializing it into Parquet files.
+DuckLake also harnesses the catalog database to stage data (a technique called “data inlining”) before serializing it into Parquet files.
 Further improvements are on the roadmap.
 
 </div>

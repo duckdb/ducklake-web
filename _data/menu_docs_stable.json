@@ -67,6 +67,31 @@
               ]
             }
           ]
+        },
+        {
+          "page": "Specification",
+          "open": true,
+          "slug": "specification",
+          "subfolderitems": [
+            {
+              "page": "Introduction",
+              "url": "introduction"
+            },
+            {
+              "page": "Catalog",
+              "slug": "catalog",
+              "subsubfolderitems": [
+                {
+                  "page": "Tables",
+                  "url": "tables"
+                },
+                {
+                  "page": "functions",
+                  "url": "functions"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
