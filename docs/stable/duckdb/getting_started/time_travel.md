@@ -3,8 +3,8 @@ layout: docu
 title: Time Travel
 ---
 
-In DuckLake, every [snapshot](snapshots) represents a consistent state of the database.
-DuckLake keeps a record of all historic snapshots and their changesets, unless [compaction](../advanced_features/compaction) is triggered and historic snapshots are explicitly deleted.
+In DuckLake, every [snapshot]({% link docs/stable/duckdb/getting_started/snapshots.md %}) represents a consistent state of the database.
+DuckLake keeps a record of all historic snapshots and their changesets, unless [compaction]({% link docs/stable/advanced_features/compaction.md %}) is triggered and historic snapshots are explicitly deleted.
 
 Using time travel, it is possible to query the state of the database as of any recorded snapshot.
 The snapshot to query can be specified either (1) using a timestamp, or (2) explicitly using a snapshot identifier.

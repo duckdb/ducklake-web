@@ -10,16 +10,17 @@ Snapshots can create tables, insert or delete data, and alter schemas.
 Changes can only be made to DuckLake using snapshots.
 Every set of changes must be accompanied by a snapshot.
 
-### Snapshots
+## Snapshots
+
 The set of snapshots can be queried using the `snapshots()` function.
 This returns a list of all snapshots. For example:
 
 ```sql
 ATTACH 'ducklake:snapshot_test.db' (DATA_PATH 'snapshot_files');
 USE snapshot_test;
-CREATE TABLE tbl(i INTEGER);
+CREATE TABLE tbl (i INTEGER);
 INSERT INTO tbl VALUES (1), (2), (3);
-DELETE FROM tbl WHERE i=2;
+DELETE FROM tbl WHERE i = 2;
 SELECT * FROM snapshots();
 ```
 
