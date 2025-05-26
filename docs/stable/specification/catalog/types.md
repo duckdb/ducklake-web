@@ -6,6 +6,8 @@ title: Types
 ## Data Types
 DuckLake specifies multiple data types for field values.
 
+{% raw %}
+```cpp
 {{{"boolean", LogicalTypeId::BOOLEAN},
  {"int8", LogicalTypeId::TINYINT},
  {"int16", LogicalTypeId::SMALLINT},
@@ -47,3 +49,4 @@ DuckLake specifies multiple data types for field values.
   case LogicalTypeId::VARCHAR:
     if (!StringType::GetCollation(type).empty()) {
       throw InvalidInput
+{% endraw %}
