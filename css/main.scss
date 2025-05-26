@@ -581,12 +581,6 @@ header .headerline{
 					  stroke: #2EAFFF;
 					}
 				}
-				.icon {
-					width: 24px;
-					height: 24px;
-					display: inline-block;
-					vertical-align: middle;
-				}
 				svg path{
 					fill: var(--main-text-secondary-color, #666);
 				}
@@ -976,11 +970,13 @@ body.documentation main .wrap.frequentlyaskedquestions{
 		padding-right: 55px;
 		&::after{
 			content: " ";
-			background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='15' cy='15' r='15' fill='%23D9D9D9' fill-opacity='0.6'/%3E%3Cpath d='M21.5 13L15 20L8.5 13' stroke='%230D0D0D' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%230D0D0D' stroke-linecap='square' stroke-width='1.5' d='m18 9.5-6 6-6-6'/%3E%3C/svg%3E");
+			background-color: var(--doc-codebox-button-background-color-hover, rgba(217, 217, 217, 0.60));
 			background-size: contain;
 			background-repeat: no-repeat;
-			width: 30px;
-			height: 30px;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
 			position: absolute;
 			right: 0px;
 			top: -5px;
