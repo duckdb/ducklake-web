@@ -139,6 +139,10 @@
                   "url": "transactions"
                 },
                 {
+                  "page": "Views",
+                  "url": "views"
+                },
+                {
                   "page": "Comments",
                   "url": "comments"
                 }
