@@ -14,5 +14,14 @@ Install the latest stable [DuckDB](https://duckdb.org/docs/installation/).
 INSTALL ducklake;
 ```
 
+## Configuration
+
+To use DuckLake, you need to make two decisions: Which [metadata catalog database you want to use]({% link docs/stable/duckdb/getting_started/choosing_a_catalog_database.md %}) and [where you want to store those files]({% link docs/stable/duckdb/getting_started/choosing_storage.md %}). In the simplest case, you use a local DuckDB file for the metadata catalog and a local folder on your computer for file storage. 
+
+
+## Creating a new Database
+
+
+
 ## Attaching to a Database
 
