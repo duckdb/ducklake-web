@@ -52,8 +52,8 @@
                   "url": "choosing_a_catalog_database"
                 },
                 {
-                  "page": "Lightweight Snapshots",
-                  "url": "lightweight_snapshots"
+                  "page": "Snapshots",
+                  "url": "snapshots"
                 },
                 {
                   "page": "Schema Evolution",
