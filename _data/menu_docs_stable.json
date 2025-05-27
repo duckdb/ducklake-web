@@ -56,6 +56,10 @@
                   "url": "snapshots"
                 },
                 {
+                  "page": "Partitioning",
+                  "url": "partitioning"
+                },
+                {
                   "page": "Schema Evolution",
                   "url": "schema_evolution"
                 },
