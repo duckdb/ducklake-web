@@ -47,6 +47,18 @@ jobs:
           name: html_artifact
           path: _site
 
+  package_into_a_single_artifact:
+    runs-on: ubuntu-24.04
+    needs: [build_html]
+    steps:
+      # download both the html and the pdf artifacts into the _site directory
+      - uses: actions/download-artifact@v4
+        with:
+          name: html_artifact
+          path: _site
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+
   # Deployment job
   deploy:
     environment:
