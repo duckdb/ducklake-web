@@ -30,7 +30,7 @@ ATTACH 'ducklake:my_ducklake.ducklake' AS my_ducklake;
 USE my_ducklake;
 ```
 
-This will create a file `my_ducklake.ducklake`, which is a DuckDB database with the [DuckLake schema](% link docs/stable/specification/tables/overview.md %). 
+This will create a file `my_ducklake.ducklake`, which is a DuckDB database with the [DuckLake schema]({% link docs/stable/specification/tables/overview.md %}).
 
 We also use `USE` so we don't have to prefix all table names with `my_ducklake`. Once data is inserted, this will also create a folder `my_ducklake.ducklake.files` in the same directory, where Parquet files are stored.
 
