@@ -110,7 +110,7 @@ Now we have a list of files. In order to reconstruct actual table rows, we need 
 
 Not all files have to contain all the columns currently defined in the table, some files may also have columns that existed previously but have been removed.
 
-> DuckLake also supports changing the schema, see [schema evolution]({% link docs/stable/duckdb/getting_started/schema_evolution.md %}).
+> DuckLake also supports changing the schema, see [schema evolution]({% link docs/stable/duckdb/usage/schema_evolution.md %}).
 
 
 > In DuckLake, paths can be relative to the initially specified data path. Whether path is relative or not is stored in the
@@ -336,7 +336,7 @@ where
 > Refer to the [`ducklake_data_file` table]({% link docs/stable/specification/tables/ducklake_data_file.md %}) documentation for details.
 
 
-> DuckLake also supports changing the schema, see [schema evolution]({% link docs/stable/duckdb/getting_started/schema_evolution.md %}).
+> DuckLake also supports changing the schema, see [schema evolution]({% link docs/stable/duckdb/usage/schema_evolution.md %}).
 
 We will also have to update some statistics in the [`ducklake_table_stats` table]({% link docs/stable/specification/tables/ducklake_table_stats.md %}) and [`ducklake_table_column_stats` table]({% link docs/stable/specification/tables/ducklake_table_column_stats.md %})` tables.
 

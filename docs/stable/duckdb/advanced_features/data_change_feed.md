@@ -3,7 +3,7 @@ layout: docu
 title: Data Change Feed
 ---
 
-In addition to allowing you to query the [state of the database at any point in time]({% link docs/stable/duckdb/getting_started/time_travel.md %}),
+In addition to allowing you to query the [state of the database at any point in time]({% link docs/stable/duckdb/usage/time_travel.md %}),
 DuckLake allows you to query the *changes that were made between any two snapshots*. This can be done using the `table_changes` function.
 
 ## Examples
@@ -53,7 +53,7 @@ FROM changes.table_changes('tbl', now() - INTERVAL '1 week', now());
 ## `table_changes`
 
 The `table_changes` function takes as input the table for which changes should be returned, and two bounds: the start snapshot and the end snapshot (inclusive).
-The bounds can be given either as a [snapshot id]({% link docs/stable/duckdb/getting_started/snapshots.md %}), or as a timestamp.
+The bounds can be given either as a [snapshot id]({% link docs/stable/duckdb/usage/snapshots.md %}), or as a timestamp.
 
 The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid` and `change_type`.
 

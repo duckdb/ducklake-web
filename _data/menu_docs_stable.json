@@ -59,12 +59,16 @@
               "url": "introduction"
             },
             {
-              "page": "Getting Started",
-              "slug": "getting_started",
+              "page": "Usage",
+              "slug": "usage",
               "subsubfolderitems": [
                 {
                   "page": "Choosing a Catalog Database",
                   "url": "choosing_a_catalog_database"
+                },
+                {
+                  "page": "Choosing Storage",
+                  "url": "choosing_storage"
                 },
                 {
                   "page": "Snapshots",
