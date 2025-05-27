@@ -321,18 +321,6 @@ section.podcast{
 				transform: translate(-50%, -50%);
 				transition: all .3s ease;
 				pointer-events: none;
-				
-				svg {
-					filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-					
-					circle {
-						transition: all .3s ease;
-					}
-					
-					path {
-						transition: all .3s ease;
-					}
-				}
 			}
 			
 			&.loading {
