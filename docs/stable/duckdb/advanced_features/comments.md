@@ -6,7 +6,7 @@ title: Comments
 Comments can be added to tables, views and columns using the [`COMMENT ON`](https://duckdb.org/docs/stable/sql/statements/comment_on.html) syntax.
 The comments are stored in the metadata, and can be modified in a transactional manner.
 
-### Examples
+## Examples
 
 Create a comment on a `TABLE`:
 
