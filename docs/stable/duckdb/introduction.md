@@ -37,7 +37,7 @@ We also use `USE` so we don't have to prefix all table names with `my_ducklake`.
 If you would like to use another directory, you can specify this in the `DATA_PATH` parameter for `ATTACH`:
 
 ```sql
-ATTACH 'ducklake:my_other_ducklake.ducklake' AS my_other_ducklake (DATA_PATH 'some/other/path');
+ATTACH 'ducklake:my_other_ducklake.ducklake' AS my_other_ducklake (DATA_PATH 'some/other/path/');
 USE ...;
 ```
 

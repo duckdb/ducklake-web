@@ -21,7 +21,7 @@
 {% highlight sql %}
 INSTALL ducklake;
 
-ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake;
 USE my_ducklake;
 {% endhighlight %}
 				</div>
@@ -37,7 +37,7 @@ USE my_ducklake;
 {% highlight sql %}
 INSTALL ducklake;
 
-ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake;
 USE my_ducklake;
 {% endhighlight %}
 </div>
@@ -58,7 +58,7 @@ USE my_ducklake;
 INSTALL ducklake;
 INSTALL sqlite;
 
-ATTACH 'sqlite:metadata.sqlite' AS my_ducklake (DATA_PATH 'data_files');
+ATTACH 'sqlite:metadata.sqlite' AS my_ducklake;
 USE my_ducklake;
 {% endhighlight %}
 </div>
