@@ -33,7 +33,7 @@ FROM db.table_changes('tbl', 2, 2);
 | 2           | 0     | insert      | 1  | Hello    |
 | 2           | 1     | insert      | 2  | DuckLake |
 
-##### Changes made between multiple snapshots
+### Changes Made between multiple snapshots
 
 ```sql
 FROM db.table_changes('tbl', 3, 4);

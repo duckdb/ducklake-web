@@ -7,7 +7,6 @@
       "mainfolderitems": [
         {
           "page": "Specification",
-          "open": true,
           "slug": "specification",
           "subfolderitems": [
             {
@@ -15,21 +14,37 @@
               "url": "introduction"
             },
             {
-              "page": "Catalog",
-              "slug": "catalog",
+              "page": "Data Types",
+              "url": "data_types"
+            },
+            {
+              "page": "Queries",
+              "url": "queries"
+            },
+            {
+              "page": "Tables",
+              "slug": "tables",
               "subsubfolderitems": [
-                {
-                  "page": "Tables",
-                  "url": "tables"
-                },
-                {
-                  "page": "Queries",
-                  "url": "queries"
-                },
-                {
-                  "page": "Types",
-                  "url": "types"
-                }
+                {"page": "Overview", "url": "overview"},
+                {"page": "column", "url": "ducklake_column"},
+                {"page": "column_tag", "url": "ducklake_column_tag"},
+                {"page": "data_file", "url": "ducklake_data_file"},
+                {"page": "delete_file", "url": "ducklake_delete_file"},
+                {"page": "file_column_statistics", "url": "ducklake_file_column_statistics"},
+                {"page": "file_partition_value", "url": "ducklake_file_partition_value"},
+                {"page": "files_scheduled_for_deletion", "url": "ducklake_files_scheduled_for_deletion"},
+                {"page": "inlined_data_tables", "url": "ducklake_inlined_data_tables"},
+                {"page": "metadata", "url": "ducklake_metadata"},
+                {"page": "partition_column", "url": "ducklake_partition_column"},
+                {"page": "partition_info", "url": "ducklake_partition_info"},
+                {"page": "schema", "url": "ducklake_schema"},
+                {"page": "snapshot", "url": "ducklake_snapshot"},
+                {"page": "snapshot_changes", "url": "ducklake_snapshot_changes"},
+                {"page": "table", "url": "ducklake_table"},
+                {"page": "table_column_stats", "url": "ducklake_table_column_stats"},
+                {"page": "table_stats", "url": "ducklake_table_stats"},
+                {"page": "tag", "url": "ducklake_tag"},
+                {"page": "view", "url": "ducklake_view"}
               ]
             }
           ]

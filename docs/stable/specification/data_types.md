@@ -1,14 +1,12 @@
 ---
 layout: docu
-title: Types
+title: Data Types
 ---
-
-## Data Types
 
 DuckLake specifies multiple different data types for field values, and also supports nested types.
 The types of columns are defined in the `column_type` field of the `ducklake_column` table.
 
-### Primitive Types
+## Primitive Types
 
 | Type            | Description                                                                                  |
 | --------------- | -------------------------------------------------------------------------------------------- |
@@ -37,7 +35,7 @@ The types of columns are defined in the `column_type` field of the `ducklake_col
 | `blob`          | Binary data                                                                                  |
 | `uuid`          | [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) |
 
-### Nested Types
+## Nested Types
 
 DuckLake supports nested types and primitive types. Nested types are defined recursively, i.e.,
 in order to define a column of type `INT[]` two columns are defined. The top-level column is of type `list`, which has a child column of type `int32`.

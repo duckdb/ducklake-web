@@ -134,7 +134,7 @@ For small changes, DuckLake will *dramatically reduce the number of small files*
 
 In DuckLake, table changes consist of two steps: staging the data files (if any) to storage, and then running a single SQL transaction in the catalog database. This greatly reduces the time spent in the critical path of transaction commits, there is only a single transaction to run. SQL databases are pretty good at de-conflicting transactions. This means that the compute nodes spend a much smaller amount of time in the critical path where conflicts can occur. This allows for much faster conflict resolution and for many more concurrent transactions. Essentially, DuckLake supports as many table changes as the catalog database can commit. Even the venerable Postgres can run thousands of transactions *per second*. One could run a thousand compute nodes running appends to a table at a one-second interval and it would work fine.
 
-In addition, DuckLake snapshots are just a few rows added to the metadata store, allowing for many snapshots to exist at the same time. There is no need to proactively prune snapshots. Snapshots can also refer to *parts of a Parquet file*, allowing many more snapshots to exist than there are files on disk. Combined, this allows DuckLake to manage *millions of snapshots*!
+In addition, DuckLake snapshots are just a few rows added to the metadata store, allowing for many snapshots to exist at the same time. There is no need to proactively prune snapshots. Snapshots can also refer to *parts of a Parquet file*, allowing many more snapshots to exist than there are files on disk. Combined, this allows DuckLake to manage *millions of snapshots!*
 
 ## Features
 

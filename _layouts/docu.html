@@ -146,12 +146,6 @@
 				{% assign ct = content | toc %}
 				{% include anchor_headings.html html=content %}
 				
-				{% if page.url contains 'overview' %}
-				<div class="index">
-					<h2 id="pages-in-this-section">Pages in This Section</h2>
-				</div>
-				{% endif %}
-				
 				{% comment %}
 				{% if page.url contains '/docs/' %}
 				<div class="pagemeta">
