@@ -27,3 +27,5 @@ Remove the partitioning keys of a table, such that new data added to the table i
 ```sql
 ALTER TABLE tbl RESET PARTITIONED BY;
 ```
+
+> Currently DuckLake only supports partitioning by columns directly. We plan to expand this to partitioning over functions in the near future.
