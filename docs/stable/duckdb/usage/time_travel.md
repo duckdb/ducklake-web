@@ -3,7 +3,7 @@ layout: docu
 title: Time Travel
 ---
 
-In DuckLake, every [snapshot]({% link docs/stable/duckdb/getting_started/snapshots.md %}) represents a consistent state of the database.
+In DuckLake, every [snapshot]({% link docs/stable/duckdb/usage/snapshots.md %}) represents a consistent state of the database.
 DuckLake keeps a record of all historic snapshots and their changesets, unless [compaction]({% link docs/stable/duckdb/advanced_features/compaction.md %}) is triggered and historic snapshots are explicitly deleted.
 
 Using time travel, it is possible to query the state of the database as of any recorded snapshot.
@@ -21,7 +21,7 @@ SELECT * FROM tbl AT (VERSION => 3);
 Query the table as it was last week.
 
 ```sql
-SELECT * FROM tbl AT (TIMESTAMP => NOW() - INTERVAL '1 week');
+SELECT * FROM tbl AT (TIMESTAMP => now() - INTERVAL '1 week');
 ```
 
 Attach a DuckLake database at a specific snapshot version.
