@@ -820,4 +820,16 @@ $(document).ready(function(){
 		$(this).wrapInner('<code class="language-plaintext"></code>');
 	});
 	
+	
+	// Video Thumbnail – Click to Play
+	$('.video-thumbnail').click(function() {
+		const videoContainer = $(this).siblings('.video-container');
+		const iframe = videoContainer.find('iframe');
+
+		const baseSrc = iframe.data('src');
+		iframe.attr('src', baseSrc + '?autoplay=1');
+		
+		videoContainer.show();
+		$(this).hide();
+	});
 });
