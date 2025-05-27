@@ -778,7 +778,9 @@ footer .sitefooter .footercontent > div a:hover{
 	.cards.vertical.icons .card {
 		width: 100%;
 	}
-	
+	body.landing .window .content{
+		padding: 15px;
+	}
 	body.landing section#quickinstall .wrap .install{
 		width: 100%;
 	}
