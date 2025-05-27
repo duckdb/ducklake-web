@@ -44,7 +44,7 @@ The solution was another layer of technology: we added a catalog service on top 
 ![Iceberg catalog architecture]({{ site.baseurl }}/images/manifesto/dark/iceberg-catalog-architecture.png){: .darkmode-img }
 *Iceberg catalog architecture*{: .caption }
 
-## A database you say?
+## A Database You Say?
 
 But here’s the problem: Iceberg and Delta Lake were specifically designed to *not* require a database. Their designers went to great lengths to encode all information needed to efficiently read and update tables into files on the blob store. They make many compromises to achieve this. For example, every single root file in Iceberg contains *all* existing snapshots complete with schema information, etc. For every single change, a new file is written that contains the complete history. A lot of other metadata had to be batched together, e.g., in the two-layer manifest files to avoid writing or reading too many small files, something that would not be efficient on blob stores. Making small changes to data is also a largely unsolved problem that requires complex cleanup procedures that are still not very well understood nor supported by open-source implementations. Entire companies exist and are still being started to solve this problem of managing fast-changing data. Almost as if a specialized data management system of sorts would be a good idea.
 
