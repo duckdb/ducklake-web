@@ -71,10 +71,6 @@
                   "url": "snapshots"
                 },
                 {
-                  "page": "Partitioning",
-                  "url": "partitioning"
-                },
-                {
                   "page": "Schema Evolution",
                   "url": "schema_evolution"
                 },
@@ -111,6 +107,10 @@
                 {
                   "page": "Encryption",
                   "url": "encryption"
+                },
+                {
+                  "page": "Partitioning",
+                  "url": "partitioning"
                 },
                 {
                   "page": "Transactions",

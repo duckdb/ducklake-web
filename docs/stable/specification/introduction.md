@@ -19,7 +19,7 @@ This specification explains the schema and semantics of these:
 
 * [Data Types]({% link docs/stable/specification/data_types.md %})
 * [Queries]({% link docs/stable/specification/queries.md %})
-* [Tables]({% link docs/stable/specification/tables.md %})
+* [Tables]({% link docs/stable/specification/tables/overview.md %})
 
 If you are reading this specification for the first time,
 we recommend starting with the [Queries page]({% link docs/stable/specification/queries.md %}),
