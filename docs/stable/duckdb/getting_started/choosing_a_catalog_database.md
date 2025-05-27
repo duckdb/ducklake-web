@@ -52,7 +52,7 @@ INSTALL ducklake;
 INSTALL mysql;
 
 -- Make sure that the database `ducklake_catalog` exists in MySQL
-ATTACH 'mysql:db=ducklake_catalog' AS my_ducklake;
+ATTACH 'mysql:db=ducklake_catalog host=localhost' AS my_ducklake;
 USE my_ducklake;
 ```
 
