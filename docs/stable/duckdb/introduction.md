@@ -62,7 +62,7 @@ Don't forget to either specify the database name of the DuckLake explicity or us
 
 ### Example
 
-Lets observe what happens in DuckLake when we interact with a dataset. We will use the [Netherlands train traffic dataset](https://duckdb.org/2024/05/31/analyzing-railway-traffic-in-the-netherlands.html) here.
+Let's observe what happens in DuckLake when we interact with a dataset. We will use the [Netherlands train traffic dataset](https://duckdb.org/2024/05/31/analyzing-railway-traffic-in-the-netherlands.html) here.
 
 We use the example DuckLake from above:
 
@@ -78,17 +78,17 @@ CREATE TABLE nl_train_stations AS
     FROM 'https://blobs.duckdb.org/nl_stations.csv';
 ```
 
-Now lets peek behind the courtains. The data was just read into a Parquet file, wich we can also just query.
+Now Let's peek behind the courtains. The data was just read into a Parquet file, which we can also just query.
 
 ```sql
 FROM glob('my_ducklake.ducklake.files/*');
 FROM 'my_ducklake.ducklake.files/*.parquet' LIMIT 10;
 ```
 
-But now lets change some things around. We're really unhappy with the name of the old name of the "Amsterdam Bijlmer ArenA" station now that the stadium has been renamed to "[Johan Cruijff](https://en.wikipedia.org/wiki/Johan_Cruyff) ArenA". So let's change that.
+But now Let's change some things around. We're really unhappy with the name of the "Amsterdam Bijlmer ArenA" station now that the stadium has been renamed to "[Johan Cruijff](https://en.wikipedia.org/wiki/Johan_Cruyff) ArenA". So let's change that.
 
 ```sql
-UPDATE nl_train_stations SET name_long='Johan Cruijff ArenA'  WHERE code = 'ASB';
+UPDATE nl_train_stations SET name_long='Johan Cruijff ArenA' WHERE code = 'ASB';
 ```
 
 Poof, its changed. We can confirm:
@@ -98,15 +98,17 @@ SELECT name_long FROM nl_train_stations WHERE code = 'ASB';
 ```
 
 In the background, more files have appeared:
+
 ```sql
 FROM glob('my_ducklake.ducklake.files/*');
-``` 
+```
 
 We now see three files. The original data file, the rows that were deleted, and the rows that were inserted. Like most systems, DuckLake models updates as deletes followed by inserts. The deletes are just a Parquet file, we can query it:
 
 ```sql
 FROM 'my_ducklake.ducklake.files/ducklake-*-delete.parquet';
 ```
+
 The file should contain a single row that marks row 29 as deleted. A new file has appared that contains the new values for this row.
 
 There are now three snapshots, the table creation, data insertion, and the update. We can query that using the `snapshots()` function:
@@ -118,8 +120,8 @@ FROM my_ducklake.snapshots();
 And we can query this table at each point:
 
 ```sql
-SELECT name_long FROM nl_train_stations AT (VERSION=>1) WHERE code = 'ASB';
-SELECT name_long FROM nl_train_stations AT (VERSION=>2) WHERE code = 'ASB';
+SELECT name_long FROM nl_train_stations AT (VERSION => 1) WHERE code = 'ASB';
+SELECT name_long FROM nl_train_stations AT (VERSION => 2) WHERE code = 'ASB';
 ```
 
 Time travel finally achieved!
