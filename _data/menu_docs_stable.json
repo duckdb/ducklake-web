@@ -137,6 +137,10 @@
                 {
                   "page": "Transactions",
                   "url": "transactions"
+                },
+                {
+                  "page": "Comments",
+                  "url": "comments"
                 }
               ]
             }
