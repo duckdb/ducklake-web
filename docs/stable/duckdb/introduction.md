@@ -63,7 +63,7 @@ Note that – similarly to other data lake and lakehouse formats – the DuckLak
 A DuckLake database behaves just like any other database in DuckDB. For example, you can run:
 
 ```sql
-ATTACH 'ducklake:my_ducklake.ducklake' AS my_ducklake (DATA_PATH 'x/');
+ATTACH 'ducklake:my_ducklake.ducklake' AS my_ducklake;
 USE my_ducklake;
 
 CREATE TABLE nl_train_stations AS
