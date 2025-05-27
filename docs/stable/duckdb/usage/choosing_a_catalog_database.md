@@ -20,7 +20,7 @@ So, to get started, you only need to install the [`ducklake` extension](https://
 ```sql
 INSTALL ducklake;
 
-ATTACH 'ducklake:metadata.ducklake' AS my_ducklake (DATA_PATH 'data_files');
+ATTACH 'ducklake:metadata.ducklake' AS my_ducklake;
 USE my_ducklake;
 ```
 
@@ -53,7 +53,7 @@ Install the `ducklake` and the `sqlite` extension, and attach to your DuckLake a
 INSTALL ducklake;
 INSTALL sqlite;
 
-ATTACH 'ducklake:sqlite:metadata.sqlite' AS my_ducklake (DATA_PATH 'data_files');
+ATTACH 'ducklake:sqlite:metadata.sqlite' AS my_ducklake;
 USE my_ducklake;
 ```
 
