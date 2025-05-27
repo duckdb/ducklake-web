@@ -156,7 +156,7 @@ We expect DuckLake to mature over the course of 2025.
 
 <div class="answer" markdown="1">
 
-TODO
+DuckLake inherits its authentication from the authentication of the metadata catalog database. For example, if your catalog database is Postgres, you can use Postgres' [authentication](https://www.postgresql.org/docs/current/auth-methods.html) and [authorization](https://www.postgresql.org/docs/current/ddl-priv.html) [methods](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)  to protect your DuckLake. This is particularly effective when enabling encryption of DuckLake files.
 
 </div>
 
@@ -221,8 +221,8 @@ No. Similarly to other data lakehouse technologies, DuckLake does not support co
 
 <div class="answer" markdown="1">
 
-This is currently not supported.
-You can export DuckLake into a DuckDB database and export it into e.g. vanilla Parquet files.
+This is currently not supported, but planned for the future.
+Currently, you can export DuckLake into a DuckDB database and export it into e.g. vanilla Parquet files.
 
 </div>
 

@@ -8,7 +8,7 @@ In DuckDB, DuckLake is supported through the [`ducklake` extension](https://duck
 ## Installation
 
 Install the latest stable [DuckDB](https://duckdb.org/docs/installation/).
-(The `ducklake` extensions requires DuckDB v1.3.0+.)
+(The `ducklake` extensions requires DuckDB v1.3.0 "Ossivalis" or later.)
 
 ```sql
 INSTALL ducklake;
