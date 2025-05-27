@@ -19,8 +19,8 @@ This table contains column-level statistics for a single data file.
 | `contains_nan`      | `BOOLEAN`   |             |
 
 - `data_file_id` refers to a `data_file_id` from the `ducklake_data_file` table. 
-- `table_id` refers to a `table_id` from the `ducklake_table` table. 
-- `column_id` refers to a `column_id` from the `ducklake_column` table. 
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}). 
+- `column_id` refers to a `column_id` from the [`ducklake_column` table]({% link docs/stable/specification/tables/ducklake_column.md %}). 
 - `column_size_bytes` is the byte size of the column.
 - `value_count` is the number of values in the column. This does not have to correspond to the number of records in the file for nested types.
 - `null_count` is the number of values in the column that are `NULL`.

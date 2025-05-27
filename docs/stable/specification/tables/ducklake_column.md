@@ -20,9 +20,9 @@ This table describes the columns that are part of a table, including their types
 | `parent_column`   | `BIGINT`    |             |
 
 - `column_id` is the numeric identifier of the column.
-- `begin_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The column exists *starting with* this snapshot id.
-- `end_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The column exists *until* this snapshot id. If `end_snapshot` is `NULL`, the view is currently valid.
-- `table_id` refers to a `table_id` from the `ducklake_table` table.
+- `begin_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The column exists *starting with* this snapshot id.
+- `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The column exists *until* this snapshot id. If `end_snapshot` is `NULL`, the view is currently valid.
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
 - `column_order` is a number that defines the position of the column in the list of columns. it needs to be unique within a snapshot but does not have to be strictly monotonic (holes are ok).
 - `column_name` is the name of the column, e.g. `my_column`.
 - `column_type` is the type of the column as defined in the list of [data types]({% link docs/stable/specification/data_types.md %}).

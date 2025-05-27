@@ -14,9 +14,9 @@ Columns can also have tags, those are defined in this table.
 | `key`            | `VARCHAR`   |             |
 | `value`          | `VARCHAR`   |             |
 
-- `table_id` refers to a `table_id` from the `ducklake_table` table. 
-- `column_id` refers to a `column_id` from the `ducklake_column` table. 
-- `begin_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *starting with* this snapshot id.
-- `end_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *until* this snapshot id. If `end_snapshot` is `NULL`, the tag is currently valid.
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}). 
+- `column_id` refers to a `column_id` from the [`ducklake_column` table]({% link docs/stable/specification/tables/ducklake_column.md %}). 
+- `begin_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The tag is valid *starting with* this snapshot id.
+- `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The tag is valid *until* this snapshot id. If `end_snapshot` is `NULL`, the tag is currently valid.
 - `key` is an arbitrary key string. The key can't be `NULL`.
 - `value` is the arbitrary value string.

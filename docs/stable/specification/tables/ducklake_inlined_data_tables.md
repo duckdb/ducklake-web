@@ -11,6 +11,6 @@ This table links DuckLake snapshots with [inlined data tables]({% link docs/stab
 | `table_name`      | `VARCHAR`   |             |
 | `schema_snapshot` | `BIGINT`    |             |
 
-- `table_id` refers to a `table_id` from the `ducklake_table` table.
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
 - `table_name` is a string that names the data table for inlined data.
-- `schema_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. TODO: is this true?
+- `schema_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). TODO: is this true?

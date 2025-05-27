@@ -14,8 +14,8 @@ Partitions can refer to one or more columns, possibly with transformations such 
 | `transform`           | `VARCHAR`   |             |
 
 - `partition_id` refers to a `partition_id` from the `ducklake_partition_info` table. 
-- `table_id` refers to a `table_id` from the `ducklake_table` table. 
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}). 
 - `partition_key_index` defines where in the partition key the column is. For example, in a partitioning by (`a`, `b`, `c`) the `partition_key_index` of `b` would be `1`.
-- `column_id` refers to a `column_id` from the `ducklake_column` table. 
+- `column_id` refers to a `column_id` from the [`ducklake_column` table]({% link docs/stable/specification/tables/ducklake_column.md %}). 
 - `transform` defines a SQL-level expression to transform the column value, e.g. hashing.
 

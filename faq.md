@@ -32,7 +32,7 @@ a concurrency model [not supported by vanilla DuckDB](https://duckdb.org/docs/st
 
 If you only use DuckDB for both your DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
 you can run [time travel queries]({% link docs/stable/duckdb/getting_started/time_travel.md %}),
-exploit [data partitioning]({% docs/stable/duckdb/advanced_features/partitioning.md %}),
+exploit [data partitioning]({% link docs/stable/duckdb/advanced_features/partitioning.md %}),
 and can store your data in multiple files instead of using a single (potentially very large) database file.
 
 </div>

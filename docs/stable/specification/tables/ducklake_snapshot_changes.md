@@ -13,7 +13,7 @@ This table lists changes that happened in a snapshot for easier conflict detecti
 
 The `ducklake_snapshot_changes` table contains a summary of changes made by a snapshot. This table is used during [Conflict Resolution](..) to quickly find out if two snapshots have conflicting changesets.
 
-- `snapshot_id` refers to a `snapshot_id` from the `ducklake_snapshot` table.
+- `snapshot_id` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}).
 - `changes_made` is a comma-separated list of high-level changes made by the snapshot. The values that are contained in this list have the following format:
 
 * `created_schema:{SCHEMA_NAME}` - the snapshot created a schema with the given name
