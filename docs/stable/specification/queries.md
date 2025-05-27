@@ -251,8 +251,15 @@ A table needs some columns, we can add columns to the new table by inserting int
 For each column to be added, we run the following query:
 
 ```sql
-INSERT INTO ducklake_column
-    (column_id, begin_snapshot, end_snapshot, table_id, column_order, column_name, column_type, nulls_allowed)
+INSERT INTO ducklake_column (column_id,
+    begin_snapshot,
+    end_snapshot,
+    table_id,
+    column_order,
+    column_name,
+    column_type,
+    nulls_allowed
+)
 VALUES (
     ⟨COLUMN_ID⟩,
     ⟨SNAPSHOT_ID⟩,
@@ -261,7 +268,8 @@ VALUES (
     ⟨COLUMN_ORDER⟩,
     ⟨COLUMN_NAME⟩,
     ⟨COLUMN_TYPE⟩,
-    ⟨NULLS_ALLOWED⟩);
+    ⟨NULLS_ALLOWED⟩
+);
 ```
 
 where

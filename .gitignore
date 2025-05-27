@@ -318,3 +318,5 @@ environment.pickle
 
 duckdb-web-venv/
 duckdb_web_venv/
+
+*.ducklake

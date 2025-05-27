@@ -17,7 +17,7 @@ CREATE TABLE db.tbl(id INTEGER, val VARCHAR);
 -- snapshot 2
 INSERT INTO db.tbl VALUES (1, 'Hello'), (2, 'DuckLake');
 -- snapshot 3
-DELETE FROM db.tbl WHERE id=1;
+DELETE FROM db.tbl WHERE id = 1;
 -- snapshot 4
 UPDATE db.tbl SET val = concat(val, val, val);
 ```
@@ -47,7 +47,7 @@ FROM db.table_changes('tbl', 3, 4);
 ### Changes Made in the Last Week
 
 ```sql
-FROM changes.table_changes('tbl', NOW() - INTERVAL '1 week', NOW());
+FROM changes.table_changes('tbl', now() - INTERVAL '1 week', now());
 ```
 
 ## `table_changes`
@@ -63,7 +63,9 @@ The result of the function is the set of changes, read using the table schema as
 | rowid       | The row identifier of the row which was changed     |
 | change_type | insert, update_preimage, update_postimage or delete |
 
-Updates are split into two rows: the `update_preimage` and `update_postimage`. `update_preimage` is the row as it was prior to the update operation. `update_postimage` is the row as it is after the update operation.
+Updates are split into two rows: the `update_preimage` and `update_postimage`.
+`update_preimage` is the row as it was prior to the update operation.
+`update_postimage` is the row as it is after the update operation.
 
 When the schema of a table is altered, changes are read as of the schema of the table as of the end snapshot.
 As such, if a column is dropped in between the provided bounds, the dropped column is omitted from the entire result.
