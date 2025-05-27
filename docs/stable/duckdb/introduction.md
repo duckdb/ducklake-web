@@ -55,6 +55,9 @@ USE my_ducklake;
 ## Using DuckLake
 DuckLake is used just like any other DuckDB database. You can create schemas and tables, insert data, update data, delete data, modify table schemas etc. 
 
+Don't forget to either specify the database name of the DuckLake explicity or use `USE`. Otherwise you might inadvertently use the temporary, in-memory database.
+
+
 ### Detaching from a DuckLake
 To detach from a DuckLake, make sure that your DuckLake is not your default database, then use the [`DETACH` statement](https://duckdb.org/docs/stable/sql/statements/attach#detach):
 
