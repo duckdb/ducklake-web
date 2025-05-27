@@ -42,23 +42,6 @@ strong, b{
 	font-weight: 600;
 }
 
-em.caption{
-	font-style: normal;
-	text-align: center;
-	font-size: 14px;
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 1.5em;
-	color: var(--main-text-tertiary-color);
-}
-
-img.darkmode-img{
-	display: none;
-}
-img.lightmode-img{
-	display: inline;
-}
-
 svg *[stroke],
 svg path{
 	transition: all .3s;
@@ -908,10 +891,7 @@ footer .sitefooter .footercontent > div a:hover{
 			}
 		}
 	}
-	em.caption{
-		font-size: 12px;
-		margin-top: .2em;
-	}
+	
 	@media (pointer: coarse) {
 		section.architecture .diagram .client:hover .hover-content, section.architecture .diagram .database:hover .hover-content, section.architecture .diagram .storage:hover .hover-content{
 			opacity: 0;

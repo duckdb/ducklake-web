@@ -426,6 +426,7 @@
 	body.landing .install p {
 		margin-bottom: 25px;
 	}
+	
 }
 
 @media only screen and (max-width: 660px) {
@@ -593,6 +594,11 @@
 	
 	.pagetitle {
 		padding: 35px 0;
+	}
+	
+	em.caption{
+		font-size: 12px;
+		margin-top: .2em;
 	}
 	
 }
