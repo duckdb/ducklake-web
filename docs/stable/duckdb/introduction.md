@@ -58,38 +58,71 @@ DuckLake is used just like any other DuckDB database. You can create schemas and
 
 Note that – similarly to other data lake and lakehouse formats – the DuckLake format does not support indexes, primary keys, foreign keys, and `UNIQUE` or `CHECK` constraints.
 
-### Running Queries in DuckLake
+Don't forget to either specify the database name of the DuckLake explicity or use `USE`. Otherwise you might inadvertently use the temporary, in-memory database.
 
-A DuckLake database behaves just like any other database in DuckDB. For example, you can run:
+### Example
+
+Lets observe what happens in DuckLake when we interact with a dataset. We will use the [Netherlands train traffic dataset](https://duckdb.org/2024/05/31/analyzing-railway-traffic-in-the-netherlands.html) here.
+
+We use the example DuckLake from above:
 
 ```sql
 ATTACH 'ducklake:my_ducklake.ducklake' AS my_ducklake;
 USE my_ducklake;
+```
 
+Let's now import the dataset into the a new table:
+
+```sql
 CREATE TABLE nl_train_stations AS
     FROM 'https://blobs.duckdb.org/nl_stations.csv';
-
-SELECT code, name_long
-FROM nl_train_stations
-WHERE name_long LIKE 'Amsterdam%';
-LIMIT 3;
 ```
 
-And obtain the following result:
+Now lets peek behind the courtains. The data was just read into a Parquet file, wich we can also just query.
 
-```text
-┌─────────┬─────────────────────────┐
-│  code   │        name_long        │
-│ varchar │         varchar         │
-├─────────┼─────────────────────────┤
-│ ASA     │ Amsterdam Amstel        │
-│ ASB     │ Amsterdam Bijlmer ArenA │
-│ ASD     │ Amsterdam Centraal      │
-└─────────┴─────────────────────────┘
+```sql
+FROM glob('my_ducklake.ducklake.files/*');
+FROM 'my_ducklake.ducklake.files/*.parquet' LIMIT 10;
 ```
 
-Don't forget to either specify the database name of the DuckLake explicity or use `USE`. Otherwise you might inadvertently use the temporary, in-memory database.
+But now lets change some things around. We're really unhappy with the name of the old name of the "Amsterdam Bijlmer ArenA" station now that the stadium has been renamed to "[Johan Cruijff](https://en.wikipedia.org/wiki/Johan_Cruyff) ArenA". So let's change that.
 
+```sql
+UPDATE nl_train_stations SET name_long='Johan Cruijff ArenA'  WHERE code = 'ASB';
+```
+
+Poof, its changed. We can confirm:
+
+```sql
+SELECT name_long FROM nl_train_stations WHERE code = 'ASB';
+```
+
+In the background, more files have appeared:
+```sql
+FROM glob('my_ducklake.ducklake.files/*');
+``` 
+
+We now see three files. The original data file, the rows that were deleted, and the rows that were inserted. Like most systems, DuckLake models updates as deletes followed by inserts. The deletes are just a Parquet file, we can query it:
+
+```sql
+FROM 'my_ducklake.ducklake.files/ducklake-*-delete.parquet';
+```
+The file should contain a single row that marks row 29 as deleted. A new file has appared that contains the new values for this row.
+
+There are now three snapshots, the table creation, data insertion, and the update. We can query that using the `snapshots()` function:
+
+```sql
+FROM my_ducklake.snapshots();
+```
+
+And we can query this table at each point:
+
+```sql
+SELECT name_long FROM nl_train_stations AT (VERSION=>1) WHERE code = 'ASB';
+SELECT name_long FROM nl_train_stations AT (VERSION=>2) WHERE code = 'ASB';
+```
+
+Time travel finally achieved!
 
 ### Detaching from a DuckLake
 
