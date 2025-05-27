@@ -24,7 +24,7 @@ Data files contain the actual row data.
 | `partial_file_info` | `VARCHAR`   |             |
 
 - `data_file_id` is the numeric identifier of the file. It is a primary key. `data_file_id` is incremented from `next_file_id` in the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}).
-- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}). 
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
 - `begin_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The file is part of the table *starting with* this snapshot id.
 - `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). The file is part of the table *until* this snapshot id. If `end_snapshot` is `NULL`, the file is currently part of the table.
 - `file_order` is a number that defines the vertical position of the file in the table. it needs to be unique within a snapshot but does not have to be strictly monotonic (holes are ok).
@@ -36,5 +36,5 @@ Data files contain the actual row data.
 - `footer_size` is the size of the file metadata footer, in the case of Parquet the Thrift data. This is an optimization that allows for faster reading of the file.
 - `row_id_start` is the first logical row id in the file. (Every row has a unique row-id that is maintained.)
 - `partition_id` refers to a `partition_id` from the `ducklake_partition_info` table.
-- `encryption_key` contains the encryption for the file if [encryption](docs/stable/duckdb/advanced_features/encryption.md) is enabled.
+- `encryption_key` contains the encryption for the file if [encryption]({% link docs/stable/duckdb/advanced_features/encryption.md %}) is enabled.
 - `partial_file_info` is used when snapshots refer to parts of a file.

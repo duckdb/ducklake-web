@@ -5,7 +5,7 @@ title: Schema Evolution
 
 DuckLake supports the evolution of the schemas of tables without requiring any data files to be rewritten. The schema of a table can be changed using the `ALTER TABLE` statement. The following statements are supported:
 
-### Adding Columns / Fields
+## Adding Columns / Fields
 
 ```sql
 -- add a new column of type INTEGER, with default value NULL
@@ -21,7 +21,7 @@ Fields can be added to columns of type `struct`. The path to the `struct` column
 ALTER TABLE tbl ADD COLUMN nested_column.new_field INTEGER;
 ```
 
-### Dropping Columns / Fields
+## Dropping Columns / Fields
 
 ```sql
 -- drop the top-level column `new_column` from the table
@@ -35,7 +35,7 @@ Fields can be dropped by specifying the full path to the field.
 ALTER TABLE tbl DROP COLUMN nested_column.new_field;
 ```
 
-#### Renaming Columns / Fields
+### Renaming Columns / Fields
 
 ```sql
 -- rename the top-level column "new_column" to "new_name"
@@ -49,7 +49,7 @@ Field scan be renamed by specifying the full path to the field.
 ALTER TABLE tbl RENAME nested_column.new_field TO new_name;
 ```
 
-#### Type Promotion
+## Type Promotion
 
 The [types]({% link docs/stable/specification/data_types.md %}) of columns can be changed.
 
@@ -74,7 +74,6 @@ The full set of valid type promotions is as follows:
 | `uint16`  | `uint32`, `uint64`           |
 | `uint32`  | `uint64`                     |
 | `float32` | `float64`                    |
-
 
 ## Field Identifiers
 

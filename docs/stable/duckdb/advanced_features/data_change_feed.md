@@ -33,7 +33,7 @@ FROM db.table_changes('tbl', 2, 2);
 | 2           | 0     | insert      | 1  | Hello    |
 | 2           | 1     | insert      | 2  | DuckLake |
 
-### Changes Made between multiple snapshots
+### Changes Made between Multiple Snapshots
 
 ```sql
 FROM db.table_changes('tbl', 3, 4);
@@ -44,16 +44,16 @@ FROM db.table_changes('tbl', 3, 4);
 | 4           | 1     | update_postimage | 2  | DuckLakeDuckLakeDuckLake |
 | 4           | 1     | update_preimage  | 2  | DuckLake                 |
 
-#### Changes made in the last week
+### Changes Made in the Last Week
 
 ```sql
 FROM changes.table_changes('tbl', NOW() - INTERVAL '1 week', NOW());
 ```
 
-### table_changes
+## `table_changes`
 
 The `table_changes` function takes as input the table for which changes should be returned, and two bounds: the start snapshot and the end snapshot (inclusive).
-The bounds can be given either as a [snapshot id](/docs/stable/duckdb/getting_started/snapshots), or as a timestamp.
+The bounds can be given either as a [snapshot id]({% link docs/stable/duckdb/getting_started/snapshots.md %}), or as a timestamp.
 
 The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid` and `change_type`.
 
@@ -69,7 +69,7 @@ When the schema of a table is altered, changes are read as of the schema of the 
 As such, if a column is dropped in between the provided bounds, the dropped column is omitted from the entire result.
 If a column is added, any changes made to the table prior to the addition of the column will have the column substituted with its default value.
 
-#### Compaction
+## Compaction
 
 Compaction operations that expire snapshots can limit the change feed that can be read.
 For example, if deleted rows are removed as part of compaction, these cannot be returned by the change feed anymore.

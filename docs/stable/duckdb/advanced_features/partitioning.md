@@ -14,7 +14,7 @@ This allows the partition layout of a table to evolve over-time as needed.
 The partitioning keys for a file are stored in DuckLake.
 These keys do not need to be necessarily stored within the files, or in the paths to the files.
 
-### Examples
+## Examples
 
 Set the partitioning keys of a table, such that new data added to the table is partitioned by these keys.
 

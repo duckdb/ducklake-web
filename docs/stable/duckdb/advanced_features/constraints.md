@@ -7,7 +7,7 @@ DuckLake has limited support for constraints.
 The only constraint type that is currently supported is `NOT NULL`.
 It does not support `PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE` or `CHECK` constraints.
 
-#### Examples
+## Examples
 
 Define a column as not accepting `NULL` values using the `NOT NULL` constraint.
 

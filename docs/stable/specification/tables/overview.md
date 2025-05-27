@@ -5,9 +5,7 @@ title: Tables
 
 DuckLake uses 19 tables to store metadata and to stage data fragments for data inlining. Below we describe all those tables and their semantics.
 
-![DuckLake schema](/images/manifesto/ducklake-schema-1.png)
-
-> In DuckDB, the `ducklake` extension stores the catalog tables for a DuckLake named `my_ducklake` in the `__ducklake_metadata_⟨my_ducklake⟩`{:.language-sql .highlight} catalog.
+![DuckLake schema]({{ site.baseurl }}/images/manifesto/ducklake-schema-1.png)
 
 ## Snapshots
 

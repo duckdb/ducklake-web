@@ -10,7 +10,7 @@ This table lists changes that happened in a snapshot for easier conflict detecti
 | `snapshot_id`  | `BIGINT`    | Primary Key |
 | `changes_made` | `VARCHAR`   |             |
 
-The `ducklake_snapshot_changes` table contains a summary of changes made by a snapshot. This table is used during [Conflict Resolution](..) to quickly find out if two snapshots have conflicting changesets.
+The `ducklake_snapshot_changes` table contains a summary of changes made by a snapshot. This table is used during [Conflict Resolution]({% link docs/stable/duckdb/advanced_features/conflict_resolution.md %}) to quickly find out if two snapshots have conflicting changesets.
 
 * `snapshot_id` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}).
 * `changes_made` is a comma-separated list of high-level changes made by the snapshot. The values that are contained in this list have the following format:
