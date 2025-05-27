@@ -27,7 +27,7 @@ body_class: faq
 
 DuckLake provides a lightweight one-stop solution for if you need a data lake and catalog.
 
-You can use DuckLake for a “multiplayer DuckDB” setup with multiple DuckDB instance reading and writing the same dataset –
+You can use DuckLake for a “multiplayer DuckDB” setup with multiple DuckDB instances reading and writing the same dataset –
 a concurrency model [not supported by vanilla DuckDB](https://duckdb.org/docs/stable/connect/concurrency).
 
 If you only use DuckDB for both your DuckLake entry point and your catalog database, you can still benefit from using DuckLake:
