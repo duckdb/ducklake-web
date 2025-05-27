@@ -782,7 +782,7 @@ footer .sitefooter .footercontent > div a:hover{
 	body.landing section#quickinstall .wrap .install{
 		width: 100%;
 	}
-	
+
 	section.architecture {
 		.topbar{ 
 			.hoverlabel{
@@ -795,7 +795,7 @@ footer .sitefooter .footercontent > div a:hover{
 		.diagram {
 			flex-wrap: wrap;
 			padding: 15px;
-
+			
 			.client,
 			.database,
 			.storage {
@@ -812,7 +812,8 @@ footer .sitefooter .footercontent > div a:hover{
 
 					&.contains-multi {
 						display: grid;
-
+						padding-right: 0;
+						
 						.browser {
 
 							&.multi:nth-child(2),
@@ -905,6 +906,16 @@ footer .sitefooter .footercontent > div a:hover{
 			}
 		}
 	}
+	em.caption{
+		font-size: 12px;
+		margin-top: .2em;
+	}
+	@media (pointer: coarse) {
+		section.architecture .diagram .client:hover .hover-content, section.architecture .diagram .database:hover .hover-content, section.architecture .diagram .storage:hover .hover-content{
+			opacity: 0;
+		}
+	}
+	
 }
 
 @media only screen and (max-width: 590px) {
