@@ -3,11 +3,10 @@ layout: docu
 title: Data Change Feed
 ---
 
-In addition to allowing you to query the [state of the database at any point in time](/docs/stable/duckdb/getting_started/time_travel),
+In addition to allowing you to query the [state of the database at any point in time]({% link docs/stable/duckdb/getting_started/time_travel.md %}),
 DuckLake allows you to query the *changes that were made between any two snapshots*. This can be done using the `table_changes` function.
 
-
-### Examples
+## Examples
 
 Consider the following DuckLake instance:
 
@@ -23,7 +22,7 @@ DELETE FROM db.tbl WHERE id=1;
 UPDATE db.tbl SET val = concat(val, val, val);
 ```
 
-##### Changes made by a specific snapshot
+### Changes Made by a Specific Snapshot
 
 ```sql
 FROM db.table_changes('tbl', 2, 2);
