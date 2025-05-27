@@ -137,6 +137,18 @@
                 {
                   "page": "Transactions",
                   "url": "transactions"
+                },
+                {
+                  "page": "Row Lineage",
+                  "url": "row_lineage"
+                },
+                {
+                  "page": "Views",
+                  "url": "views"
+                },
+                {
+                  "page": "Comments",
+                  "url": "comments"
                 }
               ]
             }
