@@ -26,6 +26,24 @@ USE my_ducklake;
 
 Note that if you are using DuckDB as your catalog database, you're limited to a single client.
 
+## PostgreSQL
+
+DuckDB can interact with a PostgreSQL database using the [`postgres` extension](https://duckdb.org/docs/stable/core_extensions/postgres).
+Install the `ducklake` and the `postgres` extension, and attach to your DuckLake as follows:
+
+```sql
+INSTALL ducklake;
+INSTALL postgres;
+
+-- Make sure that the database `ducklake_catalog` exists in PostgreSQL.
+ATTACH 'postgres:dbname=ducklake_catalog host=localhost' AS my_ducklake;
+USE my_ducklake;
+```
+
+For details on how to configure the connection, see the [`postgres` extension's documentation](https://duckdb.org/docs/stable/core_extensions/postgres#configuration).
+
+The `ducklake` and `postgresql` extensions require PostgreSQL 12 or newer.
+
 ## SQLite
 
 DuckDB can read and write a SQLite database file using the [`sqlite` extension](https://duckdb.org/docs/stable/core_extensions/sqlite).
@@ -59,21 +77,3 @@ USE my_ducklake;
 For details on how to configure the connection, see the [`mysql` extension's documentation](https://duckdb.org/docs/stable/core_extensions/mysql#configuration).
 
 Using the `ducklake` and `mysql` extensions require MySQL 8 or newer.
-
-## PostgreSQL
-
-DuckDB can interact with a PostgreSQL database using the [`postgres` extension](https://duckdb.org/docs/stable/core_extensions/postgres).
-Install the `ducklake` and the `postgres` extension, and attach to your DuckLake as follows:
-
-```sql
-INSTALL ducklake;
-INSTALL postgres;
-
--- Make sure that the database `ducklake_catalog` exists in PostgreSQL.
-ATTACH 'postgres:dbname=ducklake_catalog host=localhost' AS my_ducklake;
-USE my_ducklake;
-```
-
-For details on how to configure the connection, see the [`postgres` extension's documentation](https://duckdb.org/docs/stable/core_extensions/postgres#configuration).
-
-The `ducklake` and `postgresql` extensions require PostgreSQL 12 or newer.
