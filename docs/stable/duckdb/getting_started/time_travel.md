@@ -21,7 +21,7 @@ SELECT * FROM tbl AT (VERSION => 3);
 Query the table as it was last week.
 
 ```sql
-SELECT * FROM tbl AT (TIMESTAMP => NOW() - INTERVAL '1 week');
+SELECT * FROM tbl AT (TIMESTAMP => now() - INTERVAL '1 week');
 ```
 
 Attach a DuckLake database at a specific snapshot version.
