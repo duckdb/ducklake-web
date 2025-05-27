@@ -247,6 +247,17 @@ body.landing{
 			text-align: center;
 			margin: 0 auto;
 		}
+		.section-image{
+			display: block;
+			max-width: 750px;
+			margin: 0 auto;
+			margin-top: 50px;
+			img{
+				display: block;
+				height: auto;
+				width: 100%;
+			}
+		}
 	}
 	h1{
 		font-size: 50px;
@@ -278,6 +289,85 @@ body.landing{
 		}
 	}
 	
+}
+
+section.podcast{
+	.section-image{
+		.video-thumbnail {
+			position: relative;
+			cursor: pointer;
+			border-radius: 15px;
+			border: 1px solid var(--main-blogpost-border-color, #E6E6E6);
+			overflow: hidden;
+			transition: all .3s ease;
+			
+			&:hover {
+				.play-button {
+					transform: translate(-50%, -50%) scale(1.1);
+				}
+			}
+			
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+				transition: all .3s ease;
+			}
+			
+			.play-button {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				transition: all .3s ease;
+				pointer-events: none;
+			}
+			
+			&.loading {
+				.play-button {
+					opacity: 0;
+				}
+				
+				&::after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 40px;
+					height: 40px;
+					border: 3px solid rgba(255, 255, 255, 0.3);
+					border-top: 3px solid white;
+					border-radius: 50%;
+					animation: spin 1s linear infinite;
+				}
+			}
+		}
+		
+		.video-container {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 56.25%; /* 16:9 aspect ratio */
+			border-radius: 15px;
+			overflow: hidden;
+			
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+		}
+		
+	}
+}
+
+@keyframes spin {
+	0% { transform: translate(-50%, -50%) rotate(0deg); }
+	100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 section.architecture {
@@ -692,7 +782,7 @@ footer .sitefooter .footercontent > div a:hover{
 	body.landing section#quickinstall .wrap .install{
 		width: 100%;
 	}
-	
+
 	section.architecture {
 		.topbar{ 
 			.hoverlabel{
@@ -705,7 +795,7 @@ footer .sitefooter .footercontent > div a:hover{
 		.diagram {
 			flex-wrap: wrap;
 			padding: 15px;
-
+			
 			.client,
 			.database,
 			.storage {
@@ -722,7 +812,8 @@ footer .sitefooter .footercontent > div a:hover{
 
 					&.contains-multi {
 						display: grid;
-
+						padding-right: 0;
+						
 						.browser {
 
 							&.multi:nth-child(2),
@@ -815,6 +906,16 @@ footer .sitefooter .footercontent > div a:hover{
 			}
 		}
 	}
+	em.caption{
+		font-size: 12px;
+		margin-top: .2em;
+	}
+	@media (pointer: coarse) {
+		section.architecture .diagram .client:hover .hover-content, section.architecture .diagram .database:hover .hover-content, section.architecture .diagram .storage:hover .hover-content{
+			opacity: 0;
+		}
+	}
+	
 }
 
 @media only screen and (max-width: 590px) {
