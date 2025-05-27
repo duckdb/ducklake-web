@@ -36,5 +36,5 @@ Data files contain the actual row data.
 - `footer_size` is the size of the file metadata footer, in the case of Parquet the Thrift data. This is an optimization that allows for faster reading of the file.
 - `row_id_start` is the first logical row id in the file. TODO: refer to something explaining row ids
 - `partition_id` refers to a `partition_id` from the `ducklake_partition_info` table.
-- `encryption_key` contains the encryption for the file if encryption is enabled. TODO link to encryption.
+- `encryption_key` contains the encryption for the file if [encryption](docs/stable/duckdb/advanced_features/encryption.md) is enabled.
 - `partial_file_info` TODO ???
