@@ -85,13 +85,31 @@
               ]
             },
             {
+              "page": "Maintenance",
+              "slug": "maintenance",
+              "subsubfolderitems": [
+                {
+                  "page": "Recommended Maintenance",
+                  "url": "recommended_maintenance"
+                },
+                {
+                  "page": "Merge Files",
+                  "url": "merge_adjacent_files"
+                },
+                {
+                  "page": "Expire Snapshots",
+                  "url": "expire_snapshots"
+                },
+                {
+                  "page": "Cleanup Old Files",
+                  "url": "cleanup_old_files"
+                }
+              ]
+            },
+            {
               "page": "Advanced Features",
               "slug": "advanced_features",
               "subsubfolderitems": [
-                {
-                  "page": "Compaction",
-                  "url": "compaction"
-                },
                 {
                   "page": "Constraints",
                   "url": "constraints"
