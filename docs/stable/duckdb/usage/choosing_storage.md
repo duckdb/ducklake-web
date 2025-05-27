@@ -22,3 +22,5 @@ The DuckDB `ducklake` extension can work with any file system backend that DuckD
 When choosing storage, its important to consider the following factors
 - *access latency and data transfer throughput*, a cloud further away will be accessible to everyone but have a higher latency. local files are very fast, but not accessible to anyone else. A compromise might be a site-local storage server.
 - *scalability and cost*, an object store is quite* scalable, but potentially charges for data transfer. A local server might not incur significant operating expenses, but might struggle serving thousands of clients.
+
+It might also be interesting to use DuckLake encryption when choosing external cloud storage.
