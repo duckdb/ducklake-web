@@ -6,6 +6,35 @@
       "slug": "",
       "mainfolderitems": [
         {
+          "page": "Specification",
+          "open": true,
+          "slug": "specification",
+          "subfolderitems": [
+            {
+              "page": "Introduction",
+              "url": "introduction"
+            },
+            {
+              "page": "Catalog",
+              "slug": "catalog",
+              "subsubfolderitems": [
+                {
+                  "page": "Tables",
+                  "url": "tables"
+                },
+                {
+                  "page": "Queries",
+                  "url": "queries"
+                },
+                {
+                  "page": "Types",
+                  "url": "types"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "page": "DuckDB Extension",
           "open": true,
           "slug": "duckdb",
@@ -63,35 +92,6 @@
                 {
                   "page": "Transactions",
                   "url": "transactions"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "page": "Specification",
-          "open": true,
-          "slug": "specification",
-          "subfolderitems": [
-            {
-              "page": "Introduction",
-              "url": "introduction"
-            },
-            {
-              "page": "Catalog",
-              "slug": "catalog",
-              "subsubfolderitems": [
-                {
-                  "page": "Tables",
-                  "url": "tables"
-                },
-                {
-                  "page": "Queries",
-                  "url": "queries"
-                },
-                {
-                  "page": "Types",
-                  "url": "types"
                 }
               ]
             }

@@ -8,12 +8,12 @@
           "url": "/docs/",
           "subfolderitems": [
             {
-              "page": "DuckDB Extension",
-              "url": "/docs/stable/duckdb/introduction"
-            },
-            {
               "page": "Specification",
               "url": "/docs/stable/specification/introduction"
+            },
+            {
+              "page": "DuckDB Extension",
+              "url": "/docs/stable/duckdb/introduction"
             },
             {
               "page": "Manifesto",
