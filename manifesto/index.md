@@ -102,7 +102,7 @@ Note that the actual write to Parquet is not part of this sequence, it happens b
 
 Let's discuss the three principles of DuckLake: **Simplicity**, **Scalability** and **Speed**.
 
-## Simplicity
+### Simplicity
 
 DuckLake follows the DuckDB design principles of keeping things *simple and incremental*. In order to run DuckLake on a laptop, it is enough to just install DuckDB with the [`ducklake` extension](https://duckdb.org/docs/stable/core_extensions/ducklake). This is great for testing purposes, development and prototyping. In this case, the catalog store is just a local DuckDB file.
 
@@ -112,7 +112,7 @@ Finally, the SQL database that hosts the *catalog server* can be any halfway com
 
 There are no Avro or JSON files. There is no additional catalog server or additional API to integrate with. **It’s all just SQL.** We all know SQL.
 
-## Scalability
+### Scalability
 
 DuckLake actually increases separation of concerns within a data architecture into *three parts*. Storage, compute and metadata management. Storage remains on purpose-built file storage (e.g., blob storage), DuckLake can scale infinitely in storage.
 
@@ -122,7 +122,7 @@ Finally, the catalog database needs to be able to run *only* the metadata transa
 
 Again, this is the exact design used by BigQuery and Snowflake that successfully manage immense datasets already. And hey, nothing keeps you from using Spanner as the DuckLake catalog database if required.
 
-## Speed
+### Speed
 
 Just like DuckDB itself, DuckLake is very much about speed. One of the biggest pain points of Iceberg and Delta Lake is the involved sequence of file IO that is required to run the smallest query. Following the catalog and file metadata path requires many separate sequential HTTP requests. As a result, there is a lower bound to how fast reads or transactions can run. There is a lot of time spent in the critical path of transaction commits, leading to frequent conflicts and expensive conflict resolution. While caching can be used to alleviate some of these problems, this adds additional complexity and is only effective for “hot” data.
 
@@ -136,7 +136,7 @@ In DuckLake, table changes consist of two steps: staging the data files (if any)
 
 In addition, DuckLake snapshots are just a few rows added to the metadata store, allowing for many snapshots to exist at the same time. There is no need to proactively prune snapshots. Snapshots can also refer to *parts of a Parquet file*, allowing many more snapshots to exist than there are files on disk. Combined, this allows DuckLake to manage *millions of snapshots!*
 
-## Features
+### Features
 
 DuckLake has all of your favorite Lakehouse features:
 
@@ -155,3 +155,8 @@ DuckLake has all of your favorite Lakehouse features:
 * **Inlining:** When making small changes to the data, DuckLake can optionally use the catalog database to store those small changes directly to avoid writing many small files.
 * **Encryption:** DuckLake can optionally encrypt all data files written to data store, allowing for *zero-trust data hosting*. Keys are managed by the catalog database.
 * **Compatibility:** The data and (positional) deletion files that DuckLake writes to storage are fully compatible with Apache Iceberg allowing for metadata-only migrations.
+
+## Conclusion
+
+We released DuckLake v0.1 with the `ducklake` DuckDB extension as its first implementation.
+We hope that you will find DuckLake useful in your data architecture – we are looking forward to your creative use cases!
