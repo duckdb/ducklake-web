@@ -36,7 +36,7 @@ INSTALL ducklake;
 INSTALL postgres;
 
 -- Make sure that the database `ducklake_catalog` exists in PostgreSQL.
-ATTACH 'postgres:dbname=ducklake_catalog host=localhost' AS my_ducklake;
+ATTACH 'ducklake:postgres:dbname=ducklake_catalog host=localhost' AS my_ducklake;
 USE my_ducklake;
 ```
 
@@ -53,7 +53,7 @@ Install the `ducklake` and the `sqlite` extension, and attach to your DuckLake a
 INSTALL ducklake;
 INSTALL sqlite;
 
-ATTACH 'sqlite:metadata.sqlite' AS my_ducklake;
+ATTACH 'ducklake:sqlite:metadata.sqlite' AS my_ducklake;
 USE my_ducklake;
 ```
 
@@ -70,7 +70,7 @@ INSTALL ducklake;
 INSTALL mysql;
 
 -- Make sure that the database `ducklake_catalog` exists in MySQL
-ATTACH 'mysql:db=ducklake_catalog host=localhost' AS my_ducklake;
+ATTACH 'ducklake:mysql:db=ducklake_catalog host=localhost' AS my_ducklake;
 USE my_ducklake;
 ```
 
