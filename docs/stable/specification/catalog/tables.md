@@ -308,7 +308,7 @@ This table contains table-level statistics.
 
 This table contains column-level statistics for an entire table.
 
-| Column name     | Column type | Description |
+| Column name     | Column type |             |
 | --------------- | ----------- | ----------- |
 | `table_id`      | `BIGINT`    |             |
 | `column_id`     | `BIGINT`    |             |
@@ -329,7 +329,7 @@ This table contains column-level statistics for an entire table.
 
 This table contains column-level statistics for a single data file.
 
-| Column name         | Column type | Description |
+| Column name         | Column type |             |
 | ------------------- | ----------- | ----------- |
 | `data_file_id`      | `BIGINT`    |             |
 | `table_id`          | `BIGINT`    |             |
@@ -357,27 +357,30 @@ This table contains column-level statistics for a single data file.
 
 ## Partitioning Information
 
-
-CREATE TABLE ducklake_partition_info(partition_id BIGINT, table_id BIGINT, begin_snapshot BIGINT, end_snapshot BIGINT);
-CREATE TABLE ducklake_partition_column(partition_id BIGINT, table_id BIGINT, partition_key_index BIGINT, column_id BIGINT, transform VARCHAR);
-CREATE TABLE ducklake_file_partition_value(data_file_id BIGINT PRIMARY KEY, table_id BIGINT, partition_key_index BIGINT, partition_value VARCHAR);
+DuckLake supports defining explicit partitioning.
 
 
 
 ### `ducklake_partition_info`
 
-| Column name      | Column type | Description |
+| Column name      | Column type |             |
 | ---------------- | ----------- | ----------- |
 | `partition_id`   | `BIGINT`    |             |
 | `table_id`       | `BIGINT`    |             |
 | `begin_snapshot` | `BIGINT`    |             |
 | `end_snapshot`   | `BIGINT`    |             |
 
+- `partition_id` is a numeric identifier for a partition.
+- `table_id` refers to a `table_id` from the `ducklake_table` table. 
+- `begin_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The partition is valid *starting with* this snapshot id.
+- `end_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The partition is valid *until* this snapshot id. If `end_snapshot` is `NULL`, the partition is currently valid.
 
 
 ### `ducklake_partition_column`
 
-| Column name           | Column type | Description |
+Partitions can refer to one or more columns, possibly with transformations such as hashing or bucketing.
+
+| Column name           | Column type |             |
 | --------------------- | ----------- | ----------- |
 | `partition_id`        | `BIGINT`    |             |
 | `table_id`            | `BIGINT`    |             |
@@ -385,15 +388,29 @@ CREATE TABLE ducklake_file_partition_value(data_file_id BIGINT PRIMARY KEY, tabl
 | `column_id`           | `BIGINT`    |             |
 | `transform`           | `VARCHAR`   |             |
 
+- `partition_id` refers to a `partition_id` from the `ducklake_partition_info` table. 
+- `table_id` refers to a `table_id` from the `ducklake_table` table. 
+- `partition_key_index` defines where in the partition key the column is. For example, in a partitioning by (`a`, `b`, `c`) the `partition_key_index` of `b` would be `1`.
+- `column_id` refers to a `column_id` from the `ducklake_column` table. 
+- `transform` defines a SQL-level expression to transform the column value, e.g. hashing.
+
 
 ### `ducklake_file_partition_value`
 
-| Column name           | Column type | Description |
+This table defines which data file belongs to which partition.
+
+| Column name           | Column type |             |
 | --------------------- | ----------- | ----------- |
 | `data_file_id`        | `BIGINT`    |             |
 | `table_id`            | `BIGINT`    |             |
 | `partition_key_index` | `BIGINT`    |             |
 | `partition_value`     | `VARCHAR`   |             |
+
+
+- `data_file_id` refers to a `data_file_id` from the `ducklake_data_file` table. 
+- `table_id` refers to a `table_id` from the `ducklake_table` table. 
+- `partition_key_index` refers to a `partition_key_index` from the `ducklake_partition_column` table. 
+- `partition_value` is the value that all the rows in the data file have, encoded as a string.
 
 
 ## Auxiliary Tables
@@ -421,7 +438,9 @@ Currently, the following keys are specified:
 
 ### `ducklake_tag`
 
-| Column name      | Column type | Description |
+Schemas, tables, and views etc can have tags, those are declared in this table.
+
+| Column name      | Column type |             |
 | ---------------- | ----------- | ----------- |
 | `object_id`      | `BIGINT`    |             |
 | `begin_snapshot` | `BIGINT`    |             |
@@ -429,11 +448,18 @@ Currently, the following keys are specified:
 | `key`            | `VARCHAR`   |             |
 | `value`          | `VARCHAR`   |             |
 
+- `object_id` refers to a `schema_id`, `table_id` etc. from various tables above.
+- `begin_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *starting with* this snapshot id.
+- `end_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *until* this snapshot id. If `end_snapshot` is `NULL`, the tag is currently valid.
+- `key` is an arbitrary key string. The key can't be `NULL`.
+- `value` is the arbitrary value string.
 
 
 ### `ducklake_column_tag`
 
-| Column name      | Column type | Description |
+Columns can also have tags, those are defined in this table.
+
+| Column name      | Column type |             |
 | ---------------- | ----------- | ----------- |
 | `table_id`       | `BIGINT`    |             |
 | `column_id`      | `BIGINT`    |             |
@@ -441,6 +467,13 @@ Currently, the following keys are specified:
 | `end_snapshot`   | `BIGINT`    |             |
 | `key`            | `VARCHAR`   |             |
 | `value`          | `VARCHAR`   |             |
+
+- `table_id` refers to a `table_id` from the `ducklake_table` table. 
+- `column_id` refers to a `column_id` from the `ducklake_column` table. 
+- `begin_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *starting with* this snapshot id.
+- `end_snapshot` refers to a `snapshot_id` from the `ducklake_snapshot` table. The tag is valid *until* this snapshot id. If `end_snapshot` is `NULL`, the tag is currently valid.
+- `key` is an arbitrary key string. The key can't be `NULL`.
+- `value` is the arbitrary value string.
 
 
 ## Full Schema Creation Script
