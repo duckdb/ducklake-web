@@ -241,21 +241,7 @@ $(document).ready(function(){
 	    return false;
 	});
     
-	
-	// Header Animation
-	if( $('.hamburger').is(':visible') ){
-		var animationpath = "/js/duckdbanimation_search.json"
-	} else {
-		var animationpath = "/js/duckdbanimation.json"
-	}
-	let duckDBicon = document.getElementById('duckdbanimation');	
-    let animationduckDBicon = lottie.loadAnimation({
-            container: duckDBicon,
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            path: animationpath
-    });
+
     
 	if( !$('.hamburger').is(':visible') ){
 		$('#duckdbanimation, .duckdbhome img.downloadlogo').mouseenter(function() {
@@ -267,17 +253,7 @@ $(document).ready(function(){
 			animationduckDBicon.setDirection(-1)
 		})
 	}
-	
-	if ($('.wrap.livedemo').length =! 0){
-		lottie.loadAnimation({
-		  container: document.getElementById('loading-spinner'), 
-		  renderer: 'svg',
-		  loop: true,
-		  autoplay: true,
-		  path: "/js/duckdbanimationloop.json"
-		});
-	}
-	
+
 	
 	// Landing Page Typewriter Animation
 	if( $('.landing .type').length ){
