@@ -29,8 +29,8 @@ Currently, the following values for `key` are specified:
 | ---------------- | ----------------------------------------------------------------------------------------- | ------------------ | ----------- |
 | `version`        | The DuckLake schema version.                                                              |                    | Global      |
 | `table`          | A string that identifies which program wrote the schema, e.g., `DuckDB v1.3.2`            |                    | Global      |
-| `data_path`      | A boolean that specifies whether data files are encrypted or not.  | `'true'` or `'false'`  | Global      |
-| `encryption`     | The data path prefix for reading and writing data files, e.g., `s3://mybucket/myprefix/`  | Has to end in `/`  | Global      |
+| `data_path`      | The data path prefix for reading and writing data files, e.g., `s3://mybucket/myprefix/`  | Has to end in `/`  | Global      |
+| `encryption`     | A boolean that specifies whether data files are encrypted or not.  | `'true'` or `'false'`  | Global      |
 | `data_inlining_row_limit`      | The maximum amount of rows to inline in a single insert    |   | Global, Schema or Table      |
 | `target_file_size`      | The size in bytes to limit a parquet file at for insert and compaction operations   |   | Global, Schema or Table      |
 | `parquet_row_group_size_bytes` | The size in bytes to limit a parquet file rowgroup at for insert and compaction operations | | Global, Schema or Table |
