@@ -395,3 +395,59 @@ where
 
 > This example assumes there are already rows in the table. If there are none, we need to use `INSERT` instead here.
 > We also skipped the `column_size_bytes` column here, it can safely be set to `NULL`.
+
+### `DELETE`
+
+Deleting data from a DuckLake table consists of two main steps:
+first, we need to write a Parquet delete file containing the row index to be deleted to storage, and
+second, we need to register that delete file in the metadata tables.
+Let's assume the file has already been written.
+
+```sql
+INSERT INTO ducklake_delete_file (
+    delete_file_id,
+    table_id,
+    begin_snapshot,
+    end_snapshot,
+    data_file_id,
+    path,
+    path_is_relative,
+    format,
+    delete_count,
+    file_size_bytes,
+    footer_size
+)
+VALUES (
+    ⟨DELETE_FILE_ID⟩,
+    ⟨TABLE_ID⟩,
+    ⟨SNAPSHOT_ID⟩,
+    NULL,
+    (DATA_FILE_ID),
+    ⟨PATH⟩,
+    true,
+    'parquet',
+    ⟨DELETE_COUNT⟩,
+    ⟨FILE_SIZE_BYTES⟩,
+    ⟨FOOTER_SIZE⟩
+);
+```
+
+where
+
+- `⟨DELETE_FILE_ID⟩`{:.language-sql .highlight} is the identifier for the new delete file.
+- `⟨TABLE_ID⟩`{:.language-sql .highlight} is a `BIGINT` referring to the `table_id` column in the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
+- `⟨SNAPSHOT_ID⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
+- `⟨DATA_FILE_ID⟩`{:.language-sql .highlight} is the identifier of the data file from which the rows are to be deleted.
+- `⟨PATH⟩`{:.language-sql .highlight} is the file name relative to the DuckLake data path from the top-level metadata.
+- `⟨DELETE_COUNT⟩`{:.language-sql .highlight} is the number of deletion records in the file.
+- `⟨FILE_SIZE_BYTES⟩`{:.language-sql .highlight} is the file size.
+- `⟨FOOTER_SIZE⟩`{:.language-sql .highlight} is the position of the Parquet footer. This helps with efficiently reading the file.
+
+> We have omitted some complexity around relative paths and encrypted files in this example.
+> Refer to the [`ducklake_delete_file` table]({% link docs/stable/specification/tables/ducklake_delete_file.md %}) documentation for details.
+
+> `DELETE` operations also do not require updates to table statistics, as the statistics are maintained as upper bounds, and deletions do not violate these bounds.
+
+### `UPDATE`
+
+In DuckLake, `UPDATE` operations are internally implemented as a combination of a `DELETE` followed by an `INSERT`. Specifically, the outdated row is marked for deletion, and the updated version of that row is inserted. As a result, the changes to the metadata tables are equivalent to performing a `DELETE` and an `INSERT` operation sequentially within the same transaction.
