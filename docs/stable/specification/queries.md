@@ -285,6 +285,65 @@ where
 > We skipped some complexity in this example around default values and nested types and just left those fields as `NULL`.
 > See the table schema definition for additional details.
 
+### `DROP TABLE`
+
+Dropping a table in DuckLake requires an update in the `end_snapshot` field in the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}). If the table contains any partition info, the `end_snapshot` field in the [`ducklake_partition_info` table]({% link docs/stable/specification/tables/ducklake_partition_info.md %}) also needs to be updated.
+
+```sql
+UPDATE ducklake_table
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_partition_info
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+```
+
+where
+
+- `⟨SNAPSHOT_ID⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
+- `⟨TABLE_ID⟩`{:.language-sql .highlight} is the identifier of the table that will be dropped.
+
+### `DROP SCHEMA ... CASCADE`
+
+Dropping an entire schema consists of three main steps:
+first, we need to update the `end_snapshot` field in the [`ducklake_schema` table]({% link docs/stable/specification/tables/ducklake_schema.md %}). Second, we need to update the `end_snapshot` field in the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}) for all tables within that schema. Finally, we need to update the `end_snapshot` field in the [`ducklake_partition_info` table]({% link docs/stable/specification/tables/ducklake_partition_info.md %}) for all tables that contain any partition info.
+
+```sql
+UPDATE ducklake_schema
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    schema_id = ⟨SCHEMA_ID⟩;
+
+UPDATE ducklake_table
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    schema_id = ⟨SCHEMA_ID⟩;
+
+UPDATE ducklake_partition_info
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id IN (
+        SELECT table_id
+        FROM ducklake_table
+        WHERE
+            schema_id = ⟨SCHEMA_ID⟩
+        );
+```
+
+where
+
+- `⟨SNAPSHOT_ID⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
+- `⟨SCHEMA_ID⟩`{:.language-sql .highlight} is the identifier of the schema that will be dropped.
+- `⟨TABLE_ID⟩`{:.language-sql .highlight} is the identifier of the table that will be dropped.
+
 ### `INSERT`
 
 Inserting data into a DuckLake table consists of two main steps:
@@ -420,7 +479,7 @@ VALUES (
     ⟨TABLE_ID⟩,
     ⟨SNAPSHOT_ID⟩,
     NULL,
-    (DATA_FILE_ID),
+    ⟨DATA_FILE_ID⟩,
     ⟨PATH⟩,
     true,
     'parquet',
