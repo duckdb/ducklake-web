@@ -21,7 +21,7 @@ This table describes the columns that are part of a table, including their types
 
 - `column_id` is the numeric identifier of the column, which should persist throughout all versions of the column, until it's dropped.
 - `begin_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). This version of the column exists *starting with* this snapshot id.
-- `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). This version of the column exists *until* this snapshot id. If `end_snapshot` is `NULL`, this version of the column is currently valid.
+- `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). This version of the column exists *up to but not including* this snapshot id. If `end_snapshot` is `NULL`, this version of the column is currently valid.
 - `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
 - `column_order` is a number that defines the position of the column in the list of columns. it needs to be unique within a snapshot but does not have to be strictly monotonic (holes are ok).
 - `column_name` is the name of this version of the column, e.g. `my_column`.
