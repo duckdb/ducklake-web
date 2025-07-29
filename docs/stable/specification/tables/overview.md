@@ -28,8 +28,8 @@ DuckLake uses 21 tables to store metadata and to stage data fragments for data i
 
 ## Data File Mapping
 
-* [`ducklake_column_mapping]({% link docs/stable/specification/tables/ducklake_column_mapping.md %})
-* [`ducklake_name_mapping]({% link docs/stable/specification/tables/ducklake_name_mapping.md %})
+* [`ducklake_column_mapping`]({% link docs/stable/specification/tables/ducklake_column_mapping.md %})
+* [`ducklake_name_mapping`]({% link docs/stable/specification/tables/ducklake_name_mapping.md %})
 
 ## Statistics
 
