@@ -49,6 +49,13 @@ Field scan be renamed by specifying the full path to the field.
 ALTER TABLE tbl RENAME nested_column.new_field TO new_name;
 ```
 
+### Renaming Tables
+
+```sql
+-- rename the table "tbl" to "tbl_new_name"
+ALTER TABLE tbl RENAME TO tbl_new_name;
+```
+
 ## Type Promotion
 
 The [types]({% link docs/stable/specification/data_types.md %}) of columns can be changed.
