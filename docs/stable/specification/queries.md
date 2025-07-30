@@ -285,6 +285,78 @@ where
 > We skipped some complexity in this example around default values and nested types and just left those fields as `NULL`.
 > See the table schema definition for additional details.
 
+### `DROP TABLE`
+
+Dropping a table in DuckLake requires an update in the `end_snapshot` field in all metadata entries corresponding to the dropped table id.
+
+```sql
+UPDATE ducklake_table
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_partition_info
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_column
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_column_tag
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_data_file
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_delete_file
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    table_id  = ⟨TABLE_ID⟩;
+
+UPDATE ducklake_tag
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    object_id  = ⟨TABLE_ID⟩;
+```
+
+where
+
+- `⟨SNAPSHOT_ID⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
+- `⟨TABLE_ID⟩`{:.language-sql .highlight} is the identifier of the table that will be dropped.
+
+### `DROP SCHEMA`
+
+Dropping a schema in ducklake requires updating the `end_snapshot` in the `ducklake_schema` table. 
+
+```sql
+UPDATE ducklake_schema
+SET
+    end_snapshot = ⟨SNAPSHOT_ID⟩
+WHERE
+    schema_id = ⟨SCHEMA_ID⟩;
+```
+
+where
+
+- `⟨SNAPSHOT_ID⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
+- `⟨SCHEMA_ID⟩`{:.language-sql .highlight} is the identifier of the schema that will be dropped.
+
+> `DROP SCHEMA` is only allowed on empty schemas. Ensure that all tables within the schema are dropped beforehand.
+
 ### `INSERT`
 
 Inserting data into a DuckLake table consists of two main steps:
@@ -420,7 +492,7 @@ VALUES (
     ⟨TABLE_ID⟩,
     ⟨SNAPSHOT_ID⟩,
     NULL,
-    (DATA_FILE_ID),
+    ⟨DATA_FILE_ID⟩,
     ⟨PATH⟩,
     true,
     'parquet',
