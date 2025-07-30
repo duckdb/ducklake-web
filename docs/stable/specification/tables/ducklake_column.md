@@ -19,7 +19,7 @@ This table describes the columns that are part of a table, including their types
 | `nulls_allowed`   | `BOOLEAN`   |             |
 | `parent_column`   | `BIGINT`    |             |
 
-- `column_id` is the numeric identifier of the column, which should persist throughout all versions of the column, until it's dropped.
+- `column_id` is the numeric identifier of the column, corresponding to the [`field identifier`](https://github.com/apache/parquet-format/blob/f1fd3b9171aec7a7f0106e0203caef88d17dda82/src/main/thrift/parquet.thrift#L550) in the parquet file. This identifier should remain consistent throughout all versions of the column, until it's dropped.
 - `begin_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). This version of the column exists *starting with* this snapshot id.
 - `end_snapshot` refers to a `snapshot_id` from the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). This version of the column exists *until* this snapshot id. If `end_snapshot` is `NULL`, this version of the column is currently valid.
 - `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/stable/specification/tables/ducklake_table.md %}).
