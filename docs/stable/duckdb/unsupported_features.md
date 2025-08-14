@@ -3,15 +3,15 @@ layout: docu
 title: Unsupported Features
 ---
 
-This page describes what is supported in DuckDB and DuckLake in relation to DuckDB standalone (i.e., `:memory:` or DuckDB file modes). We can make a distinction between:
+This page compares feature support between DuckDB standalone (e.g., :memory: or file mode) and DuckLake. We distinguish between:
 
-- What is **currently** not supported by the DuckLake specification. These are features that you are supported by DuckDB when using DuckDB's native database format but will not work with a DuckLake backend since the specification does not support them.
+- Not supported by the DuckLake specification: Features available in DuckDB’s native format but unsupported in DuckLake because the specification does not cover them.
 
-- What is **currently** not supported by the `ducklake` DuckDB extension. These are features that are supported by the DuckLake specification but are not (yet) implemented in the DuckDB extension.
+- Not supported by the `ducklake` DuckDB extension: Features included in the DuckLake specification but not yet implemented in the DuckDB extension.
 
 ## Unsupported by the DuckLake Specification
 
-Within this group, we are going to make a distinction between what is not supported now but is likely to be supported in the future and what is not supported and is unlikely to be supported.
+In this group, we distinguish between features likely to be supported in the future and those unlikely to ever be supported.
 
 ### Likely to be Supported in the Future
 
@@ -23,12 +23,12 @@ Within this group, we are going to make a distinction between what is not suppor
 
 - Variant types
 
-- [`CHECK` constraints](https://duckdb.org/docs/stable/sql/constraints#check-constraint). Not to be confused with Primary or Foreign Key constraint.
+- [`CHECK` constraints](https://duckdb.org/docs/stable/sql/constraints#check-constraint). Not to be confused with Primary or Foreign Key constraints.
 
 - [Scalar and table macros](https://duckdb.org/docs/stable/sql/statements/create_macro#examples). However, if the catalog DB supports it, there is a workaround.
 
     ```sql
-    -- Using DuckDB as a catalog, create the macro in the catalog
+    -- Create a macro in a DuckDB catalog
     USE __ducklake_metadata_my_ducklake;
     CREATE MACRO add_and_multiply(a, b, c) AS (a + b) * c;
 
@@ -43,7 +43,7 @@ Within this group, we are going to make a distinction between what is not suppor
     -- This is allowed
     CREATE TABLE t1 (id INTEGER, d DATE DEFAULT '2025-08-08');
 
-    -- This is not allowed
+    -- This is currently not allowed
     CREATE TABLE t1 (id INTEGER, d DATE DEFAULT now());
     ```
 
@@ -74,3 +74,9 @@ The following features are currently unsupported by the `ducklake` DuckDB extens
 - MySQL catalogs are not fully supported in the DuckDB extension
 
 - Updates that target the same row multiple times
+
+- Setting target parquet file size for partitioned tables
+
+- Compaction for delete files
+
+- Cleanup on orphaned files
