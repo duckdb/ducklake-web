@@ -9,7 +9,7 @@ jobs:
     name: Link Checker
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -22,7 +22,7 @@ jobs:
 
       - name: Link Checker ignoring the old documentation pages (and keeping the stable and preview pages)
         run: |
-          linkchecker https://duckdb.org/ --ignore-url 'https?://duckdb\.org/docs/[0-9]*.[0-9]*/.*' --config .github/linkchecker/linkchecker.conf --file-output html/utf-8/report.html
+          linkchecker https://ducklake.select/ --ignore-url 'https?://ducklake\.select/docs/[0-9]*.[0-9]*/.*' --config .github/linkchecker/linkchecker.conf --file-output html/utf-8/report.html
           echo $?
 
       - run: cat report.html >> ${GITHUB_STEP_SUMMARY}

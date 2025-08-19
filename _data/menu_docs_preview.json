@@ -1,0 +1,192 @@
+{
+  "docsmenu": [
+    {
+      "page": "Documentation",
+      "open": true,
+      "slug": "",
+      "mainfolderitems": [
+        {
+          "page": "Specification",
+          "slug": "specification",
+          "subfolderitems": [
+            {
+              "page": "Introduction",
+              "url": "introduction"
+            },
+            {
+              "page": "Data Types",
+              "url": "data_types"
+            },
+            {
+              "page": "Queries",
+              "url": "queries"
+            },
+            {
+              "page": "Tables",
+              "slug": "tables",
+              "subsubfolderitems": [
+                {"page": "Overview", "url": "overview"},
+                {"page": "column", "url": "ducklake_column"},
+                {"page": "column_mapping", "url": "ducklake_column_mapping"},
+                {"page": "name_mapping", "url": "ducklake_name_mapping"},
+                {"page": "column_tag", "url": "ducklake_column_tag"},
+                {"page": "data_file", "url": "ducklake_data_file"},
+                {"page": "delete_file", "url": "ducklake_delete_file"},
+                {"page": "file_column_statistics", "url": "ducklake_file_column_statistics"},
+                {"page": "file_partition_value", "url": "ducklake_file_partition_value"},
+                {"page": "files_scheduled_for_deletion", "url": "ducklake_files_scheduled_for_deletion"},
+                {"page": "inlined_data_tables", "url": "ducklake_inlined_data_tables"},
+                {"page": "metadata", "url": "ducklake_metadata"},
+                {"page": "partition_column", "url": "ducklake_partition_column"},
+                {"page": "partition_info", "url": "ducklake_partition_info"},
+                {"page": "schema", "url": "ducklake_schema"},
+                {"page": "snapshot", "url": "ducklake_snapshot"},
+                {"page": "snapshot_changes", "url": "ducklake_snapshot_changes"},
+                {"page": "table", "url": "ducklake_table"},
+                {"page": "table_column_stats", "url": "ducklake_table_column_stats"},
+                {"page": "table_stats", "url": "ducklake_table_stats"},
+                {"page": "tag", "url": "ducklake_tag"},
+                {"page": "view", "url": "ducklake_view"}
+              ]
+            }
+          ]
+        },
+        {
+          "page": "DuckDB Extension",
+          "open": true,
+          "slug": "duckdb",
+          "subfolderitems": [
+            {
+              "page": "Introduction",
+              "url": "introduction"
+            },
+            {
+              "page": "Usage",
+              "slug": "usage",
+              "subsubfolderitems": [
+                {
+                  "page": "Connecting",
+                  "url": "connecting"
+                },
+                {
+                  "page": "Choosing a Catalog Database",
+                  "url": "choosing_a_catalog_database"
+                },
+                {
+                  "page": "Choosing Storage",
+                  "url": "choosing_storage"
+                },
+                {
+                  "page": "Snapshots",
+                  "url": "snapshots"
+                },
+                {
+                  "page": "Schema Evolution",
+                  "url": "schema_evolution"
+                },
+                {
+                  "page": "Time Travel",
+                  "url": "time_travel"
+                },
+                {
+                  "page": "Configuration",
+                  "url": "configuration"
+                },
+                {
+                  "page": "Paths",
+                  "url": "paths"
+                }
+              ]
+            },
+            {
+              "page": "Maintenance",
+              "slug": "maintenance",
+              "subsubfolderitems": [
+                {
+                  "page": "Recommended Maintenance",
+                  "url": "recommended_maintenance"
+                },
+                {
+                  "page": "Merge Files",
+                  "url": "merge_adjacent_files"
+                },
+                {
+                  "page": "Expire Snapshots",
+                  "url": "expire_snapshots"
+                },
+                {
+                  "page": "Cleanup Old Files",
+                  "url": "cleanup_old_files"
+                }
+              ]
+            },
+            {
+              "page": "Advanced Features",
+              "slug": "advanced_features",
+              "subsubfolderitems": [
+                {
+                  "page": "Constraints",
+                  "url": "constraints"
+                },
+                {
+                  "page": "Conflict Resolution",
+                  "url": "conflict_resolution"
+                },
+                {
+                  "page": "Data Change Feed",
+                  "url": "data_change_feed"
+                },
+                {
+                  "page": "Data Inlining",
+                  "url": "data_inlining"
+                },
+                {
+                  "page": "Encryption",
+                  "url": "encryption"
+                },
+                {
+                  "page": "Partitioning",
+                  "url": "partitioning"
+                },
+                {
+                  "page": "Transactions",
+                  "url": "transactions"
+                },
+                {
+                  "page": "Row Lineage",
+                  "url": "row_lineage"
+                },
+                {
+                  "page": "Views",
+                  "url": "views"
+                },
+                {
+                  "page": "Comments",
+                  "url": "comments"
+                }
+              ]
+            },
+            {
+              "page": "Metadata",
+              "slug": "metadata",
+              "subsubfolderitems": [
+                {
+                  "page": "List Files",
+                  "url": "list_files"
+                },
+                {
+                  "page": "Adding Files",
+                  "url": "adding_files"
+                }
+              ]
+            },
+            {
+              "page": "Unsupported Features",
+              "url": "unsupported_features"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

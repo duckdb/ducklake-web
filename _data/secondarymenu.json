@@ -29,6 +29,10 @@
               "url": "/news"
             },
             {
+              "page": "Media",
+              "url": "/media"
+            },
+            {
               "page": "FAQ",
               "url": "/faq"
             }

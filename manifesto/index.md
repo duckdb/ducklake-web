@@ -5,6 +5,7 @@ subtitle: An integrated data lake and catalog format
 description: DuckLake delivers advanced data lake features without traditional lakehouse complexity by using Parquet files and your SQL database. It’s an open, standalone format from the DuckDB team.
 body_class: manifesto
 max_page_width: small
+toc: false
 ---
 
 <div class="wrap pagetitle">

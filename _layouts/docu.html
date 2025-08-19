@@ -75,9 +75,9 @@
 					<div class="versionselect">
 						<div class="version">
 							{% if version_viewed == "preview" %}
-								{% assign version_viewed_pretty = site.preview_short_duckdb_version %}
+								{% assign version_viewed_pretty = site.preview_ducklake_version %}
 							{% elsif version_viewed == "stable" %}
-								{% assign version_viewed_pretty = site.current_ducklake_version | append: " (stable)" %}
+								{% assign version_viewed_pretty = site.stable_ducklake_version | append: " (stable)" %}
 							{% else %}
 								{% assign version_viewed_pretty = version_viewed %}
 							{% endif %}
@@ -95,9 +95,9 @@
 										{% capture other_version_of_page_exists %}{% file_exists {{ filename }} %}{% endcapture %}
 										{% if other_version_of_page_exists == "true" %}
 											{% if item.version == "preview" %}
-												{% assign item_text = site.preview_short_duckdb_version %}
+												{% assign item_text = site.preview_ducklake_version %}
 											{% elsif item.version == "stable" %}
-												{% assign item_text = site.current_ducklake_version %}
+												{% assign item_text = site.stable_ducklake_version %}
 											{% else %}
 												{% assign item_text = item.version %}
 											{% endif %}

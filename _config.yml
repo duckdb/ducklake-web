@@ -17,7 +17,8 @@ baseurl: ""
 url: "https://ducklake.select"
 
 # DuckLake Versioning
-current_ducklake_version: "0.2"
+stable_ducklake_version: "0.2"
+preview_ducklake_version: "0.3-dev"
 
 livereload: true
 highlighter: rouge
@@ -44,6 +45,9 @@ collections:
   posts:
     output: true
     permalink: /:year/:month/:day/:title/
+  media:
+    output: true
+    permalink: /media/:title/
 
 excerpt_separator: <!--more-->
 future: true
