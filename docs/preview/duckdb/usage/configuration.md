@@ -41,6 +41,7 @@ Configuration is persisted in the [`ducklake_metadata`](../../specification/tabl
 | parquet_row_group_size       | Number of rows per row group in Parquet files                                                    | 122 880 |
 | parquet_row_group_size_bytes | Number of bytes per row group in Parquet files                                                   |         |
 | target_file_size             | The target data file size for insertion and compaction operations                                | 512MB   |
+| per_thread_output            | Whether to create separate output files per thread during parallel insertion                      | false   |
 | hive_file_pattern            | Whether partitioned data should be written following a hive-style partition                      | true    |
 
 ### Setting Config Values
