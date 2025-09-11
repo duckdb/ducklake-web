@@ -38,3 +38,4 @@ Currently, the following values for `key` are specified:
 | `parquet_compression` | The compression used to write parquet files e.g., `zstd` | `uncompressed`, `snappy`, `gzip`, `zstd`, `brotli`, `lz4`, `lz4_raw` | Global, Schema or Table |
 | `parquet_compression_level` | The compression level used for the selected `parquet_compression` | | Global, Schema or Table |
 | `parquet_version` | The version of the Parquet standard used to write parquet files | `1` or `2` | Global, Schema or Table |
+| `per_thread_output` | Whether to create separate output files per thread during parallel insertion | | Global, Schema or Table |
