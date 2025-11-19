@@ -21,7 +21,7 @@ The below command deletes all files scheduled for deletion.
 
 ```sql
 CALL ducklake_cleanup_old_files(
-    'ducklake',
+    'my_ducklake',
     cleanup_all => true
 );
 ```
@@ -30,7 +30,7 @@ The below command deletes all files that were scheduled for deletion more than a
 
 ```sql
 CALL ducklake_cleanup_old_files(
-    'ducklake',
+    'my_ducklake',
     older_than => now() - INTERVAL '1 week'
 );
 ```
@@ -39,7 +39,7 @@ The below command performs a *dry run*, which only lists the files that will be 
 
 ```sql
 CALL ducklake_cleanup_old_files(
-    'ducklake',
+    'my_ducklake',
     dry_run => true,
     older_than => now() - INTERVAL '1 week'
 );
@@ -55,7 +55,7 @@ The below command deletes all orphaned files.
 
 ```sql
 CALL ducklake_delete_orphaned_files(
-    'ducklake',
+    'my_ducklake',
     cleanup_all => true
 );
 ```
@@ -64,7 +64,7 @@ The below command deletes all files that are older than a specified time.
 
 ```sql
 CALL ducklake_delete_orphaned_files(
-    'ducklake',
+    'my_ducklake',
     older_than => now() - INTERVAL '1 week'
 );
 ```
@@ -73,7 +73,7 @@ The below command performs a *dry run*, which only lists the files that will be 
 
 ```sql
 CALL ducklake_delete_orphaned_files(
-    'ducklake',
+    'my_ducklake',
     dry_run => true,
     older_than => now() - INTERVAL '1 week'
 );
