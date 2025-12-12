@@ -291,7 +291,8 @@ body.documentation {
 }
 
 body.documentation,
-body.post {
+body.post,
+body.duckcon7 {
 
     // Tables
     table {
@@ -583,7 +584,6 @@ body.post {
             &::marker {
                 display: none;
             }
-            
         }
         &[open]{
             summary{
@@ -594,6 +594,21 @@ body.post {
                 }
             }
         }
+        
+        > div img {
+          max-width: 100%;
+          margin-top: 8px;
+        }
+        
+        > table,
+        > div .highlight{
+            margin-top: 8px;    
+        }
+        
+    }
+    
+    details + details{
+        margin-top: 1em;
     }
 
 }
