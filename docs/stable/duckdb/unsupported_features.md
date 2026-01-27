@@ -55,7 +55,7 @@ Within this group, we are going to make a distinction between what is not suppor
 
 - [Indexes](https://duckdb.org/docs/stable/sql/indexes)
 
-- [Primary key or enforced unique constraints](https://duckdb.org/docs/stable/sql/constraints#primary-key-and-unique-constraint) and [foreign key constraints](https://duckdb.org/docs/stable/sql/constraints#foreign-keys) are unlikely to be supported as these are constraints are prohibitively expensive to enforce in data lake setups. We may consider supporting unenforced primary keys, similar to [BigQuery's implementation](https://cloud.google.com/bigquery/docs/primary-foreign-keys).
+- [Primary key or enforced unique constraints](https://duckdb.org/docs/stable/sql/constraints#primary-key-and-unique-constraint) and [foreign key constraints](https://duckdb.org/docs/stable/sql/constraints#foreign-keys) are unlikely to be supported as these are prohibitively expensive to enforce in data lake setups. We may consider supporting unenforced primary keys, similar to [BigQuery's implementation](https://cloud.google.com/bigquery/docs/primary-foreign-keys).
 
 - Upserting is only supported via the [`MERGE INTO`]({% link docs/stable/duckdb/usage/upserting.md %}) syntax since primary keys are not supported in DuckLake.
 
