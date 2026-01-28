@@ -3,29 +3,38 @@ layout: docu
 title: Data Inlining
 ---
 
-> Warning Data inlining is currently experimental. It needs to be enabled explicitly and is only supported for DuckDB catalog databases. It is not yet supported for MySQL, PostgreSQL or SQLite catalog databases. We are planning to improve support for this feature in the future.
-
 When writing small changes to DuckLake, it can be wasteful to write each changeset to an individual Parquet file.
 DuckLake supports directly writing small changes to the metadata using _data inlining_.
 Instead of writing a Parquet file to the data storage and then writing a reference to that file in the metadata catalog, we directly write the rows to inlined data tables within the metadata catalog.
 
-Data inlining must be enabled explicitly using the `DATA_INLINING_ROW_LIMIT` attach parameter.
-When enabled, any inserts that write fewer than the given amount of rows are automatically written to inlined tables instead.
+Data inlining can be enabled in two ways:
+
+Using the `DATA_INLINING_ROW_LIMIT` attach parameter. This is bounded to your DuckLake connection, so if you detach and reattach without the parameter, data inlining won't be used.
 
 ```sql
-ATTACH 'ducklake:inlining.duckdb' (DATA_INLINING_ROW_LIMIT 10);
+ATTACH 'ducklake:inlining.duckdb' AS my_ducklake (DATA_INLINING_ROW_LIMIT 10);
 ```
 
+Using the option `data_inlining_row_limit` which can be set at the table, schema or global level. This is persisted in the `ducklake_metadata` table and will be reused across connections.
+
+```sql
+ATTACH 'ducklake:inlining.duckdb' AS my_ducklake;
+USE my_ducklake;
+CREATE TABLE t (a INT);
+CALL my_ducklake.set_option('data_inlining_row_limit', 10, table_name => 't');
+```
+
+When enabled, any inserts that write fewer than the given amount of rows are automatically written to inlined tables instead.
+
 Inlined data behaves exactly the same as data written to Parquet files.
-The inlined data can be queried, updated and deleted, and the schema of inlined data can be modified.
 The only difference is that the inlined data lives in the metadata catalog, instead of in Parquet files in the data path.
 
 For example, when inserting a low number of rows, data is automatically inlined:
 
 ```sql
-CREATE TABLE inlining.tbl (col INTEGER);
+CREATE TABLE my_ducklake.tbl (col INTEGER);
 -- Inserting 3 rows, data is inlined
-INSERT INTO inlining.tbl VALUES (1), (2), (3);
+INSERT INTO my_ducklake.tbl VALUES (1), (2), (3);
 -- No Parquet files exist
 SELECT count(*) FROM glob('inlining.duckdb.files/**');
 ```
@@ -42,7 +51,7 @@ SELECT count(*) FROM glob('inlining.duckdb.files/**');
 When inserting more data than the `DATA_INLINING_ROW_LIMIT`, inserts are automatically written to Parquet:
 
 ```sql
-INSERT INTO inlining.tbl FROM range(100);
+INSERT INTO my_ducklake.tbl FROM range(100);
 SELECT count(*) FROM glob('inlining.duckdb.files/**');
 ```
 
