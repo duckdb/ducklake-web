@@ -59,7 +59,7 @@ In this section, we create the three roles described above in PostgreSQL. We cre
 CREATE USER ducklake_superuser WITH PASSWORD 'simple';
 GRANT CREATE ON DATABASE access_control TO ducklake_superuser;
 GRANT CREATE, USAGE ON SCHEMA public TO ducklake_superuser;
-GRANT CREATE, SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO ducklake_superuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO ducklake_superuser;
 
 -- Writer/reader
 CREATE USER ducklake_writer WITH PASSWORD 'simple';
