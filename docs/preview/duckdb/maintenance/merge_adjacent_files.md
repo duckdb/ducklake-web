@@ -27,5 +27,11 @@ Or if you want to target a specific table within a schema:
 CALL ducklake_merge_adjacent_files('my_ducklake', 't', schema => 'some_schema');
 ```
 
+Compacting data files can be a very memory intensive operation. You may consider performing this operation in batches by specifying the `max_compacted_files` parameter.
+
+```sql
+CALL ducklake_merge_adjacent_files('my_ducklake', 't', schema => 'some_schema', max_compacted_files => 1000);
+```
+
 > Calling this function does not immediately delete the old files.
 > See the [cleanup old files]({% link docs/preview/duckdb/maintenance/cleanup_of_files.md %}) section on how to trigger a cleanup of these files.

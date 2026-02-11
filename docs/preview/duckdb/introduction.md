@@ -7,7 +7,7 @@ In DuckDB, DuckLake is supported through the [`ducklake` extension](https://duck
 
 ## Installation
 
-Install the latest stable [DuckDB](https://duckdb.org/docs/installation/).
+Install the latest stable [DuckDB](https://duckdb.org/install/).
 (The `ducklake` extension requires DuckDB v1.3.0 “Ossivalis” or later.)
 
 ```sql
@@ -49,6 +49,12 @@ Attaching to an existing database also uses the `ATTACH` syntax. For example, to
 ```sql
 ATTACH 'ducklake:my_ducklake.ducklake' AS my_ducklake;
 USE my_ducklake;
+```
+
+If you use the DuckDB [command line client](https://duckdb.org/docs/stable/clients/cli/overview), you can pass it the filename or URL of the DuckLake as an argument:
+
+```batch
+duckdb ducklake:my_ducklake.ducklake
 ```
 
 ## Using DuckLake

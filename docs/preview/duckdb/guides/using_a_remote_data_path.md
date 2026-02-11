@@ -22,9 +22,17 @@ ATTACH 'tpch-sf1.ducklake' AS tpch_sf1_ducklake (
 DETACH tpch_sf1_ducklake;
 ```
 
+## Generating the Data
+
+We generate the data using the [`tpchgen-cli`](https://github.com/clflushopt/tpchgen-rs/) tool:
+
+```batch
+tpchgen-cli --scale-factor 1 --format parquet
+```
+
 ## Populating the DuckLake
 
-Next, we attach to the DuckLake with a _local data path_ using the `OVERRIDE_DATA_PATH true` flag:
+We attach to the DuckLake with a _local data path_ using the `OVERRIDE_DATA_PATH true` flag:
 
 ```sql
 ATTACH 'tpch-sf1.ducklake' AS tpch_sf1_ducklake (
@@ -33,12 +41,6 @@ ATTACH 'tpch-sf1.ducklake' AS tpch_sf1_ducklake (
     OVERRIDE_DATA_PATH true
 );
 USE tpch_sf1_ducklake;
-```
-
-We generate the data using the [`tpchgen-cli`](https://github.com/clflushopt/tpchgen-rs/) tool:
-
-```batch
-tpchgen-cli --scale-factor 1 --format parquet
 ```
 
 We then load the data into the DuckLake:
@@ -54,24 +56,11 @@ CREATE TABLE region AS FROM 'region.parquet';
 CREATE TABLE supplier AS FROM 'supplier.parquet';
 ```
 
-Finally, we detach from the DuckLake and close DuckDB:
-
-```sql
-DETACH tpch_sf1_ducklake;
-.quit
-```
+Finally, we close DuckDB with `Ctrl + D` or `.quit`.
 
 ## Uploading the DuckLake
 
-Now, we have the `tpch-sf1/` directory with the Parquet files and the `tpch-sf1.ducklake` file:
-
-```batch
-ls tpch-sf1.ducklake
-```
-
-```text
-tpch-sf1.ducklake
-```
+Now, we have the `tpch-sf1.ducklake` file and the `tpch-sf1/` directory with the Parquet files:
 
 ```batch
 tree tpch-sf1
@@ -99,6 +88,7 @@ tpch-sf1
 ```
 
 We upload both of these to `https://blobs.duckdb.org/datalake/`.
+This particular URL is served by Cloudflare and is based on the content of a public Cloudflare R2 bucket – but DuckLake works with any `http(s)://` URL.
 
 ## Using the DuckLake
 
