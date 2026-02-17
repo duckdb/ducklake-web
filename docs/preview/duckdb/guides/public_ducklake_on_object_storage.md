@@ -3,7 +3,7 @@ layout: docu
 title: Public DuckLake on Object Storage
 ---
 
-This guide explains how to set up a **public read-only DuckLake** on object storage such as Cloudflare R2 and Backblaze B2.
+This guide explains how to set up a **public read-only DuckLake** on object storage such as Amazon S3, Backblaze B2 and Cloudflare R2.
 Users can query this DuckLake through HTTPS **without authentication**.
 
 > Warning Please check the pricing models of the providers to understand the costs of serving DuckLakes.
@@ -14,8 +14,12 @@ Users can query this DuckLake through HTTPS **without authentication**.
 
 ### Creating the Bucket
 
-Create a new public bucket
-([Cloudflare R2](https://developers.cloudflare.com/r2/buckets/create-buckets/), [Backblaze B2](https://www.backblaze.com/docs/cloud-storage-create-and-manage-buckets)).
+Create a new public bucket:
+* [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+* [Backblaze B2](https://www.backblaze.com/docs/cloud-storage-create-and-manage-buckets)
+* [Cloudflare R2](https://developers.cloudflare.com/r2/buckets/create-buckets/)
+
+Make sure that the bucket is accessible through the internet. The exact settings for this vary from platfrom to platform.
 
 ### Creating the DuckLake
 
@@ -23,7 +27,7 @@ Create a new DuckLake following the [“Using a Remove Data Path” guide]({% li
 
 ### Uploading the DuckLake
 
-Upload the `.ducklake` file and its data directory to R2. We recommend using [Rclone](https://rclone.org/).
+Upload the `.ducklake` file and its data directory to the bucket. We recommend using [Rclone](https://rclone.org/), which supports all object storage platforms listed above.
 
 ```bash
 rclone config
