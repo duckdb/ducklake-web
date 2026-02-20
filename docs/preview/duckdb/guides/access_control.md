@@ -68,6 +68,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO ducklake_
 
 -- Reader only
 CREATE USER ducklake_reader WITH PASSWORD 'simple';
+GRANT USAGE ON SCHEMA public TO ducklake_reader;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO ducklake_reader;
 ```
 
