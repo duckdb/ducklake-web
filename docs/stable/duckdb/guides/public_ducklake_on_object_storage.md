@@ -3,7 +3,7 @@ layout: docu
 title: Public DuckLake on Object Storage
 ---
 
-This guide explains how to set up a **public read-only DuckLake** on object storage such as Amazon S3, Backblaze B2 and Cloudflare R2.
+This guide explains how to set up a **public read-only DuckLake** on object storage such as Amazon S3, Backblaze B2, Cloudflare R2, [Leafcloud Object Storage](https://szarnyasg.org/posts/ducklake-on-leafcloud/), etc.
 Users can query this DuckLake through HTTPS **without authentication**.
 
 > Warning Please check the pricing models of the providers to understand the costs of serving DuckLakes.
