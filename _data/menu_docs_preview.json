@@ -220,12 +220,16 @@
                   "url": "backups_and_recovery"
                 },
                 {
+                  "page": "Public DuckLake on Object Storage",
+                  "url": "public_ducklake_on_object_storage"
+                },
+                {
                   "page": "Using a Remote Data Path",
                   "url": "using_a_remote_data_path"
                 },
                 {
-                  "page": "Public DuckLake on Object Storage",
-                  "url": "public_ducklake_on_object_storage"
+                  "page": "Troubleshooting",
+                  "url": "troubleshooting"
                 }
               ]
             },
