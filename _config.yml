@@ -18,7 +18,7 @@ url: "https://ducklake.select"
 
 # DuckLake Versioning
 stable_ducklake_version: "0.3"
-preview_ducklake_version: "1.0-dev"
+preview_ducklake_version: "0.4-dev"
 
 livereload: true
 highlighter: rouge
