@@ -577,6 +577,12 @@ body.manifesto{
 	}
 }
 
+body.notfound{
+	.pagetitle{
+		text-align: center;
+	}
+}
+
 /* Footer **/
 footer .sitefooter .footercontent > div a:hover{
 	color: var(--blue-70, #2eafff);
