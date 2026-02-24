@@ -293,7 +293,7 @@ body.blog header .headerline .headercontent .landingmenu nav .search_icon {
 
 /* Site-wide Banner */
 .banner {
-	@include body-standard;
+	@include body-small;
 	position: relative;
 	width: 100%;
 	text-align: center;
