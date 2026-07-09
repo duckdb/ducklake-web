@@ -175,7 +175,7 @@ VALUES (
 
 INSERT INTO ducklake_snapshot_changes (
     snapshot_id,
-    snapshot_changes,
+    changes_made,
     author,
     commit_message,
     commit_extra_info
