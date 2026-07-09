@@ -19,10 +19,8 @@ DuckLake specifies _tables_ and _update transactions_ to modify them. DuckLake i
 Before anything else we need to find a snapshot id to be queried. There can be many snapshots in the [`ducklake_snapshot` table]({% link docs/stable/specification/tables/ducklake_snapshot.md %}). A snapshot id is a continuously increasing number that identifies a snapshot. In most cases, you would query the most recent one like so:
 
 ```sql
-SELECT snapshot_id
-FROM ducklake_snapshot
-WHERE snapshot_id =
-    (SELECT max(snapshot_id) FROM ducklake_snapshot);
+SELECT max(snapshot_id)
+FROM ducklake_snapshot;
 ```
 
 ### List Schemas
