@@ -53,7 +53,7 @@ The following is an example implementation of the basic principles described abo
 
 ### PostgreSQL Requirements
 
-In this section, we create the three roles described above in PostgreSQL. We create them as users for simplicity, but you may also create them as groups if you expect a specific role to be used by multiple users.
+The following example shows the PostgreSQL permissions corresponding to these three roles:
 
 ```sql
 -- Setup initialization user, migrations, and writing, assuming the database is already created
@@ -72,6 +72,9 @@ CREATE USER ducklake_reader WITH PASSWORD 'simple';
 GRANT USAGE ON SCHEMA public TO ducklake_reader;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO ducklake_reader;
 ```
+
+Note: for simplicity, the example above uses `CREATE USER` statements. 
+If multiple users require to fulfill the same role, then you can create them as PostgreSQL roles (a.k.a. user groups) instead using the `CREATE ROLE`-statement, and `GRANT` the role to all users that require it.
 
 ### S3 Requirements
 
