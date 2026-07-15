@@ -76,7 +76,7 @@ body.foundation {
 				box-sizing: border-box;
 				padding: 20px;
 				position: relative;
-				border-radius: var(--border-radius-box);
+				border-radius: var(--page-radius-box);
 				overflow: hidden;
 				backdrop-filter: blur(14px);
 
@@ -170,7 +170,7 @@ body.foundation {
 		.supporterboard {
 			position: relative;
 			background: var(--doc-codebox-background-color, #F2F2F2);
-			border-radius: var(--border-radius-box);
+			border-radius: var(--page-radius-box);
 			overflow: hidden;
 			margin-top: 70px;
 
@@ -245,7 +245,7 @@ body.foundation {
 			flex-wrap: wrap;
 			justify-content: space-between;
 			backdrop-filter: blur(14px);
-			border-radius: var(--border-radius-box);
+			border-radius: var(--page-radius-box);
 
 			.member {
 				width: 33.3%;

@@ -111,6 +111,7 @@ $docuh5: 18px;
   --grey-transparent-80: #cccccc99;
   --grey-transparent-85: #d9d9d999;
   --grey-transparent-90: #e6e6e699;
+  --grey-transparent-93: #ededed99;
   --grey-transparent-95: #f2f2f299;
   --grey-transparent-98: #fafafa99;
   --orange-20: #662a00;
@@ -238,8 +239,8 @@ $docuh5: 18px;
   --doc-codebox-background-color-secondary: var(--grey-93);
   --doc-codebox-background-hover: var(--grey-90);
   --doc-codebox-border-color: var(--grey-90);
-  --doc-codebox-button-background-color: var(--grey-transparent-85);
-  --doc-codebox-button-background-color-hover: var(--grey-transparent-70);
+  --doc-codebox-button-background-color: var(--grey-transparent-95);
+  --doc-codebox-button-background-color-hover: var(--grey-transparent-80);
   --doc-codebox-button-border: var(--grey-80);
   --doc-menu-info-deprecated-border-color: var(--purple-70);
   --doc-scrollbar-bg: var(--grey-90);
@@ -321,7 +322,7 @@ $docuh5: 18px;
   --main-blogpost-border-color: var(--grey-90);
   --main-blogpost-border-color-blue: var(--blue-90);
   --main-blogpost-border-color-orange: var(--orange-90);
-  --main-blogpost-border-color-yellow: var(--yellow-transparent-40);
+  --main-blogpost-border-color-yellow: var(--yellow-transparent-50);
   --main-body-background-color: var(--grey-98);
   --main-body-background-color-0: #fafafa00;
   --main-body-background-gradient: #fafafa00;
@@ -448,8 +449,8 @@ html.darkmode {
   --doc-codebox-background-color-secondary: var(--grey-13);
   --doc-codebox-background-hover: var(--grey-15);
   --doc-codebox-border-color: var(--grey-20);
-  --doc-codebox-button-background-color: var(--grey-transparent-20);
-  --doc-codebox-button-background-color-hover: var(--grey-transparent-30);
+  --doc-codebox-button-background-color: var(--grey-transparent-10);
+  --doc-codebox-button-background-color-hover: var(--grey-transparent-20);
   --doc-codebox-button-border: var(--grey-30);
   --doc-menu-info-deprecated-border-color: var(--purple-80);
   --doc-scrollbar-bg: var(--grey-15);
@@ -531,7 +532,7 @@ html.darkmode {
   --main-blogpost-border-color: var(--grey-20);
   --main-blogpost-border-color-blue: var(--blue-20);
   --main-blogpost-border-color-orange: var(--orange-20);
-  --main-blogpost-border-color-yellow: var(--yellow-20);
+  --main-blogpost-border-color-yellow: var(--yellow-15);
   --main-body-background-color: var(--grey-05);
   --main-body-background-color-0: #0d0d0d00;
   --main-body-background-gradient: #0d0d0d00;
@@ -634,14 +635,15 @@ html.darkmode {
 :root {
   --type-weight-standard: 450;
   /* Desktop */
-  --page-border-radius-quaternary: 8px;
+  --page-radius-xs: 3px;
+  --page-radius-s: 6px;
   --page-margin-xs: 8px;
-  --page-border-radius-tertiary: 10px;
-  --page-border-radius-secodary: 12px;
+  --page-radius-m: 10px;
+  --page-radius-box-inner: var(--page-radius-m);
   --page-box-padding-quaternary: 12px;
   --page-margin-s: 12px;
-  --page-border-radius-primary: 16px;
-  --border-radius-box: 15px;
+  --page-radius-l: 15px;
+  --page-radius-box: var(--page-radius-l);
   --page-box-padding-tertiary: 16px;
   --page-box-padding-secodary: 20px;
   --page-element-spacing-small: 20px;
@@ -658,17 +660,20 @@ html.darkmode {
   --page-max-width-tiny: 500px;
   --page-max-width-small: 750px;
   --page-max-width-medium: 950px;
+  --page-radius-pill: 999px;
   --page-max-width-large: 1150px;
   --type-micro: 10px;
   --type-label-3: 11px;
   --type-label-2: 12px;
   --type-tiny: 12px;
-  --type-pre-title: 13px;
+  --type-pre-title: 12px;
+  --type-side-menu: 13px;
   --type-body-small: 14px;
   --type-code: 14px;
   --type-label-1: 14px;
-  --type-side-menu: 14px;
-  --type-menu-items: 15px;
+  --type-menu-items-m: 14px;
+  --type-menu-items-l: 14.5px;
+  --type-body-docs: 15px;
   --type-body-normal: 16px;
   --type-code-large: 16px;
   --type-title-3: 16px;
@@ -688,16 +693,17 @@ html.darkmode {
   :root {
     --type-weight-standard: 400;
     /* Mobile */
+    --page-radius-xs: 3px;
     --page-margin-xs: 4px;
-    --page-border-radius-quaternary: 6px;
-    --page-border-radius-primary: 8px;
-    --page-border-radius-secodary: 8px;
-    --page-border-radius-tertiary: 8px;
-    --border-radius-box: 10px;
+    --page-radius-s: 6px;
     --page-box-padding-quaternary: 8px;
     --page-margin-s: 8px;
+    --page-radius-m: 8px;
+    --page-radius-l: 10px;
+    --page-radius-box-inner: var(--page-radius-m);
     --page-box-padding-tertiary: 12px;
     --page-element-spacing-small: 15px;
+    --page-radius-box: var(--page-radius-l);
     --page-section-padding: 15px;
     --page-box-padding-secodary: 16px;
     --page-docs-page-padding: 16px;
@@ -713,6 +719,7 @@ html.darkmode {
     --page-max-width-medium: 393px;
     --page-max-width-small: 393px;
     --page-max-width-tiny: 393px;
+    --page-radius-pill: 999px;
     --type-micro: 9px;
     --type-label-3: 11px;
     --type-tiny: 11px;
@@ -722,10 +729,12 @@ html.darkmode {
     --type-code: 13px;
     --type-label-1: 13px;
     --type-side-menu: 13px;
+    --type-body-docs: 14px;
     --type-body-normal: 14px;
+    --type-menu-items-l: 14px;
+    --type-menu-items-m: 14px;
     --type-title-3: 14px;
     --type-code-large: 15px;
-    --type-menu-items: 15px;
     --type-title-2: 15px;
     --type-body-large: 16px;
     --type-title-1: 16px;
@@ -737,4 +746,5 @@ html.darkmode {
     --type-display-1: 32px;
   }
 }
+
 

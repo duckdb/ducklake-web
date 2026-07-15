@@ -253,7 +253,7 @@ div.bodywrapper{
 	}
 	dt.sig-object{
 		background: var(--doc-codebox-background-color, #F2F2F2);
-		border-radius: 7px;
+		border-radius: var(--page-radius-s);
 		padding: 2px 5px 2px 5px;
 		display: inline-block;
 		&:hover{

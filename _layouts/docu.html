@@ -83,15 +83,17 @@ Page URL: <https://ducklake.select{{ page.url }}>
 
 					<div class="versionselect">
 						<div class="version">
+							{% assign version_viewed_suffix = "" %}
 							{% if version_viewed == "preview" %}
-								{% assign version_viewed_pretty = site.preview_ducklake_version %}
+								{% assign version_viewed_label = site.preview_ducklake_version %}
 							{% elsif version_viewed == "stable" %}
-								{% assign version_viewed_pretty = site.stable_ducklake_version | append: " (stable)" %}
+								{% assign version_viewed_label = site.stable_ducklake_version %}
+								{% assign version_viewed_suffix = "stable" %}
 							{% else %}
-								{% assign version_viewed_pretty = version_viewed %}
+								{% assign version_viewed_label = version_viewed %}
 							{% endif %}
 
-							<div><span class="selectedversion" data-current="{{ version_viewed_pretty }}">{{ version_viewed_pretty }}</span><svg class="arrow"><use href="#chevron-down"></use></svg></div>
+							<button type="button" class="versiontrigger" aria-haspopup="listbox" aria-expanded="false"><span class="selectedversion">{{ version_viewed_label }}{% if version_viewed_suffix != "" %} <span class="version-suffix">{{ version_viewed_suffix }}</span>{% endif %}</span><svg class="arrow"><use href="#chevron-down"></use></svg></button>
 							<div class="versionsidebar">
 								<ul>
 									{% comment %} Remove the leading part, e.g., "docs/stable" or "docs/1.0" (version number) {% endcomment %}
@@ -103,15 +105,17 @@ Page URL: <https://ducklake.select{{ page.url }}>
 										{% assign filename = "docs/" | append: item.version | append: "/" | append: basename %}
 										{% capture other_version_of_page_exists %}{% file_exists {{ filename }} %}{% endcapture %}
 										{% if other_version_of_page_exists == "true" %}
+											{% assign item_suffix = "" %}
 											{% if item.version == "preview" %}
 												{% assign item_text = site.preview_ducklake_version %}
 											{% elsif item.version == "stable" %}
 												{% assign item_text = site.stable_ducklake_version %}
+												{% assign item_suffix = "stable" %}
 											{% else %}
 												{% assign item_text = item.version %}
 											{% endif %}
 
-											<li><a href='{{ site.baseurl }}/{{ filename | replace: ".md", "" }}'>{{ item_text }}</a></li>
+											<li{% if item.version == version_viewed %} class="current"{% endif %}><a href='{{ site.baseurl }}/{{ filename | replace: ".md", "" }}'{% if item.version == version_viewed %} aria-current="true"{% endif %}>{{ item_text }}{% if item_suffix != "" %}<span class="version-suffix">{{ item_suffix }}</span>{% endif %}{% if item.version == version_viewed %}<svg class="icon"><use href="#check"></use></svg>{% endif %}</a></li>
 										{% endif %}
 									{% endfor %}
 								</ul>
@@ -144,7 +148,12 @@ Page URL: <https://ducklake.select{{ page.url }}>
 				
 				<div class="headlinebar">
 					<div class="breadcrumbs">{% include breadcrumbs.html %}</div>
-					<div class="title">{{ page.title }}</div>
+					<div class="titlebar">
+						<div class="title">{{ page.title }}</div>
+						{% unless page.copy_markdown == false %}
+						<button type="button" class="copy-markdown" data-source="https://raw.githubusercontent.com/duckdb/ducklake-web/refs/heads/main/{{ page.path }}"><svg class="icon"><use href="#copy-01"></use></svg><span>Copy Markdown</span></button>
+						{% endunless %}
+					</div>
 				</div>
 				
 				{% assign ct = content | toc %}
