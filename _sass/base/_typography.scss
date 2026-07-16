@@ -30,7 +30,7 @@
 		background-color: var(--main-text-secondary-color, #666);
 	}
 	&:hover::after{
-		background-color: #4396D7;
+		background-color: var(--main-link-hover-color, #998B00);
 	}
 }
 
@@ -57,7 +57,7 @@
 		background-color: var(--main-text-secondary-color, #666);
 	}
 	&:hover::after{
-		background-color: #4396D7;
+		background-color: var(--main-link-hover-color, #998B00);
 	}
 }
 
@@ -84,6 +84,6 @@
 		background-color: var(--main-text-secondary-color, #666);
 	}
 	&:hover::after{
-		background-color: #4396D7;
+		background-color: var(--main-link-hover-color, #998B00);
 	}
 }
