@@ -246,6 +246,7 @@ $(document).ready(function(){
 
     
     // FAQs
+	$('.qa-wrap h3').append('<span class="faq-icon"><svg class="icon"><use href="#chevron-down"></use></svg></span>');
 	$('.qa-wrap').click(function(event) {
 		var $qaWrap = $(this);
 		if ($(event.target).is('h3') || $(event.target).closest('h3').length) {
@@ -388,6 +389,7 @@ $(document).ready(function(){
 	// Appending Content-List of Documentation
 	if ( $('.wrap.documentation') != 0 ) {
 	    contentlist = $('ul.sidenav').clone()
+	    contentlist.find('svg').remove()
 	    $('#docusitemaphere').append(contentlist).find("ul").removeAttr("style")
 	}
 	
@@ -464,21 +466,65 @@ $(document).ready(function(){
 	
 	
 	// CHANGE DOC VERSION
-	$('.options .version').click(function(){
-		var $this = $(this);
-		$this.toggleClass('active');
-		$this.find('.versionsidebar').slideToggle(200);
-		
-		// MAKE IT SAME AS ON START PAGE
-		var selectedVersion = $this.find('.selectedversion');
-		var currentVersion = selectedVersion.attr('data-current');
-	
-		selectedVersion.text($this.hasClass('active') ? 'Select' : currentVersion);
-	
-		$this.find('.versionsidebar li').removeClass('current') 
-			.filter(function() { 
-				return $(this).text().trim() === currentVersion; 
-			}).addClass('current');
+	function closeVersionSelect() {
+		var $open = $('.options .version.active');
+		if (!$open.length) return false;
+		$open.removeClass('active').find('.versiontrigger').attr('aria-expanded', 'false');
+		return true;
+	}
+
+	$('.options .version .versiontrigger').click(function(){
+		var $version = $(this).closest('.version');
+		var open = !$version.hasClass('active');
+		$version.toggleClass('active', open);
+		$(this).attr('aria-expanded', open ? 'true' : 'false');
+	});
+
+	$(document).on('click', function(e){
+		if ($(e.target).closest('.options .version').length) return;
+		closeVersionSelect();
+	});
+
+	$(document).on('keydown', function(e){
+		if (e.key !== 'Escape') return;
+		if (closeVersionSelect()) {
+			$('.options .version .versiontrigger').trigger('focus');
+		}
+	});
+
+	// COPY PAGE AS MARKDOWN
+	$('.headlinebar .copy-markdown').click(function(){
+		var $btn = $(this);
+		if ($btn.hasClass('copied')) return;
+
+		var markdownPromise = fetch($btn.attr('data-source')).then(function(response){
+			if (!response.ok) throw new Error('HTTP ' + response.status);
+			return response.text();
+		});
+
+		function markCopied() {
+			$btn.addClass('copied');
+			$btn.find('use').attr('href', '#check');
+			$btn.find('span').text('Copied');
+			setTimeout(function(){
+				$btn.removeClass('copied');
+				$btn.find('use').attr('href', '#copy-01');
+				$btn.find('span').text('Copy Markdown');
+			}, 2000);
+		}
+
+		if (navigator.clipboard && window.ClipboardItem) {
+			var item = new ClipboardItem({
+				'text/plain': markdownPromise.then(function(text){
+					return new Blob([text], { type: 'text/plain' });
+				})
+			});
+			navigator.clipboard.write([item]).then(markCopied);
+		} else if (navigator.clipboard) {
+			markdownPromise.then(function(text){
+				return navigator.clipboard.writeText(text);
+			}).then(markCopied);
+		}
 	});
 	
 	
