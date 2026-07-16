@@ -161,7 +161,7 @@ html.darkmode body{
 
 html.darkmode body.documentation{
 	.wrap a:hover{
-		color: #4396D7;
+		color: var(--main-link-hover-color, #998B00);
 	}
 	.headlinebar div.version svg.arrow{
 		stroke: #828282;
