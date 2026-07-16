@@ -34,17 +34,21 @@ a, a:active, a:focus, button, button:active, button:focus {
   outline: none;
 }
 
+:root {
+	--main-link-hover-color: var(--duckdb-nav-icon-hover);
+}
+
 table a,
 p a,
 li a,
 summary a{
-	color: inherit;
+	color: var(--main-text-secondary-color, #666);
 	text-decoration: underline;
 	-webkit-transition: color .3s;
 	-o-transition: color .3s;
 	transition: color .3s;
 	&:hover{
-		color: $blue;
+		color: var(--main-link-hover-color, #998B00);
 		cursor: pointer;
 	}
 }
@@ -155,6 +159,14 @@ h5{
 }
 h6{
 	@include title-3();
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--main-text-primary-color, #0D0D0D);
+
+	a {
+		color: inherit;
+	}
 }
 
 main .wrap{

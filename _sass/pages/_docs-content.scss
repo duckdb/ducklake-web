@@ -15,8 +15,13 @@ body.documentation {
         h3,
         h4,
         h5 {
+            color: var(--main-text-primary-color, #0D0D0D);
+
+            a {
+                color: inherit;
+            }
             a:hover {
-                color: black;
+                color: var(--main-text-primary-color, #0D0D0D);
                 text-decoration: underline;
             }
             code {
@@ -139,12 +144,12 @@ body.documentation {
     // Links
     .headlinebar a,
     .wrap a {
-        color: var(--text-primary-color);
+        color: var(--main-text-secondary-color, #666);
         text-decoration: underline;
         transition: color .3s;
 
         &:hover {
-            color: $blue;
+            color: var(--main-link-hover-color, #998B00);
         }
     }
 
@@ -261,7 +266,7 @@ body.documentation {
                 background-color: transparent;
 
                 &:hover {
-                    color: $blue;
+                    color: var(--main-link-hover-color, #998B00);
                 }
             }
 
@@ -334,7 +339,7 @@ body.layout_default.blog_typography {
             word-break: normal;
 
             &:hover {
-                color: $blue;
+                color: var(--main-link-hover-color, #998B00);
                 cursor: pointer;
             }
 
@@ -510,7 +515,7 @@ body.layout_default.blog_typography {
     div.highlight {
         width: 100%;
         position: relative;
-        border-radius: var(--page-radius-box);
+        border-radius: var(--page-radius-m);
         overflow: hidden;
         transition: border-color .3s;
         background: var(--doc-codebox-background-color, #F2F2F2);
@@ -528,7 +533,7 @@ body.layout_default.blog_typography {
         position: relative;
         overflow: hidden;
         border: 1px solid var(--doc-codebox-border-color, #D9D9D9);
-        border-radius: var(--page-radius-box);
+        border-radius: var(--page-radius-m);
         background: var(--doc-codebox-background-color, #F2F2F2);
 
         &::before {
@@ -589,7 +594,7 @@ body.layout_default.blog_typography {
         padding: 16px;
         overflow: auto;
         background: var(--doc-codebox-background-color, #F2F2F2);
-        border-radius: var(--page-radius-box);
+        border-radius: var(--page-radius-m);
     }
 
     code {

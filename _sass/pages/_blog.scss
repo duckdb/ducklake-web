@@ -332,6 +332,12 @@ section.speakers,
 	}
 }
 
+.post-list .newstiles.library-tiles .postpreview h3,
+.post-list .newstiles.science-tiles .postpreview h3,
+.post-list .newstiles.everywhere-tiles .postpreview h3 {
+	font-size: var(--type-title-1, 22px);
+}
+
 .singleentry-library .content{
 	width: 100%;
 }
@@ -340,10 +346,14 @@ main.main-library .recentposts .newstileswrap .postpreview,
 main.main-science .recentposts .newstileswrap .postpreview,
 main.main-everywhere .recentposts .newstileswrap .postpreview {
 	width: calc(33.333% - 15px);
-	
+
 	.postimg {
 		aspect-ratio: 1/1;
 		background-color: #9787f2;
+	}
+
+	h3 {
+		font-size: var(--type-title-1, 22px);
 	}
 }
 
@@ -351,6 +361,10 @@ main.main-everywhere .recentposts .newstileswrap .postpreview {
 main.main-everywhere .recentposts .newstileswrap .postpreview{
 	.postimg{
 		background-color: #CBCBCB;
+	}
+
+	.postdetails{
+		padding: 24px;
 	}
 }
 

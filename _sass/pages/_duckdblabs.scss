@@ -608,3 +608,11 @@ html.darkmode {
 	//border: 1px solid var(--main-marker-border-color, #FFF100);
 	border: 1px solid var(--main-blogpost-border-color, #F2F2F2);
 }
+
+
+:root,
+html.darkmode {
+	--duckdb-nav-icon: var(--labs-nav-icon);
+	--duckdb-nav-icon-hover: var(--labs-nav-icon-hover);
+	--main-link-hover-color: var(--labs-nav-icon);
+}

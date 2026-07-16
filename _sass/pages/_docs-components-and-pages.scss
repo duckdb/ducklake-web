@@ -359,7 +359,7 @@ body.documentation {
 
     // Page metadata
     .pagemeta {
-        border-radius: var(--page-radius-box);
+        border-radius: var(--page-radius-m);
         background: var(--doc-codebox-background-color, #F2F2F2);
         padding: 20px;
         display: flex;
@@ -390,7 +390,12 @@ body.documentation {
             margin: 0;
         }
     }
-    
+
+    #main_content_wrap .pagemeta ul {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
     // Mini footer
     .bottomline{
         @include body-small;

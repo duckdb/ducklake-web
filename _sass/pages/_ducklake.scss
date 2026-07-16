@@ -45,9 +45,6 @@ svg path{
 	transition: all .3s;
 }
 
-.textbutton:hover{
-	color: var(--blue-70, #2eafff);
-}
 
 .banner{
 	background: var(--lake-ribbon-background-color, #99D8FF);
@@ -1114,4 +1111,11 @@ html.darkmode {
 			}
 		}
 	}
+}
+
+:root,
+html.darkmode {
+	--duckdb-nav-icon: var(--lake-nav-icon);
+	--duckdb-nav-icon-hover: var(--lake-nav-icon-hover);
+	--main-link-hover-color: var(--lake-nav-icon);
 }
