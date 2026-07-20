@@ -144,12 +144,17 @@ body.documentation {
     // Links
     .headlinebar a,
     .wrap a {
-        color: var(--main-text-secondary-color, #666);
+        color: var(--main-text-primary-color, #0D0D0D);
         text-decoration: underline;
-        transition: color .3s;
+        text-decoration-color: var(--main-text-tertiary-color, #B2B2B2);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.16em;
+        transition: color .3s, text-decoration-color .3s;
 
         &:hover {
             color: var(--main-link-hover-color, #998B00);
+            text-decoration-color: var(--main-link-hover-color, #998B00);
+            text-decoration-thickness: 1px;
         }
     }
 
@@ -162,7 +167,7 @@ body.documentation {
 
         &:focus,
         &:hover {
-            text-decoration: underline;
+            text-decoration-line: underline;
         }
     }
 
@@ -253,7 +258,7 @@ body.documentation {
             list-style-position: outside;
             list-style-type: '\2022 \00a0\00a0';
             padding: 0 0 0 20px;
-            font-size: var(--type-body-normal, 16px);
+            font-size: var(--type-body-docs, 15px);
             
             ul {
                 padding-left: 20px;
@@ -334,7 +339,7 @@ body.layout_default.blog_typography {
         }
 
         a {
-            text-decoration: underline;
+            text-decoration-line: underline;
             word-wrap: normal;
             word-break: normal;
 
