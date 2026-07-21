@@ -54,7 +54,7 @@ for i in range(100):
 
 </details>
 
-In traditional data lakes, each insertion creates its own Parquet file along with the relavant metadata files. Running the example above creates more than 300+ metadata files (200 Avro and 101 JSON files) as well as 100 Parquet files.
+In traditional data lakes, each insertion creates its own Parquet file along with the relevant metadata files. Running the example above creates more than 300+ metadata files (200 Avro and 101 JSON files) as well as 100 Parquet files.
 
 <details markdown='1'>
 <summary markdown='span'>
