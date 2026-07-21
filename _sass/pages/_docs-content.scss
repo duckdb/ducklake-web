@@ -24,6 +24,9 @@ body.documentation {
                 color: var(--main-text-primary-color, #0D0D0D);
                 text-decoration: underline;
             }
+            &:hover svg.anchor-icon {
+                opacity: 1;
+            }
             code {
                 font-family: $fontMonoXBold;
             }

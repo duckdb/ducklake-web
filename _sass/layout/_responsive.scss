@@ -876,4 +876,7 @@
 		border-color: var(--menu-dropdown-border-color, #333) !important;
 		color: var(--main-text-secondary-color, #666) !important;
 	}
+	svg.anchor-icon{
+		opacity: 0 !important;
+	}
 }

@@ -174,16 +174,43 @@ body.documentation {
     }
 
     // Documentation site map
-    #docusitemaphere {
+    #main_content_wrap #docusitemaphere,
+    #main_content_wrap .index {
 
         svg {
             display: none;
         }
 
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        li.hasSub {
+            margin-top: 12px;
+        }
+    }
+
+    #main_content_wrap #docusitemaphere {
+
+        ul ul {
+            margin: 8px 0 16px 0;
+        }
+
+        ul ul ul {
+            border-left: 1px solid var(--main-codebox-border-color, #E6E6E6);
+            padding-left: 16px;
+            margin-left: 2px;
+        }
+
         >ul>li.hasSub,
         >ul>li {
             @include title-1();
-            list-style: none;
             margin-top: 40px;
             margin-bottom: 10px;
         }
@@ -192,8 +219,22 @@ body.documentation {
             @include body-standard();
         }
 
-        >ul>ul>ul>li.hasSub {
-            margin-top: 10px;
+        >ul>ul>li,
+        >ul>ul>li.hasSub {
+            margin-top: 20px;
+        }
+    }
+
+    #main_content_wrap .index {
+
+        >ul {
+            margin: 8px 0 16px 0;
+        }
+
+        ul ul {
+            border-left: 1px solid var(--main-codebox-border-color, #E6E6E6);
+            padding-left: 16px;
+            margin: 8px 0 16px 2px;
         }
     }
 

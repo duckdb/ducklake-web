@@ -1,5 +1,6 @@
 ---
 layout: docu
+copy_markdown: false
 redirect_from:
 - /docs
 - /docs/
