@@ -96,7 +96,7 @@ function perform_search(query) {
 		fuzzy: 0.2
 	};
 	
-	// Filter search results depening on what page we are
+	// Filter search results depending on what page we are
 	if (currentPageType === 'documentation') {
 		searchOptions.filter = (doc) => doc.type === 'documentation';
 	} else if (currentPageType === 'blog') {
