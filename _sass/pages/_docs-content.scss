@@ -630,12 +630,30 @@ body.layout_default.blog_typography {
             gap: 5px;
             align-items: center;
             cursor: pointer;
-            transition: padding .3s;
+            text-decoration: underline;
+            text-decoration-color: var(--main-text-tertiary-color, #B2B2B2);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.16em;
+            transition: color .3s, text-decoration-color .3s, padding .3s;
 
+            span,
             a{
                 color: inherit;
+                text-decoration-color: var(--main-text-tertiary-color, #B2B2B2) !important;
+                text-decoration-thickness: 1px !important;
+                text-underline-offset: 0.16em;
             }
-            
+
+            &:hover{
+                color: var(--main-link-hover-color, #998B00);
+                text-decoration-color: var(--main-link-hover-color, #998B00);
+
+                span,
+                a{
+                    text-decoration-color: var(--main-link-hover-color, #998B00) !important;
+                }
+            }
+
             &::after{
                 mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' viewBox='0 0 14 14'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.35' d='m2.102 5.05 4.9 4.9 4.9-4.9'/%3E%3C/svg%3E");
                 mask-size: contain;
@@ -646,11 +664,15 @@ body.layout_default.blog_typography {
                 content: "";
                 width: 14px;
                 height: 14px;
-                transition: transform .3s;
+                transition: transform .3s, background-color .3s;
                 position: absolute;
                 transform: translate(5px, 4px);
             }
-            
+
+            &:hover::after{
+                background-color: var(--main-link-hover-color, #998B00);
+            }
+
             &::marker {
                 display: none;
             }

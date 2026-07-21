@@ -604,6 +604,9 @@ h5 a {
 		.postcontent{
 			margin: 0 auto;
 			@include blog-typography;
+			details summary{
+				font-size: var(--type-body-large, 18px);
+			}
 			.video-container{
 				margin: 30px 0;
 				position: relative;
@@ -671,7 +674,7 @@ h5 a {
 						li{
 							line-height: 1;
 						&.current > a{
-								color: $purple;
+								color: var(--main-text-primary-color, #0D0D0D);
 							}
 						}
 						a{

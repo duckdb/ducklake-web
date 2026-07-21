@@ -578,8 +578,8 @@
                     color: var(--main-text-secondary-color, #B2B2B2);
                 }
 
-                &.downloadlink::after {
-                    background-color: currentColor !important;
+                &.downloadlink svg.linkicon {
+                    color: inherit !important;
                 }
             }
         }

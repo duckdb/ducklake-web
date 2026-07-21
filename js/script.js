@@ -424,7 +424,34 @@ $(document).ready(function(){
 	$('.headercontent a, .mainlinks a, .box-link a, .footercontent a, .highlight a, .button, .ecosystem-diagram a').removeClass('videolink');
 	$('table a.videolink:contains(GitHub)').removeClass('videolink').addClass('nobg');
 	$('.supporterboard a.videolink').removeClass('videolink').addClass('nobg');
-	
+
+	// Add podcast icon to links pointing to Spotify or Apple Podcasts
+	$('a').filter(function() {
+		var href = $(this).attr('href');
+		if (!href) return false;
+		return /^(https?:)?\/\/(open\.spotify\.com|podcasts\.apple\.com)\//i.test(href) && $(this).find('img').length === 0 && !$(this).hasClass('button');
+	}).addClass("podcastlink").removeClass("externallink downloadlink videolink");
+
+	$('.headercontent a, .mainlinks a, .box-link a, .footercontent a, .highlight a, .button, .ecosystem-diagram a').removeClass('podcastlink');
+	$('.supporterboard a.podcastlink').removeClass('podcastlink').addClass('nobg');
+
+	// Append sprite icons to external, download, video and podcast links, gluing the icon to the last word
+	$('#main_content_wrap, .singleentry .content').find('a.externallink, a.downloadlink, a.videolink, a.podcastlink').each(function() {
+		var $a = $(this);
+		if ($a.find('svg.linkicon').length) return;
+		var icon = $a.hasClass('videolink') ? 'youtube' : ($a.hasClass('podcastlink') ? 'headphones-01' : ($a.hasClass('downloadlink') ? 'download-01' : 'link-external-02'));
+		var $svg = $('<svg class="icon linkicon"><use href="#' + icon + '"></use></svg>');
+		var contents = $a.contents();
+		var last = contents.length ? contents[contents.length - 1] : null;
+		var match = (last && last.nodeType === 3) ? last.nodeValue.match(/(\S+)(\s*)$/) : null;
+		if (match) {
+			last.nodeValue = last.nodeValue.slice(0, match.index);
+			$('<span class="linkicon-wrap"></span>').text(match[1]).append($svg).appendTo($a);
+		} else {
+			$a.append($svg);
+		}
+	});
+
 	// FOUNDATION PAGE SCRIPTS
 	if($('body').hasClass('foundation') && $('section.form').length){
 		var hash = window.location.hash.replace('#', '');
