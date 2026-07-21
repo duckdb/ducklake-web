@@ -381,13 +381,14 @@ $(document).ready(function(){
 		const selector = `li.opened a[href="${pathname}"]`;
 		const clonedUL = $(selector).parent().parent().clone();
 		clonedUL.find(selector).parent().remove();
+		clonedUL.find('svg').remove();
 		clonedUL.find('ul').show();
 		$('#main_content_wrap .index').append(clonedUL);
 	}
 
 	
 	// Appending Content-List of Documentation
-	if ( $('.wrap.documentation') != 0 ) {
+	if ( $('#docusitemaphere').length ) {
 	    contentlist = $('ul.sidenav').clone()
 	    contentlist.find('svg').remove()
 	    $('#docusitemaphere').append(contentlist).find("ul").removeAttr("style")
@@ -395,7 +396,7 @@ $(document).ready(function(){
 	
 	// Add class-name to external Links
 	$('a').filter(function() {
-		return this.hostname && this.hostname !== location.hostname && $(this).find('img').length === 0;
+		return this.hostname && this.hostname !== location.hostname && $(this).find('img, svg').length === 0;
 	}).addClass("externallink").attr('target','_blank');
 	
 	$('.headercontent a, .mainlinks a, .box-link a, .footercontent a').removeClass('externallink');
