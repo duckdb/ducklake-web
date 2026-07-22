@@ -9,6 +9,8 @@ Due to [time travel]({% link docs/stable/duckdb/usage/time_travel.md %}), the re
 Data can only be physically removed from DuckLake by expiring snapshots that refer to the old data.
 This can be done using the `ducklake_expire_snapshots` function.
 
+> Warning Snapshot expiration is supported only at the catalog level. As a result, `expire_older_than` can only be configured at the global scope. Attempting to set this option at any other scope is not supported and will result in an error.
+
 ## Usage
 
 The below command expires a snapshot with a specific snapshot id.
