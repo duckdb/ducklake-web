@@ -338,7 +338,7 @@ body.layout_default.blog_typography {
         }
 
         >tbody>tr:hover {
-            background: var(--doc-codebox-button-background-color, rgba(242, 242, 242, 0.6));
+            background: var(--interactive-table-row-hover, #F2F2F2);
         }
 
         a {

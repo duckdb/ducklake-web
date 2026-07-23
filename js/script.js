@@ -452,6 +452,29 @@ $(document).ready(function(){
 		}
 	});
 
+	// Copy the heading URL to the clipboard when the anchor-link icon is clicked
+	$(document).on('click', 'svg.anchor-icon', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var $svg = $(this);
+		var anchor = this.closest('a');
+		var url = anchor ? anchor.href : (location.origin + location.pathname + location.hash);
+		if (navigator.clipboard && navigator.clipboard.writeText) {
+			navigator.clipboard.writeText(url);
+		}
+		var $use = $svg.find('use');
+		if (!$svg.data('original-icon')) {
+			$svg.data('original-icon', $use.attr('href'));
+		}
+		$use.attr('href', '#check');
+		$svg.addClass('copied');
+		clearTimeout($svg.data('reset-timer'));
+		$svg.data('reset-timer', setTimeout(function() {
+			$use.attr('href', $svg.data('original-icon'));
+			$svg.removeClass('copied');
+		}, 1500));
+	});
+
 	// FOUNDATION PAGE SCRIPTS
 	if($('body').hasClass('foundation') && $('section.form').length){
 		var hash = window.location.hash.replace('#', '');
