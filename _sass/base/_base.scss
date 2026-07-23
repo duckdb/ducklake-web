@@ -179,9 +179,14 @@ h1, h2, h3, h4, h5, h6 {
 		margin-left: 8px;
 		fill: none;
 		stroke-width: 2;
+		cursor: pointer;
 		color: var(--main-text-tertiary-color, #B2B2B2);
 		opacity: 0;
-		transition: opacity .3s;
+		transition: opacity .3s, color .3s;
+
+		&.copied {
+			color: var(--main-text-primary-color, #0D0D0D);
+		}
 	}
 }
 
