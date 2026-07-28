@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bringing DuckLake to DataFusion"
-author: "Divya Ranganathan, Eddie Tejeda (Hotdata), Nantia Makrynioti (DuckLabs)"
+author: "Divya Ranganathan, Eddie Tejeda (Hotdata), Nantia Makrynioti, Gábor Szárnyas (DuckLabs)"
 thumb: "/images/blog/thumbs/ducklake-datafusion.svg"
 image: "/images/blog/thumbs/ducklake-datafusion.png"
 excerpt: "We implemented DuckLake for Apache DataFusion, supporting multiple databases as catalog backends. The integration gives DataFusion a lakehouse format that manages snapshots and catalog metadata for Parquet files stored in object storage. Our implementation is running in production, and we have open-sourced and donated it to the Apache DataFusion Contrib repository: [https://github.com/datafusion-contrib/datafusion-ducklake](https://github.com/datafusion-contrib/datafusion-ducklake)."
