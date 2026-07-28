@@ -49,11 +49,13 @@ Since we rely on it in production, we’re continuously measuring performance an
 
 To give a sense of how much overhead DuckLake adds to our queries, we decided to compare DuckLake-backed tables against direct Parquet access using identical TPC-H datasets. The benchmark included all 22 TPC-H queries across three dataset sizes.
 
-![][image3]
+| Scale | DuckLake  | Parquet   | Ratio |
+| ----- | --------: | --------: | ----: |
+| SF0.2 | 1,440 ms  | 1,474 ms  | 0.98× |
+| SF1   | 4,398 ms  | 4,461 ms  | 0.99× |
+| SF10  | 50,932 ms | 53,942 ms | 0.94× |
 
---> TODO: table <--
-
-DuckLake’s metadata layer did not introduce a measurable performance penalty.
+*DuckLake’s metadata layer did not introduce a measurable performance penalty.*{: .caption }
 
 In our benchmarks, DuckLake-backed tables performed slightly better than direct Parquet access. Both approaches ultimately use DataFusion’s Parquet reader, so the difference is due to lower planning overhead. DuckLake already knows the exact files that belong to a snapshot, avoiding some of the metadata discovery required when constructing a generic Parquet table.
 
