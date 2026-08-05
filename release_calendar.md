@@ -25,7 +25,7 @@ Upcoming releases are shown in the table below. **Please note that these dates a
 
 {% if site.data.upcoming_releases.size > 0 %}
 | Release date | Spec. version | Extension version |
-|----------------:|----------------------------------:|--------------------------------:|
+|-------------:|--------------:|------------------:|
 {%- for release in site.data.upcoming_releases reversed %}
 | {{ release.start_date }} | {{ release.ducklake_spec }} | {{ release.ducklake_extension }} |
 {%- endfor %}
@@ -49,15 +49,15 @@ In the following, we list DuckLake's past releases.
   {% endif %}
 {% endfor %}
 
-| Release date | Spec. version | Extension version | Announcement post |
-|----------------:|----------------------------------:|--------------------------------:|
+| Release date | Spec. version | Extension version |
+|-------------:|--------------:|------------------:|
 {% for row in site.data.past_releases %}
   {%- if row.ducklake_extension == latest_version_number %}
     {% assign docs_version = "stable" %}
   {% else %}
     {% assign docs_version = row.ducklake_extension %}
   {% endif -%}
-  | {{ row.release_date }} | [{{ row.ducklake_spec }}](/docs/{{ docs_version }}/specification/introduction) | [{{ row.ducklake_extension }}](/docs/{{ docs_version }}/duckdb/introduction) | [post]({{ row.release_notes }}) |
+  | [{{ row.release_date }}]({{ row.release_notes }}) | [{{ row.ducklake_spec }}](/docs/{{ docs_version }}/specification/introduction) | [{{ row.ducklake_extension }}](/docs/{{ docs_version }}/duckdb/introduction) |
 {% endfor %}
 
 <!-- markdownlint-enable MD034 MD055 MD056 MD058 -->
