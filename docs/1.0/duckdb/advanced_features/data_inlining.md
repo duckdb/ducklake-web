@@ -246,6 +246,6 @@ If a table has a [sort order defined]({% link docs/1.0/duckdb/advanced_features/
 
 ### Interaction with `auto_compact`
 
-If a table has `auto_compact` set to `false`, `ducklake_flush_inlined_data` will skip it when flushing the whole lake or a whole schema. The same applies when flushing via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_flush_inlined_data` internally.
+If a table has `auto_compact` set to `false`, `ducklake_flush_inlined_data` will skip it, including when `table_name` explicitly names the table. The same applies when flushing via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_flush_inlined_data` internally.
 
 > **Note** `auto_compact` does not cause flushing to happen automatically after writes. It only determines whether a table is eligible for flushing when a maintenance function is called.

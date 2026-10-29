@@ -43,11 +43,13 @@ Set a specific threshold for a table:
 CALL my_ducklake.set_option('rewrite_delete_threshold', 0.5, table_name => 'my_table');
 ```
 
-Disable automatic compaction for a specific table:
+Disable compaction for a specific table:
 
 ```sql
 CALL my_ducklake.set_option('auto_compact', false, table_name => 'my_table');
 ```
+
+If a table has `auto_compact` set to `false`, `ducklake_rewrite_data_files` will skip it, including when the table is named explicitly in the call. The same applies when rewriting via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_rewrite_data_files` internally.
 
 ## Return Values
 
