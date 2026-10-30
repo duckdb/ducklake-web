@@ -67,8 +67,8 @@ Disable compaction for a specific table:
 CALL my_ducklake.set_option('auto_compact', false, table_name => 'my_table');
 ```
 
-The `auto_compact` option also applies to explicitly named tables.
-It does not schedule automatic rewrites.
+If a table has `auto_compact` set to `false`, `ducklake_rewrite_data_files` will skip it, including when the table is named explicitly in the call. The same applies when rewriting via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_rewrite_data_files` internally.
+The `auto_compact` option does not schedule automatic rewrites.
 
 Rewrites combine eligible files toward `target_file_size` and can split large files into multiple output files.
 The `ducklake_target_file_size` setting overrides the persistent target.

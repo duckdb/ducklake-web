@@ -37,7 +37,7 @@ Configuration is persisted in the [`ducklake_metadata`]({% link docs/1.0/specifi
 
 | Name                           | Description                                                                                               | Default  |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `auto_compact`                 | Whether a table is included when compaction functions are called without a specific table argument        | `true`   |
+| `auto_compact`                 | Whether compaction functions run on a table, including when the table is named explicitly                 | `true`   |
 | `created_by`                   | Tool used to write the DuckLake                                                                           |          |
 | `data_inlining_row_limit`      | Maximum amount of rows to inline in a single insert                                                       | `10`     |
 | `data_path`                    | Path to data files                                                                                        |          |
