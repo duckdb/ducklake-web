@@ -6,7 +6,7 @@ title: Adding Files
 The `ducklake_add_data_files` function can be used to register existing data files as new files in DuckLake.
 The files are not copied over - DuckLake is merely made aware of their existence, allowing them to be queried through DuckLake.
 Adding files in this manner supports regular transactional semantics.
- 
+
 > Note that ownership of the Parquet file is transferred to DuckLake. As such, compaction operations (such as those triggered through `merge_adjacent_files` or `expire_snapshots` followed by `cleanup_old_files`) can cause the files to be deleted by DuckLake.
 
 

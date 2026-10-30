@@ -348,7 +348,7 @@ where
 
 ### `DROP SCHEMA`
 
-Dropping a schema in ducklake requires updating the `end_snapshot` in the `ducklake_schema` table. 
+Dropping a schema in ducklake requires updating the `end_snapshot` in the `ducklake_schema` table.
 
 ```sql
 UPDATE ducklake_schema

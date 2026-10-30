@@ -12,7 +12,7 @@ Mappings contain the information used to map parquet fields to column ids in the
 | `type`       | `VARCHAR`   |             |
 
 - `mapping_id` is the numeric identifier of the mapping. `mapping_id` is incremented from `next_catalog_id` in the `ducklake_snapshot` table.
-- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/0.2/specification/tables/ducklake_table.md %}). 
+- `table_id` refers to a `table_id` from the [`ducklake_table` table]({% link docs/0.2/specification/tables/ducklake_table.md %}).
 - `type` defines what method is used to perform the mapping.
 
 The valid `type` values:

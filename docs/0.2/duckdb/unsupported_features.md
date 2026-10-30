@@ -67,7 +67,7 @@ Within this group, we are going to make a distinction between what is not suppor
 
 ## Unsupported by the `ducklake` DuckDB Extension
 
-The following features are currently unsupported by the `ducklake` DuckDB extension: 
+The following features are currently unsupported by the `ducklake` DuckDB extension:
 
 - [Data inlining]({% link docs/0.2/duckdb/advanced_features/data_inlining.md %}) is limited to DuckDB catalogs
 

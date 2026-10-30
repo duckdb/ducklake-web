@@ -73,7 +73,7 @@ GRANT USAGE ON SCHEMA public TO ducklake_reader;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO ducklake_reader;
 ```
 
-Note: for simplicity, the example above uses `CREATE USER` statements. 
+Note: for simplicity, the example above uses `CREATE USER` statements.
 If multiple users need to fulfill the same role, then you can create them as PostgreSQL roles (a.k.a. user groups) instead using the `CREATE ROLE`-statement, and `GRANT` the role to all users that require it.
 
 ### S3 Requirements

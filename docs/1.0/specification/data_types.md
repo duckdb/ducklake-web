@@ -110,9 +110,9 @@ Most types follow a straightforward encoding, however some do not. The following
 
 The following types do not currently have min/max statistics, as they are not supported by the underlying Parquet format:
 
-* `int128` 
-* `uint128` 
-* `timetz` 
+* `int128`
+* `uint128`
+* `timetz`
 * `interval`
 
 ### Nested Types

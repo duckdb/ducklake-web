@@ -13,7 +13,7 @@ Data lakes let users avoid being locked into a single database. They work by sto
 
 Storing data in traditional data lakes is often connected to performance issues. The root of the problem is that every small write creates a new data file and updates the metadata. This leads to a proliferation of tiny objects in storage. On the read side, queries now have to traverse an increasing number of metadata entries just to figure out what to scan.
 
-These are particularly painful problems for streaming workloads as they perform many small insertions over long periods of time: every insert creates a tiny Parquet file and metadata files. A thousand inserts per second means a thousand of these little files accumulating, which causes performance to degrade. At this point, you are then forced to compact your files, which requires you to schedule and execute these maintenance operations to keep your data lake running, which in turn affects performance even more while the maintenance job executes. 
+These are particularly painful problems for streaming workloads as they perform many small insertions over long periods of time: every insert creates a tiny Parquet file and metadata files. A thousand inserts per second means a thousand of these little files accumulating, which causes performance to degrade. At this point, you are then forced to compact your files, which requires you to schedule and execute these maintenance operations to keep your data lake running, which in turn affects performance even more while the maintenance job executes.
 
 [DuckLake]({% link index.html %}) flips the script: because it uses a database as its catalog, it can store small updates directly in the catalog instead of immediately writing them to storage as Parquet files. We call this technique _data inlining_ and will describe it in this blog post.
 
@@ -25,7 +25,7 @@ The typical example of a streaming workload is sensor data that is updated at a 
 <summary markdown='span'>
 Click here to see an example script creating the table with the sensor data.
 </summary>
-    
+
 ```python
 from pyiceberg.catalog import load_catalog
 from datetime import datetime
@@ -61,7 +61,7 @@ In traditional data lakes, each insertion creates its own Parquet file along wit
 <summary markdown='span'>
 Click here to see the directory structure created by the `pyiceberg` script.
 </summary>
-    
+
 ```batch
 tree warehouse
 ```
@@ -96,7 +96,7 @@ Take the same sensor workload from above and run it against DuckLake with SQLite
 <summary markdown='span'>
 Click here to see the Python script that loads the data into DuckLake.
 </summary>
-    
+
 ```python
 import duckdb
 
@@ -156,7 +156,7 @@ We also ran the benchmark against Iceberg using `pyiceberg` and [Apache Polaris]
 DuckLake with inlining is _two orders of magnitude faster_ across the board, and _nearly three orders of magnitude faster_ for aggregations. The gap comes down to architecture: Iceberg has an extra REST hop (Polaris) between client and PostgreSQL, and its snapshot model (manifest + manifest-list + metadata JSON) writes around four S3 files per batch vs. zero for DuckLake with inlining. This explains the drastic performance difference.
 
 > We did our best to create a realistic setup for all systems. It is possible to alleviate the small files problem with architectural and design changes, such as buffering writes on the client's side or inserting larger batches, but that sacrifices ACID guarantees and limits multi-user support, which defeats much of the point of streaming into a data lake.
-> 
+>
 > DuckLake is easy to set up, so you are welcome to give it a spin and run your own workloads to see the difference yourself.
 
 ## How Inlining Works
@@ -180,7 +180,7 @@ In practice, this means you can stream data into DuckLake without worrying about
 
 ### Insertion
 
-When the size of an insert fits below the inlining threshold, DuckLake does not create a Parquet file. Instead, it stores the rows directly in an inlined data table inside the catalog database. This table contains the original columns plus three metadata columns: 
+When the size of an insert fits below the inlining threshold, DuckLake does not create a Parquet file. Instead, it stores the rows directly in an inlined data table inside the catalog database. This table contains the original columns plus three metadata columns:
 
 1. `row_id` – the identifier of that row
 2. `begin_snapshot` – the snapshot where the row was inserted

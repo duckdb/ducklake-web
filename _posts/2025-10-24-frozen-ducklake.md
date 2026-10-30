@@ -20,7 +20,7 @@ Frozen DuckLakes have several advantages:
 * They have almost zero cost overhead on top of the storage of the Parquet data files.
 * A Frozen DuckLake can be used for public-facing data (e.g., public buckets), since there are no extra services required over cloud or HTTP file access.
 * They make the data immediately accessible in a SQL database with no special provisions required.
-* They allow data files to live in different cloud environments, while being referenced from the same Frozen DuckLake. 
+* They allow data files to live in different cloud environments, while being referenced from the same Frozen DuckLake.
 
 And, best of all, while a “Frozen DuckLake” is indeed frozen in time, the data can still be updated by creating a _new_ Frozen DuckLake.
 Older versions can be accessed by retaining revisions of the DuckDB database file – or by simply using [time travel]({% link docs/stable/duckdb/usage/time_travel.md %}). For example, to travel back one week, you can use:
@@ -83,7 +83,7 @@ We can list the space missions with the most countries represented like so:
 
 ```sql
 SELECT
-    m.name as mission, 
+    m.name as mission,
     count(DISTINCT a.nationality) AS nationalities,
     string_agg(DISTINCT a.nationality, ', ') AS countries_represented
 FROM missions m
@@ -299,7 +299,7 @@ If you don't have control of the clients accessing your Frozen DuckLake it might
 Executing the sample workflow file in the repository produces the following output...
 
 ```batch
-./sample-workflow.sh 
+./sample-workflow.sh
 ```
 
 ```sql

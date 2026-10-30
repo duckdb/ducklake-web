@@ -37,17 +37,17 @@ Traditional lakehouse deployments are designed around long-lived databases and t
 
 We create and manage databases on demand for AI agents and applications. A database can be created, loaded with data, forked, queried, and deleted in rapid succession. Instead of sharing a single long-lived database, agents work with isolated databases tailored to a specific task or workflow.
 
-This changes the role of the catalog. Rather than managing long-lived tables, the catalog must efficiently represent millions of ephemeral databases and their metadata. 
+This changes the role of the catalog. Rather than managing long-lived tables, the catalog must efficiently represent millions of ephemeral databases and their metadata.
 
 We considered building our own metadata layer and also evaluated Apache Iceberg. Ultimately, we chose DuckLake because its relational metadata catalog was easy to understand and implement. Metadata lookups are resolved through a relational database rather than requiring multiple object-store requests, which is especially important for the [high-volume latency-sensitive queries that we serve.](https://www.hotdata.dev/blog/benchmarking-concurrency-on-hotdata-snowflake-and-bigquery)
 
-The DuckLake specification was also easy to extend. For example, we recently [added support for logical catalogs](https://github.com/datafusion-contrib/datafusion-ducklake#multi-catalog-postgresql-experimental). A single metadata store can host multiple independent DuckLake catalogs with catalog-specific snapshots and schemas. This is useful for multi-tenant deployments or keeping many logical lakehouses in one database. This allows us to provision millions of isolated databases without duplicating metadata infrastructure or underlying Parquet files. 
+The DuckLake specification was also easy to extend. For example, we recently [added support for logical catalogs](https://github.com/datafusion-contrib/datafusion-ducklake#multi-catalog-postgresql-experimental). A single metadata store can host multiple independent DuckLake catalogs with catalog-specific snapshots and schemas. This is useful for multi-tenant deployments or keeping many logical lakehouses in one database. This allows us to provision millions of isolated databases without duplicating metadata infrastructure or underlying Parquet files.
 
 This implementation now runs in production at Hotdata, and we've contributed it back to the Apache DataFusion Contrib repository. We've also been excited to see growing community interest, with multiple companies now contributing to the project.
 
 ## Measuring Metadata Overhead
 
-Since we rely on it in production, we’re continuously measuring performance and guarding against regressions as the implementation evolves. 
+Since we rely on it in production, we’re continuously measuring performance and guarding against regressions as the implementation evolves.
 
 To give a sense of how much overhead DuckLake adds to our queries, we decided to compare DuckLake-backed tables against direct Parquet access using identical TPC-H datasets. The benchmark included all 22 TPC-H queries across three dataset sizes.
 

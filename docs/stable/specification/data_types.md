@@ -122,8 +122,8 @@ Most types follow a straightforward encoding, however some do not. The following
 
 The following types do not currently have min/max statistics from the Parquet writer:
 
-* `int128` 
-* `uint128` 
+* `int128`
+* `uint128`
 * `interval`
 
 Table statistics can still contain bounds from inlined values.

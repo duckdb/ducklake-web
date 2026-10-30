@@ -14,10 +14,10 @@ When enabled, any inserts that write fewer than the given amount of rows are aut
 
 ```sql
 ATTACH 'ducklake:inlining.db' (DATA_INLINING_ROW_LIMIT 10);
-``` 
+```
 
 Inlined data behaves exactly the same as data written to Parquet files.
-The inlined data can be queried, updated and deleted, and the schema of inlined data can be modified.  
+The inlined data can be queried, updated and deleted, and the schema of inlined data can be modified.
 The only difference is that the inlined data lives in the metadata catalog, instead of in Parquet files in the data path.
 
 For example, when inserting a low number of rows, data is automatically inlined:
