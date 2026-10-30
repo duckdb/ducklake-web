@@ -53,3 +53,4 @@ These are some of the items that we plan to support in the future. If you are in
 * Materialized views and incremental maintenance.
 * Allow `PRIMARY KEY` syntax without enforcing it, similar to what other OLAP engines do (e.g., [BigQuery](https://cloud.google.com/bigquery/docs/primary-foreign-keys)).
 * Fixed-size arrays.
+* PostgreSQL performance improvements: reduce number of roundtrips and explore optimizations for large metadata (e.g., by using stored procedures).
