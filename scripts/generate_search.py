@@ -136,7 +136,10 @@ def index_dir(dirname):
             continue
         full_path = os.path.join(dirname, file)
         if os.path.isfile(full_path):
-            file_list.append(index_file(full_path))
+            # index_file skips non-Markdown files such as docs/stable/installation.html
+            entry = index_file(full_path)
+            if entry is not None:
+                file_list.append(entry)
         elif os.path.isdir(full_path):
             index_dir(full_path)
 

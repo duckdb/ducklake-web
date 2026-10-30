@@ -220,7 +220,6 @@ Page URL: <https://ducklake.select{{ page.url }}>
 	<script src="{{ site.baseurl }}/js/noteboxes.js?{{ site.time | date: '%s' }}" defer></script>
 
 	{% if page.body_class == "installation" %}
-		<script src="{{ site.baseurl }}/js/js-yaml.min.js" defer></script>
 		<script src="{{ site.baseurl }}/js/installation.js?{{ site.time | date: '%s' }}" defer></script>
 	{% endif %}
 	{% if page.railroad and page.railroad != "" and page.railroad != nil %}
