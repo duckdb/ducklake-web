@@ -47,6 +47,7 @@ Some of this style guide is automated with GitHub Actions, but feel free to run 
 * To display blocks of text without a language (e.g., output of a script), use \`\`\`text OUTPUT\`\`\`.
 * To display error messages, use \`\`\`console ERROR MESSAGE\`\`\`.
 * Quoted blocks (lines starting with `>`) are rendered as [a colored box](https://duckdb.org/docs/data/insert). The following box types are available: `Note` (default), `Warning`, `Tip`, `Bestpractice`, `Deprecated`.
+    * Note boxes should not start with the word “Note” (e.g., avoid `> Note that…`), as the box is already labeled as a note.
 * Always format SQL code, variable names, function names, etc. as code. For example, when talking about the `CREATE TABLE` statement, the keywords should be formatted as code.
 * When presenting SQL statements, do not include the prompt (`D `).
 * SQL statements should end with a semicolon (`;`) to allow readers to quickly paste them into a SQL console.

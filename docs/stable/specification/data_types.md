@@ -66,7 +66,7 @@ The `variant` type is similar to JSON but is more strongly typed internally, sup
 
 Variants can be **shredded** into their constituent primitive types when all rows share a consistent schema for a given sub-field. Shredded fields are stored and queried with the same efficiency as native primitive columns. Per-file statistics for fully shredded sub-fields are recorded in the [`ducklake_file_variant_stats`]({% link docs/stable/specification/tables/ducklake_file_variant_stats.md %}) table.
 
-> Note The `variant` type is natively supported in DuckDB. For catalog databases that do not have a native variant type (e.g., PostgreSQL, SQLite), variants are encoded as blobs for data inlining.
+> The `variant` type is natively supported in DuckDB. For catalog databases that do not have a native variant type (e.g., PostgreSQL, SQLite), variants are encoded as blobs for data inlining.
 > Inlining variants in these catalogs requires DuckLake format version 1.1.
 
 ## Geometry Types

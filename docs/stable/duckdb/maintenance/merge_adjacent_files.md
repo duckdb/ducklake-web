@@ -36,7 +36,7 @@ When `ducklake_merge_adjacent_files` is called without a table argument, it runs
 
 If a table has `auto_compact` set to `false`, `ducklake_merge_adjacent_files` will skip it, including when the table is named explicitly in the call. The same applies when merging via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_merge_adjacent_files` internally.
 
-> **Note** `auto_compact` does not trigger compaction automatically after writes. Compaction always runs explicitly when you call a maintenance function.
+> `auto_compact` does not trigger compaction automatically after writes. Compaction always runs explicitly when you call a maintenance function.
 
 Disable compaction for a specific table:
 

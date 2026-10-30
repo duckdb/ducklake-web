@@ -157,7 +157,7 @@ For a nested schema, use a dotted path, e.g., `schema => 'a.b'`.
 The DuckDB setting `ducklake_target_file_size` overrides all persisted scopes.
 For data inlining, persisted options take precedence over `DATA_INLINING_ROW_LIMIT` on `ATTACH`, which takes precedence over `ducklake_default_data_inlining_row_limit`.
 
-> Note With a [Quack catalog]({% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#quack), changes made by `set_option` are not undone by `ROLLBACK`.
+> With a [Quack catalog]({% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#quack), changes made by `set_option` are not undone by `ROLLBACK`.
 
 ## DuckLake Instance Settings
 

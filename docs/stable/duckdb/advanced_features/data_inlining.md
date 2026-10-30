@@ -150,7 +150,7 @@ ducklake_inlined_delete_⟨table_id⟩ (
 
 `file_id` is the ID of the Parquet data file containing the deleted row, `row_id` is the position of the deleted row within that file, and `begin_snapshot` is the snapshot in which the deletion occurred.
 
-> **Note** Deletion inlining only applies to rows in existing Parquet data files. Deletes that target committed inlined insert rows are handled by setting `_ducklake_end_snapshot` on the inlined insert row and do not create an inlined deletion entry.
+> Deletion inlining only applies to rows in existing Parquet data files. Deletes that target committed inlined insert rows are handled by setting `_ducklake_end_snapshot` on the inlined insert row and do not create an inlined deletion entry.
 
 For example, with deletion inlining enabled, a small delete produces no new Parquet delete file:
 
@@ -292,4 +292,4 @@ If a table has a [sort order defined]({% link docs/stable/duckdb/advanced_featur
 
 If a table has `auto_compact` set to `false`, `ducklake_flush_inlined_data` will skip it, including when `table_name` explicitly names the table. The same applies when flushing via `CHECKPOINT`, since `CHECKPOINT` calls `ducklake_flush_inlined_data` internally.
 
-> **Note** `auto_compact` does not cause flushing to happen automatically after writes. It only determines whether a table is eligible for flushing when a maintenance function is called.
+> `auto_compact` does not cause flushing to happen automatically after writes. It only determines whether a table is eligible for flushing when a maintenance function is called.
