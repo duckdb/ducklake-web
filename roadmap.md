@@ -47,8 +47,6 @@ Please note that there are **no guarantees** that a particular feature will be r
 
 ## Future Work
 
-These are some of the items that we plan to support in the future. If you are interested in prioritizing some of this work, [get in touch with DuckLabs](https://ducklabs.com/contact/).
-
 * User-defined types.
 * Materialized views and incremental maintenance.
 * Allow `PRIMARY KEY` syntax without enforcing it, similar to what other OLAP engines do (e.g., [BigQuery](https://cloud.google.com/bigquery/docs/primary-foreign-keys)).
