@@ -7,7 +7,7 @@ DuckLake manages files stored in a separate storage location.
 The paths to the files are stored in the catalog server.
 Paths can be either absolute or relative to their parent path.
 Whether or not a path is relative is stored in the `path_is_relative` column, alongside the `path`.
-By default, schema, table and file paths written by DuckLake are relative paths.
+By default, schema, table, and file paths written by DuckLake are relative paths.
 
 | Path type   | Path location                                 | Parent path |
 | ----------- | --------------------------------------------- | ----------- |
@@ -22,7 +22,7 @@ The root `data_path` is specified through the [`data_path` parameter]({% link do
 When loading an existing DuckLake, the `data_path` is loaded from the `ducklake_metadata` if not provided.
 
 **Schemas.** When creating a top-level schema, a schema path is set.
-By default, this path is `⟨schema_name⟩/`{:.language-sql .highlight} for names containing only ASCII letters, digits, underscores or hyphens and at most 255 bytes, or `⟨schema_uuid⟩/`{:.language-sql .highlight} otherwise.
+By default, this path is `⟨schema_name⟩/`{:.language-sql .highlight} for names containing only ASCII letters, digits, underscores, or hyphens and at most 255 bytes, or `⟨schema_uuid⟩/`{:.language-sql .highlight} otherwise.
 This path is set as relative to the root `data_path`.
 
 **Nested Schemas.** A [nested schema]({% link docs/stable/duckdb/advanced_features/nested_schemas.md %}) uses `⟨schema_uuid⟩/`{:.language-sql .highlight} relative to the root `data_path`, not the parent schema's directory.

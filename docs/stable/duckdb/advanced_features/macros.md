@@ -39,7 +39,7 @@ CREATE MACRO add_with_default(a, b := 10) AS a + b;
 SELECT add_with_default(5);
 ```
 
-Defaults can also be `NULL`, typed `NULL` values or constant expressions that construct nested values:
+Defaults can also be `NULL`, typed `NULL` values, or constant expressions that construct nested values:
 
 ```sql
 CREATE MACRO value_or_default(a, b := NULL) AS coalesce(b, a);
@@ -59,7 +59,7 @@ Macros can specify types for their parameters.
 CREATE MACRO typed_add(a INTEGER, b INTEGER) AS a + b;
 ```
 
-Nested parameter types, including `LIST`, `STRUCT` and `MAP`, are supported with DuckLake format version 1.1:
+Nested parameter types, including `LIST`, `STRUCT`, and `MAP`, are supported with DuckLake format version 1.1:
 
 ```sql
 CREATE MACRO list_length(values_list VARCHAR[]) AS len(values_list);

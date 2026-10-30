@@ -6,7 +6,7 @@ title: Partitioning
 DuckLake tables can be partitioned by a user-defined set of partition keys.
 When a DuckLake table has partitioning keys defined, any new data written to Parquet is split up into separate data files along the partitioning keys.
 During query planning, DuckLake uses file-level zone maps (per-column min/max statistics stored in `ducklake_file_column_stats`) to decide which files to scan.
-For order-preserving partition transforms (`identity`, `year` and the `epoch_*` transforms), partitioned writes naturally produce tight zone maps on the partition column, so file-level pruning effectively narrows scans to the matching partition files.
+For order-preserving partition transforms (`identity`, `year`, and the `epoch_*` transforms), partitioned writes naturally produce tight zone maps on the partition column, so file-level pruning effectively narrows scans to the matching partition files.
 Equality and `IN` filters on bucketed columns can also prune partition files.
 
 The partitioning keys defined on a table only affect new data written to the table.
@@ -86,7 +86,7 @@ DuckLake supports the following partition clauses:
 | epoch_day   | epoch_day(ts)        |
 | epoch_hour  | epoch_hour(ts)       |
 
-The `epoch_year`, `epoch_month`, `epoch_day` and `epoch_hour` transforms count whole years, months, days and hours since January 1, 1970, rounding down, so values before 1970 are negative.
+The `epoch_year`, `epoch_month`, `epoch_day`, and `epoch_hour` transforms count whole years, months, days, and hours since January 1, 1970, rounding down, so values before 1970 are negative.
 Unlike calendar transforms such as `month(ts)`, epoch transforms distinguish units across years: January 2020 has `month` value `1` and `epoch_month` value `600`.
 Epoch transforms use the UTC instant for timestamps with time zones, independently of the session's time zone.
 These transforms require DuckLake format version 1.1.

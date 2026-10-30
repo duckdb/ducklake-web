@@ -41,7 +41,7 @@ ATTACH 'ducklake:inlining.duckdb' AS my_ducklake (DATA_INLINING_ROW_LIMIT 10);
 
 ### Persistent Override
 
-The `data_inlining_row_limit` option can be persisted in the DuckLake metadata at the table, schema or global level. A persisted value takes priority over both the global DuckDB default and the ATTACH parameter:
+The `data_inlining_row_limit` option can be persisted in the DuckLake metadata at the table, schema, or global level. A persisted value takes priority over both the global DuckDB default and the ATTACH parameter:
 
 ```sql
 ATTACH 'ducklake:inlining.duckdb' AS my_ducklake;
@@ -80,13 +80,13 @@ ducklake_inlined_data_⟨table_id⟩_⟨schema_version⟩ (
 )
 ```
 
-In DuckLake format version 1.0, these columns are named `row_id`, `begin_snapshot` and `end_snapshot`.
+In DuckLake format version 1.0, these columns are named `row_id`, `begin_snapshot`, and `end_snapshot`.
 
 `_ducklake_begin_snapshot` is the snapshot in which the row was inserted. `_ducklake_end_snapshot` is the snapshot in which the row was deleted, or `NULL` if the row is still live. Deletions of committed inlined rows are recorded by setting `_ducklake_end_snapshot` rather than creating a separate inlined deletion entry.
 Inlined data tables are associated with table schema versions, so rows written before and after a column is added or dropped can use different inlined tables.
 
 In DuckLake format version 1.1, the `_ducklake_` prefix is reserved for internal column names, even when inlining is disabled.
-User columns named `row_id`, `begin_snapshot` and `end_snapshot` can be inlined with DuckLake format version 1.1.
+User columns named `row_id`, `begin_snapshot`, and `end_snapshot` can be inlined with DuckLake format version 1.1.
 
 For example, when inserting a low number of rows, data is automatically inlined:
 
@@ -181,15 +181,15 @@ The following `ALTER TABLE` operations are supported within a transaction that a
 
 ## Metadata Catalog Support
 
-Data inlining is supported when using DuckDB, PostgreSQL, SQLite or Quack as the metadata catalog.
+Data inlining is supported when using DuckDB, PostgreSQL, SQLite, or Quack as the metadata catalog.
 DuckDB and Quack store inlined data using native DuckDB types.
 
-When using PostgreSQL or SQLite as the metadata catalog, nested types (`STRUCT`, `MAP` and `LIST`) are stored as `VARCHAR` strings in the inlined data table. DuckLake automatically casts the values back to the correct type when reading.
+When using PostgreSQL or SQLite as the metadata catalog, nested types (`STRUCT`, `MAP`, and `LIST`) are stored as `VARCHAR` strings in the inlined data table. DuckLake automatically casts the values back to the correct type when reading.
 
 Inlining of `VARIANT` columns is supported with DuckDB and Quack, and with PostgreSQL and SQLite when using DuckLake format version 1.1.
-PostgreSQL and SQLite use a binary encoding that preserves type information, including for `VARIANT` fields nested inside `STRUCT`, `MAP` or `LIST` values.
+PostgreSQL and SQLite use a binary encoding that preserves type information, including for `VARIANT` fields nested inside `STRUCT`, `MAP`, or `LIST` values.
 
-> Warning DuckDB cannot write SQL types such as `STRUCT(v VARIANT)` or `VARIANT[]` to Parquet, so flushing them, running `CHECKPOINT` or exceeding the inlining limit fails.
+> Warning DuckDB cannot write SQL types such as `STRUCT(v VARIANT)` or `VARIANT[]` to Parquet, so flushing them, running `CHECKPOINT`, or exceeding the inlining limit fails.
 > Top-level `VARIANT` columns can contain object and array values.
 
 Tables that cannot use insertion inlining because of unsupported types or metadata catalog limits are written to files instead.

@@ -31,7 +31,7 @@ Additionally, DuckLake currently has implementations for the following libraries
 
 ## List of Hosted DuckLakes
 
-MotherDuck offers a [hosted solution for DuckLake v1.0](https://motherduck.com/blog/announcing-ducklake-1-0-on-motherduck/), currently in public preview.
+MotherDuck offers a [hosted solution for DuckLake 1.0](https://motherduck.com/blog/announcing-ducklake-1-0-on-motherduck/), currently in public preview.
 
 For hosting read-only DuckLakes, see the guide for creating a [“Public DuckLake on Object Storage”]({% link docs/1.0/duckdb/guides/public_ducklake_on_object_storage.md %}).
 

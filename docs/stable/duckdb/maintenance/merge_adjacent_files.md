@@ -149,10 +149,10 @@ Changed nested fields can prevent this.
 
 ## Schema Evolution
 
-`ducklake_merge_adjacent_files` can merge files written before and after `ADD COLUMN` when existing fields retain their field IDs, names and types.
+`ducklake_merge_adjacent_files` can merge files written before and after `ADD COLUMN` when existing fields retain their field IDs, names, and types.
 This requires DuckLake format version 1.1.
 Older rows receive the added column's initial default, or `NULL` if no default was specified.
-Changes such as `DROP COLUMN`, `RENAME COLUMN`, `ALTER COLUMN TYPE` or alterations of nested fields keep incompatible schema versions in separate compaction groups.
+Changes such as `DROP COLUMN`, `RENAME COLUMN`, `ALTER COLUMN TYPE`, or alterations of nested fields keep incompatible schema versions in separate compaction groups.
 Cosmetic alterations such as `COMMENT ON` or changes to the sort key do not prevent merging.
 Cross-schema merges also require the same partition specification and partition values.
 

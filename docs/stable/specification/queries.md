@@ -251,8 +251,8 @@ where
 
 - `⟨snapshot_id⟩`{:.language-sql .highlight} is the new snapshot identifier. This should be `max(snapshot_id) + 1`.
 - `⟨schema_version⟩`{:.language-sql .highlight} is the schema version for the new snapshot. If any schema changes are made, this needs to be incremented. Otherwise the previous snapshot's `schema_version` can be re-used.
-- `⟨next_catalog_id⟩`{:.language-sql .highlight} gives the next unused identifier for tables, schemas, views, macros, partitioning specifications or sort configurations. This only has to be incremented if new catalog entries are created.
-- `⟨next_file_id⟩`{:.language-sql .highlight} is the same but for data files, delete files and column mappings.
+- `⟨next_catalog_id⟩`{:.language-sql .highlight} gives the next unused identifier for tables, schemas, views, macros, partitioning specifications, or sort configurations. This only has to be incremented if new catalog entries are created.
+- `⟨next_file_id⟩`{:.language-sql .highlight} is the same but for data files, delete files, and column mappings.
 - `⟨changes⟩`{:.language-sql .highlight} contains a list of changes performed by the snapshot. See the list of possible values in the [`ducklake_snapshot_changes` table's documentation]({% link docs/stable/specification/tables/ducklake_snapshot_changes.md %}).
 - `⟨author⟩`{:.language-sql .highlight} contains information about the author of the commit (optional).
 - `⟨commit_message⟩`{:.language-sql .highlight} attaches a commit message to the transaction (optional).
@@ -260,7 +260,7 @@ where
 
 ### `CREATE SCHEMA`
 
-A schema is a collection of tables, views, macros and nested schemas. In order to create a new schema, we can just insert into the [`ducklake_schema` table]({% link docs/stable/specification/tables/ducklake_schema.md %}):
+A schema is a collection of tables, views, macros, and nested schemas. In order to create a new schema, we can just insert into the [`ducklake_schema` table]({% link docs/stable/specification/tables/ducklake_schema.md %}):
 
 ```sql
 INSERT INTO ducklake_schema (
@@ -420,7 +420,7 @@ where
 - `⟨snapshot_id⟩`{:.language-sql .highlight} is the snapshot identifier of the new snapshot as described above.
 - `⟨schema_id⟩`{:.language-sql .highlight} is the identifier of the schema that will be dropped.
 
-> `DROP SCHEMA` without `CASCADE` is only allowed on empty schemas. Ensure that all tables, views, macros and nested schemas within the schema are dropped beforehand.
+> `DROP SCHEMA` without `CASCADE` is only allowed on empty schemas. Ensure that all tables, views, macros, and nested schemas within the schema are dropped beforehand.
 
 ### `INSERT`
 
@@ -472,7 +472,7 @@ where
 - `⟨row_id_start⟩`{:.language-sql .highlight} is the first logical row ID from the file. This number can be read from the [`ducklake_table_stats` table]({% link docs/stable/specification/tables/ducklake_table_stats.md %}) via column `next_row_id`.
 - `⟨row_group_count⟩`{:.language-sql .highlight} is the number of Parquet row groups, or `NULL` if unknown.
 
-We have omitted some complexity around relative paths, encrypted files, partitioning and partial files in this example.
+We have omitted some complexity around relative paths, encrypted files, partitioning, and partial files in this example.
 Refer to the [`ducklake_data_file` table]({% link docs/stable/specification/tables/ducklake_data_file.md %}) documentation for details.
 
 > DuckLake also supports changing the schema, see [schema evolution]({% link docs/stable/duckdb/usage/schema_evolution.md %}).

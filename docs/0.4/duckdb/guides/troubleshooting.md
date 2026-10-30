@@ -32,6 +32,6 @@ Failed to migrate DuckLake from v0.2 to v0.3:
 Cannot execute statement of type "CREATE" on database "__ducklake_metadata_sf1" which is attached in read-only mode!
 ```
 
-It is not possible to connect to a read-only DuckLake with a pre-release version (v0.x).
+It is not possible to connect to a read-only DuckLake with a pre-release version (0.x).
 To migrate from such a DuckLake, use an older version of the `ducklake` extension and migrate into an intermediate format.
 For example, copy the data into a DuckLake that you have write access to, then connect to that DuckLake using the newer `ducklake` extension.

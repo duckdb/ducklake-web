@@ -59,7 +59,7 @@ Parquet field IDs that do not refer to live fields in the table are rejected eve
 ### Hive-Partitioned Files
 
 For tables partitioned on multiple keys, Hive values are recorded against the matching partition keys, regardless of directory order.
-Transformed values such as `year`, `epoch_month` and `bucket` are stored as partition values, not as source column statistics.
+Transformed values such as `year`, `epoch_month`, and `bucket` are stored as partition values, not as source column statistics.
 When key names collide, use DuckLake's disambiguated directory names: `PARTITIONED BY (year, year(dt))` uses `year` and `year_dt`.
 
 ## Type Mapping
@@ -103,5 +103,5 @@ Legacy repeated fields can be imported into `LIST` columns.
 Native Parquet `GEOMETRY` is accepted even when geospatial statistics are absent.
 GeoParquet v1 geometry stored as `BLOB` and Parquet `GEOGRAPHY` are not supported.
 
-DuckDB writes native Parquet `GEOMETRY` columns when `COPY` uses `GEOPARQUET_VERSION 'V2'`, `'BOTH'` or `'NONE'`.
+DuckDB writes native Parquet `GEOMETRY` columns when `COPY` uses `GEOPARQUET_VERSION 'V2'`, `'BOTH'`, or `'NONE'`.
 The default `COPY` output is GeoParquet v1, which `ducklake_add_data_files` rejects.

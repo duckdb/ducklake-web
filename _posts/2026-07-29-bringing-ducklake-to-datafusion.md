@@ -9,7 +9,7 @@ image: "/images/blog/thumbs/ducklake-datafusion.png"
 excerpt: "We implemented DuckLake for Apache DataFusion, supporting multiple databases as catalog backends. The integration gives DataFusion a lakehouse format that manages snapshots and catalog metadata for Parquet files stored in object storage. Our implementation is running in production, and we have open-sourced and donated it to the [Apache DataFusion Contrib organization](https://github.com/datafusion-contrib/datafusion-ducklake)."
 ---
 
-At [Hotdata](https://www.hotdata.dev/), we're building infrastructure that lets every AI agent spin up its own isolated database in milliseconds while querying data across structured and unstructured data sources. With a single endpoint, agents can perform [vector search](https://www.hotdata.dev/blog/building-vector-search-into-a-sql-query-engine), OLAP, top-K and geospatial queries.
+At [Hotdata](https://www.hotdata.dev/), we're building infrastructure that lets every AI agent spin up its own isolated database in milliseconds while querying data across structured and unstructured data sources. With a single endpoint, agents can perform [vector search](https://www.hotdata.dev/blog/building-vector-search-into-a-sql-query-engine), OLAP, top-K, and geospatial queries.
 
 We chose Apache DataFusion for query execution, but we also needed a lakehouse format that could efficiently handle metadata, snapshots, and inexpensive database creation without tying us to a particular engine. DuckLake turned out to be a natural fit.
 

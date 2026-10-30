@@ -92,12 +92,13 @@ Some of this style guide is automated with GitHub Actions, but feel free to run 
      * Copy the characters from here: `⟨⟩`.
      * These characters are known in LaTeX code as `\langle` and `\rangle`.
      * Inline code snippets containing placeholders should be highlighted as SQL code. This can be achieved by appending `{:.language-sql .highlight}` after the code snippet (no space is required before the curly brace).
-     * *Avoid* using arithmetic comparison characters, `<` and `>`, brackets, `[` and `]`, braces, `{` and `}`, for this purpose.
+     * *Avoid* using arithmetic comparison characters (`<` and `>`), brackets (`[` and `]`), and braces (`{` and `}`) for this purpose.
 
 ### Spelling
 
 * Use [American English (en-US) spelling](https://en.wikipedia.org/wiki/Oxford_spelling#Language_tag_comparison).
-* Avoid using the Oxford comma.
+* Use the Oxford comma (also known as the serial comma) in lists of three or more items. For example, write “PostgreSQL, SQLite, and DuckDB”, not “PostgreSQL, SQLite and DuckDB”.
+* Do not prefix DuckDB and DuckLake version numbers with `v`. For example, write “DuckDB 1.5.2” or “DuckLake 1.0” (or “DuckDB version 1.5.2”), not “DuckDB v1.5.2” or “DuckLake v1.0”.
 
 ## Example Code Snippets
 

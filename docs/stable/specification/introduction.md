@@ -28,10 +28,10 @@ which introduces the queries used by DuckLake.
 In DuckDB, attaching a 1.0 catalog with `AUTOMATIC_MIGRATION TRUE` migrates it to 1.1.
 Without this option, the catalog remains at 1.0.
 The migration adds the 1.1 catalog columns and the `ducklake_view_column_tag` table, and renames the system columns in registered [inlined data tables]({% link docs/stable/specification/tables/ducklake_inlined_data_tables.md %}).
-It also repairs existing metadata: it adds missing `ducklake_schema_versions` rows for inlined data tables, restores the defaults of renamed struct fields and clears column bounds that older versions may have stored with the wrong type.
+It also repairs existing metadata: it adds missing `ducklake_schema_versions` rows for inlined data tables, restores the defaults of renamed struct fields, and clears column bounds that older versions may have stored with the wrong type.
 The added columns are `NULL` for existing rows.
 
 ### Data Storage
 
 DuckLake uses [Parquet](https://parquet.apache.org/docs/file-format/) files to represent its tables.
-These files can be stored in [object storage (blob storage)](https://en.wikipedia.org/wiki/Object_storage), block storage or file storage.
+These files can be stored in [object storage (blob storage)](https://en.wikipedia.org/wiki/Object_storage), block storage, or file storage.

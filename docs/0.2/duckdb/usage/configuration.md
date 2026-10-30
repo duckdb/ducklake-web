@@ -34,7 +34,7 @@ FROM my_ducklake.options();
 | target_file_size             | The target data file size for insertion and compaction operations                                | 512MB   |
 
 ### Scoping
-Options can be set either globally, per-schema or per-table.
+Options can be set either globally, per-schema, or per-table.
 The most specific scope that is set is always used for any given setting, i.e. settings are used in the following priority:
 
 | Priority | Setting Scope |

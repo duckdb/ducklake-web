@@ -11,7 +11,7 @@ In DuckDB, DuckLake is supported through the [`ducklake` extension](https://duck
 
 ## Installation
 
-DuckLake 1.1 requires DuckDB v2.0.0 or later.
+DuckLake 1.1 requires DuckDB 2.0.0 or later.
 Install the [latest DuckDB release](https://duckdb.org/install/).
 
 ```sql
@@ -44,7 +44,7 @@ USE my_other_ducklake;
 
 The path is stored in the DuckLake metadata and does not have to be specified again to attach to an existing DuckLake catalog.
 
-> Both `DATA_PATH` and the database file path can be absolute or relative paths (e.g., `/some/path/`, `./some/path/` or `some/path/`). Moreover, for database creation the path needs to exist already, i.e., `ATTACH 'ducklake:db/my_ducklake.ducklake' AS my_ducklake;` where `db` needs to be an existing directory.
+> Both `DATA_PATH` and the database file path can be absolute or relative paths (e.g., `/some/path/`, `./some/path/`, or `some/path/`). Moreover, for database creation the path needs to exist already, i.e., `ATTACH 'ducklake:db/my_ducklake.ducklake' AS my_ducklake;` where `db` needs to be an existing directory.
 
 ## Attaching an Existing Database
 
@@ -158,4 +158,4 @@ DETACH my_ducklake;
 
 ## Using DuckLake from a Client
 
-DuckLake 1.1 requires [DuckDB v2.0.0 or later](https://duckdb.org/docs/current/clients/overview).
+DuckLake 1.1 requires [DuckDB 2.0.0 or later](https://duckdb.org/docs/current/clients/overview).

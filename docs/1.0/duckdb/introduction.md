@@ -152,4 +152,4 @@ DETACH my_ducklake;
 
 ## Using DuckLake from a Client
 
-DuckLake v1.0 is supported by [DuckDB v1.5.2+](https://duckdb.org/docs/current/clients/overview).
+DuckLake 1.0 is supported by [DuckDB 1.5.2+](https://duckdb.org/docs/current/clients/overview).

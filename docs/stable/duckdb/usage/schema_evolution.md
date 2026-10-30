@@ -26,7 +26,7 @@ Fields can be added to columns of type `struct`. The path to the `struct` column
 ALTER TABLE tbl ADD COLUMN nested_column.new_field INTEGER;
 ```
 
-For structs inside lists or maps, include `element`, `key` or `value` in the field path, e.g., `ALTER TABLE tbl ADD COLUMN list_column.element.new_field INTEGER;`.
+For structs inside lists or maps, include `element`, `key`, or `value` in the field path, e.g., `ALTER TABLE tbl ADD COLUMN list_column.element.new_field INTEGER;`.
 `ADD COLUMN` supports literal defaults, including casts of literals, but not expression defaults such as `now()`.
 
 ## Dropping Columns / Fields
@@ -111,7 +111,7 @@ Examples of valid type promotions are as follows:
 Promotions to floating-point types are accepted even when they can lose precision, such as `int64` to `float32`.
 
 The `null` type requires DuckLake format version 1.1 and can only store `NULL` values until promoted.
-It cannot be promoted to a nested type such as `struct`, `list` or `map`.
+It cannot be promoted to a nested type such as `struct`, `list`, or `map`.
 
 Changing a nested type can add or remove struct fields and promote existing fields, including fields inside lists and maps.
 Existing fields retain their order even if the target type lists them in another order.

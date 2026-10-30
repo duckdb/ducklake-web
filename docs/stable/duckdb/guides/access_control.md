@@ -30,7 +30,7 @@ In this guide, we focus on three different roles regarding access control in Duc
 
 DuckLake has two components: the metadata catalog, which resides in a SQL database, and the storage, which can be any filesystem backend. The roles mentioned above require different specific permissions at the **catalog level:**
 - The DuckLake Superuser needs all permissions under the specified schema (`public` by default). Since this user initializes all tables, they also become the owner. Subsequent migrations between different version of the DuckLake specification must be carried out by this user.
-- With data inlining disabled, the DuckLake Writer needs `USAGE` on the metadata schema and permissions to `INSERT`, `UPDATE`, `DELETE`, and `SELECT` on the metadata tables. Operations that create, alter or drop metadata tables require additional permissions.
+- With data inlining disabled, the DuckLake Writer needs `USAGE` on the metadata schema and permissions to `INSERT`, `UPDATE`, `DELETE`, and `SELECT` on the metadata tables. Operations that create, alter, or drop metadata tables require additional permissions.
 - The DuckLake Reader needs `USAGE` on the metadata schema and `SELECT` permissions on the metadata tables.
 
 At the storage level, we can leverage the way DuckLake structures data paths for different tables, which uses the following convention:

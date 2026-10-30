@@ -326,7 +326,7 @@ The “small files problem” has been one of the main pain points of data lakes
 
 Inlining works out of the box with zero configuration. Inserts, deletes, and updates are all supported. When the data is ready to be stored as Parquet files, a single checkpoint takes care of it.
 
-Data inlining will ship with [DuckLake v1.0]({% link release_calendar.md %}) in April alongside [DuckDB v1.5.2](https://duckdb.org/release_calendar), but you don't have to wait. Install DuckLake from the `core_nightly` repository of DuckDB v1.5.1.
+Data inlining will ship with [DuckLake 1.0]({% link release_calendar.md %}) in April alongside [DuckDB 1.5.2](https://duckdb.org/release_calendar), but you don't have to wait. Install DuckLake from the `core_nightly` repository of DuckDB 1.5.1.
 
 ```sql
 FORCE INSTALL ducklake FROM core_nightly;

@@ -33,8 +33,8 @@ Below is a list of logical conflicts based on the snapshot's changeset. Snapshot
 
 ### Data
 
-* A snapshot tries to insert data into a table that was dropped, altered or deleted from by another snapshot
-* A snapshot tries to delete data from a table that was dropped, altered, inserted into or compacted by another snapshot
+* A snapshot tries to insert data into a table that was dropped, altered, or deleted from by another snapshot
+* A snapshot tries to delete data from a table that was dropped, altered, inserted into, or compacted by another snapshot
 * Two snapshots delete from the same underlying data file. Concurrent deletes from different data files in the same table are permitted.
 
 ### Compaction

@@ -82,7 +82,7 @@ FROM my_ducklake.options();
 
 ### Scoping
 
-Options can be set either globally, per-schema or per-table.
+Options can be set either globally, per-schema, or per-table.
 The most specific scope that is set is always used for any given setting, i.e., settings are used in the following priority:
 
 | Priority | Setting Scope |

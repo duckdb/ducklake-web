@@ -40,7 +40,7 @@ ATTACH 'ducklake:inlining.duckdb' AS my_ducklake (DATA_INLINING_ROW_LIMIT 10);
 
 ### Persistent Override
 
-The `data_inlining_row_limit` option can be persisted in the DuckLake metadata at the table, schema or global level. A persisted value takes priority over both the global DuckDB default and the ATTACH parameter:
+The `data_inlining_row_limit` option can be persisted in the DuckLake metadata at the table, schema, or global level. A persisted value takes priority over both the global DuckDB default and the ATTACH parameter:
 
 ```sql
 ATTACH 'ducklake:inlining.duckdb' AS my_ducklake;
@@ -150,9 +150,9 @@ The following `ALTER TABLE` operations are supported within a transaction that a
 
 ## Metadata Catalog Support
 
-Data inlining is supported when using DuckDB, PostgreSQL or SQLite as the metadata catalog.
+Data inlining is supported when using DuckDB, PostgreSQL, or SQLite as the metadata catalog.
 
-When using a non-DuckDB metadata catalog, nested types (`STRUCT`, `MAP` and `LIST`) are stored as `VARCHAR` strings in the inlined data table. DuckLake automatically casts the values back to the correct type when reading.
+When using a non-DuckDB metadata catalog, nested types (`STRUCT`, `MAP`, and `LIST`) are stored as `VARCHAR` strings in the inlined data table. DuckLake automatically casts the values back to the correct type when reading.
 
 Inlining of `VARIANT` columns is only supported when using DuckDB as the metadata catalog. PostgreSQL and SQLite cannot inline `VARIANT` values because the type does not round-trip through a string representation without losing type information. Tables with `VARIANT` columns will not have their data inlined when using a non-DuckDB metadata catalog.
 

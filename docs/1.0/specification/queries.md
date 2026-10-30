@@ -393,7 +393,7 @@ where
 - `⟨footer_size⟩`{:.language-sql .highlight} is the position of the Parquet footer. This helps with efficiently reading the file.
 - `⟨row_id_start⟩`{:.language-sql .highlight} is the first logical row ID from the file. This number can be read from the [`ducklake_table_stats` table]({% link docs/1.0/specification/tables/ducklake_table_stats.md %}) via column `next_row_id`.
 
-We have omitted some complexity around relative paths, encrypted files, partitioning and partial files in this example.
+We have omitted some complexity around relative paths, encrypted files, partitioning, and partial files in this example.
 Refer to the [`ducklake_data_file` table]({% link docs/1.0/specification/tables/ducklake_data_file.md %}) documentation for details.
 
 > DuckLake also supports changing the schema, see [schema evolution]({% link docs/1.0/duckdb/usage/schema_evolution.md %}).

@@ -3,7 +3,7 @@ layout: docu
 title: Tables
 ---
 
-DuckLake v1.0 uses 28 tables to store metadata and to stage data fragments for data inlining. Below we describe all those tables and their semantics.
+DuckLake 1.0 uses 28 tables to store metadata and to stage data fragments for data inlining. Below we describe all those tables and their semantics.
 
 The following figure shows the most important 11 tables defined by the DuckLake schema:
 
@@ -42,7 +42,7 @@ The following figure shows the most important 11 tables defined by the DuckLake 
 
 ## Statistics
 
-DuckLake supports statistics on the table, column and file level.
+DuckLake supports statistics on the table, column, and file level.
 
 * [`ducklake_table_stats`]({% link docs/1.0/specification/tables/ducklake_table_stats.md %})
 * [`ducklake_table_column_stats`]({% link docs/1.0/specification/tables/ducklake_table_column_stats.md %})

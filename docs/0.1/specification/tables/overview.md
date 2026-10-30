@@ -28,7 +28,7 @@ DuckLake uses 19 tables to store metadata and to stage data fragments for data i
 
 ## Statistics
 
-DuckLake supports statistics on the table, column and file level.
+DuckLake supports statistics on the table, column, and file level.
 
 * [`ducklake_table_stats`]({% link docs/stable/specification/tables/ducklake_table_stats.md %})
 * [`ducklake_table_column_stats`]({% link docs/stable/specification/tables/ducklake_table_column_stats.md %})

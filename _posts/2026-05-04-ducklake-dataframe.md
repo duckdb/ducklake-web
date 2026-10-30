@@ -6,14 +6,14 @@ image: "/images/blog/thumbs/ducklake-dataframe.png"
 authors:
   - Pedro Holanda
   - Dr. Peter van Holland
-excerpt: "We are showcasing the simplicity of DuckLake's v1.0 specification by developing a dataframe reader/writer with AI."
+excerpt: "We are showcasing the simplicity of the DuckLake 1.0 specification by developing a dataframe reader/writer with AI."
 ---
 
 One of the beauties of DuckLake is how [simple]({% link manifesto/index.md %}#simplicity) it is. You can think of a DuckLake implementation as an orchestrator: for a given query it tells you which Parquet files to read, and when you write, you tell it which Parquet files you produced. That's roughly it. A bunch of queries hold the whole thing together.
 
 That simplicity got me thinking: since a DuckLake implementation is fairly contained, it might be a good fit to be built by a clanker (if you don't get the reference, stop reading this blog post and go watch Star Wars). There is a full [specification]({% link docs/stable/specification/introduction.md %}) and a reference implementation, and it can even steal the queries from there. To try this out, I got Claude Opus and created my evil intern counterpart: [Dr. Peter van Holland](https://github.com/petervanholland/).
 
-> Prompts, a VPS and “you are a professional database engineer”. These were the ingredients chosen to create the perfect little clanker. But Pedro Holanda accidentally added an extra ingredient to the concoction: an OpenClaw account.
+> Prompts, a VPS, and “you are a professional database engineer”. These were the ingredients chosen to create the perfect little clanker. But Pedro Holanda accidentally added an extra ingredient to the concoction: an OpenClaw account.
 
 <a href="{% link images/blog/ducklake_dataframe_intern.png %}">
     <img src="{% link images/blog/ducklake_dataframe_intern.png %}" alt="Dr. Peter van Holland, as he imagines himself" width="750" />
@@ -21,7 +21,7 @@ That simplicity got me thinking: since a DuckLake implementation is fairly conta
 
 The goal was straightforward: build a DuckLake implementation for dataframes, fully in Python, working with Pandas, Polars, and PySpark. I picked dataframe libraries because they are easy to set up, which keeps testing and development simple, and because everything stays in Python, where I suspect my clanker intern does best, since most of the work is calling other libraries that do the heavy lifting. The dependency list is just the dataframe libraries plus [PyArrow](https://pypi.org/project/pyarrow/). For the catalogs you need SQLite, Postgres, or DuckDB. Notice that these dependencies are optional and will mostly depend on what you want to use as a dataframe library and catalog.
 
-Peter's life mission was to reach read and write parity with DuckDB's DuckLake v1.0, using [DuckDB's `ducklake` extension]({% link docs/stable/duckdb/introduction.md %}) for testing. Whatever the reference implementation writes, he should read, and whatever he writes, the reference implementation should read. He had two instructions: add no extra dependencies, and make no mistakes™. The no-mistakes part was mostly ignored. Having an LLM counterpart is like having a junior intern who never learns, and you love them anyway. I devised an implementation plan and thought about reviewing his code, but Peter writes the most beautiful sloppy code and tests, making it impossible for me to keep up. So I gave him autonomy and let him do his thing, letting an OpenClaw account autonomously drive the development. (For the AI bros: I spent zero effort minimizing token consumption.)
+Peter's life mission was to reach read and write parity with DuckDB's DuckLake 1.0, using [DuckDB's `ducklake` extension]({% link docs/stable/duckdb/introduction.md %}) for testing. Whatever the reference implementation writes, he should read, and whatever he writes, the reference implementation should read. He had two instructions: add no extra dependencies, and make no mistakes™. The no-mistakes part was mostly ignored. Having an LLM counterpart is like having a junior intern who never learns, and you love them anyway. I devised an implementation plan and thought about reviewing his code, but Peter writes the most beautiful sloppy code and tests, making it impossible for me to keep up. So I gave him autonomy and let him do his thing, letting an OpenClaw account autonomously drive the development. (For the AI bros: I spent zero effort minimizing token consumption.)
 
 In six days Dr. Van Holland made the reads and the writes, and on the seventh he did not rest. He shipped a library on PyPI. That library has parity with DuckLake 1.0, with interop for Pandas, Polars, and PySpark, and with DuckDB, SQLite, or Postgres as catalogs. And it is completely bug-free.
 

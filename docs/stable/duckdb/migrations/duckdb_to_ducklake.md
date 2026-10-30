@@ -24,7 +24,7 @@ If you have been using DuckDB for a while, there is a chance you are using some 
 
 - Specific types need to be cast to a [supported DuckLake type]({% link docs/stable/specification/data_types.md %}). User defined types that are created as a `STRUCT` can be interpreted as such and `ENUM` and `UNION` will be cast to `VARCHAR` and `VARINT` will be cast to `VARCHAR` to preserve values outside the range of fixed-size integers.
 
-- Macros can be migrated to the DuckLake catalog with any supported metadata backend, including PostgreSQL, SQLite and MySQL.
+- Macros can be migrated to the DuckLake catalog with any supported metadata backend, including PostgreSQL, SQLite, and MySQL.
 
 - Generated columns are not supported, so their computed values are copied into regular columns. This means that the values will always be persisted (no `VIRTUAL` option).
 
@@ -35,7 +35,7 @@ Expression defaults, such as `DEFAULT now()`, are supported in `CREATE TABLE` an
 
 The following Python script can be used to migrate from a DuckDB persisted database to DuckLake bypassing the unsupported features.
 
-The script copies table data using `CREATE TABLE AS`, which does not preserve constraints, defaults or generated-column definitions.
+The script copies table data using `CREATE TABLE AS`, which does not preserve constraints, defaults, or generated-column definitions.
 Recreate macro parameter defaults and overloads manually, and update catalog-qualified references in macros and views to point to the destination.
 
 > Currently, only local migrations are supported by this script. The script will be adapted in the future to account for migrations to remote object storage such as S3 or GCS.

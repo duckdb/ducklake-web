@@ -42,7 +42,7 @@ The types of columns are defined in the `column_type` field of the `ducklake_col
 | `uuid`           | [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) |
 
 The `null` type requires DuckLake format version 1.1 and is spelled `"NULL"` in DuckDB SQL.
-It can also occur inside a list, struct or map.
+It can also occur inside a list, struct, or map.
 
 ## Nested Types
 

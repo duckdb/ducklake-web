@@ -12,7 +12,7 @@ Welcome to the DuckLake documentation. This documentation has two parts:
 * **[The DuckLake specification]({% link docs/stable/specification/introduction.md %}):** The specification of the DuckLake lakehouse format. It describes the SQL tables and queries used to define the catalog database.
 * **[The `ducklake` DuckDB extension]({% link docs/stable/duckdb/introduction.md %}):** User guide for the `ducklake` DuckDB extension. It presents the features of DuckLake through examples.
 
-DuckLake 1.1 requires DuckDB v2.0.0 or later.
+DuckLake 1.1 requires DuckDB 2.0.0 or later.
 For existing catalogs, see [“Upgrading to DuckLake 1.1”]({% link docs/stable/duckdb/migrations/upgrading_to_ducklake_1_1.md %}).
 
 ## When Should I Use DuckLake?
@@ -37,7 +37,7 @@ Additionally, DuckLake currently has implementations for the following libraries
 
 ## List of Hosted DuckLakes
 
-MotherDuck offers a [hosted solution for DuckLake v1.0](https://motherduck.com/blog/announcing-ducklake-1-0-on-motherduck/), currently in public preview.
+MotherDuck offers a [hosted solution for DuckLake 1.0](https://motherduck.com/blog/announcing-ducklake-1-0-on-motherduck/), currently in public preview.
 
 For hosting read-only DuckLakes, see the guide for creating a [“Public DuckLake on Object Storage”]({% link docs/stable/duckdb/guides/public_ducklake_on_object_storage.md %}).
 

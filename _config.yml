@@ -12,7 +12,7 @@
 title: DuckLake
 email: quack@duckdb.org
 description: >-
-  DuckLake is a SQL-as-a-lakehouse format that leverages your favorite SQL database (SQLite, PostgreSQL or DuckDB) to provide ACID transactions, schema evolution, and time travel for your data lake, without the complexity of traditional lakehouse catalogs.
+  DuckLake is a SQL-as-a-lakehouse format that leverages your favorite SQL database (SQLite, PostgreSQL, or DuckDB) to provide ACID transactions, schema evolution, and time travel for your data lake, without the complexity of traditional lakehouse catalogs.
 baseurl: ""
 url: "https://ducklake.select"
 

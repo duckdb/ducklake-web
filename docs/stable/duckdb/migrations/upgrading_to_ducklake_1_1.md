@@ -53,4 +53,4 @@ Migrate through a writable attachment first.
 See [Troubleshooting]({% link docs/stable/duckdb/guides/troubleshooting.md %}) for version-mismatch errors.
 
 Version 1.1 reserves column names beginning with `_ducklake_`.
-If migration reports a collision with an inlined table's system columns, attach the 1.0 catalog without migration, rename the user column and run `CALL ducklake_flush_inlined_data('my_ducklake');` before detaching and retrying migration.
+If migration reports a collision with an inlined table's system columns, attach the 1.0 catalog without migration, rename the user column, and run `CALL ducklake_flush_inlined_data('my_ducklake');` before detaching and retrying migration.

@@ -36,7 +36,7 @@ The following figure shows the most important tables defined by the DuckLake sch
 
 ## Statistics
 
-DuckLake supports statistics on the table, column and file level.
+DuckLake supports statistics on the table, column, and file level.
 
 * [`ducklake_table_stats`]({% link docs/0.2/specification/tables/ducklake_table_stats.md %})
 * [`ducklake_table_column_stats`]({% link docs/0.2/specification/tables/ducklake_table_column_stats.md %})

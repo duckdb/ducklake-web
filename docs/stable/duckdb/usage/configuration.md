@@ -66,7 +66,7 @@ Configuration is persisted in the [`ducklake_metadata`]({% link docs/stable/spec
 | `version`                      | DuckLake format version                                                                                   |          |
 | `write_deletion_vectors`       | **Experimental.** Write Iceberg V3 deletion vectors (puffin) instead of positional delete files (parquet) | `false`  |
 
-The `created_by`, `data_path`, `encrypted` and `version` values are reported by `options()` but cannot be changed with `set_option` or table DDL.
+The `created_by`, `data_path`, `encrypted`, and `version` values are reported by `options()` but cannot be changed with `set_option` or table DDL.
 Configuration changes are not snapshot-versioned.
 
 ### Setting DuckLake-Specific Configuration Values
@@ -120,7 +120,7 @@ ALTER TABLE my_ducklake.my_table RESET (target_file_size);
 ```
 
 These statements use the same table-scoped options as `set_option`.
-`RESET` restores the schema, global or default setting.
+`RESET` restores the schema, global, or default setting.
 Use `WITH` or `ALTER TABLE ... SET` for a table created in the current transaction: `set_option` cannot target an uncommitted table or schema.
 
 ### Skipping Column Statistics
@@ -132,13 +132,13 @@ CALL my_ducklake.set_option('skip_stats_columns', ['payload'], table_name => 'my
 ```
 
 Specify a column name or a list of top-level column names. Selecting a nested column also skips its fields.
-Partition columns, `GEOMETRY`, `VARIANT` and nested columns containing these types cannot be selected.
+Partition columns, `GEOMETRY`, `VARIANT`, and nested columns containing these types cannot be selected.
 To record bounds for future writes again, use `ALTER TABLE my_ducklake.my_table RESET (skip_stats_columns);`.
 This does not backfill bounds for existing files.
 
 ### Scoping
 
-Options can be set either globally, per-schema or per-table.
+Options can be set either globally, per-schema, or per-table.
 The most specific scope that is set is always used for any given setting, i.e., settings are used in the following priority:
 
 | Priority | Setting Scope |
@@ -161,7 +161,7 @@ For data inlining, persisted options take precedence over `DATA_INLINING_ROW_LIM
 
 ## DuckLake Instance Settings
 
-The `ducklake_settings` function returns metadata about a DuckLake instance: the catalog type, the extension version and the data path.
+The `ducklake_settings` function returns metadata about a DuckLake instance: the catalog type, the extension version, and the data path.
 
 | Column              | Description                                               |
 | ------------------- | --------------------------------------------------------- |

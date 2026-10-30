@@ -15,7 +15,7 @@ Using the `DATA_INLINING_ROW_LIMIT` attach parameter. This is bounded to your Du
 ATTACH 'ducklake:inlining.duckdb' AS my_ducklake (DATA_INLINING_ROW_LIMIT 10);
 ```
 
-Using the option `data_inlining_row_limit` which can be set at the table, schema or global level. This is persisted in the `ducklake_metadata` table and will be reused across connections.
+Using the option `data_inlining_row_limit` which can be set at the table, schema, or global level. This is persisted in the `ducklake_metadata` table and will be reused across connections.
 
 ```sql
 ATTACH 'ducklake:inlining.duckdb' AS my_ducklake;

@@ -61,13 +61,13 @@ FROM db.table_changes('tbl', now() - INTERVAL '1 week', now());
 The `table_changes` function takes as input the table for which changes should be returned, and two bounds: the start snapshot and the end snapshot (inclusive).
 The bounds can be given either as a [snapshot id]({% link docs/stable/duckdb/usage/snapshots.md %}), or as a timestamp.
 
-The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid` and `change_type`.
+The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid`, and `change_type`.
 
 | Column        | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
 | `snapshot_id` | The snapshot which made the change                          |
 | `rowid`       | The row identifier of the row which was changed             |
-| `change_type` | `insert`, `update_preimage`, `update_postimage` or `delete` |
+| `change_type` | `insert`, `update_preimage`, `update_postimage`, or `delete` |
 
 Updates are split into two rows: the `update_preimage` and `update_postimage`.
 `update_preimage` is the row as it was prior to the update operation.
@@ -76,7 +76,7 @@ Updates are split into two rows: the `update_preimage` and `update_postimage`.
 A row updated and then deleted in one transaction is reported as a deletion of its previously committed version.
 A row inserted and deleted within the same transaction is not reported.
 
-If a table has a data column named `rowid` or `snapshot_id`, or a column named `change_type` in the case of `table_changes`, the change feed renames that data column, for example to `rowid_1`, `snapshot_id_1` or `change_type_1`, so the change columns remain accessible.
+If a table has a data column named `rowid` or `snapshot_id`, or a column named `change_type` in the case of `table_changes`, the change feed renames that data column, for example to `rowid_1`, `snapshot_id_1`, or `change_type_1`, so the change columns remain accessible.
 
 When the schema of a table is altered, changes are read as of the schema of the table as of the end snapshot.
 As such, if a column is dropped in between the provided bounds, the dropped column is omitted from the entire result.
@@ -127,7 +127,7 @@ FROM db.table_insertions('tbl', 2, 2);
 `table_insertions` is a wrapper for the `ducklake_table_insertions` function.
 The virtual `snapshot_id` and `rowid` columns can be selected from the underlying function in the same way as for deletions.
 
-The underlying `ducklake_table_changes`, `ducklake_table_insertions` and `ducklake_table_deletions` functions take five arguments: `catalog`, `schema_name`, `table_name`, `start_snapshot` and `end_snapshot`.
+The underlying `ducklake_table_changes`, `ducklake_table_insertions`, and `ducklake_table_deletions` functions take five arguments: `catalog`, `schema_name`, `table_name`, `start_snapshot`, and `end_snapshot`.
 The schema argument accepts a dotted path for [nested schemas]({% link docs/stable/duckdb/advanced_features/nested_schemas.md %}), which can also be used in schema-qualified calls such as `db.sales.europe.table_changes(...)`.
 
 ## Compaction

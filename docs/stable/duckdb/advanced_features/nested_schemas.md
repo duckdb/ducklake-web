@@ -46,7 +46,7 @@ Schema options apply to tables directly in that schema and are not inherited by 
 A nested schema's default directory uses its UUID under the DuckLake data path.
 The directory layout does not mirror the schema hierarchy.
 
-To drop a schema containing tables, views, macros or child schemas, use `CASCADE`:
+To drop a schema containing tables, views, macros, or child schemas, use `CASCADE`:
 
 ```sql
 DROP SCHEMA my_ducklake.sales CASCADE;

@@ -201,7 +201,8 @@ def build_style_guide(docs_version: str) -> str:
 - Always format SQL keywords, variable names, function names as inline code.
 - SQL style: 4-space indent, UPPERCASE keywords, lowercase functions, snake_case names.
 - End SQL statements with semicolons.
-- Use American English spelling. No Oxford comma.
+- Use American English spelling. Use the Oxford comma.
+- Do not prefix DuckDB and DuckLake version numbers with `v` (write "DuckDB 1.5.2", not "DuckDB v1.5.2").
 - Page title goes in front matter `title` property, not repeated as h1.
 - Use h2 (##), h3 (###), h4 (####) only. Headline capitalization (Chicago style).
 - Use Jekyll {{% link docs/{docs_version}/path.md %}} for cross-references.

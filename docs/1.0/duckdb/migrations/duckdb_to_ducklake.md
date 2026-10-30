@@ -20,11 +20,11 @@ Note that it doesn't matter what catalog you are using as a metadata backend for
 
 ## Second Scenario: Not Everything Is Supported
 
-If you have been using DuckDB for a while, there is a chance you are using some very specific types, macros, default values that are not literals or even things like generated columns. If this is your case, then migrating will have some tradeoffs.
+If you have been using DuckDB for a while, there is a chance you are using some very specific types, macros, default values that are not literals, or even things like generated columns. If this is your case, then migrating will have some tradeoffs.
 
 - Specific types need to be cast to a [supported DuckLake type]({% link docs/1.0/specification/data_types.md %}). User defined types that are created as a `STRUCT` can be interpreted as such and `ENUM` and `UNION` will be cast to `VARCHAR` and `VARINT` will be cast to `INT`.
 
-- Macros can be migrated to a DuckDB persisted database. If you are using DuckDB as your catalog for DuckLake, then this will be the destination. If you are using other catalogs like PostgreSQL, SQLite or MySQL, DuckDB macros are not supported and therefore can't be migrated.
+- Macros can be migrated to a DuckDB persisted database. If you are using DuckDB as your catalog for DuckLake, then this will be the destination. If you are using other catalogs like PostgreSQL, SQLite, or MySQL, DuckDB macros are not supported and therefore can't be migrated.
 
 - Generated columns are the same as defaults that are not literals and therefore they need to be specified when inserting the data into the destination table. This means that the values will always be persisted (no `VIRTUAL` option).
 

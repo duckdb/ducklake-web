@@ -83,7 +83,7 @@ FROM my_ducklake.options();
 
 ### Scoping
 
-Options can be set either globally, per-schema or per-table.
+Options can be set either globally, per-schema, or per-table.
 The most specific scope that is set is always used for any given setting, i.e., settings are used in the following priority:
 
 | Priority | Setting Scope |
@@ -95,7 +95,7 @@ The most specific scope that is set is always used for any given setting, i.e., 
 
 ## DuckLake Instance Settings
 
-The `ducklake_settings` function returns metadata about a DuckLake instance: the catalog type, the extension version and the data path.
+The `ducklake_settings` function returns metadata about a DuckLake instance: the catalog type, the extension version, and the data path.
 
 | Column              | Description                                              |
 | ------------------- | -------------------------------------------------------- |

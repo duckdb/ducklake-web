@@ -140,7 +140,7 @@ Additionally, consider visiting the [`awesome-ducklake` repository](https://gith
 
 DuckLake needs a storage layer and a catalog database.
 Both components can be picked from a wide range of options.
-The storage system can be a blob storage (object storage), a block storage or a file storage.
+The storage system can be a blob storage (object storage), a block storage, or a file storage.
 For the catalog database, any SQL-compatible database works that supports ACID operations and primary keys.
 
 </div>
@@ -158,7 +158,7 @@ For the catalog database, any SQL-compatible database works that supports ACID o
 
 <div class="answer" markdown="1">
 
-DuckLake can store the _data files_ (Parquet files) on the AWS S3 blob storage or compatible solutions such as Azure Blob Storage, Google Cloud Storage or Cloudflare R2.
+DuckLake can store the _data files_ (Parquet files) on the AWS S3 blob storage or compatible solutions such as Azure Blob Storage, Google Cloud Storage, or Cloudflare R2.
 You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 </div>
@@ -182,7 +182,7 @@ You can run the _catalog database_ anywhere, e.g., in an AWS Aurora database.
 
 <div class="answer" markdown="1">
 
-Yes! We released [DuckLake v1.0]({% post_url 2026-04-13-ducklake-10 %}) in April 2026. This includes a production-ready specification and a production-ready [`ducklake` DuckDB extension]({% link docs/stable/duckdb/introduction.md %}), with guaranteed backward-compatibility.
+Yes! We released [DuckLake 1.0]({% post_url 2026-04-13-ducklake-10 %}) in April 2026. This includes a production-ready specification and a production-ready [`ducklake` DuckDB extension]({% link docs/stable/duckdb/introduction.md %}), with guaranteed backward-compatibility.
 
 </div>
 
@@ -438,7 +438,7 @@ Yes, you can download the documentation as a [single Markdown file](https://blob
 
 <div class="answer" markdown="1">
 
-The DuckLake v1.1 standard is expected to be released in September 2026.
+The DuckLake 1.1 standard is expected to be released in September 2026.
 See the [release calendar]({% link release_calendar.md %}) for the latest information and the [roadmap]({% link roadmap.md %}) for upcoming features.
 
 </div>

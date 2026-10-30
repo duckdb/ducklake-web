@@ -55,13 +55,13 @@ FROM changes.table_changes('tbl', now() - INTERVAL '1 week', now());
 The `table_changes` function takes as input the table for which changes should be returned, and two bounds: the start snapshot and the end snapshot (inclusive).
 The bounds can be given either as a [snapshot id]({% link docs/stable/duckdb/usage/snapshots.md %}), or as a timestamp.
 
-The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid` and `change_type`.
+The result of the function is the set of changes, read using the table schema as of the end snapshot provided, and three extra columns: `snapshot_id`, `rowid`, and `change_type`.
 
 |   Column    |                     Description                     |
 |-------------|-----------------------------------------------------|
 | snapshot_id | The snapshot which made the change                  |
 | rowid       | The row identifier of the row which was changed     |
-| change_type | insert, update_preimage, update_postimage or delete |
+| change_type | insert, update_preimage, update_postimage, or delete |
 
 Updates are split into two rows: the `update_preimage` and `update_postimage`.
 `update_preimage` is the row as it was prior to the update operation.

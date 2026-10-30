@@ -3,7 +3,7 @@ layout: docu
 title: Sorted Tables
 ---
 
-DuckLake tables can be configured with a sort order. When a sort order is defined, data is physically sorted by the specified columns whenever it is written out as Parquet — during `INSERT`, [file compaction]({% link docs/1.0/duckdb/maintenance/merge_adjacent_files.md %}) and [inlined data flushing]({% link docs/1.0/duckdb/advanced_features/data_inlining.md %}).
+DuckLake tables can be configured with a sort order. When a sort order is defined, data is physically sorted by the specified columns whenever it is written out as Parquet — during `INSERT`, [file compaction]({% link docs/1.0/duckdb/maintenance/merge_adjacent_files.md %}), and [inlined data flushing]({% link docs/1.0/duckdb/advanced_features/data_inlining.md %}).
 
 Sorting data before writing improves the effectiveness of min/max statistics at query time, which allows the DuckDB query engine to skip data files whose value ranges do not overlap with a query's filter predicates.
 
