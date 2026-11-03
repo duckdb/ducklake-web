@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Development Roadmap
+description: "The DuckLake development roadmap, listing the features planned for upcoming DuckLake releases."
 body_class: roadmap blog_typography post
 max_page_width: small
 toc: false
