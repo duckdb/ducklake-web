@@ -11,7 +11,7 @@ On the technical side, consider the following:
 * If you would like to perform **local data warehousing with a single client**, use [DuckDB](#duckdb) as the catalog database.
 * If you would like to perform **local data warehousing using multiple local clients**, use [SQLite](#sqlite) as the catalog database.
 * If you would like to operate a **multi-user lakehouse** with potentially remote clients, use [PostgreSQL](#postgresql) as the catalog database.
-* If you would like to serve a **DuckDB catalog to multiple clients**, use the experimental [Quack](#quack) protocol.
+* If you would like to serve a **DuckDB catalog to multiple clients**, use the [Quack](#quack) protocol.
 
 ## DuckDB
 
@@ -69,7 +69,7 @@ Do not rely on an unprefixed file being detected automatically.
 
 ## Quack
 
-The experimental [`quack` extension](https://duckdb.org/docs/current/quack/overview) allows multiple DuckLake clients to connect to a DuckDB catalog hosted by a Quack server.
+The [`quack` extension](https://duckdb.org/docs/current/quack/overview) allows multiple DuckLake clients to connect to a DuckDB catalog hosted by a Quack server.
 In a separate server process, open the DuckDB file that will store the metadata, then start the server:
 
 ```sql

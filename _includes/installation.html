@@ -12,6 +12,7 @@
                 <div class="option" aria-checked="false" tabindex="0" data-value="duckdb"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/duckdb.svg" aria-hidden="true"></span><span class="label">DuckDB</span></div>
                 <div class="option" aria-checked="false" tabindex="-1" data-value="sqlite"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/sqlite.svg" aria-hidden="true"></span><span class="label">SQLite</span></div>
                 <div class="option" aria-checked="false" tabindex="-1" data-value="postgresql"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/postgresql.svg" aria-hidden="true"></span><span class="label">PostgreSQL</span></div>
+                <div class="option" aria-checked="false" tabindex="-1" data-value="quack"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/duckdb.svg" aria-hidden="true"></span><span class="label">DuckDB + Quack</span></div>
             </div>
         </div>
     </div>
@@ -63,6 +64,14 @@ The SQL snippets are shared with the quick installation on the landing page.
 {% highlight sql %}{% include install/postgresql.sql %}{% endhighlight %}
 
 <p class="note">The <code>ducklake_catalog</code> database must exist in PostgreSQL. DuckLake requires PostgreSQL 12 or newer.</p>
+
+</div>
+
+<div data-catalog="quack" data-docs="{% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#quack">
+
+{% highlight sql %}{% include install/quack.sql %}{% endhighlight %}
+
+<p class="note">Both the catalog database and the clients are DuckDB instances: a DuckDB server process hosts the catalog database and DuckDB clients connect to it over the network using the <a href="https://duckdb.org/docs/current/quack/overview">Quack protocol</a>. The default port is 9494. All clients need access to the data files, so use an absolute path or an object storage URL as the <code>DATA_PATH</code>.</p>
 
 </div>
 
