@@ -10,10 +10,6 @@
           "url": "index"
         },
         {
-          "page": "Installation",
-          "url": "installation"
-        },
-        {
           "page": "Specification",
           "slug": "specification",
           "subfolderitems": [
@@ -75,6 +71,10 @@
             {
               "page": "Introduction",
               "url": "introduction"
+            },
+            {
+              "page": "Installation",
+              "url": "installation"
             },
             {
               "page": "Usage",
