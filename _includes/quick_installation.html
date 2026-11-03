@@ -20,15 +20,7 @@
                 </div>
 
                 <div class="result content">
-{% highlight sql %}
-INSTALL ducklake;
-
-ATTACH 'ducklake:metadata.ducklake'
-    AS my_ducklake
-    (DATA_PATH 'data/');
-
-USE my_ducklake;
-{% endhighlight %}
+{% highlight sql %}{% include install/duckdb.sql %}{% endhighlight %}
                 </div>
             </div>
         </div>
@@ -40,38 +32,15 @@ USE my_ducklake;
 <div id="quick-installation">
 
 <div data-install="duckdb">
-{% highlight sql %}
-INSTALL ducklake;
-
-ATTACH 'ducklake:metadata.ducklake'
-    AS my_ducklake
-    (DATA_PATH 'data/');
-
-USE my_ducklake;
-{% endhighlight %}
+{% highlight sql %}{% include install/duckdb.sql %}{% endhighlight %}
 </div>
 
 <div data-install="postgresql">
-{% highlight sql %}
-INSTALL ducklake;
-INSTALL postgres;
-
-ATTACH 'ducklake:postgres:dbname=ducklake_catalog host=your_postgres_host'
-    AS my_ducklake (DATA_PATH 'data/');
-USE my_ducklake;
-{% endhighlight %}
+{% highlight sql %}{% include install/postgresql.sql %}{% endhighlight %}
 </div>
 
 <div data-install="sqlite">
-{% highlight sql %}
-INSTALL ducklake;
-INSTALL sqlite;
-
-ATTACH 'ducklake:sqlite:metadata.sqlite'
-    AS my_ducklake (DATA_PATH 'data/');
-
-USE my_ducklake;
-{% endhighlight %}
+{% highlight sql %}{% include install/sqlite.sql %}{% endhighlight %}
 </div>
 
 </div>

@@ -1,109 +1,69 @@
-<p>This page contains installation options for DuckLake. For production use, we recommend the stable release.</p>
-<div class="yourselection">
-	<div class="version select" data-select="version">
-		<h3>
-			Version
-		</h3>
-		<ul class="version">
-			<li data-id=".stable" class="selected">
-				<div>Stable release</span></div>
-			</li>
-			<li data-id=".main">
-				<div>Preview release</div>
-			</li>
-		</ul>
-	</div>
-	<div class="environment select" data-select="environment">
-		<h3>
-			Environment
-		</h3>
-		<ul class="environment">
-			<li data-id=".cli" class="selected">Command line</li>
-			<li data-id=".python">Python</li>
-			<li data-id=".r">R</li>
-			<li data-id=".java">Java</li>
-			<li data-id=".js">Node.js</li>
-			<li data-id=".rust">Rust</li>
-			<li data-id=".go">Go</li>
-			<li data-id=".cplusplus">C/C++</li>
-			<li data-id=".odbc">ODBC</li>
-		</ul>
-	</div>
-	<div class="platform select" data-select="platform">
-		<h3>
-			Platform
-		</h3>
-		<ul class="platform">
-			<li data-id=".linux">Linux</li>
-			<li data-id=".macos" class="selected">macOS</li>
-			<li data-id=".win">Windows</li>
-		</ul>
-		<div class="info">The package is available for all platforms.</div>
-	</div>
-	<div class="download_method select" data-select="download_method">
-		<h3>
-			Download method
-		</h3>
-		<ul class="download_method">
-			<li data-id=".direct" class="selected">Direct download</li>
-			<li data-id=".package_manager">Package manager</li>
-		</ul>
-	</div>
-	<div class="architecture select hide" data-select="architecture">
-		<h3>
-			Architecture
-		</h3>
-		<ul class="architecture">
-			<li data-id=".x86_64">x86_64</li>
-			<li data-id=".arm64">arm64</li>
-		</ul>
-		<div class="info">The package supports both architectures.</div>
-	</div>
+<p>DuckLake runs in DuckDB through the <a href="https://duckdb.org/docs/current/core_extensions/ducklake"><code>ducklake</code> extension</a>. To get started, install the <a href="https://duckdb.org/install/">latest DuckDB release</a>, choose a catalog database below and run the commands in DuckDB. For guidance on picking a catalog database, see <a href="{% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}">Choosing a Catalog Database</a>.</p>
 
-	<div class="installation output">
-		<h3>
-			Installation
-		</h3>
-		<div class="result" id="resultselection">
-			<figure class="highlight">
-				<pre><code></code></pre>
-			</figure>
-		</div>
-	</div>
+<div class="installationselection">
 
-	<div class="link output">
-		<h3>
-			Link
-		</h3>
-		<div class="result">
+    <div class="selection-foldout open" data-foldout="catalog">
+        <div class="selection-head">
+            <h3><button type="button" aria-expanded="true" aria-controls="installation-catalog-options">Catalog database<span class="selected"></span><span class="foldout-icon" aria-hidden="true"><svg class="icon"><use href="#chevron-down"></use></svg></span></button></h3>
+        </div>
 
-		</div>
-	</div>
-	
-	<div class="sha512 output">
-		<h3></h3>
-		<div class="result">
-			
-		</div>
-	</div>
+        <div class="selection-content" id="installation-catalog-options">
+            <div class="selection-options" data-role="catalog">
+                <div class="option" aria-checked="false" tabindex="0" data-value="duckdb"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/duckdb.svg" aria-hidden="true"></span><span class="label">DuckDB</span></div>
+                <div class="option" aria-checked="false" tabindex="-1" data-value="sqlite"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/sqlite.svg" aria-hidden="true"></span><span class="label">SQLite</span></div>
+                <div class="option" aria-checked="false" tabindex="-1" data-value="postgresql"><span class="symbol"><img src="{{ site.baseurl }}/images/icons/postgresql.svg" aria-hidden="true"></span><span class="label">PostgreSQL</span></div>
+            </div>
+        </div>
+    </div>
 
-	<div class="note output">
-		<h3>
+    <div class="installation-instructions">
 
-		</h3>
-		<div class="result">
+        <div class="installation-heading">
+            <h2>Install DuckLake</h2>
+        </div>
 
-		</div>
-	</div>
+<div id="result">
 
-	<div class="example output">
-		<h3>
-			Usage example
-		</h3>
-		<div class="result">
-			<figure class="highlight">
-				<pre><code></code></pre>
-			</figure>
-		</div>
-	</div>
+<div class="instruction-wrap"></div>
+<div class="more">
+    <a class="docs-link" href="">Catalog database documentation<svg class="icon"><use href="#arrow-right"></use></svg></a>
+</div>
+
+</div><!-- result -->
+
+    </div><!-- installation-instructions -->
+
+</div>
+
+{%- comment -%}
+Instruction templates, one per catalog database. js/installation.js shows the selected one.
+The SQL snippets are shared with the quick installation on the landing page.
+{%- endcomment %}
+
+<div class="hidden instruction-collection" hidden aria-hidden="true">
+
+<div data-catalog="duckdb" data-docs="{% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#duckdb">
+
+{% highlight sql %}{% include install/duckdb.sql %}{% endhighlight %}
+
+<p class="note">A DuckDB catalog can only be attached by one DuckDB process at a time, unless every process attaches it in read-only mode.</p>
+
+</div>
+
+<div data-catalog="sqlite" data-docs="{% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#sqlite">
+
+{% highlight sql %}{% include install/sqlite.sql %}{% endhighlight %}
+
+<p class="note">A SQLite catalog can be used by multiple local DuckDB processes. SQLite allows one writer at a time and DuckLake retries on lock conflicts.</p>
+
+</div>
+
+<div data-catalog="postgresql" data-docs="{% link docs/stable/duckdb/usage/choosing_a_catalog_database.md %}#postgresql">
+
+{% highlight sql %}{% include install/postgresql.sql %}{% endhighlight %}
+
+<p class="note">The <code>ducklake_catalog</code> database must exist in PostgreSQL. DuckLake requires PostgreSQL 12 or newer.</p>
+
+</div>
+
 </div>

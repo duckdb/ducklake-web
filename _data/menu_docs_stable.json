@@ -73,6 +73,10 @@
               "url": "introduction"
             },
             {
+              "page": "Installation",
+              "url": "installation"
+            },
+            {
               "page": "Usage",
               "slug": "usage",
               "subsubfolderitems": [

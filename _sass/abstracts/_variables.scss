@@ -221,6 +221,7 @@ $docuh5: 18px;
   --yellow-transparent-98: #fffff599;
 
   // LIGHT MODE
+  --border-color: var(--grey-transparent-85);
   --cli-background: #f7f7f7;
   --cli-bar: #f1f1f1;
   --cli-error: #d70000;
@@ -449,6 +450,7 @@ $docuh5: 18px;
 
 // DARK MODE 
 html.darkmode {
+  --border-color: var(--grey-transparent-20);
   --cli-background: #141414;
   --cli-bar: #464646;
   --cli-error: #ff6a6a;
