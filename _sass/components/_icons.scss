@@ -20,7 +20,11 @@ td svg.icon{
 	}
 	
 	&.minus{
-		color: var(--main-text-tertiary-color, #B2B2B2);
+		color: var(--main-text-tertiary-color, #666666);
+	}
+
+	&.x{
+		color: var(--cli-error, #d70000);
 	}
 	
 	@media only screen and (max-width: 650px) {

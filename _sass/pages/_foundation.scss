@@ -15,13 +15,13 @@ body.foundation {
 		margin-bottom: var(--page-element-spacing-large, 50px);
 
 		h2 {
-			@include display-3;
+			@include display-2;
 			margin: 0 0 16px;
 		}
 
 		p {
 			@include body-small;
-			color: var(--main-text-secondary-color, #666);
+			color: var(--main-text-secondary-color, #333333);
 			margin: 0;
 			max-width: 585px;
 		}
@@ -39,14 +39,14 @@ body.foundation {
 		gap: 8px;
 
 		h3 {
-			@include title-3;
+			@include headline-4;
 			color: var(--main-text-primary-color-strong, #050505);
 			margin: 0;
 		}
 
 		.meta {
 			@include body-small;
-			color: var(--main-text-secondary-color, #666);
+			color: var(--main-text-secondary-color, #333333);
 		}
 	}
 
@@ -55,7 +55,7 @@ body.foundation {
 		text-align: center;
 
 		h1 {
-			@include display-2;
+			@include display-1;
 			margin: 0 auto;
 			max-width: 725px;
 		}
@@ -95,18 +95,18 @@ body.foundation {
 					width: 20px;
 					height: 20px;
 					flex-shrink: 0;
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				span {
-					@include title-2;
+					@include headline-4;
 					color: var(--main-text-primary-color-strong, #050505);
 				}
 			}
 
 			p {
 				@include body-small;
-				color: var(--main-text-secondary-color, #666);
+				color: var(--main-text-secondary-color, #333333);
 				margin: 0;
 			}
 		}
@@ -155,7 +155,7 @@ body.foundation {
 						display: block;
 						width: 120px;
 						height: 100%;
-						background-color: var(--main-text-secondary-color, #666);
+						background-color: var(--main-text-secondary-color, #333333);
 						-webkit-mask-size: contain;
 						mask-size: contain;
 						-webkit-mask-repeat: no-repeat;
@@ -231,16 +231,16 @@ body.foundation {
 				gap: 2px;
 
 				.name {
-					@include title-2;
+					@include headline-4;
 					color: var(--main-text-primary-color-strong, #050505);
 				}
 
 				.role {
 					@include tiny;
-					color: var(--main-text-tertiary-color, #B2B2B2);
+					color: var(--main-text-tertiary-color, #666666);
 
 					.divider {
-						color: var(--main-quaternary-color, #CCC);
+						color: var(--main-quaternary-color, #999999);
 						margin: 0 8px;
 					}
 				}
@@ -248,7 +248,7 @@ body.foundation {
 
 			p {
 				@include body-small;
-				color: var(--main-text-secondary-color, #666);
+				color: var(--main-text-secondary-color, #333333);
 				margin: 0;
 				grid-column: 1 / -1;
 			}
@@ -271,10 +271,10 @@ body.foundation {
 				flex-direction: column;
 				gap: 8px;
 				padding-bottom: 18px;
-				border-bottom: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+				border-bottom: 1px solid var(--border-color);
 
 				h3 {
-					@include title-1;
+					@include headline-3;
 				}
 			}
 
@@ -293,7 +293,7 @@ body.foundation {
 
 				li {
 					@include body-small;
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 					display: flex;
 					align-items: center;
 					gap: 5px;

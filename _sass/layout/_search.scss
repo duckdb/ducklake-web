@@ -31,8 +31,8 @@ body.search {
 		top: 90px;
 		left: calc(50% - 400px);
 		width: 800px;
-		background: var(--main-body-background-color, #FAFAFA);
-		border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+		background: var(--main-body-background-color, #FCFCFC);
+		border: 1px solid var(--border-color);
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		padding: 25px 30px 5px 30px;
@@ -51,32 +51,32 @@ body.search {
 				background-size: 15px;
 				background-color: transparent;
 				border-radius: var(--page-radius-box-inner);
-				border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+				border: 1px solid var(--border-color);
 				color: var(--main-text-primary-color, #0D0D0D);
 
 				&::-webkit-input-placeholder {
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				&::-moz-placeholder {
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				&:-ms-input-placeholder {
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				&::-ms-input-placeholder {
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				&::placeholder {
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 				}
 
 				&:active,
 				&:focus {
-					border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+					border: 1px solid var(--border-color);
 					outline: 0;
 				}
 			}
@@ -101,12 +101,12 @@ body.search {
 			position: fixed;
 			bottom: 20px;
 			right: 20px;
-			color: var(--main-text-secondary-color, #666);
+			color: var(--main-text-secondary-color, #333333);
 			@include tiny();
 
 			span {
 				background: var(--doc-codebox-background-color, #F2F2F2);
-				border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+				border: 1px solid var(--border-color);
 				border-radius: var(--page-radius-pill);
 				padding: 2px 8px;
 			}
@@ -131,7 +131,7 @@ body.search {
 			}
 
 			h2 {
-				@include title-2();
+				@include headline-4();
 				margin-top: 0;
 				margin-bottom: 9px;
 				text-decoration: none;
@@ -175,7 +175,7 @@ body.search {
 
 				.search_text {
 					@include body-small();
-					color: var(--main-text-secondary-color, #666);
+					color: var(--main-text-secondary-color, #333333);
 
 					u {
 						font-weight: normal;
@@ -186,7 +186,7 @@ body.search {
 
 			.search_category {
 				border-radius: var(--page-radius-pill);
-				border: 1px solid var(--doc-codebox-border-color, #E6E6E6);
+				border: 1px solid var(--border-color);
 				background: var(--interactive-filterbox-background-color, #FAFAFA);
 				@include tiny();
 				padding: 3px 8px;
