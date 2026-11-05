@@ -12,7 +12,7 @@ div.singleentry {
 		margin: 20px 0;
 		padding: 14px 12px;
 		border-radius: var(--page-radius-s, 6px);
-		border: 1px solid var(--doc-box-note-border, #E6E6E6);
+		border: 1px solid var(--border-color);
 		background: var(--doc-box-note, #F2F2F2);
 		position: relative;
 		@include body-small;
@@ -30,8 +30,13 @@ div.singleentry {
 		}
 
 		ul {
-			font-size: var(--type-body-small, 14px);
+			font-size: var(--type-body-small, 13px);
 			margin: 0.8em 0 0 0;
+		}
+
+		p code,
+		li code {
+			font-size: var(--type-code-small, 12px);
 		}
 
 		.sr-only + p,
@@ -61,7 +66,7 @@ div.singleentry {
 			width: 16px;
 			height: 16px;
 			margin-top: 2px;
-			color: var(--main-text-secondary-color, #666);
+			color: var(--main-text-secondary-color, #333333);
 
 			.icon {
 				display: block;
@@ -103,24 +108,51 @@ div.singleentry {
 		}
 
 		&.quote {
-			padding: 18px 20px;
+			--quote-size: var(--type-body-normal, 15px);
+			margin-block: 2rem;
+			padding: 0;
+			border: 0;
+			background: transparent;
 
-			.symbol {
-				margin-top: 4px;
+			&.quote-large {
+				--quote-size: var(--type-body-large, 22.5px);
 			}
-			border-radius: var(--page-radius-m, 10px);
-			background: var(--doc-codebox-background-color, #F2F2F2);
-			border-color: var(--doc-codebox-border-color, #E6E6E6);
 
 			p {
-				font-size: var(--type-body-normal, 16px);
-				line-height: 1.5;
+				font-size: var(--quote-size);
+				font-weight: 400;
+				line-height: 1.4;
+				color: var(--main-text-primary-color, #0D0D0D);
+			}
+
+			.quote-open {
+				position: relative;
+
+				&::before {
+					content: "“";
+					position: absolute;
+					inset-inline-end: 100%;
+				}
+			}
+
+			.quote-close::after {
+				content: "”";
 			}
 
 			p.quote-author {
-				@include body-small();
-				color: var(--main-text-secondary-color, #666);
-				margin-top: 20px;
+				@include body-small;
+				color: var(--main-text-secondary-color, #333333);
+				margin-top: 0.75rem;
+
+				img {
+					display: inline-block;
+					width: 18px;
+					height: 18px;
+					margin: 0 4px 0 0;
+					border-radius: 50%;
+					object-fit: cover;
+					vertical-align: middle;
+				}
 			}
 		}
 	}
@@ -149,6 +181,7 @@ div.singleentry {
 		blockquote.quote {
 			margin: 0;
 			height: 100%;
+			padding-inline-start: 0.75rem;
 		}
 	}
 
@@ -164,7 +197,7 @@ div.singleentry {
 			padding: 0;
 			border: 0;
 			background: transparent;
-			color: var(--main-text-secondary-color, #666);
+			color: var(--main-text-secondary-color, #333333);
 			cursor: pointer;
 			transition: color .2s;
 
@@ -173,7 +206,7 @@ div.singleentry {
 			}
 
 			&.swiper-button-disabled {
-				color: var(--main-quaternary-color, #CCC);
+				color: var(--main-quaternary-color, #999999);
 				cursor: default;
 			}
 
