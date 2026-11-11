@@ -16,7 +16,7 @@
 	</script>
 	{% endif %}
 	
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css?{{ site.time | date: '%s' }}">
+	<link rel="stylesheet" href="{{ site.baseurl }}{{ '/css/main.css' | fingerprint }}">
 	
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/favicon/apple-touch-icon.png">
 	<link rel="manifest" href="{{ site.baseurl }}/images/favicon/site.webmanifest">
@@ -163,10 +163,10 @@
 	
 	{% include footer.html %}
 	
-	<script src="{{ site.baseurl }}/js/helpers.js?{{ site.time | date: '%s' }}" defer></script>
-	<script src="{{ site.baseurl }}/js/script.js?{{ site.time | date: '%s' }}" defer></script>
-	<script src="{{ site.baseurl }}/js/copy_button.js" defer></script>
-	<script src="{{ site.baseurl }}/js/noteboxes.js?{{ site.time | date: '%s' }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/helpers.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/script.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/copy_button.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/noteboxes.js' | fingerprint }}" defer></script>
 	
 </body>
 </html>
