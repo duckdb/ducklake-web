@@ -11,10 +11,9 @@
 
 	<script>document.documentElement.classList.toggle('platform-mac', /Mac/i.test((navigator.platform || '') + ' ' + navigator.userAgent));</script>
 
-	<script src="{{ site.baseurl }}/js/jquery-3.7.1.min.js"></script>
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css?{{ site.time | date: '%s' }}">
+	<link rel="stylesheet" href="{{ site.baseurl }}{{ '/css/main.css' | fingerprint }}">
 	{% if page.railroad and page.railroad != "" and page.railroad != nil %}
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/railroad.css?{{ site.time | date: '%s' }}">
+	<link rel="stylesheet" href="{{ site.baseurl }}{{ '/css/railroad.css' | fingerprint }}">
 	{% endif %}
 
 	<link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png" sizes="96x96" />
@@ -27,7 +26,7 @@
 
 	{% seo title=false %}
 
-	<script src="{{ site.baseurl }}/js/determine_color_scheme.js?{{ site.time | date: '%s' }}"></script>
+	{% include darkmode_init.html %}
 </head>
 
 {% capture issue_title %}Issue found on page '{{ page.title }}'{% endcapture %}
@@ -214,15 +213,16 @@ Page URL: <https://ducklake.select{{ page.url }}>
 		{% include icons.html %}
 	</div>
 
-	<script src="{{ site.baseurl }}/js/minisearch.js?{{ site.time | date: '%s' }}" defer></script>
-	<script src="{{ site.baseurl }}/js/search.js?{{ site.time | date: '%s' }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/helpers.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}/js/minisearch.js" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/search.js' | fingerprint }}" defer></script>
 
-	<script src="{{ site.baseurl }}/js/script.js?{{ site.time | date: '%s' }}" defer></script>
-	<script src="{{ site.baseurl }}/js/copy_button.js?{{ site.time | date: '%s' }}" defer></script>
-	<script src="{{ site.baseurl }}/js/noteboxes.js?{{ site.time | date: '%s' }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/script.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/copy_button.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/noteboxes.js' | fingerprint }}" defer></script>
 
 	{% if page.body_class == "installation" %}
-		<script src="{{ site.baseurl }}/js/installation.js?{{ site.time | date: '%s' }}" defer></script>
+		<script src="{{ site.baseurl }}{{ '/js/installation.js' | fingerprint }}" defer></script>
 	{% endif %}
 	{% if page.railroad and page.railroad != "" and page.railroad != nil %}
 		<script src="{{ site.baseurl }}/js/{{ version_viewed }}/railroad.js" defer></script>
