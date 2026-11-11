@@ -30,7 +30,7 @@
 		{% seo title=false %}
 	{% endif %}
 	
-	<script src="{{ site.baseurl }}/js/determine_color_scheme.js?{{ site.time | date: '%s' }}"></script>
+	{% include darkmode_init.html %}
 </head>
 <body class="layout_postarchive{% if page.body_class %} {{ page.body_class }}{% endif %}">
 	

@@ -27,7 +27,7 @@
 
 	{% seo title=false %}
 
-	<script src="{{ site.baseurl }}/js/determine_color_scheme.js?{{ site.time | date: '%s' }}"></script>
+	{% include darkmode_init.html %}
 </head>
 
 {% capture issue_title %}Issue found on page '{{ page.title }}'{% endcapture %}
