@@ -11,7 +11,6 @@
 
 	<script>document.documentElement.classList.toggle('platform-mac', /Mac/i.test((navigator.platform || '') + ' ' + navigator.userAgent));</script>
 
-	<script src="{{ site.baseurl }}/js/jquery-3.7.1.min.js"></script>
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css?{{ site.time | date: '%s' }}">
 	{% if page.railroad and page.railroad != "" and page.railroad != nil %}
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/railroad.css?{{ site.time | date: '%s' }}">
