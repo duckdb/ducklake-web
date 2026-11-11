@@ -18,7 +18,6 @@ $(document).ready(function(){
 		}
 	}
 	
-	var windowWidth = $( window ).width();
 	
 	
 	/** DARK MODE SWITCH */
@@ -51,22 +50,6 @@ $(document).ready(function(){
 	if (navigator.appVersion.indexOf("Linux")!=-1) { OSName="Linux"; OSdatid="linux"};
 	$('.systemdetected').html('System detected: '+OSName);
 	
-	// Get URL Parameter
-	var getUrlParameter = function getUrlParameter(sParam) {
-	    var sPageURL = window.location.search.substring(1),
-	        sURLVariables = sPageURL.split('&'),
-	        sParameterName,
-	        i;
-	
-	    for (i = 0; i < sURLVariables.length; i++) {
-	        sParameterName = sURLVariables[i].split('=');
-	
-	        if (sParameterName[0] === sParam) {
-	            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-	        }
-	    }
-	return "undefined";
-	};
 	
 	
 	/** FILTER LINE  */
@@ -347,16 +330,6 @@ $(document).ready(function(){
     
 
     
-	if( !$('.hamburger').is(':visible') ){
-		$('#duckdbanimation, .duckdbhome img.downloadlogo').on('mouseenter', function() {
-			animationduckDBicon.play();
-			animationduckDBicon.setDirection(1)
-		})
-		$('#duckdbanimation, .duckdbhome img.downloadlogo').on('mouseleave', function() {
-			animationduckDBicon.play();
-			animationduckDBicon.setDirection(-1)
-		})
-	}
 
 	
 	// Appending Content-List of Overview-Pages
@@ -572,7 +545,6 @@ $('h1, h2, h3, h4, h5, h6').find('svg.anchor-icon').each(function() {
 
 	
 	// SEARCH 
-	var base_url = window.location.origin;
 	var resultSelected;
 	if( OSdatid == "macos" && $('.sidenavigation').length ){
 		$('.opensearch .shortcut.win').hide();
