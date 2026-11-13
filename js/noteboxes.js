@@ -23,8 +23,6 @@
 		New: "new"
 	};
 
-	var dashPattern = /^(–|—|--)/;
-
 	function childParagraphs(el) {
 		return Array.prototype.filter.call(el.children, function (child) {
 			return child.tagName === 'P';
@@ -61,30 +59,7 @@
 			if (first && !first.textContent.trim() && !first.querySelector('img')) {
 				first.remove();
 			}
-			var last = content.querySelector(':scope > p:last-child');
-			if (last && dashPattern.test(last.textContent.trim())) {
-				last.classList.add('quote-author');
-				var authorName = last.textContent.trim().replace(/^(–|—|--)\s*/, '');
-				var author = Array.prototype.find.call(document.querySelectorAll('.postheader-author'), function (el) {
-					var name = el.querySelector('.name');
-					return name && name.textContent.trim() === authorName;
-				});
-				var avatar = author && author.querySelector('img.avatar');
-				if (!last.querySelector('img') && avatar) {
-					last.prepend(avatar.cloneNode(true));
-				}
-				if (last.querySelector('img')) {
-					var dashNode = Array.prototype.find.call(last.childNodes, function (node) {
-						return node.nodeType === Node.TEXT_NODE && node.nodeValue.trim();
-					});
-					if (dashNode) {
-						dashNode.nodeValue = dashNode.nodeValue.replace(/^\s*(–|—|--)\s*/, ' ');
-					}
-				}
-			}
-			var quoteText = childParagraphs(content).filter(function (p) {
-				return !p.classList.contains('quote-author');
-			});
+			var quoteText = childParagraphs(content);
 			if (quoteText.length) {
 				quoteText[0].classList.add('quote-open');
 				quoteText[0].innerHTML = quoteText[0].innerHTML.replace(/^(\s*(?:<[^>]+>\s*)*)[“"]/, '$1');
