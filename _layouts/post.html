@@ -50,13 +50,9 @@
 				</div>
 				<div class="landingmenu">
 					
-					{% include menu_secondary.html %}
+					{% include megamenu.html %}
 					
-					<div class="hamburger hamburger--squeeze">
-						<div class="hamburger-box">
-							<div class="hamburger-inner"></div>
-						</div>
-					</div>
+					<button type="button" class="hamburger mm-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
 				</div>
 				<div class="options">
 					<button class="mode" data-mode="dark">
@@ -165,6 +161,7 @@
 	
 	<script src="{{ site.baseurl }}{{ '/js/helpers.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/script.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/megamenu.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/copy_button.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/noteboxes.js' | fingerprint }}" defer></script>
 	

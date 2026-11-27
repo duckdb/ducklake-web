@@ -60,16 +60,14 @@ Page URL: <https://ducklake.select{{ page.url }}>
 		<div class="headerline">
 			<div class="headercontent">
 				<div class="ducklakehome">
-					<a href="{{ site.baseurl }}/docs/stable/"><img src="{{ site.baseurl }}/images/logo/DuckLake_Logo-horizontal.svg" alt="DuckLake Logo" class="downloadlogo"></a>
-					<div id="ducklake_logo"></div>
+					<div id="ducklake_logo">
+						<a href="{{ site.url }}{{ site.baseurl }}/" aria-label="DuckLake homepage"><img src="{{ site.baseurl }}/images/logo/DuckLake_Logo-horizontal.svg" alt="DuckLake Logo" class="downloadlogo"></a>
+						<a href="{{ site.baseurl }}/docs/stable/" class="docshome" aria-label="DuckLake documentation overview"></a>
+					</div>
 				</div>
 				<div class="landingmenu">
 					<nav class="mobile">
-						<div class="hamburger hamburger--squeeze">
-							<div class="hamburger-box">
-								<div class="hamburger-inner"></div>
-							</div>
-						</div>
+						<button type="button" class="hamburger mm-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
 					</nav>
 				</div>
 				<div class="options">

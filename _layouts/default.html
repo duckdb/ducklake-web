@@ -39,20 +39,16 @@
 				</div>
 				<div class="landingmenu">
 					
-					{% include menu_secondary.html %}
+					{% include megamenu.html %}
 					
-					<div class="hamburger hamburger--squeeze">
-						<div class="hamburger-box">
-							<div class="hamburger-inner"></div>
-						</div>
-					</div>
+					<button type="button" class="hamburger mm-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
 				</div>
 				<div class="options">
-					<a class="button blue" href="https://ducklabs.com/contact" target="_blank">Support</a>
 					<button class="mode" data-mode="dark">
 						<svg class="icon icon-sun"><use href="#sun"></use></svg>
 						<svg class="icon icon-moon"><use href="#moon-01"></use></svg>
 					</button>
+					<a class="button blue" href="https://ducklabs.com/contact" target="_blank">Support</a>
 				</div>
 			</div>
 		</div>
@@ -125,6 +121,7 @@
 	<script src="{{ site.baseurl }}{{ '/js/search.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/copy_button.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/script.js' | fingerprint }}" defer></script>
+	<script src="{{ site.baseurl }}{{ '/js/megamenu.js' | fingerprint }}" defer></script>
 	<script src="{{ site.baseurl }}{{ '/js/wave-background.js' | fingerprint }}" defer></script>
 
 </body>

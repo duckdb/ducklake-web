@@ -1,0 +1,73 @@
+{
+  "panel_width": "480px",
+  "support": { "label": "Support", "url": "https://ducklabs.com/contact", "style": "blue" },
+  "items": [
+    {
+      "id": "documentation",
+      "label": "Documentation",
+      "url": "/docs/stable/",
+      "cards": [
+        {
+          "label": "Getting Started",
+          "icon": "compass-03",
+          "description": "Use DuckLake from DuckDB in minutes.",
+          "url": "/docs/stable/duckdb/introduction"
+        },
+        {
+          "label": "Specification",
+          "icon": "book-open-01",
+          "description": "The open table format behind DuckLake.",
+          "url": "/docs/stable/specification/introduction"
+        }
+      ],
+      "columns": [
+        [
+          { "label": "Installation", "url": "/docs/stable/duckdb/installation" },
+          { "label": "Usage", "url": "/docs/stable/duckdb/usage/connecting" },
+          { "label": "Maintenance", "url": "/docs/stable/duckdb/maintenance/recommended_maintenance" },
+          { "label": "Guides", "url": "/docs/stable/duckdb/guides/overview" }
+        ]
+      ],
+      "footer": {
+        "label": "Browse all documentation",
+        "url": "/docs/stable/"
+      }
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "url": "/news",
+      "cards": [
+        {
+          "label": "Blog",
+          "icon": "edit-03",
+          "description": "News, releases and deep dives from the team.",
+          "url": "/news"
+        },
+        {
+          "label": "Manifesto",
+          "icon": "flag-01",
+          "description": "Why we built DuckLake.",
+          "url": "/manifesto/"
+        }
+      ],
+      "columns": [
+        [
+          { "label": "FAQ", "url": "/faq.html" },
+          { "label": "Media", "url": "/media/" },
+          { "label": "Roadmap", "url": "/roadmap.html" },
+          { "label": "Release Calendar", "url": "/release_calendar.html" }
+        ]
+      ],
+      "footer": {
+        "label": "Join the discussion",
+        "url": "https://github.com/duckdb/ducklake/discussions"
+      }
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/duckdb/ducklake",
+      "github": true
+    }
+  ]
+}
