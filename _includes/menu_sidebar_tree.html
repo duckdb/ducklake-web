@@ -44,7 +44,9 @@
 					<li class="nav-item hasSub{% if open %} is-open{% endif %}"><button type="button" class="nav-row nav-drill" aria-expanded="{{ open }}">{{ entry.page }}<svg class="show"><use href="#chevron-right"></use></svg></button><ul class="nav-list"><li class="nav-back"><button type="button" class="nav-row"><svg><use href="#chevron-left"></use></svg>{{ entry.page }}</button></li>{{ l3_items }}</ul></li>
 				{%- else -%}
 					{%- assign href = main_base | append: entry.url -%}
-					<li class="nav-item"><a class="nav-row" href="{{ href }}"{% if href == nav_page and nav_found == false %}{% assign nav_found = true %}{% assign nav_trail = main_crumb %} aria-current="page"{% endif %}>{{ entry.page }}</a></li>
+					{%- assign nav_icon = "" -%}
+					{%- if entry.page == "Introduction" -%}{%- if main.slug == "duckdb" -%}{%- assign nav_icon = "compass-03" -%}{%- elsif main.slug == "specification" -%}{%- assign nav_icon = "book-open-01" -%}{%- endif -%}{%- endif -%}
+					<li class="nav-item"><a class="nav-row{% if nav_icon != "" %} has-icon{% endif %}" href="{{ href }}"{% if href == nav_page and nav_found == false %}{% assign nav_found = true %}{% assign nav_trail = main_crumb %} aria-current="page"{% endif %}>{% if nav_icon != "" %}<svg class="nav-icon" aria-hidden="true"><use href="#{{ nav_icon }}"></use></svg>{% endif %}{{ entry.page }}</a></li>
 				{%- endif -%}
 			{%- endfor -%}
 		{%- endif -%}
